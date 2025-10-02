@@ -9,7 +9,7 @@ import SuccessCasesEditor from './sections/SuccessCasesEditor';
 
 const EditorPanel = () => {
   return (
-    <div className="h-full bg-editor-bg border-r border-border">
+    <div className="h-full bg-editor-bg">
       <div className="p-6 border-b border-border bg-background">
         <h1 className="text-2xl font-bold text-foreground">Criar Novo Site</h1>
         <p className="text-sm text-muted-foreground mt-1">
