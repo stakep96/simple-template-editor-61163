@@ -13,10 +13,10 @@ const Index = () => {
           <AppSidebar />
           
           <div className="flex-1 flex overflow-hidden">
-            <div className="w-[420px] flex-shrink-0 border-r border-border">
+            <div className="flex-1 border-r border-border">
               <EditorPanel />
             </div>
-            <div className="flex-1">
+            <div className="w-[380px] flex-shrink-0">
               <PreviewPanel />
             </div>
           </div>
