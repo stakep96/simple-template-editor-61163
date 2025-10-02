@@ -1,13 +1,20 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import { SiteEditorProvider } from '@/contexts/SiteEditorContext';
+import EditorPanel from '@/components/editor/EditorPanel';
+import PreviewPanel from '@/components/preview/PreviewPanel';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <SiteEditorProvider>
+      <div className="flex h-screen w-full overflow-hidden">
+        <div className="w-[420px] flex-shrink-0">
+          <EditorPanel />
+        </div>
+        <div className="flex-1">
+          <PreviewPanel />
+        </div>
       </div>
-    </div>
+    </SiteEditorProvider>
   );
 };
 
