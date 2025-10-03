@@ -2,7 +2,7 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Switch } from '@/components/ui/switch';
+
 import { Slider } from '@/components/ui/slider';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
@@ -11,14 +11,6 @@ const HeroEditor = () => {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium">Ativar seção</span>
-        <Switch
-          checked={config.hero.enabled}
-          onCheckedChange={(enabled) => updateHero({ enabled })}
-        />
-      </div>
-
       {config.hero.enabled && (
         <>
           <div>

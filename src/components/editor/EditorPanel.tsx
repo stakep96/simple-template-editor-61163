@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import BrandEditor from './sections/BrandEditor';
 import HeaderEditor from './sections/HeaderEditor';
@@ -9,8 +10,10 @@ import HeroEditor from './sections/HeroEditor';
 import AboutEditor from './sections/AboutEditor';
 import PracticeAreasEditor from './sections/PracticeAreasEditor';
 import SuccessCasesEditor from './sections/SuccessCasesEditor';
+import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
 const EditorPanel = () => {
+  const { config, updateHeader, updateHero, updateAbout, updatePracticeAreas, updateSuccessCases } = useSiteEditor();
   return (
     <div className="h-full bg-editor-bg">
       <div className="p-6 border-b border-border bg-background">
@@ -44,7 +47,7 @@ const EditorPanel = () => {
 
             <AccordionItem value="header" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-1">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <ImageIcon className="w-5 h-5 text-primary" />
                   </div>
@@ -53,6 +56,12 @@ const EditorPanel = () => {
                     <p className="text-xs text-muted-foreground">Logo e navegação</p>
                   </div>
                 </div>
+                <Switch
+                  checked={config.header.enabled}
+                  onCheckedChange={(enabled) => updateHeader({ enabled })}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mr-2"
+                />
               </AccordionTrigger>
               <AccordionContent className="px-4">
                 <HeaderEditor />
@@ -61,7 +70,7 @@ const EditorPanel = () => {
 
             <AccordionItem value="hero" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-1">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Mountain className="w-5 h-5 text-primary" />
                   </div>
@@ -70,6 +79,12 @@ const EditorPanel = () => {
                     <p className="text-xs text-muted-foreground">Banner principal</p>
                   </div>
                 </div>
+                <Switch
+                  checked={config.hero.enabled}
+                  onCheckedChange={(enabled) => updateHero({ enabled })}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mr-2"
+                />
               </AccordionTrigger>
               <AccordionContent className="px-4">
                 <HeroEditor />
@@ -78,7 +93,7 @@ const EditorPanel = () => {
 
             <AccordionItem value="about" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-1">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <User className="w-5 h-5 text-primary" />
                   </div>
@@ -87,6 +102,12 @@ const EditorPanel = () => {
                     <p className="text-xs text-muted-foreground">Informações sobre você</p>
                   </div>
                 </div>
+                <Switch
+                  checked={config.about.enabled}
+                  onCheckedChange={(enabled) => updateAbout({ enabled })}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mr-2"
+                />
               </AccordionTrigger>
               <AccordionContent className="px-4">
                 <AboutEditor />
@@ -95,7 +116,7 @@ const EditorPanel = () => {
 
             <AccordionItem value="practice" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-1">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Briefcase className="w-5 h-5 text-primary" />
                   </div>
@@ -104,6 +125,12 @@ const EditorPanel = () => {
                     <p className="text-xs text-muted-foreground">Especialidades</p>
                   </div>
                 </div>
+                <Switch
+                  checked={config.practiceAreas.enabled}
+                  onCheckedChange={(enabled) => updatePracticeAreas({ enabled })}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mr-2"
+                />
               </AccordionTrigger>
               <AccordionContent className="px-4">
                 <PracticeAreasEditor />
@@ -112,7 +139,7 @@ const EditorPanel = () => {
 
             <AccordionItem value="cases" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-1">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Trophy className="w-5 h-5 text-primary" />
                   </div>
@@ -121,6 +148,12 @@ const EditorPanel = () => {
                     <p className="text-xs text-muted-foreground">Histórico de vitórias</p>
                   </div>
                 </div>
+                <Switch
+                  checked={config.successCases.enabled}
+                  onCheckedChange={(enabled) => updateSuccessCases({ enabled })}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mr-2"
+                />
               </AccordionTrigger>
               <AccordionContent className="px-4">
                 <SuccessCasesEditor />

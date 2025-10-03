@@ -2,7 +2,7 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Switch } from '@/components/ui/switch';
+
 import { Button } from '@/components/ui/button';
 import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -28,14 +28,6 @@ const AboutEditor = () => {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium">Ativar seção</span>
-        <Switch
-          checked={config.about.enabled}
-          onCheckedChange={(enabled) => updateAbout({ enabled })}
-        />
-      </div>
-
       {config.about.enabled && (
         <>
           <div>
