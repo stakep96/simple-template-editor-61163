@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import BrandEditor from './sections/BrandEditor';
@@ -109,7 +109,7 @@ const EditorPanel = () => {
         <div className="p-6 space-y-4">
           <TemplatesEditor />
           
-          <Accordion type="multiple" defaultValue={['brand', 'header', 'hero', 'about']} className="space-y-4">
+          <Accordion type="multiple" defaultValue={['brand', 'edit-site']} className="space-y-4">
             <AccordionItem value="brand" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
@@ -127,7 +127,21 @@ const EditorPanel = () => {
               </AccordionContent>
             </AccordionItem>
 
-            {sortedModules.map((module) => {
+            <AccordionItem value="edit-site" className="border rounded-lg bg-background">
+              <AccordionTrigger className="px-4 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Layout className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">Editar Site</h3>
+                    <p className="text-xs text-muted-foreground">Módulos e seções</p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pt-4">
+                <Accordion type="multiple" defaultValue={['header', 'hero', 'about']} className="space-y-4">
+                  {sortedModules.map((module) => {
               const Icon = module.icon;
               const Component = module.component;
               const isDisabled = !module.enabled;
@@ -175,6 +189,9 @@ const EditorPanel = () => {
                 </AccordionItem>
               );
             })}
+                </Accordion>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </ScrollArea>
