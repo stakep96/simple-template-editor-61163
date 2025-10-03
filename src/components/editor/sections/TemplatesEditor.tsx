@@ -47,10 +47,11 @@ const TemplatesEditor = () => {
           </div>
         </div>
         
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" size="sm">Ver tudo</Button>
-          </DialogTrigger>
+        <div className="flex items-center gap-2">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm">Ver tudo</Button>
+            </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Todos os Modelos</DialogTitle>
@@ -83,13 +84,16 @@ const TemplatesEditor = () => {
             </Tabs>
           </DialogContent>
         </Dialog>
+        <CarouselPrevious className="static translate-y-0 h-9 w-9" />
+        <CarouselNext className="static translate-y-0 h-9 w-9" />
+        </div>
       </div>
 
       <Carousel className="w-full">
         <CarouselContent className="-ml-2">
           {templates.slice(0, 6).map((template) => (
-            <CarouselItem key={template.id} className="pl-2 basis-1/3">
-              <button className="group relative aspect-[3/4] w-full rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all">
+            <CarouselItem key={template.id} className="pl-2 basis-1/4">
+              <button className="group relative aspect-[2/3] w-full rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all">
                 <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-2`}>
                   <div className="bg-background/90 backdrop-blur-sm rounded px-2 py-1">
                     <p className="font-bold text-xs text-foreground">{template.name}</p>
@@ -100,8 +104,6 @@ const TemplatesEditor = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-0" />
-        <CarouselNext className="right-0" />
       </Carousel>
     </Card>
   );
