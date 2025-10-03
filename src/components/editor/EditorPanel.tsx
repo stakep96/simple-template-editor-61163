@@ -24,40 +24,46 @@ const EditorPanel = () => {
           <TemplatesEditor />
           
           <Accordion type="multiple" defaultValue={['brand', 'header', 'hero', 'about']} className="space-y-4">
-            <AccordionItem value="brand" className="border-none">
-              <AccordionTrigger className="hover:no-underline p-0">
+            <AccordionItem value="brand">
+              <AccordionTrigger>Marca</AccordionTrigger>
+              <AccordionContent>
                 <BrandEditor />
-              </AccordionTrigger>
+              </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="header" className="border-none">
-              <AccordionTrigger className="hover:no-underline p-0">
+            <AccordionItem value="header">
+              <AccordionTrigger>Header</AccordionTrigger>
+              <AccordionContent>
                 <HeaderEditor />
-              </AccordionTrigger>
+              </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="hero" className="border-none">
-              <AccordionTrigger className="hover:no-underline p-0">
+            <AccordionItem value="hero">
+              <AccordionTrigger>Hero</AccordionTrigger>
+              <AccordionContent>
                 <HeroEditor />
-              </AccordionTrigger>
+              </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="about" className="border-none">
-              <AccordionTrigger className="hover:no-underline p-0">
+            <AccordionItem value="about">
+              <AccordionTrigger>Sobre</AccordionTrigger>
+              <AccordionContent>
                 <AboutEditor />
-              </AccordionTrigger>
+              </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="practice" className="border-none">
-              <AccordionTrigger className="hover:no-underline p-0">
+            <AccordionItem value="practice">
+              <AccordionTrigger>Áreas de Atuação</AccordionTrigger>
+              <AccordionContent>
                 <PracticeAreasEditor />
-              </AccordionTrigger>
+              </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="cases" className="border-none">
-              <AccordionTrigger className="hover:no-underline p-0">
+            <AccordionItem value="cases">
+              <AccordionTrigger>Cases de Sucesso</AccordionTrigger>
+              <AccordionContent>
                 <SuccessCasesEditor />
-              </AccordionTrigger>
+              </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
