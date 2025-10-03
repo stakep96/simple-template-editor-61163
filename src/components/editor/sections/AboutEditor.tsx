@@ -1,11 +1,10 @@
 import React from 'react';
-import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
-import { User, Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
 const AboutEditor = () => {
@@ -28,17 +27,9 @@ const AboutEditor = () => {
   };
 
   return (
-    <Card className="p-4">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <User className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <h3 className="font-semibold text-foreground">Sobre mim</h3>
-            <p className="text-xs text-muted-foreground">Informações pessoais</p>
-          </div>
-        </div>
+    <div className="space-y-3">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium">Ativar seção</span>
         <Switch
           checked={config.about.enabled}
           onCheckedChange={(enabled) => updateAbout({ enabled })}
@@ -46,7 +37,7 @@ const AboutEditor = () => {
       </div>
 
       {config.about.enabled && (
-        <div className="space-y-3">
+        <>
           <div>
             <Label htmlFor="aboutPhoto" className="text-sm">Foto (URL)</Label>
             <Input
@@ -165,9 +156,9 @@ const AboutEditor = () => {
               ))}
             </div>
           </div>
-        </div>
+        </>
       )}
-    </Card>
+    </div>
   );
 };
 

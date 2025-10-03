@@ -23,45 +23,45 @@ const EditorPanel = () => {
         <div className="p-6 space-y-4">
           <TemplatesEditor />
           
-          <Accordion type="multiple" defaultValue={['brand', 'header', 'hero', 'about']} className="space-y-4">
-            <AccordionItem value="brand">
-              <AccordionTrigger>Marca</AccordionTrigger>
-              <AccordionContent>
+          <Accordion type="multiple" defaultValue={['brand', 'header', 'hero', 'about']} className="bg-background rounded-lg border border-border">
+            <AccordionItem value="brand" className="border-b">
+              <AccordionTrigger className="px-4">Marca</AccordionTrigger>
+              <AccordionContent className="px-4">
                 <BrandEditor />
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="header">
-              <AccordionTrigger>Header</AccordionTrigger>
-              <AccordionContent>
+            <AccordionItem value="header" className="border-b">
+              <AccordionTrigger className="px-4">Header</AccordionTrigger>
+              <AccordionContent className="px-4">
                 <HeaderEditor />
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="hero">
-              <AccordionTrigger>Hero</AccordionTrigger>
-              <AccordionContent>
+            <AccordionItem value="hero" className="border-b">
+              <AccordionTrigger className="px-4">Hero</AccordionTrigger>
+              <AccordionContent className="px-4">
                 <HeroEditor />
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="about">
-              <AccordionTrigger>Sobre</AccordionTrigger>
-              <AccordionContent>
+            <AccordionItem value="about" className="border-b">
+              <AccordionTrigger className="px-4">Sobre</AccordionTrigger>
+              <AccordionContent className="px-4">
                 <AboutEditor />
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="practice">
-              <AccordionTrigger>Áreas de Atuação</AccordionTrigger>
-              <AccordionContent>
+            <AccordionItem value="practice" className="border-b">
+              <AccordionTrigger className="px-4">Áreas de Atuação</AccordionTrigger>
+              <AccordionContent className="px-4">
                 <PracticeAreasEditor />
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="cases">
-              <AccordionTrigger>Cases de Sucesso</AccordionTrigger>
-              <AccordionContent>
+              <AccordionTrigger className="px-4">Cases de Sucesso</AccordionTrigger>
+              <AccordionContent className="px-4">
                 <SuccessCasesEditor />
               </AccordionContent>
             </AccordionItem>

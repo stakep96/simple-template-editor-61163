@@ -1,28 +1,18 @@
 import React from 'react';
-import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
-import { Mountain } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
 const HeroEditor = () => {
   const { config, updateHero } = useSiteEditor();
 
   return (
-    <Card className="p-4">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Mountain className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <h3 className="font-semibold text-foreground">Hero</h3>
-            <p className="text-xs text-muted-foreground">Banner principal</p>
-          </div>
-        </div>
+    <div className="space-y-3">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium">Ativar seção</span>
         <Switch
           checked={config.hero.enabled}
           onCheckedChange={(enabled) => updateHero({ enabled })}
@@ -30,7 +20,7 @@ const HeroEditor = () => {
       </div>
 
       {config.hero.enabled && (
-        <div className="space-y-3">
+        <>
           <div>
             <Label htmlFor="heroImage" className="text-sm">Imagem de Fundo (URL)</Label>
             <Input
@@ -79,9 +69,9 @@ const HeroEditor = () => {
               rows={3}
             />
           </div>
-        </div>
+        </>
       )}
-    </Card>
+    </div>
   );
 };
 
