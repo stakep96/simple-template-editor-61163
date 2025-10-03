@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy } from 'lucide-react';
 import TemplatesEditor from './sections/TemplatesEditor';
 import BrandEditor from './sections/BrandEditor';
 import HeaderEditor from './sections/HeaderEditor';
@@ -27,10 +28,8 @@ const EditorPanel = () => {
             <AccordionItem value="brand" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-5 h-5 rounded bg-purple-500 flex items-center justify-center">
-                      <span className="text-white text-xs">🎨</span>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Palette className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-foreground">Marca</h3>
@@ -46,10 +45,8 @@ const EditorPanel = () => {
             <AccordionItem value="header" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-5 h-5 rounded bg-blue-500 flex items-center justify-center">
-                      <span className="text-white text-xs">📱</span>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <ImageIcon className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-foreground">Header</h3>
@@ -65,10 +62,8 @@ const EditorPanel = () => {
             <AccordionItem value="hero" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-5 h-5 rounded bg-green-500 flex items-center justify-center">
-                      <span className="text-white text-xs">🏔️</span>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Mountain className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-foreground">Hero</h3>
@@ -84,10 +79,8 @@ const EditorPanel = () => {
             <AccordionItem value="about" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-5 h-5 rounded bg-orange-500 flex items-center justify-center">
-                      <span className="text-white text-xs">👤</span>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <User className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-foreground">Sobre</h3>
@@ -103,10 +96,8 @@ const EditorPanel = () => {
             <AccordionItem value="practice" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-5 h-5 rounded bg-cyan-500 flex items-center justify-center">
-                      <span className="text-white text-xs">💼</span>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Briefcase className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-foreground">Áreas de Atuação</h3>
@@ -122,10 +113,8 @@ const EditorPanel = () => {
             <AccordionItem value="cases" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-5 h-5 rounded bg-yellow-500 flex items-center justify-center">
-                      <span className="text-white text-xs">🏆</span>
-                    </div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Trophy className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
                     <h3 className="font-semibold text-foreground">Cases de Sucesso</h3>
