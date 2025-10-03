@@ -65,6 +65,7 @@ export interface SiteConfig {
   about: AboutConfig;
   practiceAreas: PracticeAreasConfig;
   successCases: SuccessCasesConfig;
+  moduleOrder: string[];
 }
 
 interface SiteEditorContextType {
@@ -75,6 +76,7 @@ interface SiteEditorContextType {
   updateAbout: (about: Partial<AboutConfig>) => void;
   updatePracticeAreas: (areas: Partial<PracticeAreasConfig>) => void;
   updateSuccessCases: (cases: Partial<SuccessCasesConfig>) => void;
+  reorderModules: (newOrder: string[]) => void;
 }
 
 const defaultConfig: SiteConfig = {
@@ -134,6 +136,7 @@ const defaultConfig: SiteConfig = {
       },
     ],
   },
+  moduleOrder: ['header', 'hero', 'about', 'practice', 'cases'],
 };
 
 const SiteEditorContext = createContext<SiteEditorContextType | undefined>(undefined);
@@ -183,6 +186,13 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     }));
   };
 
+  const reorderModules = (newOrder: string[]) => {
+    setConfig((prev) => ({
+      ...prev,
+      moduleOrder: newOrder,
+    }));
+  };
+
   return (
     <SiteEditorContext.Provider
       value={{
@@ -193,6 +203,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         updateAbout,
         updatePracticeAreas,
         updateSuccessCases,
+        reorderModules,
       }}
     >
       {children}
