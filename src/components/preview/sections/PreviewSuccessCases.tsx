@@ -1,8 +1,17 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { SuccessCasesConfig } from '@/contexts/SiteEditorContext';
 
-const PreviewSuccessCases = () => {
+interface PreviewSuccessCasesProps {
+  instanceId: string;
+}
+
+const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId }) => {
   const { config } = useSiteEditor();
+  const instance = config.moduleInstances[instanceId];
+  const casesConfig = instance?.config as SuccessCasesConfig;
+
+  if (!casesConfig) return null;
 
   return (
     <section 
@@ -17,7 +26,7 @@ const PreviewSuccessCases = () => {
       </h2>
 
       <div className="space-y-4">
-        {config.successCases.cases.map((caseItem) => (
+        {casesConfig.cases.map((caseItem) => (
           <div
             key={caseItem.id}
             className="rounded-2xl overflow-hidden"

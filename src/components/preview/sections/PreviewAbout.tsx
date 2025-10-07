@@ -1,9 +1,18 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { AboutConfig } from '@/contexts/SiteEditorContext';
 import { Instagram, Facebook, Linkedin, GraduationCap } from 'lucide-react';
 
-const PreviewAbout = () => {
+interface PreviewAboutProps {
+  instanceId: string;
+}
+
+const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
   const { config } = useSiteEditor();
+  const instance = config.moduleInstances[instanceId];
+  const aboutConfig = instance?.config as AboutConfig;
+
+  if (!aboutConfig) return null;
 
   return (
     <section 
@@ -18,21 +27,21 @@ const PreviewAbout = () => {
       </h2>
 
       <div className="flex flex-col items-center">
-        {config.about.photo && (
+        {aboutConfig.photo && (
           <div 
             className="w-40 h-52 rounded-3xl mb-4 overflow-hidden border-4"
             style={{ borderColor: config.brand.primary }}
           >
             <img 
-              src={config.about.photo} 
-              alt={config.about.name}
+              src={aboutConfig.photo} 
+              alt={aboutConfig.name}
               className="w-full h-full object-cover"
             />
           </div>
         )}
 
         <div className="flex gap-3 mb-3">
-          {config.about.socialLinks.instagram && (
+          {aboutConfig.socialLinks?.instagram && (
             <div 
               className="w-8 h-8 rounded-full flex items-center justify-center"
               style={{ backgroundColor: config.brand.primary }}
@@ -40,7 +49,7 @@ const PreviewAbout = () => {
               <Instagram className="w-4 h-4" style={{ color: config.brand.secondary }} />
             </div>
           )}
-          {config.about.socialLinks.facebook && (
+          {aboutConfig.socialLinks?.facebook && (
             <div 
               className="w-8 h-8 rounded-full flex items-center justify-center"
               style={{ backgroundColor: config.brand.primary }}
@@ -48,7 +57,7 @@ const PreviewAbout = () => {
               <Facebook className="w-4 h-4" style={{ color: config.brand.secondary }} />
             </div>
           )}
-          {config.about.socialLinks.linkedin && (
+          {aboutConfig.socialLinks?.linkedin && (
             <div 
               className="w-8 h-8 rounded-full flex items-center justify-center"
               style={{ backgroundColor: config.brand.primary }}
@@ -62,24 +71,24 @@ const PreviewAbout = () => {
           className="text-lg font-bold mb-1"
           style={{ color: config.brand.text }}
         >
-          {config.about.name}
+          {aboutConfig.name}
         </h3>
         <p 
           className="text-xs mb-4 text-center"
           style={{ color: config.brand.text, opacity: 0.8 }}
         >
-          {config.about.title}
+          {aboutConfig.title}
         </p>
         <p 
           className="text-sm text-center mb-6"
           style={{ color: config.brand.text }}
         >
-          {config.about.description}
+          {aboutConfig.description}
         </p>
 
-        {config.about.education.length > 0 && (
+        {aboutConfig.education && aboutConfig.education.length > 0 && (
           <div className="w-full space-y-3">
-            {config.about.education.map((edu, index) => (
+            {aboutConfig.education.map((edu, index) => (
               <div 
                 key={index}
                 className="p-4 rounded-2xl flex gap-3"

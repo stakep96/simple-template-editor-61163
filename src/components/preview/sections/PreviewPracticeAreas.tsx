@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { PracticeAreasConfig } from '@/contexts/SiteEditorContext';
 import { Home, Smartphone, Lightbulb, Users, Shield, Car } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
@@ -11,8 +12,16 @@ const iconMap: Record<string, any> = {
   car: Car,
 };
 
-const PreviewPracticeAreas = () => {
+interface PreviewPracticeAreasProps {
+  instanceId: string;
+}
+
+const PreviewPracticeAreas: React.FC<PreviewPracticeAreasProps> = ({ instanceId }) => {
   const { config } = useSiteEditor();
+  const instance = config.moduleInstances[instanceId];
+  const practiceConfig = instance?.config as PracticeAreasConfig;
+
+  if (!practiceConfig) return null;
 
   return (
     <section 
@@ -27,7 +36,7 @@ const PreviewPracticeAreas = () => {
       </h2>
 
       <div className="grid grid-cols-2 gap-3">
-        {config.practiceAreas.areas.map((area) => {
+        {practiceConfig.areas.map((area) => {
           const Icon = iconMap[area.icon] || Shield;
           return (
             <div
