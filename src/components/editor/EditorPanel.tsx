@@ -116,23 +116,6 @@ const EditorPanel = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="marketing" className="border rounded-lg bg-background">
-              <AccordionTrigger className="px-4 hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="font-semibold text-foreground">Configurações de Marketing e Integrações</h3>
-                    <p className="text-xs text-muted-foreground">WhatsApp, Analytics e Pixels</p>
-                  </div>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-4">
-                <MarketingEditor />
-              </AccordionContent>
-            </AccordionItem>
-
             <AccordionItem value="edit-site" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
@@ -199,6 +182,23 @@ const EditorPanel = () => {
                     );
                   })}
                 </Accordion>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="marketing" className="border rounded-lg bg-background">
+              <AccordionTrigger className="px-4 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">Configurações de Marketing e Integrações</h3>
+                    <p className="text-xs text-muted-foreground">WhatsApp, Analytics e Pixels</p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4">
+                <MarketingEditor />
               </AccordionContent>
             </AccordionItem>
           </Accordion>
