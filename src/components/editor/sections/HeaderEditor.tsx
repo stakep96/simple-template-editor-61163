@@ -1,12 +1,17 @@
 import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react';
 
 const HeaderEditor = () => {
   const { config, updateHeader } = useSiteEditor();
+
+  const alignmentOptions = [
+    { value: 'left', label: 'Esquerda', icon: AlignLeft },
+    { value: 'center', label: 'Centro', icon: AlignCenter },
+    { value: 'right', label: 'Direita', icon: AlignRight },
+  ];
 
   return (
     <div className="space-y-4">
@@ -25,34 +30,30 @@ const HeaderEditor = () => {
           </div>
           
           <div>
-            <Label className="text-sm">Alinhamento</Label>
-            <RadioGroup
-              value={config.header.alignment}
-              onValueChange={(value: 'left' | 'center' | 'right') => updateHeader({ alignment: value })}
-              className="flex gap-4 mt-2"
-            >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="left" id="align-left" />
-                <Label htmlFor="align-left" className="flex items-center gap-1 cursor-pointer">
-                  <AlignLeft className="w-4 h-4" />
-                  Esquerda
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="center" id="align-center" />
-                <Label htmlFor="align-center" className="flex items-center gap-1 cursor-pointer">
-                  <AlignCenter className="w-4 h-4" />
-                  Centro
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="right" id="align-right" />
-                <Label htmlFor="align-right" className="flex items-center gap-1 cursor-pointer">
-                  <AlignRight className="w-4 h-4" />
-                  Direita
-                </Label>
-              </div>
-            </RadioGroup>
+            <Label className="text-sm mb-2 block">Alinhamento</Label>
+            <div className="grid grid-cols-3 gap-2">
+              {alignmentOptions.map(({ value, label, icon: Icon }) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => updateHeader({ alignment: value as 'left' | 'center' | 'right' })}
+                  className={`flex flex-col items-center justify-center gap-2 p-3 rounded-lg border-2 transition-all ${
+                    config.header.alignment === value
+                      ? 'border-primary bg-primary/5'
+                      : 'border-border bg-background hover:border-primary/50'
+                  }`}
+                >
+                  <Icon className={`w-5 h-5 ${
+                    config.header.alignment === value ? 'text-primary' : 'text-muted-foreground'
+                  }`} />
+                  <span className={`text-xs font-medium ${
+                    config.header.alignment === value ? 'text-primary' : 'text-muted-foreground'
+                  }`}>
+                    {label}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </>
       )}
