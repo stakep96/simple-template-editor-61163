@@ -1,5 +1,12 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+export interface SiteMetadata {
+  siteName: string;
+  domain: string;
+  title: string;
+  description: string;
+}
+
 export interface BrandColors {
   primary: string;
   secondary: string;
@@ -76,6 +83,7 @@ export interface ModuleInstance {
 }
 
 export interface SiteConfig {
+  metadata: SiteMetadata;
   brand: BrandColors;
   moduleInstances: Record<string, ModuleInstance>;
   moduleOrder: string[]; // array of instance IDs
@@ -83,6 +91,7 @@ export interface SiteConfig {
 
 interface SiteEditorContextType {
   config: SiteConfig;
+  updateMetadata: (metadata: Partial<SiteMetadata>) => void;
   updateBrand: (brand: Partial<BrandColors>) => void;
   updateModuleInstance: (instanceId: string, updates: Partial<ModuleInstance['config']> | { enabled: boolean }) => void;
   reorderModules: (newOrder: string[]) => void;
@@ -91,6 +100,12 @@ interface SiteEditorContextType {
 }
 
 const defaultConfig: SiteConfig = {
+  metadata: {
+    siteName: 'Novo Site',
+    domain: '',
+    title: 'Seu nome ou nome da empresa',
+    description: 'Fale um pouco sobre você ou sua empresa',
+  },
   brand: {
     primary: '#8B1538',
     secondary: '#F5E6D3',
@@ -190,6 +205,13 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     cases: 1,
     contact: 0,
   });
+
+  const updateMetadata = (metadata: Partial<SiteMetadata>) => {
+    setConfig((prev) => ({
+      ...prev,
+      metadata: { ...prev.metadata, ...metadata },
+    }));
+  };
 
   const updateBrand = (brand: Partial<BrandColors>) => {
     setConfig((prev) => ({
@@ -329,6 +351,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     <SiteEditorContext.Provider
       value={{
         config,
+        updateMetadata,
         updateBrand,
         updateModuleInstance,
         reorderModules,
