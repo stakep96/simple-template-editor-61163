@@ -56,9 +56,9 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
             <button
               key={module.id}
               onClick={() => onSelect(module.id)}
-              className="flex flex-col items-center gap-2 p-3 rounded-lg border border-border hover:border-primary hover:bg-accent/50 transition-all group"
+              className="flex flex-col items-center gap-2 p-3 rounded-lg border border-border hover:scale-105 transition-all group"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center transition-colors">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <div className="text-center">
