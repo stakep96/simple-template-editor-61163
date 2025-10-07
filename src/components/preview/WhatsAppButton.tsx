@@ -5,13 +5,15 @@ import { useSiteEditor } from '@/contexts/SiteEditorContext';
 const WhatsAppButton = () => {
   const { config } = useSiteEditor();
 
-  if (!config.marketing.whatsapp.enabled || !config.marketing.whatsapp.number) {
+  if (!config.marketing.whatsapp.enabled) {
     return null;
   }
 
   const handleClick = () => {
-    const url = `https://wa.me/${config.marketing.whatsapp.number}`;
-    window.open(url, '_blank');
+    if (config.marketing.whatsapp.number) {
+      const url = `https://wa.me/${config.marketing.whatsapp.number}`;
+      window.open(url, '_blank');
+    }
   };
 
   return (
