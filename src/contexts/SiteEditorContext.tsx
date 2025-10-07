@@ -66,28 +66,28 @@ export interface ContactFormConfig {
   fields: string[];
 }
 
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact';
+
+export interface ModuleInstance {
+  id: string; // unique instance id like 'hero-1', 'hero-2'
+  type: ModuleType;
+  enabled: boolean;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig;
+}
+
 export interface SiteConfig {
   brand: BrandColors;
-  header: HeaderConfig;
-  hero: HeroConfig;
-  about: AboutConfig;
-  practiceAreas: PracticeAreasConfig;
-  successCases: SuccessCasesConfig;
-  contactForm: ContactFormConfig;
-  moduleOrder: string[];
+  moduleInstances: Record<string, ModuleInstance>;
+  moduleOrder: string[]; // array of instance IDs
 }
 
 interface SiteEditorContextType {
   config: SiteConfig;
   updateBrand: (brand: Partial<BrandColors>) => void;
-  updateHeader: (header: Partial<HeaderConfig>) => void;
-  updateHero: (hero: Partial<HeroConfig>) => void;
-  updateAbout: (about: Partial<AboutConfig>) => void;
-  updatePracticeAreas: (areas: Partial<PracticeAreasConfig>) => void;
-  updateSuccessCases: (cases: Partial<SuccessCasesConfig>) => void;
-  updateContactForm: (form: Partial<ContactFormConfig>) => void;
+  updateModuleInstance: (instanceId: string, updates: Partial<ModuleInstance['config']> | { enabled: boolean }) => void;
   reorderModules: (newOrder: string[]) => void;
-  addModuleAt: (moduleId: string, position: number) => void;
+  addModuleAt: (moduleType: ModuleType, position: number) => void;
+  removeModuleInstance: (instanceId: string) => void;
 }
 
 const defaultConfig: SiteConfig = {
@@ -97,70 +97,99 @@ const defaultConfig: SiteConfig = {
     accent: '#D4AF37',
     text: '#2D2D2D',
   },
-  header: {
-    enabled: true,
-    logo: '',
-    alignment: 'center',
-  },
-  hero: {
-    enabled: true,
-    backgroundImage: '',
-    gradientOpacity: 0.7,
-    title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
-    description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
-  },
-  about: {
-    enabled: true,
-    photo: '',
-    name: 'Dr. João Silva',
-    title: 'Advogado Criminalista e Empresarial',
-    description: 'Abordagem estratégica e personalizada para cada cliente',
-    socialLinks: {
-      instagram: '',
-      facebook: '',
-      linkedin: '',
+  moduleInstances: {
+    'header-1': {
+      id: 'header-1',
+      type: 'header',
+      enabled: true,
+      config: {
+        enabled: true,
+        logo: '',
+        alignment: 'center',
+      } as HeaderConfig,
     },
-    education: [
-      'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
-      'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
-    ],
+    'hero-1': {
+      id: 'hero-1',
+      type: 'hero',
+      enabled: true,
+      config: {
+        enabled: true,
+        backgroundImage: '',
+        gradientOpacity: 0.7,
+        title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
+        description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
+      } as HeroConfig,
+    },
+    'about-1': {
+      id: 'about-1',
+      type: 'about',
+      enabled: true,
+      config: {
+        enabled: true,
+        photo: '',
+        name: 'Dr. João Silva',
+        title: 'Advogado Criminalista e Empresarial',
+        description: 'Abordagem estratégica e personalizada para cada cliente',
+        socialLinks: {
+          instagram: '',
+          facebook: '',
+          linkedin: '',
+        },
+        education: [
+          'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
+          'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
+        ],
+      } as AboutConfig,
+    },
+    'practice-1': {
+      id: 'practice-1',
+      type: 'practice',
+      enabled: true,
+      config: {
+        enabled: true,
+        areas: [
+          { id: '1', title: 'Direito Imobiliário', icon: 'home' },
+          { id: '2', title: 'Crimes Digitais', icon: 'smartphone' },
+          { id: '3', title: 'Propriedade Intelectual', icon: 'lightbulb' },
+          { id: '4', title: 'Direito da Família', icon: 'users' },
+          { id: '5', title: 'Defesa Criminal', icon: 'shield' },
+          { id: '6', title: 'Crimes de Trânsito', icon: 'car' },
+        ],
+      } as PracticeAreasConfig,
+    },
+    'cases-1': {
+      id: 'cases-1',
+      type: 'cases',
+      enabled: true,
+      config: {
+        enabled: true,
+        cases: [
+          {
+            id: '1',
+            title: 'Defesa Criminal - 2025',
+            description: 'Cliente absolvido na segunda instância',
+            year: '2025',
+            image: '',
+          },
+        ],
+      } as SuccessCasesConfig,
+    },
   },
-  practiceAreas: {
-    enabled: true,
-    areas: [
-      { id: '1', title: 'Direito Imobiliário', icon: 'home' },
-      { id: '2', title: 'Crimes Digitais', icon: 'smartphone' },
-      { id: '3', title: 'Propriedade Intelectual', icon: 'lightbulb' },
-      { id: '4', title: 'Direito da Família', icon: 'users' },
-      { id: '5', title: 'Defesa Criminal', icon: 'shield' },
-      { id: '6', title: 'Crimes de Trânsito', icon: 'car' },
-    ],
-  },
-  successCases: {
-    enabled: true,
-    cases: [
-      {
-        id: '1',
-        title: 'Defesa Criminal - 2025',
-        description: 'Cliente absolvido na segunda instância',
-        year: '2025',
-        image: '',
-      },
-    ],
-  },
-  contactForm: {
-    enabled: false,
-    title: 'Entre em Contato',
-    subtitle: 'Preencha o formulário e entraremos em contato em breve',
-    fields: ['name', 'email', 'phone', 'message'],
-  },
-  moduleOrder: ['header', 'hero', 'about', 'practice', 'cases'],
+  moduleOrder: ['header-1', 'hero-1', 'about-1', 'practice-1', 'cases-1'],
 };
 
 const SiteEditorContext = createContext<SiteEditorContextType | undefined>(undefined);
 
 export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [config, setConfig] = useState<SiteConfig>(defaultConfig);
+  const [instanceCounter, setInstanceCounter] = useState<Record<ModuleType, number>>({
+    header: 1,
+    hero: 1,
+    about: 1,
+    practice: 1,
+    cases: 1,
+    contact: 0,
+  });
 
   const updateBrand = (brand: Partial<BrandColors>) => {
     setConfig((prev) => ({
@@ -169,46 +198,37 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     }));
   };
 
-  const updateHeader = (header: Partial<HeaderConfig>) => {
-    setConfig((prev) => ({
-      ...prev,
-      header: { ...prev.header, ...header },
-    }));
-  };
+  const updateModuleInstance = (instanceId: string, updates: any) => {
+    setConfig((prev) => {
+      const instance = prev.moduleInstances[instanceId];
+      if (!instance) return prev;
 
-  const updateHero = (hero: Partial<HeroConfig>) => {
-    setConfig((prev) => ({
-      ...prev,
-      hero: { ...prev.hero, ...hero },
-    }));
-  };
+      // Handle enabled toggle separately
+      if ('enabled' in updates && typeof updates.enabled === 'boolean') {
+        return {
+          ...prev,
+          moduleInstances: {
+            ...prev.moduleInstances,
+            [instanceId]: {
+              ...instance,
+              enabled: updates.enabled,
+            },
+          },
+        };
+      }
 
-  const updateAbout = (about: Partial<AboutConfig>) => {
-    setConfig((prev) => ({
-      ...prev,
-      about: { ...prev.about, ...about },
-    }));
-  };
-
-  const updatePracticeAreas = (areas: Partial<PracticeAreasConfig>) => {
-    setConfig((prev) => ({
-      ...prev,
-      practiceAreas: { ...prev.practiceAreas, ...areas },
-    }));
-  };
-
-  const updateSuccessCases = (cases: Partial<SuccessCasesConfig>) => {
-    setConfig((prev) => ({
-      ...prev,
-      successCases: { ...prev.successCases, ...cases },
-    }));
-  };
-
-  const updateContactForm = (form: Partial<ContactFormConfig>) => {
-    setConfig((prev) => ({
-      ...prev,
-      contactForm: { ...prev.contactForm, ...form },
-    }));
+      // Handle config updates
+      return {
+        ...prev,
+        moduleInstances: {
+          ...prev.moduleInstances,
+          [instanceId]: {
+            ...instance,
+            config: { ...instance.config, ...updates },
+          },
+        },
+      };
+    });
   };
 
   const reorderModules = (newOrder: string[]) => {
@@ -218,36 +238,90 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     }));
   };
 
-  const addModuleAt = (moduleId: string, position: number) => {
+  const addModuleAt = (moduleType: ModuleType, position: number) => {
     setConfig((prev) => {
-      const newOrder = [...prev.moduleOrder];
-      newOrder.splice(position, 0, moduleId);
+      const newCounter = instanceCounter[moduleType] + 1;
+      const newInstanceId = `${moduleType}-${newCounter}`;
       
-      // Enable the module if it's being added
-      const updates: any = { moduleOrder: newOrder };
+      // Create default config based on module type
+      let defaultModuleConfig: any = { enabled: true };
       
-      switch (moduleId) {
+      switch (moduleType) {
         case 'header':
-          updates.header = { ...prev.header, enabled: true };
+          defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
           break;
         case 'hero':
-          updates.hero = { ...prev.hero, enabled: true };
+          defaultModuleConfig = {
+            enabled: true,
+            backgroundImage: '',
+            gradientOpacity: 0.7,
+            title: 'Novo Hero',
+            description: 'Descrição do hero',
+          };
           break;
         case 'about':
-          updates.about = { ...prev.about, enabled: true };
+          defaultModuleConfig = {
+            enabled: true,
+            photo: '',
+            name: 'Nome',
+            title: 'Título',
+            description: 'Descrição',
+            socialLinks: {},
+            education: [],
+          };
           break;
         case 'practice':
-          updates.practiceAreas = { ...prev.practiceAreas, enabled: true };
+          defaultModuleConfig = { enabled: true, areas: [] };
           break;
         case 'cases':
-          updates.successCases = { ...prev.successCases, enabled: true };
+          defaultModuleConfig = { enabled: true, cases: [] };
           break;
         case 'contact':
-          updates.contactForm = { ...prev.contactForm, enabled: true };
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Entre em Contato',
+            subtitle: 'Preencha o formulário',
+            fields: ['name', 'email', 'phone', 'message'],
+          };
           break;
       }
-      
-      return { ...prev, ...updates };
+
+      const newInstance: ModuleInstance = {
+        id: newInstanceId,
+        type: moduleType,
+        enabled: true,
+        config: defaultModuleConfig,
+      };
+
+      const newOrder = [...prev.moduleOrder];
+      newOrder.splice(position, 0, newInstanceId);
+
+      setInstanceCounter((prev) => ({
+        ...prev,
+        [moduleType]: newCounter,
+      }));
+
+      return {
+        ...prev,
+        moduleInstances: {
+          ...prev.moduleInstances,
+          [newInstanceId]: newInstance,
+        },
+        moduleOrder: newOrder,
+      };
+    });
+  };
+
+  const removeModuleInstance = (instanceId: string) => {
+    setConfig((prev) => {
+      const newInstances = { ...prev.moduleInstances };
+      delete newInstances[instanceId];
+
+      return {
+        ...prev,
+        moduleInstances: newInstances,
+        moduleOrder: prev.moduleOrder.filter((id) => id !== instanceId),
+      };
     });
   };
 
@@ -256,14 +330,10 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       value={{
         config,
         updateBrand,
-        updateHeader,
-        updateHero,
-        updateAbout,
-        updatePracticeAreas,
-        updateSuccessCases,
-        updateContactForm,
+        updateModuleInstance,
         reorderModules,
         addModuleAt,
+        removeModuleInstance,
       }}
     >
       {children}

@@ -2,154 +2,141 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-
 import { Button } from '@/components/ui/button';
 import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { AboutConfig } from '@/contexts/SiteEditorContext';
 
-const AboutEditor = () => {
-  const { config, updateAbout } = useSiteEditor();
+interface AboutEditorProps {
+  instanceId: string;
+}
+
+const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
+  const { config, updateModuleInstance } = useSiteEditor();
+  const instance = config.moduleInstances[instanceId];
+  const aboutConfig = instance?.config as AboutConfig;
+
+  if (!aboutConfig) return null;
 
   const addEducation = () => {
-    const newEducation = [...config.about.education, ''];
-    updateAbout({ education: newEducation });
+    const newEducation = [...(aboutConfig.education || []), ''];
+    updateModuleInstance(instanceId, { education: newEducation });
   };
 
   const updateEducation = (index: number, value: string) => {
-    const newEducation = [...config.about.education];
+    const newEducation = [...(aboutConfig.education || [])];
     newEducation[index] = value;
-    updateAbout({ education: newEducation });
+    updateModuleInstance(instanceId, { education: newEducation });
   };
 
   const removeEducation = (index: number) => {
-    const newEducation = config.about.education.filter((_, i) => i !== index);
-    updateAbout({ education: newEducation });
+    const newEducation = (aboutConfig.education || []).filter((_, i) => i !== index);
+    updateModuleInstance(instanceId, { education: newEducation });
   };
 
   return (
     <div className="space-y-3">
-      {config.about.enabled && (
-        <>
-          <div>
-            <Label htmlFor="aboutPhoto" className="text-sm">Foto (URL)</Label>
-            <Input
-              id="aboutPhoto"
-              type="text"
-              value={config.about.photo}
-              onChange={(e) => updateAbout({ photo: e.target.value })}
-              placeholder="URL da foto"
-              className="mt-1"
-            />
-          </div>
+      <div>
+        <Label htmlFor={`aboutPhoto-${instanceId}`} className="text-sm">Foto (URL)</Label>
+        <Input
+          id={`aboutPhoto-${instanceId}`}
+          type="text"
+          value={aboutConfig.photo}
+          onChange={(e) => updateModuleInstance(instanceId, { photo: e.target.value })}
+          placeholder="URL da foto"
+          className="mt-1"
+        />
+      </div>
 
-          <div>
-            <Label htmlFor="aboutName" className="text-sm">Nome</Label>
-            <Input
-              id="aboutName"
-              type="text"
-              value={config.about.name}
-              onChange={(e) => updateAbout({ name: e.target.value })}
-              className="mt-1"
-            />
-          </div>
+      <div>
+        <Label htmlFor={`aboutName-${instanceId}`} className="text-sm">Nome</Label>
+        <Input
+          id={`aboutName-${instanceId}`}
+          type="text"
+          value={aboutConfig.name}
+          onChange={(e) => updateModuleInstance(instanceId, { name: e.target.value })}
+          className="mt-1"
+        />
+      </div>
 
-          <div>
-            <Label htmlFor="aboutTitle" className="text-sm">Título/Cargo</Label>
-            <Input
-              id="aboutTitle"
-              type="text"
-              value={config.about.title}
-              onChange={(e) => updateAbout({ title: e.target.value })}
-              className="mt-1"
-            />
-          </div>
+      <div>
+        <Label htmlFor={`aboutTitle-${instanceId}`} className="text-sm">Título</Label>
+        <Input
+          id={`aboutTitle-${instanceId}`}
+          type="text"
+          value={aboutConfig.title}
+          onChange={(e) => updateModuleInstance(instanceId, { title: e.target.value })}
+          className="mt-1"
+        />
+      </div>
 
-          <div>
-            <Label htmlFor="aboutDescription" className="text-sm">Descrição</Label>
-            <Textarea
-              id="aboutDescription"
-              value={config.about.description}
-              onChange={(e) => updateAbout({ description: e.target.value })}
-              className="mt-1"
-              rows={3}
-            />
-          </div>
+      <div>
+        <Label htmlFor={`aboutDescription-${instanceId}`} className="text-sm">Descrição</Label>
+        <Textarea
+          id={`aboutDescription-${instanceId}`}
+          value={aboutConfig.description}
+          onChange={(e) => updateModuleInstance(instanceId, { description: e.target.value })}
+          className="mt-1"
+          rows={3}
+        />
+      </div>
 
-          <div>
-            <Label className="text-sm">Redes Sociais</Label>
-            <div className="space-y-2 mt-2">
-              <Input
-                type="text"
-                placeholder="Instagram"
-                value={config.about.socialLinks.instagram || ''}
-                onChange={(e) =>
-                  updateAbout({
-                    socialLinks: { ...config.about.socialLinks, instagram: e.target.value },
-                  })
-                }
+      <div>
+        <Label className="text-sm">Links Sociais</Label>
+        <div className="space-y-2 mt-1">
+          <Input
+            placeholder="Instagram"
+            value={aboutConfig.socialLinks?.instagram || ''}
+            onChange={(e) => updateModuleInstance(instanceId, { 
+              socialLinks: { ...aboutConfig.socialLinks, instagram: e.target.value }
+            })}
+          />
+          <Input
+            placeholder="Facebook"
+            value={aboutConfig.socialLinks?.facebook || ''}
+            onChange={(e) => updateModuleInstance(instanceId, { 
+              socialLinks: { ...aboutConfig.socialLinks, facebook: e.target.value }
+            })}
+          />
+          <Input
+            placeholder="LinkedIn"
+            value={aboutConfig.socialLinks?.linkedin || ''}
+            onChange={(e) => updateModuleInstance(instanceId, { 
+              socialLinks: { ...aboutConfig.socialLinks, linkedin: e.target.value }
+            })}
+          />
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <Label className="text-sm">Formação</Label>
+          <Button type="button" variant="outline" size="sm" onClick={addEducation}>
+            <Plus className="w-4 h-4 mr-1" />
+            Adicionar
+          </Button>
+        </div>
+        <div className="space-y-2">
+          {(aboutConfig.education || []).map((edu, index) => (
+            <div key={index} className="flex gap-2">
+              <Textarea
+                value={edu}
+                onChange={(e) => updateEducation(index, e.target.value)}
+                rows={2}
+                className="flex-1"
               />
-              <Input
-                type="text"
-                placeholder="Facebook"
-                value={config.about.socialLinks.facebook || ''}
-                onChange={(e) =>
-                  updateAbout({
-                    socialLinks: { ...config.about.socialLinks, facebook: e.target.value },
-                  })
-                }
-              />
-              <Input
-                type="text"
-                placeholder="LinkedIn"
-                value={config.about.socialLinks.linkedin || ''}
-                onChange={(e) =>
-                  updateAbout({
-                    socialLinks: { ...config.about.socialLinks, linkedin: e.target.value },
-                  })
-                }
-              />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <Label className="text-sm">Formação</Label>
               <Button
                 type="button"
-                size="sm"
-                variant="outline"
-                onClick={addEducation}
-                className="h-7"
+                variant="ghost"
+                size="icon"
+                onClick={() => removeEducation(index)}
               >
-                <Plus className="w-3 h-3 mr-1" />
-                Adicionar
+                <Trash2 className="w-4 h-4" />
               </Button>
             </div>
-            <div className="space-y-2">
-              {config.about.education.map((edu, index) => (
-                <div key={index} className="flex gap-2">
-                  <Textarea
-                    value={edu}
-                    onChange={(e) => updateEducation(index, e.target.value)}
-                    placeholder="Descreva a formação..."
-                    rows={2}
-                    className="flex-1"
-                  />
-                  <Button
-                    type="button"
-                    size="sm"
-                    variant="destructive"
-                    onClick={() => removeEducation(index)}
-                    className="h-auto"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -10,20 +10,25 @@ import PreviewContactForm from './sections/PreviewContactForm';
 const PreviewSite = () => {
   const { config } = useSiteEditor();
 
-  const renderModule = (moduleId: string) => {
-    switch (moduleId) {
+  const renderModule = (instanceId: string) => {
+    const instance = config.moduleInstances[instanceId];
+    if (!instance || !instance.enabled) return null;
+
+    const key = instanceId;
+
+    switch (instance.type) {
       case 'header':
-        return config.header.enabled && <PreviewHeader key={moduleId} />;
+        return <PreviewHeader key={key} instanceId={instanceId} />;
       case 'hero':
-        return config.hero.enabled && <PreviewHero key={moduleId} />;
+        return <PreviewHero key={key} instanceId={instanceId} />;
       case 'about':
-        return config.about.enabled && <PreviewAbout key={moduleId} />;
+        return <PreviewAbout key={key} instanceId={instanceId} />;
       case 'practice':
-        return config.practiceAreas.enabled && <PreviewPracticeAreas key={moduleId} />;
+        return <PreviewPracticeAreas key={key} instanceId={instanceId} />;
       case 'cases':
-        return config.successCases.enabled && <PreviewSuccessCases key={moduleId} />;
+        return <PreviewSuccessCases key={key} instanceId={instanceId} />;
       case 'contact':
-        return config.contactForm.enabled && <PreviewContactForm key={moduleId} />;
+        return <PreviewContactForm key={key} instanceId={instanceId} />;
       default:
         return null;
     }

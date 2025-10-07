@@ -13,74 +13,36 @@ import SuccessCasesEditor from './sections/SuccessCasesEditor';
 import ContactFormEditor from './sections/ContactFormEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 const EditorPanel = () => {
-  const { config, updateHeader, updateHero, updateAbout, updatePracticeAreas, updateSuccessCases, updateContactForm, reorderModules } = useSiteEditor();
+  const { config, updateModuleInstance, reorderModules } = useSiteEditor();
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
-  const modules = [
-    {
-      id: 'header',
-      icon: ImageIcon,
-      title: 'Header',
-      description: 'Logo e navegação',
-      enabled: config.header.enabled,
-      component: HeaderEditor,
-      onToggle: (enabled: boolean) => updateHeader({ enabled }),
-    },
-    {
-      id: 'hero',
-      icon: Mountain,
-      title: 'Hero',
-      description: 'Banner principal',
-      enabled: config.hero.enabled,
-      component: HeroEditor,
-      onToggle: (enabled: boolean) => updateHero({ enabled }),
-    },
-    {
-      id: 'about',
-      icon: User,
-      title: 'Sobre',
-      description: 'Informações sobre você',
-      enabled: config.about.enabled,
-      component: AboutEditor,
-      onToggle: (enabled: boolean) => updateAbout({ enabled }),
-    },
-    {
-      id: 'practice',
-      icon: Briefcase,
-      title: 'Áreas de Atuação',
-      description: 'Especialidades',
-      enabled: config.practiceAreas.enabled,
-      component: PracticeAreasEditor,
-      onToggle: (enabled: boolean) => updatePracticeAreas({ enabled }),
-    },
-    {
-      id: 'cases',
-      icon: Trophy,
-      title: 'Cases de Sucesso',
-      description: 'Histórico de vitórias',
-      enabled: config.successCases.enabled,
-      component: SuccessCasesEditor,
-      onToggle: (enabled: boolean) => updateSuccessCases({ enabled }),
-    },
-    {
-      id: 'contact',
-      icon: Mail,
-      title: 'Formulário de Contato',
-      description: 'Fale conosco',
-      enabled: config.contactForm.enabled,
-      component: ContactFormEditor,
-      onToggle: (enabled: boolean) => updateContactForm({ enabled }),
-    },
-  ];
+  const moduleMetadata = {
+    header: { icon: ImageIcon, title: 'Header', description: 'Logo e navegação', component: HeaderEditor },
+    hero: { icon: Mountain, title: 'Hero', description: 'Banner principal', component: HeroEditor },
+    about: { icon: User, title: 'Sobre', description: 'Informações sobre você', component: AboutEditor },
+    practice: { icon: Briefcase, title: 'Áreas de Atuação', description: 'Especialidades', component: PracticeAreasEditor },
+    cases: { icon: Trophy, title: 'Cases de Sucesso', description: 'Histórico de vitórias', component: SuccessCasesEditor },
+    contact: { icon: Mail, title: 'Formulário de Contato', description: 'Fale conosco', component: ContactFormEditor },
+  };
 
-  const sortedModules = [...modules].sort((a, b) => {
-    return config.moduleOrder.indexOf(a.id) - config.moduleOrder.indexOf(b.id);
-  });
+  const sortedModules = config.moduleOrder
+    .map(instanceId => {
+      const instance = config.moduleInstances[instanceId];
+      if (!instance) return null;
+      const metadata = moduleMetadata[instance.type];
+      return {
+        instanceId,
+        ...instance,
+        ...metadata,
+      };
+    })
+    .filter(Boolean);
 
-  const handleDragStart = (e: React.DragEvent, moduleId: string) => {
-    setDraggedItem(moduleId);
+  const handleDragStart = (e: React.DragEvent, instanceId: string) => {
+    setDraggedItem(instanceId);
     e.dataTransfer.effectAllowed = 'move';
   };
 
@@ -148,58 +110,58 @@ const EditorPanel = () => {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-4 pt-4">
-                <Accordion type="multiple" defaultValue={['header', 'hero', 'about']} className="space-y-4">
-                  {sortedModules.map((module, index) => {
-              const Icon = module.icon;
-              const Component = module.component;
-              const isDisabled = !module.enabled;
+                <Accordion type="multiple" defaultValue={config.moduleOrder.slice(0, 3)} className="space-y-4">
+                  {sortedModules.map((module: any, index: number) => {
+                    const Icon = module.icon;
+                    const Component = module.component;
+                    const isDisabled = !module.enabled;
 
-              return (
-                <React.Fragment key={module.id}>
-                  {index === 0 && <AddModuleButton position={0} />}
-                  <AccordionItem
-                    value={module.id}
-                    className={`border rounded-lg transition-all ${
-                      isDisabled
-                        ? 'bg-muted/30 opacity-60'
-                        : 'bg-background'
-                    }`}
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, module.id)}
-                    onDragOver={handleDragOver}
-                    onDrop={(e) => handleDrop(e, module.id)}
-                  >
-                    <AccordionTrigger className="px-4 hover:no-underline cursor-move">
-                      <div className="flex items-center gap-2 flex-1">
-                        <GripVertical className={`w-5 h-5 flex-shrink-0 ${isDisabled ? 'text-muted-foreground' : 'text-muted-foreground/70'}`} />
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                          isDisabled ? 'bg-muted' : 'bg-primary/10'
-                        }`}>
-                          <Icon className={`w-5 h-5 ${isDisabled ? 'text-muted-foreground' : 'text-primary'}`} />
-                        </div>
-                        <div className="text-left">
-                          <h3 className={`font-semibold ${isDisabled ? 'text-muted-foreground' : 'text-foreground'}`}>
-                            {module.title}
-                          </h3>
-                          <p className="text-xs text-muted-foreground">{module.description}</p>
-                        </div>
-                      </div>
-                      <Switch
-                        checked={module.enabled}
-                        onCheckedChange={module.onToggle}
-                        onClick={(e) => e.stopPropagation()}
-                        className="mr-2"
-                        disabled={false}
-                      />
-                    </AccordionTrigger>
-                    <AccordionContent className="px-4">
-                      <Component />
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AddModuleButton position={index + 1} />
-                </React.Fragment>
-              );
-            })}
+                    return (
+                      <React.Fragment key={module.instanceId}>
+                        {index === 0 && <AddModuleButton position={0} />}
+                        <AccordionItem
+                          value={module.instanceId}
+                          className={`border rounded-lg transition-all ${
+                            isDisabled
+                              ? 'bg-muted/30 opacity-60'
+                              : 'bg-background'
+                          }`}
+                          draggable
+                          onDragStart={(e) => handleDragStart(e, module.instanceId)}
+                          onDragOver={handleDragOver}
+                          onDrop={(e) => handleDrop(e, module.instanceId)}
+                        >
+                          <AccordionTrigger className="px-4 hover:no-underline cursor-move">
+                            <div className="flex items-center gap-2 flex-1">
+                              <GripVertical className={`w-5 h-5 flex-shrink-0 ${isDisabled ? 'text-muted-foreground' : 'text-muted-foreground/70'}`} />
+                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                                isDisabled ? 'bg-muted' : 'bg-primary/10'
+                              }`}>
+                                <Icon className={`w-5 h-5 ${isDisabled ? 'text-muted-foreground' : 'text-primary'}`} />
+                              </div>
+                              <div className="text-left">
+                                <h3 className={`font-semibold ${isDisabled ? 'text-muted-foreground' : 'text-foreground'}`}>
+                                  {module.title}
+                                </h3>
+                                <p className="text-xs text-muted-foreground">{module.description}</p>
+                              </div>
+                            </div>
+                            <Switch
+                              checked={module.enabled}
+                              onCheckedChange={(enabled) => updateModuleInstance(module.instanceId, { enabled })}
+                              onClick={(e) => e.stopPropagation()}
+                              className="mr-2"
+                              disabled={false}
+                            />
+                          </AccordionTrigger>
+                          <AccordionContent className="px-4">
+                            <Component instanceId={module.instanceId} />
+                          </AccordionContent>
+                        </AccordionItem>
+                        <AddModuleButton position={index + 1} />
+                      </React.Fragment>
+                    );
+                  })}
                 </Accordion>
               </AccordionContent>
             </AccordionItem>

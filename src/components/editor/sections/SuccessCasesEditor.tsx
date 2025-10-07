@@ -1,17 +1,23 @@
 import React from 'react';
-
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { SuccessCasesConfig } from '@/contexts/SiteEditorContext';
 
-const SuccessCasesEditor = () => {
-  const { config, updateSuccessCases } = useSiteEditor();
+interface SuccessCasesEditorProps {
+  instanceId: string;
+}
+
+const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({ instanceId }) => {
+  const { config } = useSiteEditor();
+  const instance = config.moduleInstances[instanceId];
+  const casesConfig = instance?.config as SuccessCasesConfig;
+
+  if (!casesConfig) return null;
 
   return (
     <div className="space-y-3">
-      {config.successCases.enabled && (
-        <div className="text-sm text-muted-foreground">
-          {config.successCases.cases.length} cases configurados
-        </div>
-      )}
+      <div className="text-sm text-muted-foreground">
+        {casesConfig.cases?.length || 0} cases configurados
+      </div>
     </div>
   );
 };

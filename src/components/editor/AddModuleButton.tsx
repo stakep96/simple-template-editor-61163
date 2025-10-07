@@ -3,6 +3,7 @@ import { Plus } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import ModuleSelector from './ModuleSelector';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 interface AddModuleButtonProps {
   position: number;
@@ -12,8 +13,8 @@ const AddModuleButton: React.FC<AddModuleButtonProps> = ({ position }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { addModuleAt } = useSiteEditor();
 
-  const handleModuleSelect = (moduleId: string) => {
-    addModuleAt(moduleId, position);
+  const handleModuleSelect = (moduleType: ModuleType) => {
+    addModuleAt(moduleType, position);
     setIsOpen(false);
   };
 
