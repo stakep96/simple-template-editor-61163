@@ -105,8 +105,8 @@ const EditorPanel = () => {
                     <Palette className="w-5 h-5 text-primary" />
                   </div>
                   <div className="text-left">
-                    <h3 className="font-semibold text-foreground">Marca</h3>
-                    <p className="text-xs text-muted-foreground">Paleta de cores do site</p>
+                    <h3 className="font-semibold text-foreground">Brand</h3>
+                    <p className="text-xs text-muted-foreground">Cores e fontes do site</p>
                   </div>
                 </div>
               </AccordionTrigger>
