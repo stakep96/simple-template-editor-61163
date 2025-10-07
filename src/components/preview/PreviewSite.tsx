@@ -45,8 +45,10 @@ const PreviewSite = () => {
         '--brand-text': config.brand.text,
       } as React.CSSProperties}
     >
-      {config.moduleOrder.map(renderModule)}
-      <WhatsAppButton />
+      <div className="relative min-h-full">
+        {config.moduleOrder.map(renderModule)}
+        <WhatsAppButton />
+      </div>
     </div>
   );
 };
