@@ -58,6 +58,13 @@ export interface SuccessCasesConfig {
   cases: SuccessCase[];
 }
 
+export interface ContactFormConfig {
+  enabled: boolean;
+  title: string;
+  subtitle: string;
+  fields: string[];
+}
+
 export interface SiteConfig {
   brand: BrandColors;
   header: HeaderConfig;
@@ -65,6 +72,7 @@ export interface SiteConfig {
   about: AboutConfig;
   practiceAreas: PracticeAreasConfig;
   successCases: SuccessCasesConfig;
+  contactForm: ContactFormConfig;
   moduleOrder: string[];
 }
 
@@ -76,7 +84,9 @@ interface SiteEditorContextType {
   updateAbout: (about: Partial<AboutConfig>) => void;
   updatePracticeAreas: (areas: Partial<PracticeAreasConfig>) => void;
   updateSuccessCases: (cases: Partial<SuccessCasesConfig>) => void;
+  updateContactForm: (form: Partial<ContactFormConfig>) => void;
   reorderModules: (newOrder: string[]) => void;
+  addModuleAt: (moduleId: string, position: number) => void;
 }
 
 const defaultConfig: SiteConfig = {
@@ -136,6 +146,12 @@ const defaultConfig: SiteConfig = {
       },
     ],
   },
+  contactForm: {
+    enabled: false,
+    title: 'Entre em Contato',
+    subtitle: 'Preencha o formulário e entraremos em contato em breve',
+    fields: ['name', 'email', 'phone', 'message'],
+  },
   moduleOrder: ['header', 'hero', 'about', 'practice', 'cases'],
 };
 
@@ -186,11 +202,51 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     }));
   };
 
+  const updateContactForm = (form: Partial<ContactFormConfig>) => {
+    setConfig((prev) => ({
+      ...prev,
+      contactForm: { ...prev.contactForm, ...form },
+    }));
+  };
+
   const reorderModules = (newOrder: string[]) => {
     setConfig((prev) => ({
       ...prev,
       moduleOrder: newOrder,
     }));
+  };
+
+  const addModuleAt = (moduleId: string, position: number) => {
+    setConfig((prev) => {
+      const newOrder = [...prev.moduleOrder];
+      newOrder.splice(position, 0, moduleId);
+      
+      // Enable the module if it's being added
+      const updates: any = { moduleOrder: newOrder };
+      
+      switch (moduleId) {
+        case 'header':
+          updates.header = { ...prev.header, enabled: true };
+          break;
+        case 'hero':
+          updates.hero = { ...prev.hero, enabled: true };
+          break;
+        case 'about':
+          updates.about = { ...prev.about, enabled: true };
+          break;
+        case 'practice':
+          updates.practiceAreas = { ...prev.practiceAreas, enabled: true };
+          break;
+        case 'cases':
+          updates.successCases = { ...prev.successCases, enabled: true };
+          break;
+        case 'contact':
+          updates.contactForm = { ...prev.contactForm, enabled: true };
+          break;
+      }
+      
+      return { ...prev, ...updates };
+    });
   };
 
   return (
@@ -203,7 +259,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         updateAbout,
         updatePracticeAreas,
         updateSuccessCases,
+        updateContactForm,
         reorderModules,
+        addModuleAt,
       }}
     >
       {children}

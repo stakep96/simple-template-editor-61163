@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import BrandEditor from './sections/BrandEditor';
@@ -10,10 +10,12 @@ import HeroEditor from './sections/HeroEditor';
 import AboutEditor from './sections/AboutEditor';
 import PracticeAreasEditor from './sections/PracticeAreasEditor';
 import SuccessCasesEditor from './sections/SuccessCasesEditor';
+import ContactFormEditor from './sections/ContactFormEditor';
+import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
 const EditorPanel = () => {
-  const { config, updateHeader, updateHero, updateAbout, updatePracticeAreas, updateSuccessCases, reorderModules } = useSiteEditor();
+  const { config, updateHeader, updateHero, updateAbout, updatePracticeAreas, updateSuccessCases, updateContactForm, reorderModules } = useSiteEditor();
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
   const modules = [
@@ -61,6 +63,15 @@ const EditorPanel = () => {
       enabled: config.successCases.enabled,
       component: SuccessCasesEditor,
       onToggle: (enabled: boolean) => updateSuccessCases({ enabled }),
+    },
+    {
+      id: 'contact',
+      icon: Mail,
+      title: 'Formulário de Contato',
+      description: 'Fale conosco',
+      enabled: config.contactForm.enabled,
+      component: ContactFormEditor,
+      onToggle: (enabled: boolean) => updateContactForm({ enabled }),
     },
   ];
 
@@ -141,52 +152,55 @@ const EditorPanel = () => {
               </AccordionTrigger>
               <AccordionContent className="px-4 pt-4">
                 <Accordion type="multiple" defaultValue={['header', 'hero', 'about']} className="space-y-4">
-                  {sortedModules.map((module) => {
+                  {sortedModules.map((module, index) => {
               const Icon = module.icon;
               const Component = module.component;
               const isDisabled = !module.enabled;
 
               return (
-                <AccordionItem
-                  key={module.id}
-                  value={module.id}
-                  className={`border rounded-lg transition-all ${
-                    isDisabled
-                      ? 'bg-muted/30 opacity-60'
-                      : 'bg-background'
-                  }`}
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, module.id)}
-                  onDragOver={handleDragOver}
-                  onDrop={(e) => handleDrop(e, module.id)}
-                >
-                  <AccordionTrigger className="px-4 hover:no-underline cursor-move">
-                    <div className="flex items-center gap-2 flex-1">
-                      <GripVertical className={`w-5 h-5 flex-shrink-0 ${isDisabled ? 'text-muted-foreground' : 'text-muted-foreground/70'}`} />
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        isDisabled ? 'bg-muted' : 'bg-primary/10'
-                      }`}>
-                        <Icon className={`w-5 h-5 ${isDisabled ? 'text-muted-foreground' : 'text-primary'}`} />
+                <React.Fragment key={module.id}>
+                  {index === 0 && <AddModuleButton position={0} />}
+                  <AccordionItem
+                    value={module.id}
+                    className={`border rounded-lg transition-all ${
+                      isDisabled
+                        ? 'bg-muted/30 opacity-60'
+                        : 'bg-background'
+                    }`}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, module.id)}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, module.id)}
+                  >
+                    <AccordionTrigger className="px-4 hover:no-underline cursor-move">
+                      <div className="flex items-center gap-2 flex-1">
+                        <GripVertical className={`w-5 h-5 flex-shrink-0 ${isDisabled ? 'text-muted-foreground' : 'text-muted-foreground/70'}`} />
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                          isDisabled ? 'bg-muted' : 'bg-primary/10'
+                        }`}>
+                          <Icon className={`w-5 h-5 ${isDisabled ? 'text-muted-foreground' : 'text-primary'}`} />
+                        </div>
+                        <div className="text-left">
+                          <h3 className={`font-semibold ${isDisabled ? 'text-muted-foreground' : 'text-foreground'}`}>
+                            {module.title}
+                          </h3>
+                          <p className="text-xs text-muted-foreground">{module.description}</p>
+                        </div>
                       </div>
-                      <div className="text-left">
-                        <h3 className={`font-semibold ${isDisabled ? 'text-muted-foreground' : 'text-foreground'}`}>
-                          {module.title}
-                        </h3>
-                        <p className="text-xs text-muted-foreground">{module.description}</p>
-                      </div>
-                    </div>
-                    <Switch
-                      checked={module.enabled}
-                      onCheckedChange={module.onToggle}
-                      onClick={(e) => e.stopPropagation()}
-                      className="mr-2"
-                      disabled={false}
-                    />
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4">
-                    <Component />
-                  </AccordionContent>
-                </AccordionItem>
+                      <Switch
+                        checked={module.enabled}
+                        onCheckedChange={module.onToggle}
+                        onClick={(e) => e.stopPropagation()}
+                        className="mr-2"
+                        disabled={false}
+                      />
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4">
+                      <Component />
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AddModuleButton position={index + 1} />
+                </React.Fragment>
               );
             })}
                 </Accordion>
