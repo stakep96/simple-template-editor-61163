@@ -10,6 +10,7 @@ export interface BrandColors {
 export interface HeaderConfig {
   enabled: boolean;
   logo: string;
+  alignment: 'left' | 'center' | 'right';
 }
 
 export interface HeroConfig {
@@ -99,6 +100,7 @@ const defaultConfig: SiteConfig = {
   header: {
     enabled: true,
     logo: '',
+    alignment: 'center',
   },
   hero: {
     enabled: true,

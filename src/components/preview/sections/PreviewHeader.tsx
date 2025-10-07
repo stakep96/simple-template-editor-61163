@@ -5,9 +5,15 @@ import { Scale } from 'lucide-react';
 const PreviewHeader = () => {
   const { config } = useSiteEditor();
 
+  const alignmentClasses = {
+    left: 'justify-start',
+    center: 'justify-center',
+    right: 'justify-end',
+  };
+
   return (
     <header 
-      className="px-4 py-3 flex items-center justify-center"
+      className={`px-4 py-3 flex items-center ${alignmentClasses[config.header.alignment]}`}
       style={{ backgroundColor: config.brand.primary }}
     >
       {config.header.logo ? (
