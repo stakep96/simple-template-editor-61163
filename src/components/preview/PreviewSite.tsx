@@ -6,6 +6,7 @@ import PreviewAbout from './sections/PreviewAbout';
 import PreviewPracticeAreas from './sections/PreviewPracticeAreas';
 import PreviewSuccessCases from './sections/PreviewSuccessCases';
 import PreviewContactForm from './sections/PreviewContactForm';
+import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
   const { config } = useSiteEditor();
@@ -36,7 +37,7 @@ const PreviewSite = () => {
 
   return (
     <div 
-      className="w-full h-full overflow-y-auto overflow-x-hidden"
+      className="w-full h-full overflow-y-auto overflow-x-hidden relative"
       style={{ 
         '--brand-primary': config.brand.primary,
         '--brand-secondary': config.brand.secondary,
@@ -45,6 +46,7 @@ const PreviewSite = () => {
       } as React.CSSProperties}
     >
       {config.moduleOrder.map(renderModule)}
+      <WhatsAppButton />
     </div>
   );
 };

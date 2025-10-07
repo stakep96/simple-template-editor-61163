@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
 import BrandEditor from './sections/BrandEditor';
+import MarketingEditor from './sections/MarketingEditor';
 import HeaderEditor from './sections/HeaderEditor';
 import HeroEditor from './sections/HeroEditor';
 import AboutEditor from './sections/AboutEditor';
@@ -80,7 +81,7 @@ const EditorPanel = () => {
         <div className="p-6 space-y-4">
           <TemplatesEditor />
           
-          <Accordion type="multiple" defaultValue={['metadata', 'brand', 'edit-site']} className="space-y-4">
+          <Accordion type="multiple" defaultValue={['metadata', 'brand', 'marketing', 'edit-site']} className="space-y-4">
             <AccordionItem value="metadata" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
@@ -112,6 +113,23 @@ const EditorPanel = () => {
               </AccordionTrigger>
               <AccordionContent className="px-4">
                 <BrandEditor />
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="marketing" className="border rounded-lg bg-background">
+              <AccordionTrigger className="px-4 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">Configurações de Marketing e Integrações</h3>
+                    <p className="text-xs text-muted-foreground">WhatsApp, Analytics e Pixels</p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4">
+                <MarketingEditor />
               </AccordionContent>
             </AccordionItem>
 

@@ -73,6 +73,16 @@ export interface ContactFormConfig {
   fields: string[];
 }
 
+export interface MarketingConfig {
+  whatsapp: {
+    enabled: boolean;
+    number: string;
+  };
+  googleTagManager: string;
+  googleAnalytics: string;
+  facebookPixel: string;
+}
+
 export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact';
 
 export interface ModuleInstance {
@@ -85,6 +95,7 @@ export interface ModuleInstance {
 export interface SiteConfig {
   metadata: SiteMetadata;
   brand: BrandColors;
+  marketing: MarketingConfig;
   moduleInstances: Record<string, ModuleInstance>;
   moduleOrder: string[]; // array of instance IDs
 }
@@ -93,6 +104,7 @@ interface SiteEditorContextType {
   config: SiteConfig;
   updateMetadata: (metadata: Partial<SiteMetadata>) => void;
   updateBrand: (brand: Partial<BrandColors>) => void;
+  updateMarketing: (marketing: Partial<MarketingConfig>) => void;
   updateModuleInstance: (instanceId: string, updates: Partial<ModuleInstance['config']> | { enabled: boolean }) => void;
   reorderModules: (newOrder: string[]) => void;
   addModuleAt: (moduleType: ModuleType, position: number) => void;
@@ -111,6 +123,15 @@ const defaultConfig: SiteConfig = {
     secondary: '#F5E6D3',
     accent: '#D4AF37',
     text: '#2D2D2D',
+  },
+  marketing: {
+    whatsapp: {
+      enabled: false,
+      number: '',
+    },
+    googleTagManager: '',
+    googleAnalytics: '',
+    facebookPixel: '',
   },
   moduleInstances: {
     'header-1': {
@@ -217,6 +238,13 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     setConfig((prev) => ({
       ...prev,
       brand: { ...prev.brand, ...brand },
+    }));
+  };
+
+  const updateMarketing = (marketing: Partial<MarketingConfig>) => {
+    setConfig((prev) => ({
+      ...prev,
+      marketing: { ...prev.marketing, ...marketing },
     }));
   };
 
@@ -353,6 +381,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         config,
         updateMetadata,
         updateBrand,
+        updateMarketing,
         updateModuleInstance,
         reorderModules,
         addModuleAt,
