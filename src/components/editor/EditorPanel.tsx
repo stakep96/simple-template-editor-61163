@@ -76,10 +76,7 @@ const EditorPanel = () => {
   ];
 
   const sortedModules = [...modules].sort((a, b) => {
-    if (a.enabled === b.enabled) {
-      return config.moduleOrder.indexOf(a.id) - config.moduleOrder.indexOf(b.id);
-    }
-    return a.enabled ? -1 : 1;
+    return config.moduleOrder.indexOf(a.id) - config.moduleOrder.indexOf(b.id);
   });
 
   const handleDragStart = (e: React.DragEvent, moduleId: string) => {
