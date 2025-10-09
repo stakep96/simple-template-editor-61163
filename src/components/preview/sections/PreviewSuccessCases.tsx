@@ -43,7 +43,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
       {/* Container com imagem e primeiro card sobreposto */}
       {casesConfig.backgroundImage && firstCase && (
         <div className="mb-6 relative">
-          <div className="w-full h-96 overflow-hidden relative">
+          <div className="w-full h-96 overflow-hidden relative rounded-t-2xl">
             <img 
               src={casesConfig.backgroundImage} 
               alt="Cases de Sucesso"
@@ -59,43 +59,45 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
           </div>
           
           {/* Primeiro card sobreposto */}
-          <div className="absolute -bottom-16 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-2xl md:w-full">
-            {(() => {
-              const IconComponent = iconMap[firstCase.icon as keyof typeof iconMap] || Trophy;
-              return (
-                <div
-                  className="rounded-2xl p-5 shadow-lg animate-fade-in"
-                  style={{ backgroundColor: config.brand.primary }}
-                >
-                  <div className="flex items-start gap-3">
-                    <div 
-                      className="p-2.5 rounded-lg flex-shrink-0"
-                      style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
-                    >
-                      <IconComponent className="w-6 h-6 text-white" />
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-bold text-base mb-1">
-                        {firstCase.title}
-                      </h3>
-                      <p className="text-white/90 text-sm mb-2">
-                        {firstCase.description}
-                      </p>
-                      <p className="text-white/70 text-xs">
-                        <span className="font-semibold">Resultado:</span> {firstCase.result}
-                      </p>
+          <div className="absolute -bottom-20 left-0 right-0 px-6">
+            <div className="max-w-2xl mx-auto">
+              {(() => {
+                const IconComponent = iconMap[firstCase.icon as keyof typeof iconMap] || Trophy;
+                return (
+                  <div
+                    className="rounded-2xl p-5 shadow-lg"
+                    style={{ backgroundColor: config.brand.primary }}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div 
+                        className="p-2.5 rounded-lg flex-shrink-0"
+                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                      >
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-white font-bold text-base mb-1">
+                          {firstCase.title}
+                        </h3>
+                        <p className="text-white/90 text-sm mb-2">
+                          {firstCase.description}
+                        </p>
+                        <p className="text-white/70 text-xs">
+                          <span className="font-semibold">Resultado:</span> {firstCase.result}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })()}
+                );
+              })()}
+            </div>
           </div>
         </div>
       )}
 
       {/* Demais cards */}
-      <div className="max-w-2xl mx-auto space-y-6 mt-20 px-6">
+      <div className="max-w-2xl mx-auto space-y-6 mt-24 px-6">
         {restCases.map((caseItem) => {
           const IconComponent = iconMap[caseItem.icon as keyof typeof iconMap] || Trophy;
           
