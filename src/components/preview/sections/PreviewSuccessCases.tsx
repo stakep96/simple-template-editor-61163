@@ -28,9 +28,20 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
 
   return (
     <section 
-      className="px-6 py-12"
+      className="px-6 py-12 relative"
       style={{ backgroundColor: config.brand.secondary }}
     >
+      {/* Imagem de fundo única no topo */}
+      {casesConfig.backgroundImage && (
+        <div className="w-full h-80 mb-8 rounded-2xl overflow-hidden">
+          <img 
+            src={casesConfig.backgroundImage} 
+            alt="Cases de Sucesso"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
       <h2 
         className="text-2xl font-bold text-center mb-8"
         style={{ color: config.brand.text }}
@@ -45,43 +56,27 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
           return (
             <div
               key={caseItem.id}
-              className="relative rounded-2xl overflow-hidden"
+              className="rounded-2xl p-5 shadow-lg"
+              style={{ backgroundColor: config.brand.primary }}
             >
-              {/* Imagem de fundo */}
-              {caseItem.image && (
-                <div className="w-full h-64">
-                  <img 
-                    src={caseItem.image} 
-                    alt={caseItem.title}
-                    className="w-full h-full object-cover"
-                  />
+              <div className="flex items-start gap-3">
+                <div 
+                  className="p-2.5 rounded-lg flex-shrink-0"
+                  style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                >
+                  <IconComponent className="w-6 h-6 text-white" />
                 </div>
-              )}
-              
-              {/* Card sobreposto */}
-              <div 
-                className="absolute bottom-4 left-4 right-4 rounded-2xl p-5 shadow-lg"
-                style={{ backgroundColor: config.brand.primary }}
-              >
-                <div className="flex items-start gap-3">
-                  <div 
-                    className="p-2.5 rounded-lg flex-shrink-0"
-                    style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
-                  >
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-white font-bold text-base mb-1">
-                      {caseItem.title}
-                    </h3>
-                    <p className="text-white/90 text-sm mb-2">
-                      {caseItem.description}
-                    </p>
-                    <p className="text-white/70 text-xs">
-                      <span className="font-semibold">Resultado:</span> {caseItem.result}
-                    </p>
-                  </div>
+                
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-white font-bold text-base mb-1">
+                    {caseItem.title}
+                  </h3>
+                  <p className="text-white/90 text-sm mb-2">
+                    {caseItem.description}
+                  </p>
+                  <p className="text-white/70 text-xs">
+                    <span className="font-semibold">Resultado:</span> {caseItem.result}
+                  </p>
                 </div>
               </div>
             </div>

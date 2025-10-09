@@ -52,7 +52,6 @@ const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({ instanceId }) =
       description: 'Descrição do caso',
       result: 'Resultado obtido',
       icon: 'trophy',
-      image: '',
     };
     updateModuleInstance(instanceId, { cases: [...casesConfig.cases, newCase] });
   };
@@ -63,6 +62,29 @@ const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({ instanceId }) =
 
   return (
     <div className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="background-image">Imagem de Fundo</Label>
+        <Input
+          id="background-image"
+          type="url"
+          placeholder="URL da imagem de fundo"
+          value={casesConfig.backgroundImage}
+          onChange={(e) => updateModuleInstance(instanceId, { backgroundImage: e.target.value })}
+        />
+      </div>
+
+      <div className="flex items-center justify-between">
+        <Label className="text-sm font-medium">Cases de Sucesso</Label>
+        <Button
+          onClick={addCase}
+          size="sm"
+          variant="outline"
+        >
+          <Plus className="h-4 w-4 mr-1" />
+          Adicionar Case
+        </Button>
+      </div>
+
       {casesConfig.cases.map((caseItem, index) => {
         const selectedIcon = iconOptions.find((opt) => opt.value === caseItem.icon);
         const isOpen = openPopoverId === caseItem.id;
@@ -90,18 +112,6 @@ const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({ instanceId }) =
             </div>
 
             <div className="space-y-3">
-              <div>
-                <Label htmlFor={`image-${caseItem.id}`} className="text-sm">
-                  URL da Imagem
-                </Label>
-                <Input
-                  id={`image-${caseItem.id}`}
-                  value={caseItem.image}
-                  onChange={(e) => updateCase(caseItem.id, 'image', e.target.value)}
-                  placeholder="https://exemplo.com/imagem.jpg"
-                />
-              </div>
-
               <div className="grid grid-cols-[auto_1fr] gap-3">
                 <div className="flex flex-col gap-2">
                   <Label className="text-sm">Ícone</Label>
@@ -196,7 +206,7 @@ const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({ instanceId }) =
         onClick={addCase}
         className="w-full border-dashed"
       >
-        <Plus className="w-4 h-4 mr-2" />
+        <Plus className="w-4 w-4 mr-2" />
         Adicionar Novo Case de Sucesso
       </Button>
     </div>

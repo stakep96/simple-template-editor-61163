@@ -59,11 +59,11 @@ export interface SuccessCase {
   description: string;
   result: string;
   icon: string;
-  image: string;
 }
 
 export interface SuccessCasesConfig {
   enabled: boolean;
+  backgroundImage: string;
   cases: SuccessCase[];
 }
 
@@ -200,6 +200,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
+        backgroundImage: '',
         cases: [
           {
             id: '1',
@@ -207,7 +208,6 @@ const defaultConfig: SiteConfig = {
             description: 'Cliente acusado injustamente',
             result: 'Absolvição por falta de provas',
             icon: 'shield',
-            image: '',
           },
         ],
       } as SuccessCasesConfig,
@@ -326,7 +326,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           defaultModuleConfig = { enabled: true, areas: [] };
           break;
         case 'cases':
-          defaultModuleConfig = { enabled: true, cases: [] };
+          defaultModuleConfig = { enabled: true, backgroundImage: '', cases: [] };
           break;
         case 'contact':
           defaultModuleConfig = {
