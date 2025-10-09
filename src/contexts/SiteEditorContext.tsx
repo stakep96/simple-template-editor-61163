@@ -57,7 +57,8 @@ export interface SuccessCase {
   id: string;
   title: string;
   description: string;
-  year: string;
+  result: string;
+  icon: string;
   image: string;
 }
 
@@ -203,8 +204,9 @@ const defaultConfig: SiteConfig = {
           {
             id: '1',
             title: 'Defesa Criminal - 2025',
-            description: 'Cliente absolvido na segunda instância',
-            year: '2025',
+            description: 'Cliente acusado injustamente',
+            result: 'Absolvição por falta de provas',
+            icon: 'shield',
             image: '',
           },
         ],
