@@ -170,7 +170,7 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
         className="w-full border-dashed"
       >
         <Plus className="w-4 h-4 mr-2" />
-        Adicionar Nova Área (1/{practiceConfig.areas.length + 1})
+        Adicionar Nova Área de atuação
       </Button>
     </div>
   );
