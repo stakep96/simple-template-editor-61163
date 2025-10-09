@@ -101,8 +101,8 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
               </Button>
             </div>
 
-            <div className="flex gap-3 items-start">
-              <div className="space-y-2">
+            <div className="grid grid-cols-[auto_1fr] gap-3">
+              <div className="flex flex-col gap-2">
                 <Label className="text-sm">Ícone</Label>
                 <Popover open={isOpen} onOpenChange={(open) => {
                   setOpenPopoverId(open ? area.id : null);
@@ -148,7 +148,7 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
                 </Popover>
               </div>
 
-              <div className="space-y-2 flex-1">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor={`title-${area.id}`} className="text-sm">
                   Título
                 </Label>
