@@ -101,7 +101,7 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
               </Button>
             </div>
 
-            <div className="grid grid-cols-[auto_1fr] gap-3">
+            <div className="flex gap-3 items-end">
               <div className="space-y-2">
                 <Label className="text-sm">Ícone</Label>
                 <Popover open={isOpen} onOpenChange={(open) => {
@@ -111,9 +111,9 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
-                      className="h-14 w-14 p-0"
+                      className="h-10 w-10 p-0"
                     >
-                      {selectedIcon && <selectedIcon.Icon className="w-6 h-6" />}
+                      {selectedIcon && <selectedIcon.Icon className="w-5 h-5" />}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-80 p-4" align="start">
@@ -148,7 +148,7 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
                 </Popover>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 flex-1">
                 <Label htmlFor={`title-${area.id}`} className="text-sm">
                   Título
                 </Label>
@@ -157,7 +157,6 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
                   value={area.title}
                   onChange={(e) => updateArea(area.id, 'title', e.target.value)}
                   placeholder="Nome da área"
-                  className="h-14"
                 />
               </div>
             </div>
