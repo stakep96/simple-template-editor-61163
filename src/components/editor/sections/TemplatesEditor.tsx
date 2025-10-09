@@ -47,13 +47,10 @@ const TemplatesEditor = () => {
           </div>
         </div>
         
-        <div className="flex items-center gap-2">
-          <CarouselPrevious className="static translate-y-0 h-9 w-9" />
-          <CarouselNext className="static translate-y-0 h-9 w-9" />
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="sm">Ver tudo</Button>
-            </DialogTrigger>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm">Ver tudo</Button>
+          </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Todos os Modelos</DialogTitle>
@@ -86,10 +83,13 @@ const TemplatesEditor = () => {
             </Tabs>
           </DialogContent>
         </Dialog>
-        </div>
       </div>
 
       <Carousel className="w-full">
+        <div className="flex items-center justify-end gap-2 mb-2">
+          <CarouselPrevious className="static translate-y-0 h-9 w-9" />
+          <CarouselNext className="static translate-y-0 h-9 w-9" />
+        </div>
         <CarouselContent className="-ml-2">
           {templates.slice(0, 6).map((template) => (
             <CarouselItem key={template.id} className="pl-2 basis-1/4">
