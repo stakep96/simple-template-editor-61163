@@ -30,11 +30,11 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
 
   return (
     <section 
-      className="px-6 py-12 relative"
+      className="py-12 relative"
       style={{ backgroundColor: config.brand.secondary }}
     >
       <h2 
-        className="text-2xl font-bold text-center mb-8"
+        className="text-2xl font-bold text-center mb-8 px-6"
         style={{ color: config.brand.text }}
       >
         Cases de Sucesso
@@ -42,8 +42,8 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
 
       {/* Container com imagem e primeiro card sobreposto */}
       {casesConfig.backgroundImage && firstCase && (
-        <div className="max-w-2xl mx-auto mb-6 relative">
-          <div className="w-full h-96 rounded-2xl overflow-hidden relative">
+        <div className="mb-6 relative">
+          <div className="w-full h-96 overflow-hidden relative">
             <img 
               src={casesConfig.backgroundImage} 
               alt="Cases de Sucesso"
@@ -59,7 +59,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
           </div>
           
           {/* Primeiro card sobreposto */}
-          <div className="absolute -bottom-16 left-4 right-4">
+          <div className="absolute -bottom-16 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-2xl md:w-full">
             {(() => {
               const IconComponent = iconMap[firstCase.icon as keyof typeof iconMap] || Trophy;
               return (
@@ -95,7 +95,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
       )}
 
       {/* Demais cards */}
-      <div className="max-w-2xl mx-auto space-y-6 mt-20">
+      <div className="max-w-2xl mx-auto space-y-6 mt-20 px-6">
         {restCases.map((caseItem) => {
           const IconComponent = iconMap[caseItem.icon as keyof typeof iconMap] || Trophy;
           
