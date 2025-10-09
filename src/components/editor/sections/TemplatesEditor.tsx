@@ -46,49 +46,49 @@ const TemplatesEditor = () => {
             <p className="text-xs text-muted-foreground">Escolha um template</p>
           </div>
         </div>
-        
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" size="sm">Ver tudo</Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>Todos os Modelos</DialogTitle>
-            </DialogHeader>
-            
-            <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
-              <TabsList className="grid w-full grid-cols-5">
-                {categories.map(cat => (
-                  <TabsTrigger key={cat} value={cat}>{cat}</TabsTrigger>
-                ))}
-              </TabsList>
-              
-              <div className="mt-6">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {filteredTemplates.map(template => (
-                    <button
-                      key={template.id}
-                      className="group relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all"
-                    >
-                      <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-4`}>
-                        <div className="bg-background/90 backdrop-blur-sm rounded px-3 py-1">
-                          <p className="font-bold text-sm text-foreground">{template.name}</p>
-                        </div>
-                      </div>
-                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </Tabs>
-          </DialogContent>
-        </Dialog>
       </div>
 
       <Carousel className="w-full">
         <div className="flex items-center justify-end gap-2 mb-2">
           <CarouselPrevious className="static translate-y-0 h-9 w-9" />
           <CarouselNext className="static translate-y-0 h-9 w-9" />
+          
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm">Ver tudo</Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>Todos os Modelos</DialogTitle>
+              </DialogHeader>
+              
+              <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
+                <TabsList className="grid w-full grid-cols-5">
+                  {categories.map(cat => (
+                    <TabsTrigger key={cat} value={cat}>{cat}</TabsTrigger>
+                  ))}
+                </TabsList>
+                
+                <div className="mt-6">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {filteredTemplates.map(template => (
+                      <button
+                        key={template.id}
+                        className="group relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all"
+                      >
+                        <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-4`}>
+                          <div className="bg-background/90 backdrop-blur-sm rounded px-3 py-1">
+                            <p className="font-bold text-sm text-foreground">{template.name}</p>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </Tabs>
+            </DialogContent>
+          </Dialog>
         </div>
         <CarouselContent className="-ml-2">
           {templates.slice(0, 6).map((template) => (
