@@ -77,6 +77,12 @@ export interface ContactFormConfig {
   fields: string[];
 }
 
+export interface ButtonConfig {
+  enabled: boolean;
+  ctaText: string;
+  link: string;
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -87,13 +93,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig;
 }
 
 export interface SiteConfig {
@@ -233,6 +239,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     practice: 1,
     cases: 1,
     contact: 0,
+    button: 0,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -340,6 +347,13 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             title: 'Entre em Contato',
             subtitle: 'Preencha o formulário',
             fields: ['name', 'email', 'phone', 'message'],
+          };
+          break;
+        case 'button':
+          defaultModuleConfig = {
+            enabled: true,
+            ctaText: 'Clique Aqui',
+            link: '',
           };
           break;
       }

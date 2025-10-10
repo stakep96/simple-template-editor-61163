@@ -6,6 +6,7 @@ import PreviewAbout from './sections/PreviewAbout';
 import PreviewPracticeAreas from './sections/PreviewPracticeAreas';
 import PreviewSuccessCases from './sections/PreviewSuccessCases';
 import PreviewContactForm from './sections/PreviewContactForm';
+import PreviewButton from './sections/PreviewButton';
 import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
@@ -30,6 +31,8 @@ const PreviewSite = () => {
         return <PreviewSuccessCases key={key} instanceId={instanceId} />;
       case 'contact':
         return <PreviewContactForm key={key} instanceId={instanceId} />;
+      case 'button':
+        return <PreviewButton key={key} instanceId={instanceId} />;
       default:
         return null;
     }

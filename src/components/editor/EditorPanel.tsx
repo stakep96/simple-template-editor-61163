@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -13,6 +13,7 @@ import AboutEditor from './sections/AboutEditor';
 import PracticeAreasEditor from './sections/PracticeAreasEditor';
 import SuccessCasesEditor from './sections/SuccessCasesEditor';
 import ContactFormEditor from './sections/ContactFormEditor';
+import ButtonEditor from './sections/ButtonEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
@@ -28,6 +29,7 @@ const EditorPanel = () => {
     practice: { icon: Briefcase, title: 'Áreas de Atuação', description: 'Especialidades', component: PracticeAreasEditor },
     cases: { icon: Trophy, title: 'Cases de Sucesso', description: 'Histórico de vitórias', component: SuccessCasesEditor },
     contact: { icon: Mail, title: 'Formulário de Contato', description: 'Fale conosco', component: ContactFormEditor },
+    button: { icon: MousePointerClick, title: 'Botão', description: 'Call to Action', component: ButtonEditor },
   };
 
   const sortedModules = config.moduleOrder
