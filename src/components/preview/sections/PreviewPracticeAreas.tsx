@@ -26,7 +26,7 @@ const PreviewPracticeAreas: React.FC<PreviewPracticeAreasProps> = ({ instanceId 
   return (
     <section 
       className="px-6 py-12"
-      style={{ backgroundColor: config.brand.secondary }}
+      style={{ backgroundColor: config.brand.background }}
     >
       <h2 
         className="text-xl font-bold text-center mb-6"
