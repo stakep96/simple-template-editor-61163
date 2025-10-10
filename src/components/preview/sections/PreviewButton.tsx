@@ -14,19 +14,21 @@ const PreviewButton: React.FC<PreviewButtonProps> = ({ instanceId }) => {
   if (!buttonConfig) return null;
 
   return (
-    <section className="px-6 py-8 flex justify-center">
-      <a
-        href={buttonConfig.link || '#'}
-        target={buttonConfig.link.startsWith('http') ? '_blank' : '_self'}
-        rel={buttonConfig.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-        className="inline-block px-8 py-3 rounded-lg font-semibold text-center transition-all hover:scale-105"
-        style={{
-          backgroundColor: config.brand.primary,
-          color: '#FFFFFF',
-        }}
-      >
-        {buttonConfig.ctaText}
-      </a>
+    <section className="px-6 py-8">
+      <div className="max-w-2xl mx-auto flex justify-center">
+        <a
+          href={buttonConfig.link || '#'}
+          target={buttonConfig.link.startsWith('http') ? '_blank' : '_self'}
+          rel={buttonConfig.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+          className="inline-block w-full max-w-md px-8 py-3 rounded-lg font-semibold text-center transition-all hover:scale-105"
+          style={{
+            backgroundColor: config.brand.primary,
+            color: '#FFFFFF',
+          }}
+        >
+          {buttonConfig.ctaText}
+        </a>
+      </div>
     </section>
   );
 };
