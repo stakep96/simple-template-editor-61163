@@ -30,7 +30,7 @@ const PreviewPracticeAreas: React.FC<PreviewPracticeAreasProps> = ({ instanceId 
     >
       <h2 
         className="text-xl font-bold text-center mb-6"
-        style={{ color: config.brand.text }}
+        style={{ color: config.brand.titleColor }}
       >
         Áreas de Atuação
       </h2>

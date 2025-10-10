@@ -43,6 +43,10 @@ const PreviewSite = () => {
         '--brand-secondary': config.brand.secondary,
         '--brand-accent': config.brand.accent,
         '--brand-text': config.brand.text,
+        '--brand-background': config.brand.background,
+        '--brand-title-color': config.brand.titleColor,
+        '--brand-text-color': config.brand.textColor,
+        backgroundColor: config.brand.background,
       } as React.CSSProperties}
     >
       <div className="relative min-h-full">

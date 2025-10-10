@@ -22,26 +22,26 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
           : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundColor: config.brand.secondary,
+        backgroundColor: config.brand.background,
       }}
     >
       {/* Gradiente fade na parte inferior */}
       <div 
         className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none"
         style={{
-          background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
+          background: `linear-gradient(to bottom, transparent, ${config.brand.background})`
         }}
       />
       <div className="relative z-10 space-y-3 mb-2">
         <h1 
           className="text-2xl font-bold leading-tight"
-          style={{ color: config.brand.text }}
+          style={{ color: config.brand.titleColor }}
         >
           {heroConfig.title}
         </h1>
         <p 
           className="text-sm leading-relaxed"
-          style={{ color: config.brand.text, opacity: 0.9 }}
+          style={{ color: config.brand.textColor }}
         >
           {heroConfig.description}
         </p>

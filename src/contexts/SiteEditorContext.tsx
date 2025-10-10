@@ -12,6 +12,9 @@ export interface BrandColors {
   secondary: string;
   accent: string;
   text: string;
+  background: string;
+  titleColor: string;
+  textColor: string;
 }
 
 export interface HeaderConfig {
@@ -124,6 +127,9 @@ const defaultConfig: SiteConfig = {
     secondary: '#F5E6D3',
     accent: '#D4AF37',
     text: '#2D2D2D',
+    background: '#FFFFFF',
+    titleColor: '#2D2D2D',
+    textColor: '#4A4A4A',
   },
   marketing: {
     whatsapp: {

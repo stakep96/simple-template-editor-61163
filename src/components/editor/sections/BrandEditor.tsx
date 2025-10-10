@@ -64,6 +64,63 @@ const BrandEditor = () => {
           />
         </div>
       </div>
+
+      <div>
+        <Label htmlFor="background" className="text-sm">Background do Site</Label>
+        <div className="flex gap-2 mt-1">
+          <Input
+            id="background"
+            type="color"
+            value={config.brand.background}
+            onChange={(e) => updateBrand({ background: e.target.value })}
+            className="h-10 w-20 p-1 cursor-pointer"
+          />
+          <Input
+            type="text"
+            value={config.brand.background}
+            onChange={(e) => updateBrand({ background: e.target.value })}
+            className="flex-1"
+          />
+        </div>
+      </div>
+
+      <div>
+        <Label htmlFor="titleColor" className="text-sm">Cor dos Títulos</Label>
+        <div className="flex gap-2 mt-1">
+          <Input
+            id="titleColor"
+            type="color"
+            value={config.brand.titleColor}
+            onChange={(e) => updateBrand({ titleColor: e.target.value })}
+            className="h-10 w-20 p-1 cursor-pointer"
+          />
+          <Input
+            type="text"
+            value={config.brand.titleColor}
+            onChange={(e) => updateBrand({ titleColor: e.target.value })}
+            className="flex-1"
+          />
+        </div>
+      </div>
+
+      <div>
+        <Label htmlFor="textColor" className="text-sm">Cor dos Textos</Label>
+        <div className="flex gap-2 mt-1">
+          <Input
+            id="textColor"
+            type="color"
+            value={config.brand.textColor}
+            onChange={(e) => updateBrand({ textColor: e.target.value })}
+            className="h-10 w-20 p-1 cursor-pointer"
+          />
+          <Input
+            type="text"
+            value={config.brand.textColor}
+            onChange={(e) => updateBrand({ textColor: e.target.value })}
+            className="flex-1"
+          />
+        </div>
+      </div>
     </div>
   );
 };

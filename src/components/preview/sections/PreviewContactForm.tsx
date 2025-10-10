@@ -18,13 +18,13 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
   if (!contactConfig) return null;
 
   return (
-    <section className="py-16 px-4" style={{ backgroundColor: 'var(--brand-secondary)' }}>
+    <section className="py-16 px-4" style={{ backgroundColor: 'var(--brand-background)' }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-2" style={{ color: 'var(--brand-text)' }}>
+          <h2 className="text-3xl font-bold mb-2" style={{ color: 'var(--brand-title-color)' }}>
             {contactConfig.title}
           </h2>
-          <p className="text-lg" style={{ color: 'var(--brand-text)', opacity: 0.8 }}>
+          <p className="text-lg" style={{ color: 'var(--brand-text-color)' }}>
             {contactConfig.subtitle}
           </p>
         </div>

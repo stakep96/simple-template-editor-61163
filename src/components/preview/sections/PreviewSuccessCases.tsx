@@ -35,7 +35,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
     >
       <h2 
         className="text-2xl font-bold text-center mb-8 px-6"
-        style={{ color: config.brand.text }}
+        style={{ color: config.brand.titleColor }}
       >
         Cases de Sucesso
       </h2>
@@ -53,7 +53,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
             <div 
               className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
               style={{
-                background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
+                background: `linear-gradient(to bottom, transparent, ${config.brand.background})`
               }}
             />
           </div>
