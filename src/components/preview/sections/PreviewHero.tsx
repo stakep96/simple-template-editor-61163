@@ -15,7 +15,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="relative px-6 pb-8 pt-16 flex flex-col justify-end text-center min-h-[400px]"
+      className="relative px-6 pb-4 pt-16 flex flex-col justify-end text-center min-h-[400px]"
       style={{
         backgroundImage: heroConfig.backgroundImage 
           ? `url(${heroConfig.backgroundImage})` 
