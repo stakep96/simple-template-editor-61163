@@ -15,7 +15,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="relative px-6 pb-20 pt-16 flex flex-col justify-end text-center min-h-[500px]"
+      className="relative px-6 pb-6 pt-32 flex flex-col justify-end text-center min-h-[500px]"
       style={{
         backgroundImage: heroConfig.backgroundImage 
           ? `url(${heroConfig.backgroundImage})` 
@@ -32,7 +32,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
           background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
         }}
       />
-      <div className="relative z-10 space-y-4">
+      <div className="relative z-10 space-y-3 mb-2">
         <h1 
           className="text-2xl font-bold leading-tight"
           style={{ color: config.brand.text }}
