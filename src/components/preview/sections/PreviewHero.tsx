@@ -15,18 +15,19 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="relative px-6 pb-4 pt-16 flex flex-col justify-end text-center min-h-[400px]"
+      className="relative px-6 pb-20 pt-16 flex flex-col justify-end text-center min-h-[500px]"
       style={{
         backgroundImage: heroConfig.backgroundImage 
           ? `url(${heroConfig.backgroundImage})` 
           : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundColor: config.brand.secondary,
       }}
     >
       {/* Gradiente fade na parte inferior */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
         style={{
           background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
         }}
