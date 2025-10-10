@@ -24,10 +24,11 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
         backgroundPosition: 'center',
       }}
     >
+      {/* Gradiente fade na parte inferior */}
       <div 
-        className="absolute inset-0"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
-          background: `linear-gradient(to bottom, ${config.brand.primary}${Math.round(heroConfig.gradientOpacity * 255).toString(16).padStart(2, '0')}, ${config.brand.primary}${Math.round(heroConfig.gradientOpacity * 255).toString(16).padStart(2, '0')})`,
+          background: `linear-gradient(to bottom, transparent, ${config.brand.primary}${Math.round(heroConfig.gradientOpacity * 255).toString(16).padStart(2, '0')})`
         }}
       />
       <div className="relative z-10 space-y-4">
