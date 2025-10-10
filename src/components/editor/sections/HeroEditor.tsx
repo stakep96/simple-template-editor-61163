@@ -2,7 +2,6 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Slider } from '@/components/ui/slider';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { HeroConfig } from '@/contexts/SiteEditorContext';
 
@@ -28,21 +27,6 @@ const HeroEditor: React.FC<HeroEditorProps> = ({ instanceId }) => {
           onChange={(e) => updateModuleInstance(instanceId, { backgroundImage: e.target.value })}
           placeholder="URL da imagem"
           className="mt-1"
-        />
-      </div>
-
-      <div>
-        <Label htmlFor={`gradientOpacity-${instanceId}`} className="text-sm">
-          Opacidade do Gradiente: {Math.round(heroConfig.gradientOpacity * 100)}%
-        </Label>
-        <Slider
-          id={`gradientOpacity-${instanceId}`}
-          value={[heroConfig.gradientOpacity]}
-          onValueChange={(value) => updateModuleInstance(instanceId, { gradientOpacity: value[0] })}
-          min={0}
-          max={1}
-          step={0.1}
-          className="mt-2"
         />
       </div>
 
