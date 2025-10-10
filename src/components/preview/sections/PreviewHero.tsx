@@ -15,7 +15,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="relative px-6 py-16 flex flex-col items-center justify-center text-center min-h-[300px]"
+      className="relative px-6 pb-8 pt-16 flex flex-col justify-end text-center min-h-[400px]"
       style={{
         backgroundImage: heroConfig.backgroundImage 
           ? `url(${heroConfig.backgroundImage})` 
@@ -26,7 +26,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
     >
       {/* Gradiente fade na parte inferior */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
         style={{
           background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
         }}
@@ -34,13 +34,13 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
       <div className="relative z-10 space-y-4">
         <h1 
           className="text-2xl font-bold leading-tight"
-          style={{ color: config.brand.secondary }}
+          style={{ color: config.brand.text }}
         >
           {heroConfig.title}
         </h1>
         <p 
           className="text-sm leading-relaxed"
-          style={{ color: config.brand.secondary, opacity: 0.9 }}
+          style={{ color: config.brand.text, opacity: 0.9 }}
         >
           {heroConfig.description}
         </p>
