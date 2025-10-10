@@ -27,7 +27,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
     >
       {/* Gradiente fade na parte inferior */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none"
         style={{
           background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
         }}
