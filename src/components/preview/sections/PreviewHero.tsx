@@ -28,7 +28,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
       <div 
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
-          background: `linear-gradient(to bottom, transparent, ${config.brand.primary}${Math.round(heroConfig.gradientOpacity * 255).toString(16).padStart(2, '0')})`
+          background: `linear-gradient(to bottom, transparent, ${config.brand.secondary})`
         }}
       />
       <div className="relative z-10 space-y-4">
