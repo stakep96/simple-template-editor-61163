@@ -41,14 +41,18 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
       </h2>
 
       {/* Container com imagem e primeiro card sobreposto */}
-      {casesConfig.backgroundImage && firstCase && (
+      {firstCase && (
         <div className="mb-6 relative">
-          <div className="w-full h-96 overflow-hidden relative rounded-t-2xl">
-            <img 
-              src={casesConfig.backgroundImage} 
-              alt="Cases de Sucesso"
-              className="w-full h-full object-cover"
-            />
+          <div 
+            className="w-full h-96 overflow-hidden relative rounded-t-2xl"
+            style={{
+              backgroundImage: casesConfig.backgroundImage 
+                ? `url(${casesConfig.backgroundImage})` 
+                : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
             {/* Gradiente fade na parte inferior */}
             <div 
               className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
