@@ -44,7 +44,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
       {firstCase && (
         <div className="mb-6 relative">
           <div 
-            className="w-full h-96 overflow-hidden relative rounded-t-2xl"
+            className="w-full h-96 overflow-hidden relative rounded-t-[30px]"
             style={{
               backgroundImage: casesConfig.backgroundImage 
                 ? `url(${casesConfig.backgroundImage})` 
