@@ -43,6 +43,13 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
     });
   };
 
+  const handleMapUrlChange = (value: string) => {
+    // Extract src URL from iframe if full iframe code is pasted
+    const iframeSrcMatch = value.match(/src=["']([^"']+)["']/);
+    const url = iframeSrcMatch ? iframeSrcMatch[1] : value;
+    updateModuleInstance(instanceId, { mapEmbedUrl: url });
+  };
+
   return (
     <div className="space-y-4">
       <div>
@@ -128,7 +135,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           id={`location-map-${instanceId}`}
           type="text"
           value={locationConfig.mapEmbedUrl}
-          onChange={(e) => updateModuleInstance(instanceId, { mapEmbedUrl: e.target.value })}
+          onChange={(e) => handleMapUrlChange(e.target.value)}
           onMouseDown={(e) => e.stopPropagation()}
           onDragStart={(e) => e.preventDefault()}
           draggable={false}
@@ -136,7 +143,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           className="mt-1"
         />
         <p className="text-xs text-muted-foreground mt-1">
-          Cole o link de incorporação do Google Maps
+          Cole o link de incorporação do Google Maps ou o código iframe completo
         </p>
       </div>
     </div>
