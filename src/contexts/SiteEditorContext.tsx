@@ -83,6 +83,20 @@ export interface ButtonConfig {
   link: string;
 }
 
+export interface Testimonial {
+  id: string;
+  image: string;
+  name: string;
+  role: string;
+  testimonial: string;
+}
+
+export interface TestimonialsConfig {
+  enabled: boolean;
+  title: string;
+  testimonials: Testimonial[];
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -93,13 +107,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig;
 }
 
 export interface SiteConfig {
@@ -240,6 +254,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     cases: 1,
     contact: 0,
     button: 0,
+    testimonials: 0,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -354,6 +369,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             enabled: true,
             ctaText: 'Clique Aqui',
             link: '',
+          };
+          break;
+        case 'testimonials':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Depoimentos',
+            testimonials: [
+              {
+                id: '1',
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+                name: 'Cliente',
+                role: 'Cargo/Empresa',
+                testimonial: 'Depoimento do cliente...',
+              },
+            ],
           };
           break;
       }
