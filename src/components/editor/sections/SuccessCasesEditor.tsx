@@ -174,7 +174,7 @@ const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({
           </div>;
     })}
 
-      <Button variant="outline" onClick={addCase} className="w-full border-dashed">
+      <Button variant="outline" onClick={addCase} className="w-full border-dashed hover:border-solid">
         <Plus className="w-4 w-4 mr-2" />
         Adicionar Novo Case de Sucesso
       </Button>
