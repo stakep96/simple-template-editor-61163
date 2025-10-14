@@ -93,8 +93,9 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                 onClick={() => api?.scrollTo(index)}
                 style={{
                   backgroundColor: index === current 
-                    ? `hsl(var(--primary))` 
-                    : `hsl(var(--primary) / 0.3)`,
+                    ? 'var(--brand-primary)' 
+                    : 'var(--brand-primary)',
+                  opacity: index === current ? 1 : 0.3,
                 }}
                 className={`rounded-full transition-all ${
                   index === current
