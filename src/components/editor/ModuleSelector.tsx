@@ -65,7 +65,7 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
     {
       id: 'faq' as ModuleType,
       icon: HelpCircle,
-      title: 'FAQ',
+      title: 'Perguntas Frequentes',
       description: 'Perguntas',
     },
     {
