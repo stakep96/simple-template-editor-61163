@@ -34,12 +34,12 @@ const PreviewFAQ: React.FC<PreviewFAQProps> = ({ instanceId }) => {
           {faqConfig.title}
         </h2>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
+        <Accordion type="single" collapsible className="w-full">
           {faqConfig.items.map((item) => (
             <AccordionItem
               key={item.id}
               value={item.id}
-              className="bg-card border rounded-lg px-6"
+              className="border-b px-6"
             >
               <AccordionTrigger
                 className="text-left hover:no-underline"

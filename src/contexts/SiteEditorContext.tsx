@@ -420,7 +420,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         case 'faq':
           defaultModuleConfig = {
             enabled: true,
-            title: 'FAQ',
+            title: 'Perguntas Frequentes',
             items: [
               {
                 id: '1',
