@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin } from 'lucide-react';
+import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright } from 'lucide-react';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 interface ModuleSelectorProps {
@@ -73,6 +73,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
       icon: MapPin,
       title: 'Localização',
       description: 'Endereço e mapa',
+    },
+    {
+      id: 'footer' as ModuleType,
+      icon: Copyright,
+      title: 'Copyright',
+      description: 'Rodapé',
     },
   ];
 

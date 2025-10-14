@@ -134,6 +134,11 @@ export interface LocationConfig {
   mapEmbedUrl: string;
 }
 
+export interface FooterConfig {
+  enabled: boolean;
+  copyrightText: string;
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -144,13 +149,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'location';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'location' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | LocationConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | LocationConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -295,6 +300,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     gallery: 0,
     faq: 0,
     location: 0,
+    footer: 0,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -458,6 +464,12 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               },
             ],
             mapEmbedUrl: '',
+          };
+          break;
+        case 'footer':
+          defaultModuleConfig = {
+            enabled: true,
+            copyrightText: '© SEU NOME - 000000 - OAB/XX\nTodos os direitos reservados - 2025',
           };
           break;
       }

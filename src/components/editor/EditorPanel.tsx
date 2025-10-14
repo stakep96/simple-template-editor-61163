@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -18,6 +18,7 @@ import TestimonialsEditor from './sections/TestimonialsEditor';
 import GalleryEditor from './sections/GalleryEditor';
 import FAQEditor from './sections/FAQEditor';
 import LocationEditor from './sections/LocationEditor';
+import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
@@ -38,6 +39,7 @@ const EditorPanel = () => {
     gallery: { icon: Images, title: 'Galeria', description: 'Mosaico de fotos', component: GalleryEditor },
     faq: { icon: HelpCircle, title: 'FAQ', description: 'Perguntas frequentes', component: FAQEditor },
     location: { icon: MapPin, title: 'Localização', description: 'Endereço e mapa', component: LocationEditor },
+    footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   };
 
   const sortedModules = config.moduleOrder
