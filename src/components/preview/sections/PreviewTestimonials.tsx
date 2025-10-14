@@ -34,7 +34,7 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
   }, [api]);
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 px-4 overflow-hidden">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
           {config.title}
@@ -47,20 +47,19 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
             loop: true,
           }}
           plugins={[plugin.current]}
-          className="w-full"
+          className="w-full max-w-full"
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
         >
-          <CarouselContent className="min-h-[280px]">
+          <CarouselContent className="-ml-4">
             {config.testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id}>
-                <div className="px-4 h-full">
-                  <Card 
-                    className="p-8 rounded-2xl shadow-sm border border-transparent h-full"
-                    style={{
-                      backgroundColor: `color-mix(in srgb, var(--brand-primary) 15%, transparent)`,
-                    }}
-                  >
+              <CarouselItem key={testimonial.id} className="pl-4">
+                <Card 
+                  className="p-8 rounded-2xl shadow-sm border border-transparent"
+                  style={{
+                    backgroundColor: `color-mix(in srgb, var(--brand-primary) 15%, transparent)`,
+                  }}
+                >
                     <div className="flex items-start gap-4 mb-6">
                       <Avatar className="w-14 h-14 flex-shrink-0">
                         <AvatarImage src={testimonial.image} alt={testimonial.name} />
@@ -87,7 +86,6 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                       &quot;{testimonial.testimonial}&quot;
                     </p>
                   </Card>
-                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
