@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
@@ -6,29 +6,50 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel';
 import type { TestimonialsConfig } from '@/contexts/SiteEditorContext';
+import Autoplay from 'embla-carousel-autoplay';
 
 interface PreviewTestimonialsProps {
   config: TestimonialsConfig;
 }
 
 const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
+
   return (
-    <section className="py-16 px-4 bg-background">
+    <section className="py-16 px-4">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
           {config.title}
         </h2>
 
         <Carousel
+          setApi={setApi}
           opts={{
             align: "center",
             loop: true,
           }}
+          plugins={[plugin.current]}
           className="w-full"
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
         >
           <CarouselContent>
             {config.testimonials.map((testimonial) => (
@@ -41,8 +62,12 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                         <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-foreground text-base">{testimonial.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-2">{testimonial.role}</p>
+                        <h3 className="font-semibold text-foreground text-base break-words">
+                          {testimonial.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-2 break-words">
+                          {testimonial.role}
+                        </p>
                         <div className="flex gap-1">
                           {[...Array(5)].map((_, i) => (
                             <Star
@@ -53,8 +78,8 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                         </div>
                       </div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      "{testimonial.testimonial}"
+                    <p className="text-muted-foreground leading-relaxed text-sm break-words whitespace-pre-wrap">
+                      &quot;{testimonial.testimonial}&quot;
                     </p>
                   </Card>
                 </div>
@@ -63,7 +88,16 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
           </CarouselContent>
           <div className="flex justify-center gap-2 mt-6">
             {config.testimonials.map((_, index) => (
-              <div key={index} className="w-2 h-2 rounded-full bg-muted-foreground/30" />
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === current
+                    ? 'bg-primary w-6'
+                    : 'bg-primary/30'
+                }`}
+                aria-label={`Ir para depoimento ${index + 1}`}
+              />
             ))}
           </div>
         </Carousel>
