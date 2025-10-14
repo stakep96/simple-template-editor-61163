@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Layout } from 'lucide-react';
+import { Layout, Check } from 'lucide-react';
 
 interface Template {
   id: string;
@@ -29,6 +29,7 @@ const categories = ['Todos', 'Jurídico', 'Saúde', 'Mercado Digital', 'Produtos
 
 const TemplatesEditor = () => {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
 
   const filteredTemplates = selectedCategory === 'Todos' 
     ? templates 
@@ -74,13 +75,23 @@ const TemplatesEditor = () => {
                     {filteredTemplates.map(template => (
                       <button
                         key={template.id}
-                        className="group relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all"
+                        onClick={() => setSelectedTemplate(template.id)}
+                        className={`group relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${
+                          selectedTemplate === template.id 
+                            ? 'border-blue-500 ring-2 ring-blue-500' 
+                            : 'border-border hover:border-primary'
+                        }`}
                       >
                         <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-4`}>
                           <div className="bg-background/90 backdrop-blur-sm rounded px-3 py-1">
                             <p className="font-bold text-sm text-foreground">{template.name}</p>
                           </div>
                         </div>
+                        {selectedTemplate === template.id && (
+                          <div className="absolute top-2 right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                            <Check className="w-5 h-5 text-white" />
+                          </div>
+                        )}
                         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
                       </button>
                     ))}
@@ -92,13 +103,25 @@ const TemplatesEditor = () => {
         </div>
         <CarouselContent className="-ml-2">
           {templates.slice(0, 6).map((template) => (
-            <CarouselItem key={template.id} className="pl-2 basis-1/4">
-              <button className="group relative aspect-[2/3] w-full rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all">
+            <CarouselItem key={template.id} className="pl-2 basis-1/5">
+              <button 
+                onClick={() => setSelectedTemplate(template.id)}
+                className={`group relative aspect-[2/3] w-full rounded-lg overflow-hidden border-2 transition-all ${
+                  selectedTemplate === template.id 
+                    ? 'border-blue-500 ring-2 ring-blue-500' 
+                    : 'border-border hover:border-primary'
+                }`}
+              >
                 <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-2`}>
                   <div className="bg-background/90 backdrop-blur-sm rounded px-2 py-1">
                     <p className="font-bold text-xs text-foreground">{template.name}</p>
                   </div>
                 </div>
+                {selectedTemplate === template.id && (
+                  <div className="absolute top-2 right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
               </button>
             </CarouselItem>
