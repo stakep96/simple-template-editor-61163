@@ -56,14 +56,11 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
               <CarouselItem key={testimonial.id}>
                 <div className="px-4">
                   <Card 
-                    className="p-8 rounded-[30px] shadow-sm border"
+                    className="p-8 rounded-[30px] shadow-sm border border-transparent"
                     style={{
-                      backgroundColor: 'var(--brand-primary)',
-                      opacity: 0.15,
-                      borderColor: 'var(--brand-primary)',
+                      backgroundColor: `color-mix(in srgb, var(--brand-primary) 15%, transparent)`,
                     }}
                   >
-                    <div style={{ opacity: 1 / 0.15 }}>
                     <div className="flex items-start gap-4 mb-6">
                       <Avatar className="w-14 h-14 flex-shrink-0">
                         <AvatarImage src={testimonial.image} alt={testimonial.name} />
@@ -89,7 +86,6 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                     <p className="text-muted-foreground leading-relaxed text-sm break-words whitespace-pre-wrap">
                       &quot;{testimonial.testimonial}&quot;
                     </p>
-                    </div>
                   </Card>
                 </div>
               </CarouselItem>
