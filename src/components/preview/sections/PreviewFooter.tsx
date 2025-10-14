@@ -31,11 +31,11 @@ const PreviewFooter: React.FC<PreviewFooterProps> = ({ instanceId }) => {
       {/* About.work Signature - Fixed */}
       <div className="w-full py-4 px-4 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto flex items-center justify-center gap-2">
-          <span className="text-sm text-gray-700">Esse site foi feito com</span>
+          <span className="text-sm text-gray-700">Esse site foi feito com:</span>
           <img 
             src={aboutWorkLogo} 
             alt="About.work" 
-            className="h-6 object-contain"
+            className="h-8 object-contain"
           />
         </div>
       </div>
