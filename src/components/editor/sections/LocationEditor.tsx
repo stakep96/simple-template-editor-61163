@@ -53,6 +53,8 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           value={locationConfig.title}
           onChange={(e) => updateModuleInstance(instanceId, { title: e.target.value })}
           onMouseDown={(e) => e.stopPropagation()}
+          onDragStart={(e) => e.preventDefault()}
+          draggable={false}
           placeholder="Localização"
           className="mt-1"
         />
@@ -65,6 +67,8 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           value={locationConfig.address}
           onChange={(e) => updateModuleInstance(instanceId, { address: e.target.value })}
           onMouseDown={(e) => e.stopPropagation()}
+          onDragStart={(e) => e.preventDefault()}
+          draggable={false}
           placeholder="Rua das Flores, 123 - Centro&#10;São Paulo - SP, 01234-567"
           className="mt-1 min-h-[80px]"
         />
@@ -80,6 +84,8 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
                 value={hour.day}
                 onChange={(e) => updateBusinessHour(hour.id, 'day', e.target.value)}
                 onMouseDown={(e) => e.stopPropagation()}
+                onDragStart={(e) => e.preventDefault()}
+                draggable={false}
                 placeholder="Segunda a Sexta"
                 className="flex-1"
               />
@@ -88,6 +94,8 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
                 value={hour.hours}
                 onChange={(e) => updateBusinessHour(hour.id, 'hours', e.target.value)}
                 onMouseDown={(e) => e.stopPropagation()}
+                onDragStart={(e) => e.preventDefault()}
+                draggable={false}
                 placeholder="8h às 18h"
                 className="flex-1"
               />
@@ -122,6 +130,8 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           value={locationConfig.mapEmbedUrl}
           onChange={(e) => updateModuleInstance(instanceId, { mapEmbedUrl: e.target.value })}
           onMouseDown={(e) => e.stopPropagation()}
+          onDragStart={(e) => e.preventDefault()}
+          draggable={false}
           placeholder="https://www.google.com/maps/embed?pb=..."
           className="mt-1"
         />
