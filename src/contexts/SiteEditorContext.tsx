@@ -108,6 +108,18 @@ export interface GalleryConfig {
   images: GalleryImage[];
 }
 
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+export interface FAQConfig {
+  enabled: boolean;
+  title: string;
+  items: FAQItem[];
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -118,13 +130,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig;
 }
 
 export interface SiteConfig {
@@ -267,6 +279,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     button: 0,
     testimonials: 0,
     gallery: 0,
+    faq: 0,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -402,6 +415,19 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           defaultModuleConfig = {
             enabled: true,
             images: [],
+          };
+          break;
+        case 'faq':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'FAQ',
+            items: [
+              {
+                id: '1',
+                question: 'Quanto tempo vai durar meu processo?',
+                answer: 'O tempo varia de acordo com a complexidade do caso e a instância judicial.',
+              },
+            ],
           };
           break;
       }

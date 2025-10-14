@@ -9,6 +9,7 @@ import PreviewContactForm from './sections/PreviewContactForm';
 import PreviewButton from './sections/PreviewButton';
 import PreviewTestimonials from './sections/PreviewTestimonials';
 import PreviewGallery from './sections/PreviewGallery';
+import PreviewFAQ from './sections/PreviewFAQ';
 import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
@@ -42,6 +43,8 @@ const PreviewSite = () => {
         return null;
       case 'gallery':
         return <PreviewGallery key={key} instanceId={instanceId} />;
+      case 'faq':
+        return <PreviewFAQ key={key} instanceId={instanceId} />;
       default:
         return null;
     }
