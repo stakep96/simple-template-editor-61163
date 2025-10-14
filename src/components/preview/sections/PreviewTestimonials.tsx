@@ -35,7 +35,7 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
 
   return (
     <section className="py-16 px-4 overflow-hidden">
-      <div className="max-w-2xl mx-auto w-full">
+      <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
           {config.title}
         </h2>
@@ -47,29 +47,29 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
             loop: true,
           }}
           plugins={[plugin.current]}
-          className="w-full"
+          className="w-full max-w-full"
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
         >
           <CarouselContent className="-ml-4">
             {config.testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id} className="pl-4 basis-full">
+              <CarouselItem key={testimonial.id} className="pl-4">
                 <Card 
-                  className="p-8 rounded-2xl shadow-sm border border-transparent overflow-hidden"
+                  className="p-8 rounded-2xl shadow-sm border border-transparent"
                   style={{
                     backgroundColor: `color-mix(in srgb, var(--brand-primary) 15%, transparent)`,
                   }}
                 >
-                    <div className="flex items-start gap-4 mb-6 min-w-0">
+                    <div className="flex items-start gap-4 mb-6">
                       <Avatar className="w-14 h-14 flex-shrink-0">
                         <AvatarImage src={testimonial.image} alt={testimonial.name} />
                         <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-foreground text-base break-words overflow-wrap-anywhere">
+                        <h3 className="font-semibold text-foreground text-base break-words">
                           {testimonial.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground mb-2 break-words overflow-wrap-anywhere">
+                        <p className="text-sm text-muted-foreground mb-2 break-words">
                           {testimonial.role}
                         </p>
                         <div className="flex gap-1">
@@ -82,7 +82,7 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                         </div>
                       </div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm break-words overflow-wrap-anywhere whitespace-pre-wrap">
+                    <p className="text-muted-foreground leading-relaxed text-sm break-words whitespace-pre-wrap">
                       &quot;{testimonial.testimonial}&quot;
                     </p>
                   </Card>
