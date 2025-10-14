@@ -52,6 +52,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           type="text"
           value={locationConfig.title}
           onChange={(e) => updateModuleInstance(instanceId, { title: e.target.value })}
+          onMouseDown={(e) => e.stopPropagation()}
           placeholder="Localização"
           className="mt-1"
         />
@@ -63,6 +64,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           id={`location-address-${instanceId}`}
           value={locationConfig.address}
           onChange={(e) => updateModuleInstance(instanceId, { address: e.target.value })}
+          onMouseDown={(e) => e.stopPropagation()}
           placeholder="Rua das Flores, 123 - Centro&#10;São Paulo - SP, 01234-567"
           className="mt-1 min-h-[80px]"
         />
@@ -77,6 +79,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
                 type="text"
                 value={hour.day}
                 onChange={(e) => updateBusinessHour(hour.id, 'day', e.target.value)}
+                onMouseDown={(e) => e.stopPropagation()}
                 placeholder="Segunda a Sexta"
                 className="flex-1"
               />
@@ -84,6 +87,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
                 type="text"
                 value={hour.hours}
                 onChange={(e) => updateBusinessHour(hour.id, 'hours', e.target.value)}
+                onMouseDown={(e) => e.stopPropagation()}
                 placeholder="8h às 18h"
                 className="flex-1"
               />
