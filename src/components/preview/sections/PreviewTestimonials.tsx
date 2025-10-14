@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
@@ -19,6 +19,10 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
+  const plugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
+
   useEffect(() => {
     if (!api) return;
 
@@ -28,10 +32,6 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
-
-  const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
-  );
 
   return (
     <section className="py-16 px-4">
