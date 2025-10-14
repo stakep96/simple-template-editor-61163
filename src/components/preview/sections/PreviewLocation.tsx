@@ -18,7 +18,7 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
     <section className="py-12" style={{ backgroundColor: 'var(--brand-background)' }}>
       <div className="max-w-4xl mx-auto px-4">
         <h2 
-          className="text-2xl font-bold mb-6"
+          className="text-2xl font-bold mb-6 text-center"
           style={{ color: 'var(--brand-title-color)' }}
         >
           {locationConfig.title}
