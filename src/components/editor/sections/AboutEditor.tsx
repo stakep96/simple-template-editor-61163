@@ -134,7 +134,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
             type="button"
             variant="outline"
             onClick={addEducation}
-            className="w-full border-dashed"
+            className="w-full border-dashed hover:border-solid"
           >
             <Plus className="w-4 h-4 mr-2" />
             Adicionar Formação

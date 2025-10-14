@@ -167,7 +167,7 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
       <Button
         variant="outline"
         onClick={addArea}
-        className="w-full border-dashed"
+        className="w-full border-dashed hover:border-solid"
       >
         <Plus className="w-4 h-4 mr-2" />
         Adicionar Nova Área de atuação

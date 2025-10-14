@@ -111,7 +111,7 @@ const FAQEditor: React.FC<FAQEditorProps> = ({ instanceId }) => {
         <Button
           onClick={handleAddItem}
           variant="outline"
-          className="w-full border-dashed"
+          className="w-full border-dashed hover:border-solid"
         >
           <Plus className="w-4 h-4 mr-2" />
           Adicionar Pergunta
