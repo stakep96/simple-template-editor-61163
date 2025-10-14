@@ -51,12 +51,12 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
         >
-          <CarouselContent>
+          <CarouselContent className="min-h-[280px]">
             {config.testimonials.map((testimonial) => (
               <CarouselItem key={testimonial.id}>
-                <div className="px-4">
+                <div className="px-4 h-full">
                   <Card 
-                    className="p-8 rounded-[30px] shadow-sm border border-transparent"
+                    className="p-8 rounded-2xl shadow-sm border border-transparent h-full"
                     style={{
                       backgroundColor: `color-mix(in srgb, var(--brand-primary) 15%, transparent)`,
                     }}
