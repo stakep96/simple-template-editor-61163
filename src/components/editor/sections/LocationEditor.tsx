@@ -117,6 +117,7 @@ const LocationEditor: React.FC<LocationEditorProps> = ({ instanceId }) => {
           type="text"
           value={locationConfig.mapEmbedUrl}
           onChange={(e) => updateModuleInstance(instanceId, { mapEmbedUrl: e.target.value })}
+          onMouseDown={(e) => e.stopPropagation()}
           placeholder="https://www.google.com/maps/embed?pb=..."
           className="mt-1"
         />
