@@ -15,8 +15,8 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
   if (!locationConfig) return null;
 
   return (
-    <section className="py-12 px-4" style={{ backgroundColor: 'var(--brand-background)' }}>
-      <div className="max-w-4xl mx-auto">
+    <section className="py-12" style={{ backgroundColor: 'var(--brand-background)' }}>
+      <div className="max-w-4xl mx-auto px-4">
         <h2 
           className="text-2xl font-bold mb-6"
           style={{ color: 'var(--brand-title-color)' }}
@@ -24,7 +24,7 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
           {locationConfig.title}
         </h2>
 
-        <div className="grid md:grid-cols-1 gap-6">
+        <div className="grid md:grid-cols-1 gap-6 mb-8">
           {/* Address and Hours */}
           <div className="space-y-4">
             {/* Address */}
@@ -82,24 +82,24 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
               </div>
             )}
           </div>
-
-          {/* Map */}
-          {locationConfig.mapEmbedUrl && (
-            <div className="w-full h-64 rounded-lg overflow-hidden shadow-md">
-              <iframe
-                src={locationConfig.mapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localização no mapa"
-              />
-            </div>
-          )}
         </div>
       </div>
+
+      {/* Map - Full Width */}
+      {locationConfig.mapEmbedUrl && (
+        <div className="w-full h-64">
+          <iframe
+            src={locationConfig.mapEmbedUrl}
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Localização no mapa"
+          />
+        </div>
+      )}
     </section>
   );
 };
