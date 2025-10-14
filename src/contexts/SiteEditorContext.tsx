@@ -97,6 +97,17 @@ export interface TestimonialsConfig {
   testimonials: Testimonial[];
 }
 
+export interface GalleryImage {
+  id: string;
+  url: string;
+  alt?: string;
+}
+
+export interface GalleryConfig {
+  enabled: boolean;
+  images: GalleryImage[];
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -107,13 +118,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig;
 }
 
 export interface SiteConfig {
@@ -255,6 +266,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     contact: 0,
     button: 0,
     testimonials: 0,
+    gallery: 0,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -384,6 +396,12 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 testimonial: 'Depoimento do cliente...',
               },
             ],
+          };
+          break;
+        case 'gallery':
+          defaultModuleConfig = {
+            enabled: true,
+            images: [],
           };
           break;
       }

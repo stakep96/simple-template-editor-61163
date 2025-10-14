@@ -8,6 +8,7 @@ import PreviewSuccessCases from './sections/PreviewSuccessCases';
 import PreviewContactForm from './sections/PreviewContactForm';
 import PreviewButton from './sections/PreviewButton';
 import PreviewTestimonials from './sections/PreviewTestimonials';
+import PreviewGallery from './sections/PreviewGallery';
 import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
@@ -39,6 +40,8 @@ const PreviewSite = () => {
           return <PreviewTestimonials key={key} config={instance.config as import('@/contexts/SiteEditorContext').TestimonialsConfig} />;
         }
         return null;
+      case 'gallery':
+        return <PreviewGallery key={key} instanceId={instanceId} />;
       default:
         return null;
     }

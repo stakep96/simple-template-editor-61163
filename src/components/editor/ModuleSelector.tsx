@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare } from 'lucide-react';
+import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images } from 'lucide-react';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 interface ModuleSelectorProps {
@@ -55,6 +55,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
       icon: MessageSquare,
       title: 'Depoimentos',
       description: 'Avaliações',
+    },
+    {
+      id: 'gallery' as ModuleType,
+      icon: Images,
+      title: 'Galeria',
+      description: 'Fotos',
     },
   ];
 
