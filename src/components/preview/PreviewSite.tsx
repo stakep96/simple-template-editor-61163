@@ -10,6 +10,7 @@ import PreviewButton from './sections/PreviewButton';
 import PreviewTestimonials from './sections/PreviewTestimonials';
 import PreviewGallery from './sections/PreviewGallery';
 import PreviewFAQ from './sections/PreviewFAQ';
+import PreviewLocation from './sections/PreviewLocation';
 import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
@@ -45,6 +46,8 @@ const PreviewSite = () => {
         return <PreviewGallery key={key} instanceId={instanceId} />;
       case 'faq':
         return <PreviewFAQ key={key} instanceId={instanceId} />;
+      case 'location':
+        return <PreviewLocation key={key} instanceId={instanceId} />;
       default:
         return null;
     }

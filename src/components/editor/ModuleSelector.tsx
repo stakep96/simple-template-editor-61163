@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle } from 'lucide-react';
+import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin } from 'lucide-react';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 interface ModuleSelectorProps {
@@ -67,6 +67,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
       icon: HelpCircle,
       title: 'FAQ',
       description: 'Perguntas',
+    },
+    {
+      id: 'location' as ModuleType,
+      icon: MapPin,
+      title: 'Localização',
+      description: 'Endereço e mapa',
     },
   ];
 

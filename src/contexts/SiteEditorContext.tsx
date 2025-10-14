@@ -120,6 +120,20 @@ export interface FAQConfig {
   items: FAQItem[];
 }
 
+export interface BusinessHour {
+  id: string;
+  day: string;
+  hours: string;
+}
+
+export interface LocationConfig {
+  enabled: boolean;
+  title: string;
+  address: string;
+  businessHours: BusinessHour[];
+  mapEmbedUrl: string;
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -130,13 +144,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'location';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | LocationConfig;
 }
 
 export interface SiteConfig {
@@ -280,6 +294,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     testimonials: 0,
     gallery: 0,
     faq: 0,
+    location: 0,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -428,6 +443,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 answer: 'O tempo varia de acordo com a complexidade do caso e a instância judicial.',
               },
             ],
+          };
+          break;
+        case 'location':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Localização',
+            address: 'Rua das Flores, 123 - Centro\nSão Paulo - SP, 01234-567',
+            businessHours: [
+              {
+                id: '1',
+                day: 'Segunda a Sexta',
+                hours: '8h às 18h',
+              },
+            ],
+            mapEmbedUrl: '',
           };
           break;
       }
