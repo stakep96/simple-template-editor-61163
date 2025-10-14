@@ -59,13 +59,7 @@ const FAQEditor: React.FC<FAQEditorProps> = ({ instanceId }) => {
       </div>
 
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <Label>Perguntas Frequentes</Label>
-          <Button onClick={handleAddItem} size="sm" variant="outline">
-            <Plus className="w-4 h-4 mr-2" />
-            Adicionar Pergunta
-          </Button>
-        </div>
+        <Label>Perguntas Frequentes</Label>
 
         <div className="space-y-4">
           {faqConfig.items.map((item, index) => (
@@ -113,6 +107,15 @@ const FAQEditor: React.FC<FAQEditorProps> = ({ instanceId }) => {
             Nenhuma pergunta adicionada. Clique em "Adicionar Pergunta" para começar.
           </div>
         )}
+
+        <Button
+          onClick={handleAddItem}
+          variant="outline"
+          className="w-full border-dashed"
+        >
+          <Plus className="w-4 h-4 mr-2" />
+          Adicionar Pergunta
+        </Button>
       </div>
     </div>
   );

@@ -109,13 +109,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
       </div>
 
       <div>
-        <div className="flex items-center justify-between mb-2">
-          <Label className="text-sm">Formação</Label>
-          <Button type="button" variant="outline" size="sm" onClick={addEducation}>
-            <Plus className="w-4 h-4 mr-1" />
-            Adicionar
-          </Button>
-        </div>
+        <Label className="text-sm mb-2 block">Formação</Label>
         <div className="space-y-2">
           {(aboutConfig.education || []).map((edu, index) => (
             <div key={index} className="flex gap-2">
@@ -136,6 +130,15 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
               </Button>
             </div>
           ))}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={addEducation}
+            className="w-full border-dashed"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Adicionar Formação
+          </Button>
         </div>
       </div>
     </div>
