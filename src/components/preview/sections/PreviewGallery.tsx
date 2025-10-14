@@ -13,27 +13,18 @@ const PreviewGallery: React.FC<PreviewGalleryProps> = ({ instanceId }) => {
 
   if (!galleryConfig || galleryConfig.images.length === 0) return null;
 
-  // Create a mosaic pattern based on the number of images
+  const totalImages = galleryConfig.images.length;
+  const displayImages = galleryConfig.images.slice(0, 3);
+  const remainingCount = totalImages - 3;
+
+  // Create a mosaic pattern for up to 3 images
   const getMosaicPattern = (imageCount: number) => {
     if (imageCount === 1) return ['col-span-2 row-span-2'];
     if (imageCount === 2) return ['col-span-1 row-span-2', 'col-span-1 row-span-2'];
-    if (imageCount === 3) return ['col-span-1 row-span-2', 'col-span-1 row-span-1', 'col-span-1 row-span-1'];
-    if (imageCount === 4) return ['col-span-1 row-span-1', 'col-span-1 row-span-1', 'col-span-1 row-span-1', 'col-span-1 row-span-1'];
-    
-    // For 5+ images, create a varied pattern
-    const patterns = [
-      'col-span-1 row-span-2',
-      'col-span-1 row-span-1',
-      'col-span-1 row-span-1',
-      'col-span-1 row-span-2',
-      'col-span-1 row-span-1',
-      'col-span-1 row-span-1',
-    ];
-    
-    return Array(imageCount).fill(null).map((_, i) => patterns[i % patterns.length]);
+    return ['col-span-1 row-span-2', 'col-span-1 row-span-1', 'col-span-1 row-span-1'];
   };
 
-  const patterns = getMosaicPattern(galleryConfig.images.length);
+  const patterns = getMosaicPattern(displayImages.length);
 
   return (
     <section 
@@ -48,7 +39,7 @@ const PreviewGallery: React.FC<PreviewGalleryProps> = ({ instanceId }) => {
       </h2>
 
       <div className="grid grid-cols-2 gap-1 auto-rows-[200px]">
-        {galleryConfig.images.map((image, index) => (
+        {displayImages.map((image, index) => (
           <div
             key={image.id}
             className={`relative overflow-hidden ${patterns[index]}`}
@@ -61,6 +52,13 @@ const PreviewGallery: React.FC<PreviewGalleryProps> = ({ instanceId }) => {
                 e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop';
               }}
             />
+            {index === 2 && remainingCount > 0 && (
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <span className="text-white text-4xl font-bold">
+                  +{remainingCount}
+                </span>
+              </div>
+            )}
           </div>
         ))}
       </div>
