@@ -91,10 +91,15 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                style={{
+                  backgroundColor: index === current 
+                    ? `hsl(var(--primary))` 
+                    : `hsl(var(--primary) / 0.3)`,
+                }}
+                className={`rounded-full transition-all ${
                   index === current
-                    ? 'bg-primary w-6'
-                    : 'bg-primary/30'
+                    ? 'w-6 h-2'
+                    : 'w-2 h-2'
                 }`}
                 aria-label={`Ir para depoimento ${index + 1}`}
               />
