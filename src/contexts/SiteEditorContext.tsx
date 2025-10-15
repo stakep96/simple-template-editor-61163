@@ -193,7 +193,7 @@ const defaultConfig: SiteConfig = {
     background: '#FFFFFF',
     titleColor: '#2D2D2D',
     textColor: '#4A4A4A',
-    fontCombination: 'pacifico-inter',
+    fontCombination: 'inter',
   },
   marketing: {
     whatsapp: {

@@ -1,5 +1,13 @@
 export const fontCombinations = [
   {
+    id: 'inter',
+    name: 'Inter',
+    titleFont: 'Inter',
+    textFont: '(Padrão)',
+    titleFamily: 'Inter, sans-serif',
+    textFamily: 'Inter, sans-serif',
+  },
+  {
     id: 'pacifico-inter',
     name: 'Pacifico + Inter',
     titleFont: 'Pacifico',
