@@ -5,6 +5,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Layout, Check } from 'lucide-react';
+import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import { toast } from 'sonner';
 interface Template {
   id: string;
   name: string;
@@ -57,9 +59,22 @@ const templates: Template[] = [{
 }];
 const categories = ['Todos', 'Jurídico', 'Saúde', 'Mercado Digital', 'Produtos'];
 const TemplatesEditor = () => {
+  const { applyTemplate } = useSiteEditor();
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const filteredTemplates = selectedCategory === 'Todos' ? templates : templates.filter(t => t.category === selectedCategory);
+
+  const handleApplyTemplate = () => {
+    if (!selectedTemplate) {
+      toast.error('Selecione um template primeiro');
+      return;
+    }
+    
+    applyTemplate(selectedTemplate);
+    setIsDialogOpen(false);
+    toast.success('Template aplicado com sucesso!');
+  };
   return <Card className="p-4">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
@@ -78,7 +93,7 @@ const TemplatesEditor = () => {
           <CarouselPrevious className="static translate-y-0 h-9 w-9" />
           <CarouselNext className="static translate-y-0 h-9 w-9" />
           
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button variant="outline" size="sm">Ver tudo</Button>
             </DialogTrigger>
@@ -105,6 +120,15 @@ const TemplatesEditor = () => {
                           </div>}
                         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
                       </button>)}
+                  </div>
+                  
+                  <div className="mt-6 flex justify-end gap-2">
+                    <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                      Cancelar
+                    </Button>
+                    <Button onClick={handleApplyTemplate} disabled={!selectedTemplate}>
+                      Aplicar Template
+                    </Button>
                   </div>
                 </div>
               </Tabs>

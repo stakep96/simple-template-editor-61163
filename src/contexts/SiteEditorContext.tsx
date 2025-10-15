@@ -176,6 +176,7 @@ interface SiteEditorContextType {
   reorderModules: (newOrder: string[]) => void;
   addModuleAt: (moduleType: ModuleType, position: number) => void;
   removeModuleInstance: (instanceId: string) => void;
+  applyTemplate: (templateId: string) => void;
 }
 
 const defaultConfig: SiteConfig = {
@@ -515,6 +516,193 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     });
   };
 
+  const applyTemplate = (templateId: string) => {
+    // Define módulos para cada template
+    const templateModules: Record<string, ModuleType[]> = {
+      '1': ['header', 'hero', 'about', 'practice', 'cases', 'testimonials', 'gallery', 'faq', 'location', 'footer'], // Jurídico
+      '3': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Consultório Médico
+      '4': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Clínica Dentária
+      '5': ['header', 'hero', 'about', 'gallery', 'testimonials', 'contact', 'footer'], // E-commerce
+      '6': ['header', 'hero', 'about', 'cases', 'testimonials', 'contact', 'footer'], // Agência Digital
+      '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
+      '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
+    };
+
+    const modules = templateModules[templateId];
+    if (!modules) return;
+
+    setConfig((prev) => {
+      const newInstances: Record<string, ModuleInstance> = {};
+      const newOrder: string[] = [];
+      const newCounter: Record<ModuleType, number> = {
+        header: 0,
+        hero: 0,
+        about: 0,
+        practice: 0,
+        cases: 0,
+        contact: 0,
+        button: 0,
+        testimonials: 0,
+        gallery: 0,
+        faq: 0,
+        location: 0,
+        footer: 0,
+      };
+
+      // Criar instâncias para cada módulo do template
+      modules.forEach((moduleType) => {
+        const counter = newCounter[moduleType] + 1;
+        newCounter[moduleType] = counter;
+        const instanceId = `${moduleType}-${counter}`;
+
+        // Configuração padrão baseada no tipo
+        let defaultModuleConfig: any = { enabled: true };
+        
+        switch (moduleType) {
+          case 'header':
+            defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
+            break;
+          case 'hero':
+            defaultModuleConfig = {
+              enabled: true,
+              backgroundImage: '',
+              gradientOpacity: 0.7,
+              title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
+              description: 'Especialista com anos de experiência',
+            };
+            break;
+          case 'about':
+            defaultModuleConfig = {
+              enabled: true,
+              photo: '',
+              name: 'Seu Nome',
+              title: 'Seu Título Profissional',
+              description: 'Abordagem estratégica e personalizada para cada cliente',
+              socialLinks: {},
+              education: [
+                'Sua formação e especializações',
+              ],
+            };
+            break;
+          case 'practice':
+            defaultModuleConfig = {
+              enabled: true,
+              areas: [
+                { id: '1', title: 'Área de Atuação 1', icon: 'briefcase' },
+                { id: '2', title: 'Área de Atuação 2', icon: 'scale' },
+                { id: '3', title: 'Área de Atuação 3', icon: 'gavel' },
+              ],
+            };
+            break;
+          case 'cases':
+            defaultModuleConfig = {
+              enabled: true,
+              backgroundImage: '',
+              cases: [
+                {
+                  id: '1',
+                  title: 'Caso de Sucesso 1',
+                  description: 'Descrição do caso',
+                  result: 'Resultado obtido',
+                  icon: 'trophy',
+                },
+              ],
+            };
+            break;
+          case 'contact':
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Entre em Contato',
+              subtitle: 'Preencha o formulário',
+              fields: ['name', 'email', 'phone', 'message'],
+            };
+            break;
+          case 'button':
+            defaultModuleConfig = {
+              enabled: true,
+              ctaText: 'Clique Aqui',
+              link: '',
+            };
+            break;
+          case 'testimonials':
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Depoimentos',
+              testimonials: [
+                {
+                  id: '1',
+                  image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+                  name: 'Nome do Cliente',
+                  role: 'Cargo/Empresa',
+                  testimonial: 'Depoimento do cliente sobre o serviço prestado...',
+                },
+              ],
+            };
+            break;
+          case 'gallery':
+            defaultModuleConfig = {
+              enabled: true,
+              images: [
+                { id: '1', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop', alt: 'Imagem 1' },
+              ],
+            };
+            break;
+          case 'faq':
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Perguntas Frequentes',
+              items: [
+                {
+                  id: '1',
+                  question: 'Quanto tempo vai durar meu processo?',
+                  answer: 'O tempo varia de acordo com a complexidade do caso e a instância judicial.',
+                },
+              ],
+            };
+            break;
+          case 'location':
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Localização',
+              address: 'Seu endereço completo\nCidade - Estado, CEP',
+              businessHours: [
+                {
+                  id: '1',
+                  day: 'Segunda a Sexta',
+                  hours: '8h às 18h',
+                },
+              ],
+              mapEmbedUrl: '',
+            };
+            break;
+          case 'footer':
+            defaultModuleConfig = {
+              enabled: true,
+              copyrightText: '© SEU NOME - 000000 - OAB/XX\nTodos os direitos reservados - 2025',
+            };
+            break;
+        }
+
+        newInstances[instanceId] = {
+          id: instanceId,
+          type: moduleType,
+          enabled: true,
+          config: defaultModuleConfig,
+        };
+
+        newOrder.push(instanceId);
+      });
+
+      setInstanceCounter(newCounter);
+
+      return {
+        ...prev,
+        moduleInstances: newInstances,
+        moduleOrder: newOrder,
+      };
+    });
+  };
+
   return (
     <SiteEditorContext.Provider
       value={{
@@ -526,6 +714,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         reorderModules,
         addModuleAt,
         removeModuleInstance,
+        applyTemplate,
       }}
     >
       {children}
