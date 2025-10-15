@@ -117,7 +117,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                     style={{ backgroundColor: `${config.brand.accent}26` }}
                   >
                     <GraduationCap 
-                      className="w-5 h-5" 
+                      className="w-6 h-6" 
                       style={{ color: config.brand.accent }} 
                     />
                   </div>
