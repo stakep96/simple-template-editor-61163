@@ -20,7 +20,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
       style={{ backgroundColor: config.brand.background }}
     >
       <div 
-        className="max-w-lg mx-auto p-6 rounded-3xl"
+        className="max-w-2xl mx-auto p-5 rounded-3xl"
         style={{ 
           backgroundColor: `${config.brand.primary}26`
         }}
