@@ -88,6 +88,17 @@ const TemplatesEditor = () => {
         </div>
       </div>
 
+      {selectedTemplate && (
+        <div className="mb-4 p-3 bg-primary/10 rounded-lg flex items-center justify-between">
+          <p className="text-sm font-medium text-foreground">
+            Template selecionado: {templates.find(t => t.id === selectedTemplate)?.name}
+          </p>
+          <Button onClick={handleApplyTemplate} size="sm">
+            Aplicar Template
+          </Button>
+        </div>
+      )}
+
       <Carousel className="w-full">
         <div className="flex items-center justify-end gap-2 mb-2">
           <CarouselPrevious className="static translate-y-0 h-9 w-9" />
