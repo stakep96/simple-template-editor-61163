@@ -38,7 +38,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
         <div className="flex flex-col items-center">
           {aboutConfig.photo && (
             <div 
-              className="w-48 h-64 rounded-3xl mb-4 overflow-hidden border-4"
+              className="w-64 h-80 rounded-3xl mb-4 overflow-hidden border-4"
               style={{ borderColor: config.brand.primary }}
             >
               <img 
