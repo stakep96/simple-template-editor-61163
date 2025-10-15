@@ -105,7 +105,7 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                       </div>
                     </div>
                     <p 
-                      className="leading-relaxed text-sm break-words whitespace-pre-wrap" 
+                      className="leading-relaxed text-sm break-all whitespace-pre-wrap" 
                       style={{ 
                         color: 'var(--brand-text-color)',
                         fontFamily: 'var(--brand-text-font)' 
