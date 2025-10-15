@@ -10,28 +10,35 @@ interface ColorPickerProps {
 const ColorPicker: React.FC<ColorPickerProps> = ({ id, value, onChange }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const handleButtonClick = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+    }
+  };
+
   return (
     <div className="flex gap-2 items-center">
       <button
         type="button"
-        onClick={() => inputRef.current?.click()}
+        onClick={handleButtonClick}
         className="h-10 w-10 rounded-full cursor-pointer border-2 border-border hover:border-primary transition-colors flex-shrink-0"
         style={{ backgroundColor: value }}
         aria-label={`Selecionar ${id}`}
       />
       <input
         ref={inputRef}
-        id={id}
         type="color"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="sr-only"
+        className="absolute opacity-0 pointer-events-none"
+        tabIndex={-1}
       />
       <Input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 font-mono text-sm"
+        className="flex-1 font-mono text-sm uppercase"
+        placeholder="#000000"
       />
     </div>
   );
