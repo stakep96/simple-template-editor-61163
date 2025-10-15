@@ -15,8 +15,7 @@ export interface BrandColors {
   background: string;
   titleColor: string;
   textColor: string;
-  titleFont: string;
-  textFont: string;
+  fontCombination: string;
 }
 
 export interface HeaderConfig {
@@ -194,8 +193,7 @@ const defaultConfig: SiteConfig = {
     background: '#FFFFFF',
     titleColor: '#2D2D2D',
     textColor: '#4A4A4A',
-    titleFont: 'Arial',
-    textFont: 'Arial',
+    fontCombination: 'pacifico-inter',
   },
   marketing: {
     whatsapp: {
