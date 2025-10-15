@@ -113,11 +113,11 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                   style={{ backgroundColor: config.brand.primary }}
                 >
                   <div 
-                    className="flex-shrink-0 p-2 rounded-lg"
+                    className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
                     style={{ backgroundColor: `${config.brand.accent}26` }}
                   >
                     <GraduationCap 
-                      className="w-6 h-6" 
+                      className="w-5 h-5" 
                       style={{ color: config.brand.accent }} 
                     />
                   </div>
