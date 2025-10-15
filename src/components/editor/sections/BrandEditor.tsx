@@ -26,7 +26,7 @@ const BrandEditor = () => {
                 type="color"
                 value={config.brand.primary}
                 onChange={(e) => updateBrand({ primary: e.target.value })}
-                className="h-10 w-16 p-1 cursor-pointer"
+                className="h-10 w-10 p-1 cursor-pointer rounded-full"
               />
               <Input
                 type="text"
@@ -45,7 +45,7 @@ const BrandEditor = () => {
                 type="color"
                 value={config.brand.secondary}
                 onChange={(e) => updateBrand({ secondary: e.target.value })}
-                className="h-10 w-16 p-1 cursor-pointer"
+                className="h-10 w-10 p-1 cursor-pointer rounded-full"
               />
               <Input
                 type="text"
@@ -64,7 +64,7 @@ const BrandEditor = () => {
                 type="color"
                 value={config.brand.accent}
                 onChange={(e) => updateBrand({ accent: e.target.value })}
-                className="h-10 w-16 p-1 cursor-pointer"
+                className="h-10 w-10 p-1 cursor-pointer rounded-full"
               />
               <Input
                 type="text"
@@ -83,7 +83,7 @@ const BrandEditor = () => {
                 type="color"
                 value={config.brand.background}
                 onChange={(e) => updateBrand({ background: e.target.value })}
-                className="h-10 w-16 p-1 cursor-pointer"
+                className="h-10 w-10 p-1 cursor-pointer rounded-full"
               />
               <Input
                 type="text"
@@ -102,7 +102,7 @@ const BrandEditor = () => {
                 type="color"
                 value={config.brand.titleColor}
                 onChange={(e) => updateBrand({ titleColor: e.target.value })}
-                className="h-10 w-16 p-1 cursor-pointer"
+                className="h-10 w-10 p-1 cursor-pointer rounded-full"
               />
               <Input
                 type="text"
@@ -121,7 +121,7 @@ const BrandEditor = () => {
                 type="color"
                 value={config.brand.textColor}
                 onChange={(e) => updateBrand({ textColor: e.target.value })}
-                className="h-10 w-16 p-1 cursor-pointer"
+                className="h-10 w-10 p-1 cursor-pointer rounded-full"
               />
               <Input
                 type="text"
