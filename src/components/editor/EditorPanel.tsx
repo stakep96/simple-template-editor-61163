@@ -123,7 +123,7 @@ const EditorPanel = () => {
                   </div>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="px-4">
+              <AccordionContent className="px-4 pt-6 pb-4">
                 <BrandEditor />
               </AccordionContent>
             </AccordionItem>
