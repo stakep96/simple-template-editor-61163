@@ -36,7 +36,13 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
   return (
     <section className="py-16 px-4 overflow-hidden">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-foreground" style={{ fontFamily: 'var(--brand-title-font)' }}>
+        <h2 
+          className="text-3xl font-bold text-center mb-12" 
+          style={{ 
+            color: 'var(--brand-title-color)',
+            fontFamily: 'var(--brand-title-font)' 
+          }}
+        >
           {config.title}
         </h2>
 
@@ -66,23 +72,45 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                         <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-foreground text-base break-words" style={{ fontFamily: 'var(--brand-title-font)' }}>
+                        <h3 
+                          className="font-semibold text-base break-words" 
+                          style={{ 
+                            color: 'var(--brand-title-color)',
+                            fontFamily: 'var(--brand-title-font)' 
+                          }}
+                        >
                           {testimonial.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground mb-2 break-words" style={{ fontFamily: 'var(--brand-text-font)' }}>
+                        <p 
+                          className="text-sm mb-2 break-words" 
+                          style={{ 
+                            color: 'var(--brand-text-color)',
+                            fontFamily: 'var(--brand-text-font)' 
+                          }}
+                        >
                           {testimonial.role}
                         </p>
                         <div className="flex gap-1">
                           {[...Array(5)].map((_, i) => (
                             <Star
                               key={i}
-                              className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                              className="w-4 h-4"
+                              style={{ 
+                                fill: 'var(--brand-accent)',
+                                color: 'var(--brand-accent)'
+                              }}
                             />
                           ))}
                         </div>
                       </div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm break-words whitespace-pre-wrap" style={{ fontFamily: 'var(--brand-text-font)' }}>
+                    <p 
+                      className="leading-relaxed text-sm break-words whitespace-pre-wrap" 
+                      style={{ 
+                        color: 'var(--brand-text-color)',
+                        fontFamily: 'var(--brand-text-font)' 
+                      }}
+                    >
                       &quot;{testimonial.testimonial}&quot;
                     </p>
                   </Card>

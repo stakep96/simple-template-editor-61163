@@ -80,7 +80,10 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
                         className="p-2.5 rounded-lg flex-shrink-0"
                         style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
                       >
-                        <IconComponent className="w-6 h-6 text-white" />
+                        <IconComponent 
+                          className="w-6 h-6" 
+                          style={{ color: config.brand.accent }}
+                        />
                       </div>
                       
                       <div className="flex-1 min-w-0">
@@ -119,7 +122,10 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
                   className="p-2.5 rounded-lg flex-shrink-0"
                   style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
                 >
-                  <IconComponent className="w-6 h-6 text-white" />
+                  <IconComponent 
+                    className="w-6 h-6" 
+                    style={{ color: config.brand.accent }}
+                  />
                 </div>
                 
                 <div className="flex-1 min-w-0">

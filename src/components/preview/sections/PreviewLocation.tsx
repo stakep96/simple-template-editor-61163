@@ -36,7 +36,10 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
                 className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                 style={{ backgroundColor: 'var(--brand-primary)' }}
               >
-                <MapPin className="w-5 h-5 text-white" />
+                <MapPin 
+                  className="w-5 h-5" 
+                  style={{ color: 'var(--brand-accent)' }}
+                />
               </div>
               <div>
                 <h3 
@@ -67,7 +70,10 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
                   className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: 'var(--brand-primary)' }}
                 >
-                  <Clock className="w-5 h-5 text-white" />
+                  <Clock 
+                    className="w-5 h-5" 
+                    style={{ color: 'var(--brand-accent)' }}
+                  />
                 </div>
                 <div>
                   <h3 
