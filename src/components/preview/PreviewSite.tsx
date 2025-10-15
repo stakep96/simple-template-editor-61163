@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import { getFontCombination } from '@/lib/fontCombinations';
 import PreviewHeader from './sections/PreviewHeader';
 import PreviewHero from './sections/PreviewHero';
 import PreviewAbout from './sections/PreviewAbout';
@@ -16,7 +17,6 @@ import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
   const { config } = useSiteEditor();
-  const { getFontCombination } = require('@/lib/fontCombinations');
   const selectedFonts = getFontCombination(config.brand.fontCombination);
 
   const renderModule = (instanceId: string) => {
