@@ -30,8 +30,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ id, value, onChange }) => {
         type="color"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="absolute opacity-0 pointer-events-none"
-        tabIndex={-1}
+        className="sr-only"
       />
       <Input
         type="text"
