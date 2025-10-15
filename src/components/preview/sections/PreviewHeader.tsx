@@ -46,7 +46,7 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
             color: config.brand.secondary,
             fontFamily: 'var(--brand-title-font)'
           }}>
-            Advogado
+            Jurídico
           </span>
         </div>
       )}
