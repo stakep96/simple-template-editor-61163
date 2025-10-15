@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -75,18 +74,7 @@ const TemplatesEditor = () => {
     setIsDialogOpen(false);
     toast.success('Template aplicado com sucesso!');
   };
-  return <Card className="p-4">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Layout className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <h3 className="font-semibold text-foreground">Modelos</h3>
-            <p className="text-xs text-muted-foreground">Escolha um template</p>
-          </div>
-        </div>
-      </div>
+  return <div>
 
       {selectedTemplate && (
         <div className="mb-4 p-3 bg-primary/10 rounded-lg flex items-center justify-between">
@@ -162,6 +150,6 @@ const TemplatesEditor = () => {
             </CarouselItem>)}
         </CarouselContent>
       </Carousel>
-    </Card>;
+    </div>;
 };
 export default TemplatesEditor;

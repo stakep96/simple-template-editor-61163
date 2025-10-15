@@ -91,9 +91,23 @@ const EditorPanel = () => {
       
       <ScrollArea className="h-[calc(100vh-88px)]">
         <div className="p-6 space-y-4">
-          <TemplatesEditor />
-          
-          <Accordion type="multiple" defaultValue={['metadata', 'brand', 'marketing', 'edit-site']} className="space-y-4">
+          <Accordion type="multiple" defaultValue={['templates', 'metadata', 'brand', 'marketing', 'edit-site']} className="space-y-4">
+            <AccordionItem value="templates" className="border rounded-lg bg-background">
+              <AccordionTrigger className="px-4 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Layout className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">Modelos</h3>
+                    <p className="text-xs text-muted-foreground">Escolha um template</p>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pt-6 pb-4">
+                <TemplatesEditor />
+              </AccordionContent>
+            </AccordionItem>
             <AccordionItem value="metadata" className="border rounded-lg bg-background">
               <AccordionTrigger className="px-4 hover:no-underline">
                 <div className="flex items-center gap-3">
