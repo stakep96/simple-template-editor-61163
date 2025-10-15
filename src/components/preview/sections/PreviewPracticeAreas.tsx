@@ -47,10 +47,15 @@ const PreviewPracticeAreas: React.FC<PreviewPracticeAreasProps> = ({ instanceId 
               className="p-4 rounded-2xl flex flex-col items-center justify-center text-center min-h-[100px]"
               style={{ backgroundColor: config.brand.primary }}
             >
-              <Icon 
-                className="w-6 h-6 mb-2" 
-                style={{ color: config.brand.accent }} 
-              />
+              <div 
+                className="p-2 rounded-lg mb-2"
+                style={{ backgroundColor: `${config.brand.accent}26` }}
+              >
+                <Icon 
+                  className="w-6 h-6" 
+                  style={{ color: config.brand.accent }} 
+                />
+              </div>
               <span 
                 className="text-xs font-semibold"
                 style={{ 

@@ -78,7 +78,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
                     <div className="flex items-start gap-3">
                       <div 
                         className="p-2.5 rounded-lg flex-shrink-0"
-                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                        style={{ backgroundColor: `${config.brand.accent}26` }}
                       >
                         <IconComponent 
                           className="w-6 h-6" 
@@ -120,7 +120,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
               <div className="flex items-start gap-3">
                 <div 
                   className="p-2.5 rounded-lg flex-shrink-0"
-                  style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                  style={{ backgroundColor: `${config.brand.accent}26` }}
                 >
                   <IconComponent 
                     className="w-6 h-6" 
