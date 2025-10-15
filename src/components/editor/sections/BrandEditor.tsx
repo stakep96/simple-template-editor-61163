@@ -1,9 +1,9 @@
 import React from 'react';
 import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { Droplet, Type, Check } from 'lucide-react';
 import { fontCombinations } from '@/lib/fontCombinations';
+import ColorPicker from '@/components/editor/ColorPicker';
 
 const BrandEditor = () => {
   const { config, updateBrand } = useSiteEditor();
@@ -20,116 +20,56 @@ const BrandEditor = () => {
         <div className="space-y-3">
           <div>
             <Label htmlFor="primary" className="text-sm mb-2 block">Cor Primária</Label>
-            <div className="flex gap-2">
-              <Input
-                id="primary"
-                type="color"
-                value={config.brand.primary}
-                onChange={(e) => updateBrand({ primary: e.target.value })}
-                className="h-10 w-10 p-0 cursor-pointer rounded-full overflow-hidden border-0"
-              />
-              <Input
-                type="text"
-                value={config.brand.primary}
-                onChange={(e) => updateBrand({ primary: e.target.value })}
-                className="flex-1 font-mono text-sm"
-              />
-            </div>
+            <ColorPicker
+              id="primary"
+              value={config.brand.primary}
+              onChange={(value) => updateBrand({ primary: value })}
+            />
           </div>
 
           <div>
             <Label htmlFor="secondary" className="text-sm mb-2 block">Cor Secundária</Label>
-            <div className="flex gap-2">
-              <Input
-                id="secondary"
-                type="color"
-                value={config.brand.secondary}
-                onChange={(e) => updateBrand({ secondary: e.target.value })}
-                className="h-10 w-10 p-0 cursor-pointer rounded-full overflow-hidden border-0"
-              />
-              <Input
-                type="text"
-                value={config.brand.secondary}
-                onChange={(e) => updateBrand({ secondary: e.target.value })}
-                className="flex-1 font-mono text-sm"
-              />
-            </div>
+            <ColorPicker
+              id="secondary"
+              value={config.brand.secondary}
+              onChange={(value) => updateBrand({ secondary: value })}
+            />
           </div>
 
           <div>
             <Label htmlFor="accent" className="text-sm mb-2 block">Cor de Destaque</Label>
-            <div className="flex gap-2">
-              <Input
-                id="accent"
-                type="color"
-                value={config.brand.accent}
-                onChange={(e) => updateBrand({ accent: e.target.value })}
-                className="h-10 w-10 p-0 cursor-pointer rounded-full overflow-hidden border-0"
-              />
-              <Input
-                type="text"
-                value={config.brand.accent}
-                onChange={(e) => updateBrand({ accent: e.target.value })}
-                className="flex-1 font-mono text-sm"
-              />
-            </div>
+            <ColorPicker
+              id="accent"
+              value={config.brand.accent}
+              onChange={(value) => updateBrand({ accent: value })}
+            />
           </div>
 
           <div>
             <Label htmlFor="background" className="text-sm mb-2 block">Background do Site</Label>
-            <div className="flex gap-2">
-              <Input
-                id="background"
-                type="color"
-                value={config.brand.background}
-                onChange={(e) => updateBrand({ background: e.target.value })}
-                className="h-10 w-10 p-0 cursor-pointer rounded-full overflow-hidden border-0"
-              />
-              <Input
-                type="text"
-                value={config.brand.background}
-                onChange={(e) => updateBrand({ background: e.target.value })}
-                className="flex-1 font-mono text-sm"
-              />
-            </div>
+            <ColorPicker
+              id="background"
+              value={config.brand.background}
+              onChange={(value) => updateBrand({ background: value })}
+            />
           </div>
 
           <div>
             <Label htmlFor="titleColor" className="text-sm mb-2 block">Cor dos Títulos</Label>
-            <div className="flex gap-2">
-              <Input
-                id="titleColor"
-                type="color"
-                value={config.brand.titleColor}
-                onChange={(e) => updateBrand({ titleColor: e.target.value })}
-                className="h-10 w-10 p-0 cursor-pointer rounded-full overflow-hidden border-0"
-              />
-              <Input
-                type="text"
-                value={config.brand.titleColor}
-                onChange={(e) => updateBrand({ titleColor: e.target.value })}
-                className="flex-1 font-mono text-sm"
-              />
-            </div>
+            <ColorPicker
+              id="titleColor"
+              value={config.brand.titleColor}
+              onChange={(value) => updateBrand({ titleColor: value })}
+            />
           </div>
 
           <div>
             <Label htmlFor="textColor" className="text-sm mb-2 block">Cor dos Textos</Label>
-            <div className="flex gap-2">
-              <Input
-                id="textColor"
-                type="color"
-                value={config.brand.textColor}
-                onChange={(e) => updateBrand({ textColor: e.target.value })}
-                className="h-10 w-10 p-0 cursor-pointer rounded-full overflow-hidden border-0"
-              />
-              <Input
-                type="text"
-                value={config.brand.textColor}
-                onChange={(e) => updateBrand({ textColor: e.target.value })}
-                className="flex-1 font-mono text-sm"
-              />
-            </div>
+            <ColorPicker
+              id="textColor"
+              value={config.brand.textColor}
+              onChange={(value) => updateBrand({ textColor: value })}
+            />
           </div>
         </div>
       </div>
