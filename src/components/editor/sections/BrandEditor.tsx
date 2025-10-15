@@ -38,7 +38,7 @@ const BrandEditor = () => {
             </div>
 
             <div>
-              <Label htmlFor="accent" className="text-sm mb-2 block">Cor de Destaque</Label>
+              <Label htmlFor="accent" className="text-sm mb-2 block">Cor de Ícones</Label>
               <ColorPicker
                 id="accent"
                 value={config.brand.accent}

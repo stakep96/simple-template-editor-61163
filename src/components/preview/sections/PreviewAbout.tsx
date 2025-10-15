@@ -55,7 +55,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                 className="w-8 h-8 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: config.brand.primary }}
               >
-                <Instagram className="w-4 h-4" style={{ color: config.brand.secondary }} />
+                <Instagram className="w-4 h-4" style={{ color: config.brand.accent }} />
               </div>
             )}
             {aboutConfig.socialLinks?.facebook && (
@@ -63,7 +63,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                 className="w-8 h-8 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: config.brand.primary }}
               >
-                <Facebook className="w-4 h-4" style={{ color: config.brand.secondary }} />
+                <Facebook className="w-4 h-4" style={{ color: config.brand.accent }} />
               </div>
             )}
             {aboutConfig.socialLinks?.linkedin && (
@@ -71,7 +71,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                 className="w-8 h-8 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: config.brand.primary }}
               >
-                <Linkedin className="w-4 h-4" style={{ color: config.brand.secondary }} />
+                <Linkedin className="w-4 h-4" style={{ color: config.brand.accent }} />
               </div>
             )}
           </div>
