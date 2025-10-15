@@ -16,11 +16,11 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="px-6 py-12"
+      className="px-2.5 py-12"
       style={{ backgroundColor: config.brand.background }}
     >
       <div 
-        className="max-w-5xl mx-auto p-4 rounded-3xl"
+        className="mx-auto p-4 rounded-3xl"
         style={{ 
           backgroundColor: `${config.brand.primary}26`
         }}
