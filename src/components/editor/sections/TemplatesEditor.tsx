@@ -14,16 +14,10 @@ interface Template {
 }
 const templates: Template[] = [{
   id: '1',
-  name: 'Advocacia Criminal',
+  name: 'Jurídico',
   category: 'Jurídico',
   thumbnail: '',
   color: 'from-red-500 to-red-700'
-}, {
-  id: '2',
-  name: 'Direito Imobiliário',
-  category: 'Jurídico',
-  thumbnail: '',
-  color: 'from-blue-500 to-blue-700'
 }, {
   id: '3',
   name: 'Consultório Médico',
