@@ -8,30 +8,38 @@ interface ColorPickerProps {
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ id, value, onChange }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const colorInputRef = useRef<HTMLInputElement>(null);
 
-  const handleButtonClick = () => {
-    if (inputRef.current) {
-      inputRef.current.click();
-    }
+  const handleColorClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    colorInputRef.current?.click();
+  };
+
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = e.target.value;
+    onChange(newColor);
   };
 
   return (
     <div className="flex gap-2 items-center">
-      <button
-        type="button"
-        onClick={handleButtonClick}
-        className="h-10 w-10 rounded-full cursor-pointer border-2 border-border hover:border-primary transition-colors flex-shrink-0"
+      <div
+        onClick={handleColorClick}
+        className="h-10 w-10 rounded-full cursor-pointer border-2 border-border hover:border-primary transition-colors flex-shrink-0 relative"
         style={{ backgroundColor: value }}
-        aria-label={`Selecionar ${id}`}
-      />
-      <input
-        ref={inputRef}
-        type="color"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="sr-only"
-      />
+        role="button"
+        tabIndex={0}
+        aria-label={`Selecionar cor ${id}`}
+      >
+        <input
+          ref={colorInputRef}
+          type="color"
+          value={value}
+          onChange={handleColorChange}
+          className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+          style={{ width: '100%', height: '100%' }}
+        />
+      </div>
       <Input
         type="text"
         value={value}
