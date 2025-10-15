@@ -17,7 +17,9 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
   return (
     <section 
       className="px-6 py-12"
-      style={{ backgroundColor: config.brand.background }}
+      style={{ 
+        background: `linear-gradient(${config.brand.primary}26, ${config.brand.primary}26), ${config.brand.background}`
+      }}
     >
       <h2 
         className="text-xl font-bold text-center mb-6"
@@ -32,21 +34,14 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
       <div className="flex flex-col items-center">
         {aboutConfig.photo && (
           <div 
-            className="p-4 rounded-3xl mb-4"
-            style={{ 
-              backgroundColor: `${config.brand.primary}15`
-            }}
+            className="w-48 h-64 rounded-3xl mb-4 overflow-hidden border-4"
+            style={{ borderColor: config.brand.primary }}
           >
-            <div 
-              className="w-48 h-64 rounded-3xl overflow-hidden border-4"
-              style={{ borderColor: config.brand.primary }}
-            >
-              <img 
-                src={aboutConfig.photo} 
-                alt={aboutConfig.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <img 
+              src={aboutConfig.photo} 
+              alt={aboutConfig.name}
+              className="w-full h-full object-cover"
+            />
           </div>
         )}
 
