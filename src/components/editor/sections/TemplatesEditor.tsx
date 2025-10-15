@@ -15,8 +15,8 @@ interface Template {
 }
 
 const templates: Template[] = [
-  { id: '1', name: 'Advocacia Criminal', category: 'Jurídico', thumbnail: '', color: 'from-red-500 to-red-700' },
-  { id: '2', name: 'Direito Imobiliário', category: 'Jurídico', thumbnail: '', color: 'from-blue-500 to-blue-700' },
+  { id: '1', name: 'Jurídico', category: 'Jurídico', thumbnail: '', color: 'from-red-500 to-red-700' },
+  { id: '2', name: 'Jurídico', category: 'Jurídico', thumbnail: '', color: 'from-blue-500 to-blue-700' },
   { id: '3', name: 'Consultório Médico', category: 'Saúde', thumbnail: '', color: 'from-green-500 to-green-700' },
   { id: '4', name: 'Clínica Dentária', category: 'Saúde', thumbnail: '', color: 'from-teal-500 to-teal-700' },
   { id: '5', name: 'E-commerce', category: 'Mercado Digital', thumbnail: '', color: 'from-purple-500 to-purple-700' },
