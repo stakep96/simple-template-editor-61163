@@ -29,7 +29,10 @@ const PreviewFAQ: React.FC<PreviewFAQProps> = ({ instanceId }) => {
       <div className="max-w-3xl mx-auto">
         <h2
           className="text-3xl font-bold text-center mb-12"
-          style={{ color: `var(--brand-title-color)` }}
+          style={{ 
+            color: `var(--brand-title-color)`,
+            fontFamily: 'var(--brand-title-font)'
+          }}
         >
           {faqConfig.title}
         </h2>
@@ -43,13 +46,19 @@ const PreviewFAQ: React.FC<PreviewFAQProps> = ({ instanceId }) => {
             >
               <AccordionTrigger
                 className="text-left hover:no-underline"
-                style={{ color: `var(--brand-title-color)` }}
+                style={{ 
+                  color: `var(--brand-title-color)`,
+                  fontFamily: 'var(--brand-title-font)'
+                }}
               >
                 {item.question}
               </AccordionTrigger>
               <AccordionContent
                 className="text-sm leading-relaxed"
-                style={{ color: `var(--brand-text-color)` }}
+                style={{ 
+                  color: `var(--brand-text-color)`,
+                  fontFamily: 'var(--brand-text-font)'
+                }}
               >
                 {item.answer}
               </AccordionContent>

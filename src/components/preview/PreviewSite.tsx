@@ -16,6 +16,8 @@ import WhatsAppButton from './WhatsAppButton';
 
 const PreviewSite = () => {
   const { config } = useSiteEditor();
+  const { getFontCombination } = require('@/lib/fontCombinations');
+  const selectedFonts = getFontCombination(config.brand.fontCombination);
 
   const renderModule = (instanceId: string) => {
     const instance = config.moduleInstances[instanceId];
@@ -67,6 +69,8 @@ const PreviewSite = () => {
         '--brand-background': config.brand.background,
         '--brand-title-color': config.brand.titleColor,
         '--brand-text-color': config.brand.textColor,
+        '--brand-title-font': selectedFonts.titleFamily,
+        '--brand-text-font': selectedFonts.textFamily,
         backgroundColor: config.brand.background,
       } as React.CSSProperties}
     >

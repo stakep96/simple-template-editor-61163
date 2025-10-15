@@ -31,7 +31,10 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
         ) : (
           <div className="flex items-center gap-2">
             <Scale className="w-6 h-6" style={{ color: config.brand.secondary }} />
-            <span className="font-bold text-lg" style={{ color: config.brand.secondary }}>
+            <span className="font-bold text-lg" style={{ 
+              color: config.brand.secondary,
+              fontFamily: 'var(--brand-title-font)'
+            }}>
               {headerConfig.logo}
             </span>
           </div>
@@ -39,7 +42,10 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
       ) : (
         <div className="flex items-center gap-2">
           <Scale className="w-6 h-6" style={{ color: config.brand.secondary }} />
-          <span className="font-bold text-lg" style={{ color: config.brand.secondary }}>
+          <span className="font-bold text-lg" style={{ 
+            color: config.brand.secondary,
+            fontFamily: 'var(--brand-title-font)'
+          }}>
             Advogado
           </span>
         </div>

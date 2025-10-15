@@ -21,10 +21,16 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
     <section className="py-16 px-4" style={{ backgroundColor: 'var(--brand-background)' }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-2" style={{ color: 'var(--brand-title-color)' }}>
+          <h2 className="text-3xl font-bold mb-2" style={{ 
+            color: 'var(--brand-title-color)',
+            fontFamily: 'var(--brand-title-font)'
+          }}>
             {contactConfig.title}
           </h2>
-          <p className="text-lg" style={{ color: 'var(--brand-text-color)' }}>
+          <p className="text-lg" style={{ 
+            color: 'var(--brand-text-color)',
+            fontFamily: 'var(--brand-text-font)'
+          }}>
             {contactConfig.subtitle}
           </p>
         </div>

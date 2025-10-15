@@ -22,7 +22,7 @@ const PreviewFooter: React.FC<PreviewFooterProps> = ({ instanceId }) => {
         style={{ backgroundColor: 'var(--brand-primary)' }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white text-sm font-medium whitespace-pre-line">
+          <p className="text-white text-sm font-medium whitespace-pre-line" style={{ fontFamily: 'var(--brand-text-font)' }}>
             {footerConfig.copyrightText}
           </p>
         </div>
@@ -31,7 +31,7 @@ const PreviewFooter: React.FC<PreviewFooterProps> = ({ instanceId }) => {
       {/* About.work Signature - Fixed */}
       <div className="w-full py-4 px-4 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto flex items-center justify-center gap-2">
-          <span className="text-sm text-gray-700">Esse site foi feito com:</span>
+          <span className="text-sm text-gray-700" style={{ fontFamily: 'var(--brand-text-font)' }}>Esse site foi feito com:</span>
           <img 
             src={aboutWorkLogo} 
             alt="About.work" 

@@ -21,7 +21,10 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
     >
       <h2 
         className="text-xl font-bold text-center mb-6"
-        style={{ color: config.brand.titleColor }}
+        style={{ 
+          color: config.brand.titleColor,
+          fontFamily: 'var(--brand-title-font)'
+        }}
       >
         Sobre mim
       </h2>
@@ -69,19 +72,28 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
 
         <h3 
           className="text-lg font-bold mb-1"
-          style={{ color: config.brand.titleColor }}
+          style={{ 
+            color: config.brand.titleColor,
+            fontFamily: 'var(--brand-title-font)'
+          }}
         >
           {aboutConfig.name}
         </h3>
         <p 
           className="text-xs mb-4 text-center"
-          style={{ color: config.brand.textColor }}
+          style={{ 
+            color: config.brand.textColor,
+            fontFamily: 'var(--brand-text-font)'
+          }}
         >
           {aboutConfig.title}
         </p>
         <p 
           className="text-sm text-center mb-6"
-          style={{ color: config.brand.textColor }}
+          style={{ 
+            color: config.brand.textColor,
+            fontFamily: 'var(--brand-text-font)'
+          }}
         >
           {aboutConfig.description}
         </p>
@@ -102,7 +114,10 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                 </div>
                 <p 
                   className="text-xs leading-relaxed"
-                  style={{ color: config.brand.secondary }}
+                  style={{ 
+                    color: config.brand.secondary,
+                    fontFamily: 'var(--brand-text-font)'
+                  }}
                 >
                   {edu}
                 </p>

@@ -19,7 +19,10 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
       <div className="max-w-4xl mx-auto px-4">
         <h2 
           className="text-2xl font-bold mb-6 text-center"
-          style={{ color: 'var(--brand-title-color)' }}
+          style={{ 
+            color: 'var(--brand-title-color)',
+            fontFamily: 'var(--brand-title-font)'
+          }}
         >
           {locationConfig.title}
         </h2>
@@ -38,13 +41,19 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
               <div>
                 <h3 
                   className="font-semibold text-sm mb-1"
-                  style={{ color: 'var(--brand-title-color)' }}
+                  style={{ 
+                    color: 'var(--brand-title-color)',
+                    fontFamily: 'var(--brand-title-font)'
+                  }}
                 >
                   Endereço
                 </h3>
                 <p 
                   className="text-sm whitespace-pre-line"
-                  style={{ color: 'var(--brand-text-color)' }}
+                  style={{ 
+                    color: 'var(--brand-text-color)',
+                    fontFamily: 'var(--brand-text-font)'
+                  }}
                 >
                   {locationConfig.address}
                 </p>
@@ -63,7 +72,10 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
                 <div>
                   <h3 
                     className="font-semibold text-sm mb-2"
-                    style={{ color: 'var(--brand-title-color)' }}
+                    style={{ 
+                      color: 'var(--brand-title-color)',
+                      fontFamily: 'var(--brand-title-font)'
+                    }}
                   >
                     Horário de Atendimento
                   </h3>
@@ -72,7 +84,10 @@ const PreviewLocation: React.FC<PreviewLocationProps> = ({ instanceId }) => {
                       <div 
                         key={hour.id} 
                         className="text-sm"
-                        style={{ color: 'var(--brand-text-color)' }}
+                        style={{ 
+                          color: 'var(--brand-text-color)',
+                          fontFamily: 'var(--brand-text-font)'
+                        }}
                       >
                         <span className="font-medium">{hour.day}:</span> {hour.hours}
                       </div>

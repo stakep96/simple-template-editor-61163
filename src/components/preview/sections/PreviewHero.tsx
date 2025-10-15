@@ -35,13 +35,19 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
       <div className="relative z-10 space-y-3 mb-2">
         <h1 
           className="text-2xl font-bold leading-tight"
-          style={{ color: config.brand.titleColor }}
+          style={{ 
+            color: config.brand.titleColor,
+            fontFamily: 'var(--brand-title-font)'
+          }}
         >
           {heroConfig.title}
         </h1>
         <p 
           className="text-sm leading-relaxed"
-          style={{ color: config.brand.textColor }}
+          style={{ 
+            color: config.brand.textColor,
+            fontFamily: 'var(--brand-text-font)'
+          }}
         >
           {heroConfig.description}
         </p>

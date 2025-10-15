@@ -10,15 +10,8 @@ interface ColorPickerProps {
 const ColorPicker: React.FC<ColorPickerProps> = ({ id, value, onChange }) => {
   const colorInputRef = useRef<HTMLInputElement>(null);
 
-  const handleColorClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleColorClick = () => {
     colorInputRef.current?.click();
-  };
-
-  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newColor = e.target.value;
-    onChange(newColor);
   };
 
   return (
@@ -35,9 +28,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ id, value, onChange }) => {
           ref={colorInputRef}
           type="color"
           value={value}
-          onChange={handleColorChange}
-          className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
-          style={{ width: '100%', height: '100%' }}
+          onChange={(e) => onChange(e.target.value)}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          style={{ border: 'none', padding: 0 }}
         />
       </div>
       <Input

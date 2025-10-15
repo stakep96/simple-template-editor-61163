@@ -87,13 +87,13 @@ const BrandEditor = () => {
               <button
                 key={combo.id}
                 onClick={() => updateBrand({ fontCombination: combo.id })}
-                className={`relative p-6 rounded-lg border-2 transition-all hover:border-primary ${
+                className={`relative p-6 rounded-lg border-2 transition-all hover:border-primary min-h-[140px] ${
                   config.brand.fontCombination === combo.id
                     ? 'border-primary ring-2 ring-primary/20 bg-primary/5'
                     : 'border-border bg-card'
                 }`}
               >
-                <div className="space-y-2">
+                <div className="space-y-2 flex flex-col items-center justify-center h-full">
                   <p 
                     className="text-3xl font-bold text-center"
                     style={{ fontFamily: combo.titleFamily }}
