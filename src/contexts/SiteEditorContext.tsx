@@ -165,6 +165,7 @@ export interface SiteConfig {
   marketing: MarketingConfig;
   moduleInstances: Record<string, ModuleInstance>;
   moduleOrder: string[]; // array of instance IDs
+  currentTemplateId?: string; // ID do template atualmente aplicado
 }
 
 interface SiteEditorContextType {
@@ -699,6 +700,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         ...prev,
         moduleInstances: newInstances,
         moduleOrder: newOrder,
+        currentTemplateId: templateId,
       };
     });
   };

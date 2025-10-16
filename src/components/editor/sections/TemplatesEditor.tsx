@@ -67,7 +67,7 @@ const templates: Template[] = [{
 }];
 const categories = ['Todos', 'Jurídico', 'Saúde', 'Mercado Digital', 'Produtos'];
 const TemplatesEditor = () => {
-  const { applyTemplate } = useSiteEditor();
+  const { applyTemplate, config } = useSiteEditor();
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -105,7 +105,7 @@ const TemplatesEditor = () => {
                 
                 <div className="mt-6">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {filteredTemplates.map(template => <button key={template.id} onClick={() => setSelectedTemplate(template.id)} className={`group relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-blue-500 ring-2 ring-blue-500' : 'border-border hover:border-primary'}`}>
+                    {filteredTemplates.map(template => <button key={template.id} onClick={() => setSelectedTemplate(template.id)} className={`group relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${config.currentTemplateId === template.id ? 'border-blue-500 ring-2 ring-blue-500' : 'border-border hover:border-primary'}`}>
                         <div className="w-full h-full relative">
                           {template.thumbnail ? (
                             <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
@@ -116,7 +116,7 @@ const TemplatesEditor = () => {
                             <p className="font-bold text-sm text-foreground">{template.name}</p>
                           </div>
                         </div>
-                        {selectedTemplate === template.id && <div className="absolute top-2 right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                        {config.currentTemplateId === template.id && <div className="absolute top-2 right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
                             <Check className="w-5 h-5 text-white" />
                           </div>}
                         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
@@ -139,8 +139,8 @@ const TemplatesEditor = () => {
         <CarouselContent className="-ml-2">
           {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-3">
               <div className="relative">
-                {/* Borda de seleção - fica por cima de tudo */}
-                {selectedTemplate === template.id && (
+                {/* Borda de seleção - fica por cima de tudo - apenas se for o template aplicado */}
+                {config.currentTemplateId === template.id && (
                   <div className="absolute -inset-1 border-[3px] border-primary rounded-xl z-20 pointer-events-none" />
                 )}
                 
@@ -156,13 +156,13 @@ const TemplatesEditor = () => {
                       <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                     )}
                   </div>
-                  
-                  {/* Check mark quando selecionado */}
-                  {selectedTemplate === template.id && (
-                    <div className="absolute top-2 right-2 w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow-lg z-30">
-                      <Check className="w-4 h-4 text-primary-foreground" />
-                    </div>
-                  )}
+                    
+                    {/* Check mark quando aplicado */}
+                    {config.currentTemplateId === template.id && (
+                      <div className="absolute top-2 right-2 w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow-lg z-30">
+                        <Check className="w-4 h-4 text-primary-foreground" />
+                      </div>
+                    )}
                   
                   {/* Informações que aparecem no hover - sobrepostas à imagem */}
                   <div className="absolute bottom-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border p-3 space-y-2 h-[120px] flex flex-col justify-between z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
