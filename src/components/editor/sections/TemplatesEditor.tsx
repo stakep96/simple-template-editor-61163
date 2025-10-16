@@ -137,37 +137,53 @@ const TemplatesEditor = () => {
           </Dialog>
         </div>
         <CarouselContent className="-ml-2">
-          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-2">
-              <div className={`group relative rounded-lg border-2 transition-all bg-background ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
-                <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
-                  <div className="w-full aspect-[3/4] relative overflow-hidden rounded-t-[6px]">
+          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-3">
+              <div className="relative">
+                {/* Borda de seleção - fica por cima de tudo */}
+                {selectedTemplate === template.id && (
+                  <div className="absolute -inset-1 border-[3px] border-primary rounded-xl z-20 pointer-events-none" />
+                )}
+                
+                <button 
+                  onClick={() => setSelectedTemplate(template.id)} 
+                  className="group relative w-full rounded-lg overflow-hidden transition-all hover:shadow-lg"
+                >
+                  {/* Imagem/Gradient do template */}
+                  <div className="w-full aspect-[3/4] relative overflow-hidden">
                     {template.thumbnail ? (
                       <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                     ) : (
                       <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                     )}
-                    {selectedTemplate === template.id && <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                    
+                    {/* Check mark quando selecionado */}
+                    {selectedTemplate === template.id && (
+                      <div className="absolute top-2 right-2 w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow-lg z-30">
                         <Check className="w-4 h-4 text-primary-foreground" />
-                      </div>}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Informações que aparecem no hover */}
+                  <div className="bg-background border-t border-border p-3 space-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300 max-h-0 group-hover:max-h-48 overflow-hidden">
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground line-clamp-2">{template.description}</p>
+                    <Button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedTemplate(template.id);
+                        handleApplyTemplate();
+                      }} 
+                      size="sm" 
+                      className="w-full h-8 text-xs mt-1"
+                    >
+                      Aplicar Tema
+                    </Button>
                   </div>
                 </button>
-                <div className="bg-background p-2 space-y-1.5 rounded-b-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-32 overflow-hidden">
-                  <div className="flex items-center gap-1.5">
-                    <h4 className="font-semibold text-xs text-foreground truncate">{template.name}</h4>
-                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
-                  </div>
-                  <p className="text-[11px] text-muted-foreground line-clamp-2">{template.description}</p>
-                  <Button 
-                    onClick={() => {
-                      setSelectedTemplate(template.id);
-                      handleApplyTemplate();
-                    }} 
-                    size="sm" 
-                    className="w-full h-7 text-xs"
-                  >
-                    Aplicar Tema
-                  </Button>
-                </div>
               </div>
             </CarouselItem>)}
         </CarouselContent>
