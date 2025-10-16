@@ -165,12 +165,14 @@ const TemplatesEditor = () => {
                   </div>
                   
                   {/* Informações que aparecem no hover */}
-                  <div className="bg-background border-t border-border p-3 space-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300 max-h-0 group-hover:max-h-48 overflow-hidden">
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
+                  <div className="bg-background border-t border-border p-3 space-y-2 h-[120px] flex flex-col justify-between">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground line-clamp-2">{template.description}</p>
                     </div>
-                    <p className="text-xs text-muted-foreground line-clamp-2">{template.description}</p>
                     <Button 
                       onClick={(e) => {
                         e.stopPropagation();
@@ -178,7 +180,7 @@ const TemplatesEditor = () => {
                         handleApplyTemplate();
                       }} 
                       size="sm" 
-                      className="w-full h-8 text-xs mt-1"
+                      className="w-full h-8 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
                       Aplicar Tema
                     </Button>
