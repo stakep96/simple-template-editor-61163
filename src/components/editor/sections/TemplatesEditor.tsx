@@ -108,7 +108,7 @@ const TemplatesEditor = () => {
                     {filteredTemplates.map(template => <button key={template.id} onClick={() => setSelectedTemplate(template.id)} className={`group relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-blue-500 ring-2 ring-blue-500' : 'border-border hover:border-primary'}`}>
                         <div className="w-full h-full relative">
                           {template.thumbnail ? (
-                            <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover" />
+                            <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                           ) : (
                             <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                           )}
@@ -142,7 +142,7 @@ const TemplatesEditor = () => {
                 <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
                   <div className="w-full aspect-[3/4] relative overflow-hidden">
                     {template.thumbnail ? (
-                      <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover" />
+                      <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                     ) : (
                       <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                     )}
