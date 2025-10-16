@@ -143,28 +143,28 @@ const TemplatesEditor = () => {
           </Dialog>
         </div>
         <CarouselContent className="-ml-2">
-          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/3">
+          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5">
               <div className={`group relative rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
                 <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
-                  <div className={`w-full aspect-[4/3] bg-gradient-to-br ${template.color} relative`}>
+                  <div className={`w-full aspect-[3/4] bg-gradient-to-br ${template.color} relative`}>
                     {selectedTemplate === template.id && <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-lg">
                         <Check className="w-4 h-4 text-primary-foreground" />
                       </div>}
                   </div>
                 </button>
-                <div className="bg-background p-3 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">{template.category}</span>
+                <div className="bg-background p-2 space-y-1.5">
+                  <div className="flex items-center gap-1.5">
+                    <h4 className="font-semibold text-xs text-foreground truncate">{template.name}</h4>
+                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">{template.description}</p>
+                  <p className="text-[11px] text-muted-foreground line-clamp-2">{template.description}</p>
                   <Button 
                     onClick={() => {
                       setSelectedTemplate(template.id);
                       handleApplyTemplate();
                     }} 
                     size="sm" 
-                    className="w-full h-8"
+                    className="w-full h-7 text-xs"
                   >
                     Aplicar Tema
                   </Button>
