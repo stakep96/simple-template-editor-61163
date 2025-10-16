@@ -146,26 +146,26 @@ const TemplatesEditor = () => {
                 
                 <button 
                   onClick={() => setSelectedTemplate(template.id)} 
-                  className="group relative w-full rounded-lg overflow-hidden transition-all hover:shadow-lg"
+                  className="group relative w-full rounded-lg overflow-hidden transition-all hover:shadow-lg h-[400px]"
                 >
-                  {/* Imagem/Gradient do template */}
-                  <div className="w-full aspect-[3/4] relative overflow-hidden">
+                  {/* Imagem/Gradient do template - ocupa toda extensão */}
+                  <div className="absolute inset-0">
                     {template.thumbnail ? (
                       <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                     ) : (
                       <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                     )}
-                    
-                    {/* Check mark quando selecionado */}
-                    {selectedTemplate === template.id && (
-                      <div className="absolute top-2 right-2 w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow-lg z-30">
-                        <Check className="w-4 h-4 text-primary-foreground" />
-                      </div>
-                    )}
                   </div>
                   
-                  {/* Informações que aparecem no hover */}
-                  <div className="bg-background border-t border-border p-3 space-y-2 h-[120px] flex flex-col justify-between">
+                  {/* Check mark quando selecionado */}
+                  {selectedTemplate === template.id && (
+                    <div className="absolute top-2 right-2 w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow-lg z-30">
+                      <Check className="w-4 h-4 text-primary-foreground" />
+                    </div>
+                  )}
+                  
+                  {/* Informações que aparecem no hover - sobrepostas à imagem */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border p-3 space-y-2 h-[120px] flex flex-col justify-between z-10">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex items-center gap-2 mb-2">
                         <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
