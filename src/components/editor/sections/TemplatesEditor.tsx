@@ -151,7 +151,7 @@ const TemplatesEditor = () => {
                       </div>}
                   </div>
                 </button>
-                <div className="bg-background p-2 space-y-1.5 rounded-b-[6px]">
+                <div className="bg-background p-2 space-y-1.5 rounded-b-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-32 overflow-hidden">
                   <div className="flex items-center gap-1.5">
                     <h4 className="font-semibold text-xs text-foreground truncate">{template.name}</h4>
                     <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
