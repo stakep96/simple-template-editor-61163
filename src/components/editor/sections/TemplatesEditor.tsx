@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Layout, Check } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { toast } from 'sonner';
+import templateJuridico from '@/assets/template-juridico.png';
 interface Template {
   id: string;
   name: string;
@@ -18,7 +19,7 @@ const templates: Template[] = [{
   id: '1',
   name: 'Jurídico',
   category: 'Jurídico',
-  thumbnail: '',
+  thumbnail: templateJuridico,
   color: 'from-red-500 to-red-700',
   description: 'Design profissional para escritórios de advocacia'
 }, {
@@ -105,8 +106,13 @@ const TemplatesEditor = () => {
                 <div className="mt-6">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {filteredTemplates.map(template => <button key={template.id} onClick={() => setSelectedTemplate(template.id)} className={`group relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-blue-500 ring-2 ring-blue-500' : 'border-border hover:border-primary'}`}>
-                        <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-4`}>
-                          <div className="bg-background/90 backdrop-blur-sm rounded px-3 py-1">
+                        <div className="w-full h-full relative">
+                          {template.thumbnail ? (
+                            <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
+                          )}
+                          <div className="absolute bottom-4 left-4 right-4 bg-background/90 backdrop-blur-sm rounded px-3 py-1">
                             <p className="font-bold text-sm text-foreground">{template.name}</p>
                           </div>
                         </div>
@@ -134,7 +140,12 @@ const TemplatesEditor = () => {
           {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5">
               <div className={`group relative rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
                 <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
-                  <div className={`w-full aspect-[3/4] bg-gradient-to-br ${template.color} relative`}>
+                  <div className="w-full aspect-[3/4] relative overflow-hidden">
+                    {template.thumbnail ? (
+                      <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
+                    )}
                     {selectedTemplate === template.id && <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-lg">
                         <Check className="w-4 h-4 text-primary-foreground" />
                       </div>}
