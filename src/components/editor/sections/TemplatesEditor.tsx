@@ -137,10 +137,10 @@ const TemplatesEditor = () => {
           </Dialog>
         </div>
         <CarouselContent className="-ml-2">
-          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-1">
-              <div className={`group relative rounded-lg border-2 transition-all ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
+          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-2">
+              <div className={`group relative rounded-lg border-2 transition-all bg-background ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
                 <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
-                  <div className="w-full aspect-[3/4] relative overflow-hidden rounded-t-md">
+                  <div className="w-full aspect-[3/4] relative overflow-hidden rounded-t-[6px]">
                     {template.thumbnail ? (
                       <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                     ) : (
@@ -151,7 +151,7 @@ const TemplatesEditor = () => {
                       </div>}
                   </div>
                 </button>
-                <div className="bg-background p-2 space-y-1.5">
+                <div className="bg-background p-2 space-y-1.5 rounded-b-[6px]">
                   <div className="flex items-center gap-1.5">
                     <h4 className="font-semibold text-xs text-foreground truncate">{template.name}</h4>
                     <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
