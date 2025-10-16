@@ -137,10 +137,10 @@ const TemplatesEditor = () => {
           </Dialog>
         </div>
         <CarouselContent className="-ml-2">
-          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5">
-              <div className={`group relative rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary ring-offset-2 ring-offset-background' : 'border-border hover:border-primary'}`}>
+          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-1">
+              <div className={`group relative rounded-lg border-2 transition-all ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
                 <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
-                  <div className="w-full aspect-[3/4] relative overflow-hidden">
+                  <div className="w-full aspect-[3/4] relative overflow-hidden rounded-t-md">
                     {template.thumbnail ? (
                       <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                     ) : (
