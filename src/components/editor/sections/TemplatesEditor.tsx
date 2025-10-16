@@ -12,49 +12,57 @@ interface Template {
   category: string;
   thumbnail: string;
   color: string;
+  description: string;
 }
 const templates: Template[] = [{
   id: '1',
   name: 'Jurídico',
   category: 'Jurídico',
   thumbnail: '',
-  color: 'from-red-500 to-red-700'
+  color: 'from-red-500 to-red-700',
+  description: 'Design profissional para escritórios de advocacia'
 }, {
   id: '3',
   name: 'Consultório Médico',
   category: 'Saúde',
   thumbnail: '',
-  color: 'from-green-500 to-green-700'
+  color: 'from-green-500 to-green-700',
+  description: 'Layout clean para consultórios e clínicas médicas'
 }, {
   id: '4',
   name: 'Clínica Dentária',
   category: 'Saúde',
   thumbnail: '',
-  color: 'from-teal-500 to-teal-700'
+  color: 'from-teal-500 to-teal-700',
+  description: 'Design moderno para clínicas odontológicas'
 }, {
   id: '5',
   name: 'E-commerce',
   category: 'Mercado Digital',
   thumbnail: '',
-  color: 'from-purple-500 to-purple-700'
+  color: 'from-purple-500 to-purple-700',
+  description: 'Template otimizado para lojas virtuais'
 }, {
   id: '6',
   name: 'Agência Digital',
   category: 'Mercado Digital',
   thumbnail: '',
-  color: 'from-pink-500 to-pink-700'
+  color: 'from-pink-500 to-pink-700',
+  description: 'Layout criativo para agências e startups'
 }, {
   id: '7',
   name: 'Loja de Roupas',
   category: 'Produtos',
   thumbnail: '',
-  color: 'from-orange-500 to-orange-700'
+  color: 'from-orange-500 to-orange-700',
+  description: 'Design elegante para moda e vestuário'
 }, {
   id: '8',
   name: 'Restaurante',
   category: 'Produtos',
   thumbnail: '',
-  color: 'from-amber-500 to-amber-700'
+  color: 'from-amber-500 to-amber-700',
+  description: 'Template atrativo para restaurantes e delivery'
 }];
 const categories = ['Todos', 'Jurídico', 'Saúde', 'Mercado Digital', 'Produtos'];
 const TemplatesEditor = () => {
@@ -135,18 +143,33 @@ const TemplatesEditor = () => {
           </Dialog>
         </div>
         <CarouselContent className="-ml-2">
-          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5">
-              <button onClick={() => setSelectedTemplate(template.id)} className={`group relative aspect-[2/3] w-full rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-blue-500 ring-2 ring-blue-500' : 'border-border hover:border-primary'}`}>
-                <div className={`w-full h-full bg-gradient-to-br ${template.color} flex items-end justify-center p-2`}>
-                  <div className="bg-background/90 backdrop-blur-sm rounded px-2 py-1">
-                    <p className="font-bold text-xs text-foreground">{template.name}</p>
+          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/3">
+              <div className={`group relative rounded-lg overflow-hidden border-2 transition-all ${selectedTemplate === template.id ? 'border-primary ring-2 ring-primary' : 'border-border hover:border-primary'}`}>
+                <button onClick={() => setSelectedTemplate(template.id)} className="w-full text-left">
+                  <div className={`w-full aspect-[4/3] bg-gradient-to-br ${template.color} relative`}>
+                    {selectedTemplate === template.id && <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                        <Check className="w-4 h-4 text-primary-foreground" />
+                      </div>}
                   </div>
+                </button>
+                <div className="bg-background p-3 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary">{template.category}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{template.description}</p>
+                  <Button 
+                    onClick={() => {
+                      setSelectedTemplate(template.id);
+                      handleApplyTemplate();
+                    }} 
+                    size="sm" 
+                    className="w-full h-8"
+                  >
+                    Aplicar Tema
+                  </Button>
                 </div>
-                {selectedTemplate === template.id && <div className="absolute top-2 right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                    <Check className="w-4 h-4 text-white" />
-                  </div>}
-                
-              </button>
+              </div>
             </CarouselItem>)}
         </CarouselContent>
       </Carousel>
