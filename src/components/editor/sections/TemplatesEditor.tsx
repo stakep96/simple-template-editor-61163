@@ -146,12 +146,12 @@ const TemplatesEditor = () => {
                 
                 <button 
                   onClick={() => setSelectedTemplate(template.id)} 
-                  className="group relative w-full rounded-lg overflow-hidden transition-all hover:shadow-lg h-[400px]"
+                  className="group relative w-full rounded-lg overflow-hidden transition-all hover:shadow-lg h-[550px]"
                 >
                   {/* Imagem/Gradient do template - ocupa toda extensão */}
                   <div className="absolute inset-0">
                     {template.thumbnail ? (
-                      <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
+                      <img src={template.thumbnail} alt={template.name} className="w-full h-full object-contain object-top" />
                     ) : (
                       <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                     )}
