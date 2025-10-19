@@ -136,10 +136,10 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
   ];
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col max-h-[450px]">
       <h3 className="font-semibold text-sm mb-3">Adicionar Componente</h3>
-      <ScrollArea className="flex-1 pr-2">
-        <div className="space-y-4">
+      <ScrollArea className="h-[400px] pr-2">
+        <div className="space-y-4 pb-2">
           {categories.map((category, categoryIndex) => (
             <div key={categoryIndex}>
               <div className="mb-2 px-3 py-1.5 bg-primary rounded-md w-fit">
