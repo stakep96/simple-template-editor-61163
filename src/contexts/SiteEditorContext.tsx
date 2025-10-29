@@ -124,6 +124,7 @@ export interface FAQConfig {
 export interface PricingPlan {
   id: string;
   name: string;
+  originalPrice?: string;
   price: string;
   benefits: string[];
   ctaText: string;

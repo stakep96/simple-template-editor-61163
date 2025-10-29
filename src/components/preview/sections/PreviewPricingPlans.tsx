@@ -33,8 +33,18 @@ const PreviewPricingPlans: React.FC<PreviewPricingPlansProps> = ({ instanceId })
                 <h3 className="font-bold text-lg mb-3" style={{ color: config.brand.titleColor }}>
                   {plan.name}
                 </h3>
-                <div className="text-3xl font-bold mb-4" style={{ color: config.brand.primary }}>
-                  {plan.price}
+                <div className="flex flex-col items-center gap-1 mb-4">
+                  {plan.originalPrice && (
+                    <div 
+                      className="text-lg line-through opacity-60"
+                      style={{ color: config.brand.textColor }}
+                    >
+                      {plan.originalPrice}
+                    </div>
+                  )}
+                  <div className="text-3xl font-bold" style={{ color: config.brand.primary }}>
+                    {plan.price}
+                  </div>
                 </div>
               </div>
 

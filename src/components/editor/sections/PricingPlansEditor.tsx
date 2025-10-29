@@ -102,14 +102,30 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
           </div>
 
           <div>
+            <Label htmlFor={`plan-original-price-${plan.id}`} className="text-sm">
+              Preço Original (Opcional)
+            </Label>
+            <Input
+              id={`plan-original-price-${plan.id}`}
+              value={plan.originalPrice || ''}
+              onChange={(e) => updatePlan(plan.id, 'originalPrice', e.target.value)}
+              placeholder="Ex: R$ 600"
+              className="mt-1"
+            />
+            <p className="text-xs text-muted-foreground mt-1">
+              Deixe vazio se não houver desconto
+            </p>
+          </div>
+
+          <div>
             <Label htmlFor={`plan-price-${plan.id}`} className="text-sm">
-              Valor
+              Preço Final
             </Label>
             <Input
               id={`plan-price-${plan.id}`}
               value={plan.price}
               onChange={(e) => updatePlan(plan.id, 'price', e.target.value)}
-              placeholder="Ex: R$ 800"
+              placeholder="Ex: R$ 450"
               className="mt-1"
             />
           </div>
