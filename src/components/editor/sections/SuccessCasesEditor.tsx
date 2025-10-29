@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { ImageUpload } from '@/components/ui/image-upload';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Trash2, Plus, GripVertical, Trophy, Handshake, Award, Target, TrendingUp, CheckCircle, Star, Heart, ThumbsUp } from 'lucide-react';
 interface SuccessCasesEditorProps {
@@ -90,9 +91,10 @@ const SuccessCasesEditor: React.FC<SuccessCasesEditorProps> = ({
   return <div className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="background-image">Imagem de Fundo</Label>
-        <Input id="background-image" type="url" placeholder="URL da imagem de fundo" value={casesConfig.backgroundImage} onChange={e => updateModuleInstance(instanceId, {
-        backgroundImage: e.target.value
-      })} />
+        <ImageUpload
+          value={casesConfig.backgroundImage}
+          onChange={(value) => updateModuleInstance(instanceId, { backgroundImage: value })}
+        />
       </div>
 
       <div className="flex items-center justify-between">

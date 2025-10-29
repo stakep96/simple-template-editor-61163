@@ -2,6 +2,7 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { ImageUpload } from '@/components/ui/image-upload';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { HeroConfig } from '@/contexts/SiteEditorContext';
 
@@ -19,13 +20,10 @@ const HeroEditor: React.FC<HeroEditorProps> = ({ instanceId }) => {
   return (
     <div className="space-y-3">
       <div>
-        <Label htmlFor={`heroImage-${instanceId}`} className="text-sm">Imagem de Fundo (URL)</Label>
-        <Input
-          id={`heroImage-${instanceId}`}
-          type="text"
+        <Label htmlFor={`heroImage-${instanceId}`} className="text-sm">Imagem de Fundo</Label>
+        <ImageUpload
           value={heroConfig.backgroundImage}
-          onChange={(e) => updateModuleInstance(instanceId, { backgroundImage: e.target.value })}
-          placeholder="URL da imagem"
+          onChange={(value) => updateModuleInstance(instanceId, { backgroundImage: value })}
           className="mt-1"
         />
       </div>

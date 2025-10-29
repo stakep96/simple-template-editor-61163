@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { ImageUpload } from '@/components/ui/image-upload';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { Trash2, Plus } from 'lucide-react';
 import type { Testimonial } from '@/contexts/SiteEditorContext';
@@ -72,11 +73,10 @@ const TestimonialsEditor: React.FC<TestimonialsEditorProps> = ({ instanceId }) =
             </div>
 
             <div>
-              <Label className="text-xs">URL da Imagem</Label>
-              <Input
+              <Label className="text-xs">Imagem</Label>
+              <ImageUpload
                 value={testimonial.image}
-                onChange={(e) => updateTestimonial(testimonial.id, 'image', e.target.value)}
-                placeholder="https://exemplo.com/foto.jpg"
+                onChange={(value) => updateTestimonial(testimonial.id, 'image', value)}
               />
             </div>
 

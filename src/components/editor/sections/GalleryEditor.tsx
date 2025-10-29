@@ -4,6 +4,7 @@ import type { GalleryConfig, GalleryImage } from '@/contexts/SiteEditorContext';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { ImageUpload } from '@/components/ui/image-upload';
 import { Plus, Trash2 } from 'lucide-react';
 
 interface GalleryEditorProps {
@@ -64,14 +65,11 @@ const GalleryEditor: React.FC<GalleryEditorProps> = ({ instanceId }) => {
 
             <div className="space-y-2">
               <Label htmlFor={`url-${image.id}`} className="text-xs">
-                URL da Imagem
+                Imagem
               </Label>
-              <Input
-                id={`url-${image.id}`}
-                type="text"
+              <ImageUpload
                 value={image.url}
-                onChange={(e) => updateImage(image.id, 'url', e.target.value)}
-                placeholder="https://exemplo.com/imagem.jpg"
+                onChange={(value) => updateImage(image.id, 'url', value)}
               />
             </div>
 
@@ -87,19 +85,6 @@ const GalleryEditor: React.FC<GalleryEditorProps> = ({ instanceId }) => {
                 placeholder="Descrição da imagem"
               />
             </div>
-
-            {image.url && (
-              <div className="mt-2">
-                <img
-                  src={image.url}
-                  alt={image.alt || 'Preview'}
-                  className="w-full h-32 object-cover rounded"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop';
-                  }}
-                />
-              </div>
-            )}
           </div>
         ))}
       </div>
