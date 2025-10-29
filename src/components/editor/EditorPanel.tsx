@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -24,7 +24,7 @@ import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 const EditorPanel = () => {
-  const { config, updateModuleInstance, reorderModules } = useSiteEditor();
+  const { config, updateModuleInstance, reorderModules, removeModuleInstance } = useSiteEditor();
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
   const moduleMetadata = {
@@ -191,13 +191,25 @@ const EditorPanel = () => {
                                 <p className="text-xs text-muted-foreground">{module.description}</p>
                               </div>
                             </div>
-                            <Switch
-                              checked={module.enabled}
-                              onCheckedChange={(enabled) => updateModuleInstance(module.instanceId, { enabled })}
-                              onClick={(e) => e.stopPropagation()}
-                              className="mr-2"
-                              disabled={false}
-                            />
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  removeModuleInstance(module.instanceId);
+                                }}
+                                className="p-2 hover:bg-destructive/10 rounded-lg transition-colors group"
+                                title="Deletar componente"
+                              >
+                                <Trash2 className="w-4 h-4 text-muted-foreground group-hover:text-destructive transition-colors" />
+                              </button>
+                              <Switch
+                                checked={module.enabled}
+                                onCheckedChange={(enabled) => updateModuleInstance(module.instanceId, { enabled })}
+                                onClick={(e) => e.stopPropagation()}
+                                className="mr-2"
+                                disabled={false}
+                              />
+                            </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-4">
                             <Component instanceId={module.instanceId} />
