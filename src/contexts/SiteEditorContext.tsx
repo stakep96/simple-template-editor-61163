@@ -121,6 +121,20 @@ export interface FAQConfig {
   items: FAQItem[];
 }
 
+export interface PricingPlan {
+  id: string;
+  name: string;
+  price: string;
+  benefits: string[];
+  ctaText: string;
+  ctaLink: string;
+}
+
+export interface PricingPlansConfig {
+  enabled: boolean;
+  plans: PricingPlan[];
+}
+
 export interface BusinessHour {
   id: string;
   day: string;
@@ -150,13 +164,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'location' | 'footer';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | LocationConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -303,6 +317,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     testimonials: 0,
     gallery: 0,
     faq: 0,
+    pricing: 0,
     location: 0,
     footer: 0,
   });
@@ -455,6 +470,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'pricing':
+          defaultModuleConfig = {
+            enabled: true,
+            plans: [
+              {
+                id: '1',
+                name: 'Plano Básico',
+                price: 'R$ 450',
+                benefits: ['Consultas mensais', 'Suporte por WhatsApp', 'Ajustes no plano'],
+                ctaText: 'Escolher Plano',
+                ctaLink: '',
+              },
+            ],
+          };
+          break;
         case 'location':
           defaultModuleConfig = {
             enabled: true,
@@ -546,6 +576,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         testimonials: 0,
         gallery: 0,
         faq: 0,
+        pricing: 0,
         location: 0,
         footer: 0,
       };

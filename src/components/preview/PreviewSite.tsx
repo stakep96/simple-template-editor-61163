@@ -11,6 +11,7 @@ import PreviewButton from './sections/PreviewButton';
 import PreviewTestimonials from './sections/PreviewTestimonials';
 import PreviewGallery from './sections/PreviewGallery';
 import PreviewFAQ from './sections/PreviewFAQ';
+import PreviewPricingPlans from './sections/PreviewPricingPlans';
 import PreviewLocation from './sections/PreviewLocation';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
@@ -49,6 +50,8 @@ const PreviewSite = () => {
         return <PreviewGallery key={key} instanceId={instanceId} />;
       case 'faq':
         return <PreviewFAQ key={key} instanceId={instanceId} />;
+      case 'pricing':
+        return <PreviewPricingPlans key={key} instanceId={instanceId} />;
       case 'location':
         return <PreviewLocation key={key} instanceId={instanceId} />;
       case 'footer':
