@@ -140,7 +140,7 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
             <RadioGroup
               value={plan.period}
               onValueChange={(value) => updatePlan(plan.id, 'period', value)}
-              className="space-y-2"
+              className="flex flex-wrap gap-4"
             >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="mensal" id={`mensal-${plan.id}`} />
