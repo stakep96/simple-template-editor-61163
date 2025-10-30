@@ -3,6 +3,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Trash2, Plus, X } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { PricingPlansConfig, PricingPlan } from '@/contexts/SiteEditorContext';
@@ -64,7 +65,8 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
     const newPlan: PricingPlan = {
       id: Date.now().toString(),
       name: 'Novo Plano',
-      price: 'R$ 0',
+      price: '0',
+      period: 'mensal',
       benefits: ['Benefício 1'],
       ctaText: 'Escolher Plano',
       ctaLink: '',
@@ -109,11 +111,11 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
               id={`plan-original-price-${plan.id}`}
               value={plan.originalPrice || ''}
               onChange={(e) => updatePlan(plan.id, 'originalPrice', e.target.value)}
-              placeholder="Ex: R$ 600"
+              placeholder="Ex: 600"
               className="mt-1"
             />
             <p className="text-xs text-muted-foreground mt-1">
-              Deixe vazio se não houver desconto
+              Deixe vazio se não houver desconto. Apenas o valor numérico.
             </p>
           </div>
 
@@ -125,9 +127,52 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
               id={`plan-price-${plan.id}`}
               value={plan.price}
               onChange={(e) => updatePlan(plan.id, 'price', e.target.value)}
-              placeholder="Ex: R$ 450"
+              placeholder="Ex: 450"
               className="mt-1"
             />
+            <p className="text-xs text-muted-foreground mt-1">
+              Apenas o valor numérico, sem R$
+            </p>
+          </div>
+
+          <div>
+            <Label className="text-sm mb-3 block">Período</Label>
+            <RadioGroup
+              value={plan.period}
+              onValueChange={(value) => updatePlan(plan.id, 'period', value)}
+              className="space-y-2"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="mensal" id={`mensal-${plan.id}`} />
+                <Label htmlFor={`mensal-${plan.id}`} className="font-normal cursor-pointer">
+                  Mensal
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="trimestral" id={`trimestral-${plan.id}`} />
+                <Label htmlFor={`trimestral-${plan.id}`} className="font-normal cursor-pointer">
+                  Trimestral
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="semestral" id={`semestral-${plan.id}`} />
+                <Label htmlFor={`semestral-${plan.id}`} className="font-normal cursor-pointer">
+                  Semestral
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="anual" id={`anual-${plan.id}`} />
+                <Label htmlFor={`anual-${plan.id}`} className="font-normal cursor-pointer">
+                  Anual
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="vitalicio" id={`vitalicio-${plan.id}`} />
+                <Label htmlFor={`vitalicio-${plan.id}`} className="font-normal cursor-pointer">
+                  Vitalício
+                </Label>
+              </div>
+            </RadioGroup>
           </div>
 
           <div>

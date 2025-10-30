@@ -126,6 +126,7 @@ export interface PricingPlan {
   name: string;
   originalPrice?: string;
   price: string;
+  period: 'mensal' | 'trimestral' | 'semestral' | 'anual' | 'vitalicio';
   benefits: string[];
   ctaText: string;
   ctaLink: string;
@@ -478,7 +479,8 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               {
                 id: '1',
                 name: 'Plano Básico',
-                price: 'R$ 450',
+                price: '450',
+                period: 'mensal',
                 benefits: ['Consultas mensais', 'Suporte por WhatsApp', 'Ajustes no plano'],
                 ctaText: 'Escolher Plano',
                 ctaLink: '',
