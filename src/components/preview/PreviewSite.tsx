@@ -13,6 +13,7 @@ import PreviewGallery from './sections/PreviewGallery';
 import PreviewFAQ from './sections/PreviewFAQ';
 import PreviewPricingPlans from './sections/PreviewPricingPlans';
 import PreviewLocation from './sections/PreviewLocation';
+import PreviewBeforeAfter from './sections/PreviewBeforeAfter';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
 
@@ -54,6 +55,11 @@ const PreviewSite = () => {
         return <PreviewPricingPlans key={key} instanceId={instanceId} />;
       case 'location':
         return <PreviewLocation key={key} instanceId={instanceId} />;
+      case 'before-after':
+        if (instance.type === 'before-after') {
+          return <PreviewBeforeAfter key={key} config={instance.config as import('@/contexts/SiteEditorContext').BeforeAfterConfig} />;
+        }
+        return null;
       case 'footer':
         return <PreviewFooter key={key} instanceId={instanceId} />;
       default:

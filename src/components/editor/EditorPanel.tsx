@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -19,6 +19,7 @@ import GalleryEditor from './sections/GalleryEditor';
 import FAQEditor from './sections/FAQEditor';
 import PricingPlansEditor from './sections/PricingPlansEditor';
 import LocationEditor from './sections/LocationEditor';
+import BeforeAfterEditor from './sections/BeforeAfterEditor';
 import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -41,6 +42,7 @@ const EditorPanel = () => {
     faq: { icon: HelpCircle, title: 'FAQ', description: 'Perguntas frequentes', component: FAQEditor },
     pricing: { icon: DollarSign, title: 'Planos', description: 'Tabela de preços', component: PricingPlansEditor },
     location: { icon: MapPin, title: 'Localização', description: 'Endereço e mapa', component: LocationEditor },
+    'before-after': { icon: Sparkles, title: 'Antes e Depois', description: 'Transformações', component: BeforeAfterEditor },
     footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   };
 
