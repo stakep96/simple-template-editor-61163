@@ -7,52 +7,46 @@ interface PreviewBeforeAfterProps {
 
 const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
   return (
-    <section className="py-16 px-4 bg-background">
+    <section className="py-16 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
+        <p className="text-sm text-muted-foreground mb-4 text-center">
           {config.title}
-        </h2>
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {config.items.map((item) => (
             <div 
               key={item.id} 
-              className="flex flex-col items-center bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="flex flex-col bg-card rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all p-4"
             >
-              <div className="relative w-full aspect-square">
+              <div className="relative w-full rounded-2xl overflow-hidden mb-4">
                 <div className="grid grid-cols-2 h-full">
                   <div className="relative overflow-hidden">
                     <img
-                      src={item.beforeImage}
-                      alt="Before"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop';
-                      }}
+                      src={item.beforeImage || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop'}
+                      alt="Antes"
+                      className="w-full h-full object-cover aspect-[3/4]"
                     />
-                    <div className="absolute bottom-2 left-2 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute bottom-3 left-3 text-white text-base font-bold drop-shadow-lg">
                       Before
                     </div>
                   </div>
                   
                   <div className="relative overflow-hidden">
                     <img
-                      src={item.afterImage}
-                      alt="After"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop';
-                      }}
+                      src={item.afterImage || 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop'}
+                      alt="Depois"
+                      className="w-full h-full object-cover aspect-[3/4]"
                     />
-                    <div className="absolute bottom-2 right-2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute bottom-3 right-3 text-white text-base font-bold drop-shadow-lg">
                       After
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="p-4 w-full text-center bg-card">
-                <p className="text-lg font-semibold text-foreground">
+              <div className="text-center">
+                <p className="text-lg font-bold text-foreground">
                   {item.description}
                 </p>
               </div>
