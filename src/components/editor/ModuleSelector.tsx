@@ -87,7 +87,7 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           description: 'Fotos',
         },
         {
-          id: 'beforeAfter' as ModuleType,
+          id: 'before-after' as ModuleType,
           icon: ArrowLeftRight,
           title: 'Antes e Depois',
           description: 'Comparação',
