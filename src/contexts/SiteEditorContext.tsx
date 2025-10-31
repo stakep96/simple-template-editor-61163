@@ -524,9 +524,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             items: [
               {
                 id: '1',
-                beforeImage: '',
-                afterImage: '',
-                description: 'Nova transformação',
+                beforeImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=700&fit=crop',
+                afterImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=700&fit=crop',
+                description: 'Maria - 3 meses',
+              },
+              {
+                id: '2',
+                beforeImage: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=700&fit=crop',
+                afterImage: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=700&fit=crop',
+                description: 'João - 4 meses',
+              },
+              {
+                id: '3',
+                beforeImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&h=700&fit=crop',
+                afterImage: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=500&h=700&fit=crop',
+                description: 'Ana - 2 meses',
               },
             ],
           };
@@ -737,6 +749,32 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 },
               ],
               mapEmbedUrl: '',
+            };
+            break;
+          case 'before-after':
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Transformações',
+              items: [
+                {
+                  id: '1',
+                  beforeImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=700&fit=crop',
+                  afterImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=700&fit=crop',
+                  description: 'Maria - 3 meses',
+                },
+                {
+                  id: '2',
+                  beforeImage: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=700&fit=crop',
+                  afterImage: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=700&fit=crop',
+                  description: 'João - 4 meses',
+                },
+                {
+                  id: '3',
+                  beforeImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&h=700&fit=crop',
+                  afterImage: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=500&h=700&fit=crop',
+                  description: 'Ana - 2 meses',
+                },
+              ],
             };
             break;
           case 'footer':
