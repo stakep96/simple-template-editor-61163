@@ -13,7 +13,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
     <section className="py-16 px-4" style={{ backgroundColor: siteConfig.brand.background }}>
       <div className="container mx-auto max-w-6xl">
         <h2 
-          className="text-xl font-bold text-center mb-8"
+          className="text-4xl font-bold text-center mb-12"
           style={{ 
             color: siteConfig.brand.titleColor,
             fontFamily: 'var(--brand-title-font)'
@@ -26,24 +26,23 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
           {config.items.map((item) => (
             <div 
               key={item.id} 
-              className="flex flex-col rounded-3xl overflow-hidden p-4 mx-auto w-full max-w-md"
+              className="flex flex-col mx-auto w-full max-w-lg"
             >
               <div 
-                className="rounded-3xl overflow-hidden p-6 shadow-lg"
+                className="rounded-[2rem] p-8 shadow-lg"
                 style={{ backgroundColor: `${siteConfig.brand.primary}26` }}
               >
-                <div className="relative w-full rounded-2xl overflow-hidden mb-6">
+                <div className="relative w-full rounded-[1.5rem] overflow-hidden mb-6">
                   <div className="grid grid-cols-2 gap-0">
                     <div className="relative">
                       <img
                         src={item.beforeImage || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=700&fit=crop'}
                         alt="Antes"
                         className="w-full h-full object-cover"
-                        style={{ aspectRatio: '3/5' }}
+                        style={{ aspectRatio: '1/1.5' }}
                       />
                       <div 
-                        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-                        style={{ color: siteConfig.brand.accent }}
+                        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-lg font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
                       >
                         Before
                       </div>
@@ -54,11 +53,10 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                         src={item.afterImage || 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=700&fit=crop'}
                         alt="Depois"
                         className="w-full h-full object-cover"
-                        style={{ aspectRatio: '3/5' }}
+                        style={{ aspectRatio: '1/1.5' }}
                       />
                       <div 
-                        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-                        style={{ color: siteConfig.brand.accent }}
+                        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-lg font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
                       >
                         After
                       </div>
@@ -68,7 +66,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                 
                 <div className="text-center">
                   <p 
-                    className="text-base font-bold"
+                    className="text-lg font-bold"
                     style={{ 
                       color: siteConfig.brand.textColor,
                       fontFamily: 'var(--brand-text-font)'
