@@ -108,18 +108,18 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         </div>
         
         <p className="text-sm text-foreground mb-1">
-          Drop your image here, or{' '}
+          Solte sua imagem aqui, ou{' '}
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
             className="text-primary hover:underline font-medium"
           >
-            browse
+            buscar
           </button>
         </p>
         
         <p className="text-xs text-muted-foreground">
-          Supports: JPG, JPEG, PNG
+          Suporta: JPG, JPEG, PNG
         </p>
       </div>
     </div>
