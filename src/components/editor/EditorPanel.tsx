@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -20,6 +20,7 @@ import FAQEditor from './sections/FAQEditor';
 import PricingPlansEditor from './sections/PricingPlansEditor';
 import LocationEditor from './sections/LocationEditor';
 import BeforeAfterEditor from './sections/BeforeAfterEditor';
+import BenefitsEditor from './sections/BenefitsEditor';
 import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -43,6 +44,7 @@ const EditorPanel = () => {
     pricing: { icon: DollarSign, title: 'Planos', description: 'Tabela de preços', component: PricingPlansEditor },
     location: { icon: MapPin, title: 'Localização', description: 'Endereço e mapa', component: LocationEditor },
     'before-after': { icon: Sparkles, title: 'Antes e Depois', description: 'Resultados', component: BeforeAfterEditor },
+    benefits: { icon: Gift, title: 'Benefícios', description: 'Lista de benefícios com CTA', component: BenefitsEditor },
     footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   };
 

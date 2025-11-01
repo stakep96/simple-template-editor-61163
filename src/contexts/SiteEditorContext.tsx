@@ -164,6 +164,19 @@ export interface BeforeAfterConfig {
   items: BeforeAfterItem[];
 }
 
+export interface BenefitItem {
+  id: string;
+  text: string;
+}
+
+export interface BenefitsConfig {
+  enabled: boolean;
+  title: string;
+  benefits: BenefitItem[];
+  ctaText: string;
+  ctaLink: string;
+}
+
 export interface FooterConfig {
   enabled: boolean;
   copyrightText: string;
@@ -179,13 +192,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'footer';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -335,6 +348,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     pricing: 0,
     location: 0,
     'before-after': 0,
+    benefits: 0,
     footer: 0,
   });
 
@@ -531,6 +545,28 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'benefits':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Acompanhamento Mensal',
+            benefits: [
+              {
+                id: '1',
+                text: '4 consultas mensais',
+              },
+              {
+                id: '2',
+                text: 'Suporte por WhatsApp',
+              },
+              {
+                id: '3',
+                text: 'Plano alimentar personalizado',
+              },
+            ],
+            ctaText: 'Agendar reunião',
+            ctaLink: '',
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -610,6 +646,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         pricing: 0,
         location: 0,
         'before-after': 0,
+        benefits: 0,
         footer: 0,
       };
 
