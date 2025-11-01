@@ -524,9 +524,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             items: [
               {
                 id: '1',
-                beforeImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=700&fit=crop',
-                afterImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=700&fit=crop',
-                description: 'Maria - 3 meses',
+                beforeImage: '',
+                afterImage: '',
+                description: 'Nova transformação',
               },
             ],
           };
@@ -746,9 +746,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               items: [
                 {
                   id: '1',
-                  beforeImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=700&fit=crop',
-                  afterImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=700&fit=crop',
-                  description: 'Maria - 3 meses',
+                  beforeImage: '',
+                  afterImage: '',
+                  description: 'Nova transformação',
                 },
               ],
             };
