@@ -96,7 +96,7 @@ const BeforeAfterEditor: React.FC<BeforeAfterEditorProps> = ({ instanceId }) => 
                 value={item.description}
                 onChange={(e) => updateItem(item.id, 'description', e.target.value)}
                 className="mt-1"
-                placeholder="Ex: Maria - 3 meses"
+                placeholder="Descrição dos resultados"
               />
             </div>
           </Card>
