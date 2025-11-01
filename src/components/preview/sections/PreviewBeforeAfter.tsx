@@ -32,35 +32,35 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
               <div className="flex">
                 <div className="relative w-1/2">
                   <img
-                    src={item.beforeImage || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=1000&fit=crop'}
+                    src={item.beforeImage || '/images/before-example.png'}
                     alt="Antes"
                     className="w-full h-full object-cover"
-                    style={{ aspectRatio: '9/16' }}
+                    style={{ aspectRatio: '1/2' }}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=1000&fit=crop';
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=1200&fit=crop';
                     }}
                   />
                   <div 
                     className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   >
-                    Before
+                    Antes
                   </div>
                 </div>
                 
                 <div className="relative w-1/2">
                   <img
-                    src={item.afterImage || 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=1000&fit=crop'}
+                    src={item.afterImage || '/images/after-example.png'}
                     alt="Depois"
                     className="w-full h-full object-cover"
-                    style={{ aspectRatio: '9/16' }}
+                    style={{ aspectRatio: '1/2' }}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=1000&fit=crop';
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=1200&fit=crop';
                     }}
                   />
                   <div 
                     className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   >
-                    After
+                    Depois
                   </div>
                 </div>
               </div>
