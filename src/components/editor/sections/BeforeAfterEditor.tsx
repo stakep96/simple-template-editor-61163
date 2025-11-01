@@ -69,22 +69,24 @@ const BeforeAfterEditor: React.FC<BeforeAfterEditorProps> = ({ instanceId }) => 
               </Button>
             </div>
 
-            <div>
-              <Label className="text-sm">Imagem Antes</Label>
-              <ImageUpload
-                value={item.beforeImage}
-                onChange={(value) => updateItem(item.id, 'beforeImage', value)}
-                className="mt-1"
-              />
-            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label className="text-sm">Imagem Antes</Label>
+                <ImageUpload
+                  value={item.beforeImage}
+                  onChange={(value) => updateItem(item.id, 'beforeImage', value)}
+                  className="mt-1"
+                />
+              </div>
 
-            <div>
-              <Label className="text-sm">Imagem Depois</Label>
-              <ImageUpload
-                value={item.afterImage}
-                onChange={(value) => updateItem(item.id, 'afterImage', value)}
-                className="mt-1"
-              />
+              <div>
+                <Label className="text-sm">Imagem Depois</Label>
+                <ImageUpload
+                  value={item.afterImage}
+                  onChange={(value) => updateItem(item.id, 'afterImage', value)}
+                  className="mt-1"
+                />
+              </div>
             </div>
 
             <div>
