@@ -520,7 +520,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         case 'before-after':
           defaultModuleConfig = {
             enabled: true,
-            title: 'Transformações',
+            title: 'Resultados',
             items: [
               {
                 id: '1',
@@ -742,7 +742,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'before-after':
             defaultModuleConfig = {
               enabled: true,
-              title: 'Transformações',
+              title: 'Resultados',
               items: [
                 {
                   id: '1',
