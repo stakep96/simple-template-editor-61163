@@ -32,12 +32,12 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
               <div className="flex">
                 <div className="relative w-1/2">
                   <img
-                    src={item.beforeImage || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=900&fit=crop'}
+                    src={item.beforeImage || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=1000&fit=crop'}
                     alt="Antes"
                     className="w-full h-full object-cover"
-                    style={{ aspectRatio: '2/3' }}
+                    style={{ aspectRatio: '9/16' }}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=900&fit=crop';
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=1000&fit=crop';
                     }}
                   />
                   <div 
@@ -49,12 +49,12 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                 
                 <div className="relative w-1/2">
                   <img
-                    src={item.afterImage || 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=900&fit=crop'}
+                    src={item.afterImage || 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=1000&fit=crop'}
                     alt="Depois"
                     className="w-full h-full object-cover"
-                    style={{ aspectRatio: '2/3' }}
+                    style={{ aspectRatio: '9/16' }}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=900&fit=crop';
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=1000&fit=crop';
                     }}
                   />
                   <div 
