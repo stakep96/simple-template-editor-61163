@@ -31,15 +31,22 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
             <div className="relative w-full rounded-2xl overflow-hidden mb-5">
               <div className="flex">
                 <div className="relative w-1/2">
-                  <img
-                    src={item.beforeImage || '/images/before-example.png'}
-                    alt="Antes"
-                    className="w-full h-full object-cover"
-                    style={{ aspectRatio: '1/2' }}
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=1200&fit=crop';
-                    }}
-                  />
+                  {item.beforeImage ? (
+                    <img
+                      src={item.beforeImage}
+                      alt="Antes"
+                      className="w-full h-full object-cover"
+                      style={{ aspectRatio: '1/2' }}
+                    />
+                  ) : (
+                    <div 
+                      className="w-full h-full"
+                      style={{ 
+                        aspectRatio: '1/2',
+                        backgroundColor: '#94a3b8'
+                      }}
+                    />
+                  )}
                   <div 
                     className="absolute bottom-3 left-1/2 -translate-x-1/2 text-xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   >
@@ -48,15 +55,22 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                 </div>
                 
                 <div className="relative w-1/2">
-                  <img
-                    src={item.afterImage || '/images/after-example.png'}
-                    alt="Depois"
-                    className="w-full h-full object-cover"
-                    style={{ aspectRatio: '1/2' }}
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=1200&fit=crop';
-                    }}
-                  />
+                  {item.afterImage ? (
+                    <img
+                      src={item.afterImage}
+                      alt="Depois"
+                      className="w-full h-full object-cover"
+                      style={{ aspectRatio: '1/2' }}
+                    />
+                  ) : (
+                    <div 
+                      className="w-full h-full"
+                      style={{ 
+                        aspectRatio: '1/2',
+                        backgroundColor: siteConfig.brand.primary
+                      }}
+                    />
+                  )}
                   <div 
                     className="absolute bottom-3 left-1/2 -translate-x-1/2 text-xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   >
