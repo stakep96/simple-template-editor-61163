@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { BenefitsConfig } from '@/contexts/SiteEditorContext';
-import { CheckCircle2 } from 'lucide-react';
+import { BadgeCheck } from 'lucide-react';
 
 interface PreviewBenefitsProps {
   config: BenefitsConfig;
@@ -33,7 +33,7 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
           <div className="space-y-4 mb-8">
             {config.benefits.map((benefit) => (
               <div key={benefit.id} className="flex items-start gap-3">
-                <CheckCircle2 
+                <BadgeCheck 
                   className="w-6 h-6 flex-shrink-0 mt-0.5"
                   style={{ color: siteConfig.brand.primary }}
                 />
