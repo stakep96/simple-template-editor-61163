@@ -40,7 +40,7 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
               <div 
                 key={card.id}
                 className="p-3 rounded-xl flex flex-col items-center justify-center gap-2 shadow-sm"
-                style={{ backgroundColor: `${siteConfig.brand.secondary}` }}
+                style={{ backgroundColor: siteConfig.brand.primary }}
               >
                 <div 
                   className="w-10 h-10 rounded-lg flex items-center justify-center"
@@ -54,7 +54,7 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
                 <p 
                   className="text-xs font-medium text-center"
                   style={{ 
-                    color: siteConfig.brand.titleColor,
+                    color: siteConfig.brand.secondary,
                     fontFamily: 'var(--brand-text-font)'
                   }}
                 >
