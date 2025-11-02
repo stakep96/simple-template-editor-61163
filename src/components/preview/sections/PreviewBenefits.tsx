@@ -12,7 +12,6 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
   
   return (
     <section className="py-12 px-6" style={{ backgroundColor: siteConfig.brand.background }}>
-      <div className="max-w-lg mx-auto">
         <div 
           className="rounded-3xl p-8 shadow-lg border-4"
           style={{ 
@@ -58,10 +57,9 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
               color: '#FFFFFF'
             }}
           >
-            {config.ctaText}
+          {config.ctaText}
           </a>
         </div>
-      </div>
     </section>
   );
 };
