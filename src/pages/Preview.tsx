@@ -1,11 +1,14 @@
 import React from 'react';
 import PreviewSite from '@/components/preview/PreviewSite';
+import { SiteEditorProvider } from '@/contexts/SiteEditorContext';
 
 const Preview = () => {
   return (
-    <div className="w-full min-h-screen">
-      <PreviewSite />
-    </div>
+    <SiteEditorProvider>
+      <div className="w-full min-h-screen">
+        <PreviewSite />
+      </div>
+    </SiteEditorProvider>
   );
 };
 
