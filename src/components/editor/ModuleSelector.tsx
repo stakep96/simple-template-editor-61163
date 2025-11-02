@@ -64,12 +64,6 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           title: 'Cases de Sucesso',
           description: 'Histórico',
         },
-        {
-          id: 'benefits' as ModuleType,
-          icon: Gift,
-          title: 'Benefícios',
-          description: 'Lista com CTA',
-        },
       ],
     },
     {
@@ -103,6 +97,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
     {
       title: 'Interação',
       modules: [
+        {
+          id: 'benefits' as ModuleType,
+          icon: Gift,
+          title: 'Benefícios',
+          description: 'Lista com CTA',
+        },
         {
           id: 'contact' as ModuleType,
           icon: Mail,
