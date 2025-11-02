@@ -71,7 +71,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                     {card.subtitle}
                   </p>
                   <p 
-                    className="text-xs leading-relaxed"
+                    className="text-sm leading-relaxed"
                     style={{ 
                       color: siteConfig.brand.textColor,
                       fontFamily: 'var(--brand-text-font)'
