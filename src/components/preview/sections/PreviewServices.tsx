@@ -53,7 +53,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                 </div>
                 <div className="flex-1">
                   <h3 
-                    className="text-lg font-bold mb-1"
+                    className="text-base font-bold mb-0.5"
                     style={{ 
                       color: siteConfig.brand.titleColor,
                       fontFamily: 'var(--brand-title-font)'
@@ -62,7 +62,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                     {card.title}
                   </h3>
                   <p 
-                    className="text-sm font-medium mb-2"
+                    className="text-xs font-medium mb-1.5"
                     style={{ 
                       color: siteConfig.brand.secondary,
                       fontFamily: 'var(--brand-text-font)'
@@ -71,7 +71,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                     {card.subtitle}
                   </p>
                   <p 
-                    className="text-sm"
+                    className="text-xs leading-relaxed"
                     style={{ 
                       color: siteConfig.brand.textColor,
                       fontFamily: 'var(--brand-text-font)'
