@@ -182,6 +182,17 @@ export interface FooterConfig {
   copyrightText: string;
 }
 
+export interface CredentialCard {
+  id: string;
+  icon: string;
+  text: string;
+}
+
+export interface CredentialsConfig {
+  enabled: boolean;
+  cards: CredentialCard[];
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -192,13 +203,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'footer';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -349,6 +360,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     location: 0,
     'before-after': 0,
     benefits: 0,
+    credentials: 0,
     footer: 0,
   });
 
@@ -567,6 +579,23 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ctaLink: '',
           };
           break;
+        case 'credentials':
+          defaultModuleConfig = {
+            enabled: true,
+            cards: [
+              {
+                id: '1',
+                icon: 'award',
+                text: 'CRN Certificada',
+              },
+              {
+                id: '2',
+                icon: 'users',
+                text: '+100 Pacientes',
+              },
+            ],
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -647,6 +676,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         location: 0,
         'before-after': 0,
         benefits: 0,
+        credentials: 0,
         footer: 0,
       };
 

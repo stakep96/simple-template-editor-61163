@@ -15,6 +15,7 @@ import PreviewPricingPlans from './sections/PreviewPricingPlans';
 import PreviewLocation from './sections/PreviewLocation';
 import PreviewBeforeAfter from './sections/PreviewBeforeAfter';
 import PreviewBenefits from './sections/PreviewBenefits';
+import PreviewCredentials from './sections/PreviewCredentials';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
 
@@ -64,6 +65,11 @@ const PreviewSite = () => {
       case 'benefits':
         if (instance.type === 'benefits') {
           return <PreviewBenefits key={key} config={instance.config as import('@/contexts/SiteEditorContext').BenefitsConfig} />;
+        }
+        return null;
+      case 'credentials':
+        if (instance.type === 'credentials') {
+          return <PreviewCredentials key={key} config={instance.config as import('@/contexts/SiteEditorContext').CredentialsConfig} />;
         }
         return null;
       case 'footer':
