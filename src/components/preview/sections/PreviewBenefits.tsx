@@ -11,8 +11,8 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
   const { config: siteConfig } = useSiteEditor();
   
   return (
-    <section className="py-12 px-6" style={{ backgroundColor: siteConfig.brand.background }}>
-      <div className="max-w-lg mx-auto">
+    <section className="py-12 px-2.5" style={{ backgroundColor: siteConfig.brand.background }}>
+      <div className="mx-auto">
         <div 
           className="rounded-3xl p-8 shadow-lg border-4"
           style={{ 
