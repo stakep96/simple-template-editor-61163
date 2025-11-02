@@ -1,7 +1,22 @@
 import React from 'react';
-import { icons } from 'lucide-react';
+import { Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { CredentialsConfig } from '@/contexts/SiteEditorContext';
+
+const iconMap: Record<string, any> = {
+  award: Award,
+  users: Users,
+  trophy: Trophy,
+  star: Star,
+  'check-circle': CheckCircle,
+  shield: Shield,
+  target: Target,
+  briefcase: Briefcase,
+  zap: Zap,
+  heart: Heart,
+  'trending-up': TrendingUp,
+  medal: Medal,
+};
 
 interface PreviewCredentialsProps {
   config: CredentialsConfig;
@@ -12,11 +27,6 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
   
   if (!config.cards || config.cards.length === 0) return null;
 
-  const getIcon = (iconName: string) => {
-    const Icon = icons[iconName as keyof typeof icons];
-    return Icon || icons.Award;
-  };
-
   return (
     <section 
       className="py-6 px-4"
@@ -25,7 +35,7 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
       <div className="max-w-3xl mx-auto">
         <div className="grid grid-cols-2 gap-3">
           {config.cards.map((card) => {
-            const Icon = getIcon(card.icon);
+            const Icon = iconMap[card.icon] || Award;
             return (
               <div 
                 key={card.id}
