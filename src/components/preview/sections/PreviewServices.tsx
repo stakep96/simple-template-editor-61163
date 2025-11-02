@@ -43,7 +43,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
             >
               <div className="flex items-start gap-4">
                 <div 
-                  className="w-14 rounded-xl flex items-center justify-center flex-shrink-0 self-stretch"
+                  className="w-14 rounded-full flex items-center justify-center flex-shrink-0 self-stretch"
                   style={{ backgroundColor: `${siteConfig.brand.accent}26` }}
                 >
                   <Icon 
