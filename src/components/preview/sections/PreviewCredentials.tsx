@@ -39,11 +39,11 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
             return (
               <div 
                 key={card.id}
-                className="p-4 rounded-2xl flex flex-row items-center gap-3"
+                className="p-4 rounded-2xl flex flex-col items-center justify-center gap-2"
                 style={{ backgroundColor: siteConfig.brand.primary }}
               >
                 <div 
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
                   style={{ backgroundColor: `${siteConfig.brand.accent}26` }}
                 >
                   <Icon 
@@ -52,7 +52,7 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
                   />
                 </div>
                 <p 
-                  className="text-xs leading-relaxed text-left"
+                  className="text-xs leading-relaxed text-center"
                   style={{ 
                     color: siteConfig.brand.secondary,
                     fontFamily: 'var(--brand-text-font)'
