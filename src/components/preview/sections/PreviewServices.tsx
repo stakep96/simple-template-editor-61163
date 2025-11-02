@@ -51,9 +51,9 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                     style={{ color: siteConfig.brand.accent }} 
                   />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h3 
-                    className="text-base font-bold mb-0.5"
+                    className="text-base font-bold mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis"
                     style={{ 
                       color: siteConfig.brand.titleColor,
                       fontFamily: 'var(--brand-title-font)'
@@ -62,7 +62,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                     {card.title}
                   </h3>
                   <p 
-                    className="text-xs font-medium"
+                    className="text-xs font-medium whitespace-nowrap overflow-hidden text-ellipsis"
                     style={{ 
                       color: siteConfig.brand.secondary,
                       fontFamily: 'var(--brand-text-font)'
