@@ -44,11 +44,11 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
               >
                 <div 
                   className="w-10 h-10 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: `${siteConfig.brand.primary}40` }}
+                  style={{ backgroundColor: `${siteConfig.brand.accent}26` }}
                 >
                   <Icon 
                     className="w-5 h-5" 
-                    style={{ color: siteConfig.brand.primary }} 
+                    style={{ color: siteConfig.brand.accent }} 
                   />
                 </div>
                 <p 
