@@ -23,33 +23,28 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
       style={{ backgroundColor: siteConfig.brand.background }}
     >
       <div className="max-w-3xl mx-auto">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           {config.cards.map((card) => {
             const Icon = getIcon(card.icon);
             return (
-              <div
+              <div 
                 key={card.id}
-                className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border shadow-sm hover:shadow-md transition-shadow"
-                style={{ 
-                  backgroundColor: `${siteConfig.brand.background}`,
-                  borderColor: `${siteConfig.brand.primary}40`
-                }}
+                className="p-4 rounded-2xl flex flex-col items-center justify-center gap-3 text-center"
+                style={{ backgroundColor: siteConfig.brand.primary }}
               >
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{ 
-                    backgroundColor: siteConfig.brand.primary
-                  }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: `${siteConfig.brand.accent}26` }}
                 >
                   <Icon 
-                    className="w-6 h-6" 
-                    style={{ color: '#FFFFFF' }}
+                    className="w-5 h-5" 
+                    style={{ color: siteConfig.brand.accent }} 
                   />
                 </div>
                 <p 
-                  className="text-sm font-medium text-center"
+                  className="text-xs leading-relaxed"
                   style={{ 
-                    color: siteConfig.brand.titleColor,
+                    color: siteConfig.brand.secondary,
                     fontFamily: 'var(--brand-text-font)'
                   }}
                 >
