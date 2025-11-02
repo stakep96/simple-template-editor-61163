@@ -52,7 +52,7 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
           
           <a
             href={config.ctaLink || '#'}
-            className="block w-full py-3 px-6 rounded-full text-center text-base font-semibold transition-all hover:opacity-90"
+            className="block w-full py-3 rounded-lg text-center font-semibold transition-all hover:scale-105"
             style={{ 
               backgroundColor: siteConfig.brand.primary,
               color: '#FFFFFF'
