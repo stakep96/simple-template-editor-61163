@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -22,6 +22,7 @@ import LocationEditor from './sections/LocationEditor';
 import BeforeAfterEditor from './sections/BeforeAfterEditor';
 import BenefitsEditor from './sections/BenefitsEditor';
 import CredentialsEditor from './sections/CredentialsEditor';
+import ServicesEditor from './sections/ServicesEditor';
 import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -47,6 +48,7 @@ const EditorPanel = () => {
     'before-after': { icon: Sparkles, title: 'Antes e Depois', description: 'Resultados', component: BeforeAfterEditor },
     benefits: { icon: Gift, title: 'Benefícios', description: 'Lista de benefícios com CTA', component: BenefitsEditor },
     credentials: { icon: Award, title: 'Credenciais', description: 'Cards de estatísticas', component: CredentialsEditor },
+    services: { icon: Layers, title: 'Serviços', description: 'Cards de serviços', component: ServicesEditor },
     footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   };
 
