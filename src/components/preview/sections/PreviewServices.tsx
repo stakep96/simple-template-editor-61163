@@ -38,7 +38,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
           return (
             <div 
               key={card.id}
-              className="p-6 rounded-2xl shadow-sm"
+              className="p-6 rounded-2xl shadow-sm space-y-3"
               style={{ backgroundColor: siteConfig.brand.primary }}
             >
               <div className="flex items-start gap-4">
@@ -62,7 +62,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                     {card.title}
                   </h3>
                   <p 
-                    className="text-xs font-medium mb-1.5"
+                    className="text-xs font-medium"
                     style={{ 
                       color: siteConfig.brand.secondary,
                       fontFamily: 'var(--brand-text-font)'
@@ -70,17 +70,17 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                   >
                     {card.subtitle}
                   </p>
-                  <p 
-                    className="text-sm leading-relaxed"
-                    style={{ 
-                      color: siteConfig.brand.textColor,
-                      fontFamily: 'var(--brand-text-font)'
-                    }}
-                  >
-                    {card.description}
-                  </p>
                 </div>
               </div>
+              <p 
+                className="text-sm leading-relaxed"
+                style={{ 
+                  color: siteConfig.brand.textColor,
+                  fontFamily: 'var(--brand-text-font)'
+                }}
+              >
+                {card.description}
+              </p>
             </div>
           );
         })}
