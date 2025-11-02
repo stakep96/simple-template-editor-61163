@@ -37,15 +37,18 @@ const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
 
   if (!servicesConfig) return null;
 
+  // Ensure cards array exists
+  const cards = servicesConfig.cards || [];
+
   const updateCard = (cardId: string, field: keyof ServiceCard, value: string) => {
-    const updatedCards = servicesConfig.cards.map((card) =>
+    const updatedCards = cards.map((card) =>
       card.id === cardId ? { ...card, [field]: value } : card
     );
     updateModuleInstance(instanceId, { cards: updatedCards });
   };
 
   const removeCard = (cardId: string) => {
-    const updatedCards = servicesConfig.cards.filter((card) => card.id !== cardId);
+    const updatedCards = cards.filter((card) => card.id !== cardId);
     updateModuleInstance(instanceId, { cards: updatedCards });
   };
 
@@ -57,7 +60,7 @@ const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
       subtitle: 'Subtítulo do serviço',
       description: 'Descrição detalhada do serviço oferecido.',
     };
-    updateModuleInstance(instanceId, { cards: [...servicesConfig.cards, newCard] });
+    updateModuleInstance(instanceId, { cards: [...cards, newCard] });
   };
 
   const filteredIcons = iconOptions.filter((icon) =>
@@ -66,7 +69,7 @@ const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
 
   return (
     <div className="space-y-4">
-      {servicesConfig.cards.map((card, index) => (
+      {cards.map((card, index) => (
         <div key={card.id} className="p-4 border rounded-lg space-y-3 bg-muted/30">
           <div className="flex items-center justify-between">
             <Label className="text-sm font-semibold">Serviço {index + 1}</Label>

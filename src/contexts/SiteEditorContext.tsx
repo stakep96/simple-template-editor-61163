@@ -610,6 +610,20 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'services':
+          defaultModuleConfig = {
+            enabled: true,
+            cards: [
+              {
+                id: 'service-1',
+                icon: 'award',
+                title: 'Novo Serviço',
+                subtitle: 'Subtítulo do serviço',
+                description: 'Descrição detalhada do serviço oferecido.',
+              },
+            ],
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -831,6 +845,20 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                   beforeImage: '',
                   afterImage: '',
                   description: 'Nova transformação',
+                },
+              ],
+            };
+            break;
+          case 'services':
+            defaultModuleConfig = {
+              enabled: true,
+              cards: [
+                {
+                  id: 'service-1',
+                  icon: 'award',
+                  title: 'Novo Serviço',
+                  subtitle: 'Subtítulo do serviço',
+                  description: 'Descrição detalhada do serviço oferecido.',
                 },
               ],
             };
