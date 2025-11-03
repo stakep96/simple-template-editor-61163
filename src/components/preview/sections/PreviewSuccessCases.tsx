@@ -87,13 +87,13 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-white font-bold text-base mb-1" style={{ fontFamily: 'var(--brand-title-font)' }}>
+                        <h3 className="font-bold text-base mb-1" style={{ fontFamily: 'var(--brand-title-font)', color: config.brand.secondary }}>
                           {firstCase.title}
                         </h3>
-                        <p className="text-white/90 text-sm mb-2" style={{ fontFamily: 'var(--brand-text-font)' }}>
+                        <p className="text-sm mb-2" style={{ fontFamily: 'var(--brand-text-font)', color: config.brand.secondary }}>
                           {firstCase.description}
                         </p>
-                        <p className="text-white/70 text-xs" style={{ fontFamily: 'var(--brand-text-font)' }}>
+                        <p className="text-xs" style={{ fontFamily: 'var(--brand-text-font)', color: config.brand.secondary }}>
                           <span className="font-semibold">Resultado:</span> {firstCase.result}
                         </p>
                       </div>
@@ -129,13 +129,13 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
                 </div>
                 
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-bold text-base mb-1" style={{ fontFamily: 'var(--brand-title-font)' }}>
+                  <h3 className="font-bold text-base mb-1" style={{ fontFamily: 'var(--brand-title-font)', color: config.brand.secondary }}>
                     {caseItem.title}
                   </h3>
-                  <p className="text-white/90 text-sm mb-2" style={{ fontFamily: 'var(--brand-text-font)' }}>
+                  <p className="text-sm mb-2" style={{ fontFamily: 'var(--brand-text-font)', color: config.brand.secondary }}>
                     {caseItem.description}
                   </p>
-                  <p className="text-white/70 text-xs" style={{ fontFamily: 'var(--brand-text-font)' }}>
+                  <p className="text-xs" style={{ fontFamily: 'var(--brand-text-font)', color: config.brand.secondary }}>
                     <span className="font-semibold">Resultado:</span> {caseItem.result}
                   </p>
                 </div>
