@@ -1,15 +1,48 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
-import { Circle, Check } from 'lucide-react';
+import { Circle, Check, CheckCircle, CheckSquare, Dot, Star, Heart, Award, Trophy, Shield, Target, Zap, Lightbulb, Flame, Sparkles, Crown, Diamond, Gift, Home, Building, MapPin, Phone, Mail, User, Users, Briefcase, Calendar, Clock, AlertCircle, Info, HelpCircle, TrendingUp, BarChart, PieChart, Activity } from 'lucide-react';
 import type { ContentStyleConfig } from '@/contexts/SiteEditorContext';
 
 interface PreviewContentStyleProps {
   instanceId: string;
 }
 
-const iconMap = {
+const iconMap: Record<string, any> = {
   circle: Circle,
   check: Check,
+  'check-circle': CheckCircle,
+  'check-square': CheckSquare,
+  dot: Dot,
+  star: Star,
+  heart: Heart,
+  award: Award,
+  trophy: Trophy,
+  shield: Shield,
+  target: Target,
+  zap: Zap,
+  lightbulb: Lightbulb,
+  flame: Flame,
+  sparkles: Sparkles,
+  crown: Crown,
+  diamond: Diamond,
+  gift: Gift,
+  home: Home,
+  building: Building,
+  'map-pin': MapPin,
+  phone: Phone,
+  mail: Mail,
+  user: User,
+  users: Users,
+  briefcase: Briefcase,
+  calendar: Calendar,
+  clock: Clock,
+  'alert-circle': AlertCircle,
+  info: Info,
+  'help-circle': HelpCircle,
+  'trending-up': TrendingUp,
+  'bar-chart': BarChart,
+  'pie-chart': PieChart,
+  activity: Activity,
 };
 
 const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId }) => {

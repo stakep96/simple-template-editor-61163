@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal } from 'lucide-react';
+import { Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal, Circle, Check, CheckSquare, Dot, Lightbulb, Flame, Sparkles, Crown, Diamond, Gift, Home, Building, MapPin, Phone, Mail, User, Calendar, Clock, AlertCircle, Info, HelpCircle, BarChart, PieChart, Activity, FileText, Gavel, Scale, Car, Smartphone } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ServicesConfig } from '@/contexts/SiteEditorContext';
 
@@ -9,6 +9,8 @@ const iconMap: Record<string, any> = {
   trophy: Trophy,
   star: Star,
   'check-circle': CheckCircle,
+  check: Check,
+  'check-square': CheckSquare,
   shield: Shield,
   target: Target,
   briefcase: Briefcase,
@@ -16,6 +18,33 @@ const iconMap: Record<string, any> = {
   heart: Heart,
   'trending-up': TrendingUp,
   medal: Medal,
+  circle: Circle,
+  dot: Dot,
+  lightbulb: Lightbulb,
+  flame: Flame,
+  sparkles: Sparkles,
+  crown: Crown,
+  diamond: Diamond,
+  gift: Gift,
+  home: Home,
+  building: Building,
+  'map-pin': MapPin,
+  phone: Phone,
+  mail: Mail,
+  user: User,
+  calendar: Calendar,
+  clock: Clock,
+  'alert-circle': AlertCircle,
+  info: Info,
+  'help-circle': HelpCircle,
+  'bar-chart': BarChart,
+  'pie-chart': PieChart,
+  activity: Activity,
+  'file-text': FileText,
+  gavel: Gavel,
+  scale: Scale,
+  car: Car,
+  smartphone: Smartphone,
 };
 
 interface PreviewServicesProps {

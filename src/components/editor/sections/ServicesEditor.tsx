@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import { Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal, Plus, Trash2 } from 'lucide-react';
+import { Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal, Plus, Trash2, Circle, Check, CheckSquare, Dot, Lightbulb, Flame, Sparkles, Crown, Diamond, Gift, Home, Building, MapPin, Phone, Mail, User, Calendar, Clock, AlertCircle, Info, HelpCircle, BarChart, PieChart, Activity, FileText, Gavel, Scale, Car, Smartphone } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ServicesConfig, ServiceCard } from '@/contexts/SiteEditorContext';
 
@@ -19,6 +19,8 @@ const iconOptions = [
   { value: 'medal', label: 'Medalha', Icon: Medal },
   { value: 'star', label: 'Estrela', Icon: Star },
   { value: 'check-circle', label: 'Check Circle', Icon: CheckCircle },
+  { value: 'check', label: 'Check', Icon: Check },
+  { value: 'check-square', label: 'Check Quadrado', Icon: CheckSquare },
   { value: 'shield', label: 'Escudo', Icon: Shield },
   { value: 'target', label: 'Alvo', Icon: Target },
   { value: 'briefcase', label: 'Maleta', Icon: Briefcase },
@@ -26,6 +28,33 @@ const iconOptions = [
   { value: 'heart', label: 'Coração', Icon: Heart },
   { value: 'trending-up', label: 'Crescimento', Icon: TrendingUp },
   { value: 'users', label: 'Pessoas', Icon: Users },
+  { value: 'user', label: 'Usuário', Icon: User },
+  { value: 'circle', label: 'Círculo', Icon: Circle },
+  { value: 'dot', label: 'Ponto', Icon: Dot },
+  { value: 'lightbulb', label: 'Lâmpada', Icon: Lightbulb },
+  { value: 'flame', label: 'Chama', Icon: Flame },
+  { value: 'sparkles', label: 'Brilhos', Icon: Sparkles },
+  { value: 'crown', label: 'Coroa', Icon: Crown },
+  { value: 'diamond', label: 'Diamante', Icon: Diamond },
+  { value: 'gift', label: 'Presente', Icon: Gift },
+  { value: 'home', label: 'Casa', Icon: Home },
+  { value: 'building', label: 'Edifício', Icon: Building },
+  { value: 'map-pin', label: 'Localização', Icon: MapPin },
+  { value: 'phone', label: 'Telefone', Icon: Phone },
+  { value: 'mail', label: 'Email', Icon: Mail },
+  { value: 'calendar', label: 'Calendário', Icon: Calendar },
+  { value: 'clock', label: 'Relógio', Icon: Clock },
+  { value: 'alert-circle', label: 'Alerta', Icon: AlertCircle },
+  { value: 'info', label: 'Info', Icon: Info },
+  { value: 'help-circle', label: 'Ajuda', Icon: HelpCircle },
+  { value: 'bar-chart', label: 'Gráfico Barras', Icon: BarChart },
+  { value: 'pie-chart', label: 'Gráfico Pizza', Icon: PieChart },
+  { value: 'activity', label: 'Atividade', Icon: Activity },
+  { value: 'file-text', label: 'Documento', Icon: FileText },
+  { value: 'gavel', label: 'Martelo', Icon: Gavel },
+  { value: 'scale', label: 'Balança', Icon: Scale },
+  { value: 'car', label: 'Carro', Icon: Car },
+  { value: 'smartphone', label: 'Smartphone', Icon: Smartphone },
 ];
 
 const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {

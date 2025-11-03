@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Trash2, Plus, Circle, Check, GripVertical } from 'lucide-react';
+import { Trash2, Plus, GripVertical, Circle, Check, CheckCircle, CheckSquare, Dot, Star, Heart, Award, Trophy, Shield, Target, Zap, Lightbulb, Flame, Sparkles, Crown, Diamond, Gift, Home, Building, MapPin, Phone, Mail, User, Users, Briefcase, Calendar, Clock, AlertCircle, Info, HelpCircle, TrendingUp, BarChart, PieChart, Activity } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ContentStyleConfig, ContentStyleItem } from '@/contexts/SiteEditorContext';
@@ -14,6 +14,39 @@ interface ContentStyleEditorProps {
 const iconOptions = [
   { value: 'circle', label: 'Círculo', Icon: Circle },
   { value: 'check', label: 'Check', Icon: Check },
+  { value: 'check-circle', label: 'Check Círculo', Icon: CheckCircle },
+  { value: 'check-square', label: 'Check Quadrado', Icon: CheckSquare },
+  { value: 'dot', label: 'Ponto', Icon: Dot },
+  { value: 'star', label: 'Estrela', Icon: Star },
+  { value: 'heart', label: 'Coração', Icon: Heart },
+  { value: 'award', label: 'Medalha', Icon: Award },
+  { value: 'trophy', label: 'Troféu', Icon: Trophy },
+  { value: 'shield', label: 'Escudo', Icon: Shield },
+  { value: 'target', label: 'Alvo', Icon: Target },
+  { value: 'zap', label: 'Raio', Icon: Zap },
+  { value: 'lightbulb', label: 'Lâmpada', Icon: Lightbulb },
+  { value: 'flame', label: 'Chama', Icon: Flame },
+  { value: 'sparkles', label: 'Brilhos', Icon: Sparkles },
+  { value: 'crown', label: 'Coroa', Icon: Crown },
+  { value: 'diamond', label: 'Diamante', Icon: Diamond },
+  { value: 'gift', label: 'Presente', Icon: Gift },
+  { value: 'home', label: 'Casa', Icon: Home },
+  { value: 'building', label: 'Edifício', Icon: Building },
+  { value: 'map-pin', label: 'Localização', Icon: MapPin },
+  { value: 'phone', label: 'Telefone', Icon: Phone },
+  { value: 'mail', label: 'Email', Icon: Mail },
+  { value: 'user', label: 'Usuário', Icon: User },
+  { value: 'users', label: 'Usuários', Icon: Users },
+  { value: 'briefcase', label: 'Maleta', Icon: Briefcase },
+  { value: 'calendar', label: 'Calendário', Icon: Calendar },
+  { value: 'clock', label: 'Relógio', Icon: Clock },
+  { value: 'alert-circle', label: 'Alerta', Icon: AlertCircle },
+  { value: 'info', label: 'Info', Icon: Info },
+  { value: 'help-circle', label: 'Ajuda', Icon: HelpCircle },
+  { value: 'trending-up', label: 'Crescimento', Icon: TrendingUp },
+  { value: 'bar-chart', label: 'Gráfico Barras', Icon: BarChart },
+  { value: 'pie-chart', label: 'Gráfico Pizza', Icon: PieChart },
+  { value: 'activity', label: 'Atividade', Icon: Activity },
 ];
 
 const ContentStyleEditor: React.FC<ContentStyleEditorProps> = ({ instanceId }) => {
