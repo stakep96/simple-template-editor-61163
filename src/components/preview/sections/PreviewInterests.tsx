@@ -26,7 +26,7 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
           }}
         >
           <h2 
-            className="text-xl font-semibold mb-6"
+            className="text-base font-semibold mb-4"
             style={{ 
               color: config.brand.text,
               fontFamily: 'var(--brand-title-font)'
@@ -35,11 +35,11 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
             {siteConfig.title}
           </h2>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2">
             {siteConfig.tags.map((tag, index) => (
               <div
                 key={index}
-                className="px-6 py-2.5 rounded-full text-sm font-medium transition-transform hover:scale-105"
+                className="px-4 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105"
                 style={{
                   backgroundColor: config.brand.primary,
                   color: config.brand.secondary,

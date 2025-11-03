@@ -31,7 +31,7 @@ const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId })
           }}
         >
           <h2 
-            className="text-xl font-semibold mb-6"
+            className="text-base font-semibold mb-4"
             style={{ 
               color: config.brand.text,
               fontFamily: 'var(--brand-title-font)'
@@ -40,21 +40,21 @@ const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId })
             {siteConfig.title}
           </h2>
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             {siteConfig.items.map((item) => {
               const IconComponent = iconMap[item.icon as keyof typeof iconMap] || Circle;
               
               return (
-                <div key={item.id} className="flex items-center gap-3">
+                <div key={item.id} className="flex items-center gap-2">
                   <IconComponent 
-                    className="w-3 h-3 flex-shrink-0"
+                    className="w-2.5 h-2.5 flex-shrink-0"
                     style={{ 
                       color: config.brand.primary,
                       fill: config.brand.primary
                     }}
                   />
                   <span 
-                    className="text-base"
+                    className="text-sm"
                     style={{ 
                       color: config.brand.text,
                       fontFamily: 'var(--brand-text-font)'

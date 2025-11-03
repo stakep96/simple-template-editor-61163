@@ -25,7 +25,7 @@ const PreviewDemographics: React.FC<PreviewDemographicsProps> = ({ instanceId })
           }}
         >
           <h2 
-            className="text-xl font-semibold mb-6"
+            className="text-base font-semibold mb-4"
             style={{ 
               color: config.brand.text,
               fontFamily: 'var(--brand-title-font)'
@@ -34,11 +34,11 @@ const PreviewDemographics: React.FC<PreviewDemographicsProps> = ({ instanceId })
             {siteConfig.title}
           </h2>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-6">
             {siteConfig.stats.map((stat) => (
               <div key={stat.id} className="text-center">
                 <div 
-                  className="text-4xl font-bold mb-2"
+                  className="text-2xl font-bold mb-1"
                   style={{ 
                     color: config.brand.primary,
                     fontFamily: 'var(--brand-title-font)'
@@ -47,7 +47,7 @@ const PreviewDemographics: React.FC<PreviewDemographicsProps> = ({ instanceId })
                   {stat.value}
                 </div>
                 <div 
-                  className="text-sm"
+                  className="text-xs"
                   style={{ 
                     color: config.brand.text,
                     fontFamily: 'var(--brand-text-font)'
