@@ -75,7 +75,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
               <p 
                 className="text-sm leading-relaxed"
                 style={{ 
-                  color: siteConfig.brand.textColor,
+                  color: siteConfig.brand.secondary,
                   fontFamily: 'var(--brand-text-font)'
                 }}
               >
