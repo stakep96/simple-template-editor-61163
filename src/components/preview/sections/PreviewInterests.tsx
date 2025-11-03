@@ -39,10 +39,11 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
             {siteConfig.tags.map((tag, index) => (
               <div
                 key={index}
-                className="px-4 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105"
+                className="px-4 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105 border"
                 style={{
                   backgroundColor: config.brand.primary,
                   color: config.brand.secondary,
+                  borderColor: config.brand.secondary,
                   fontFamily: 'var(--brand-text-font)'
                 }}
               >
