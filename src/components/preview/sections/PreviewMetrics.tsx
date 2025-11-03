@@ -55,15 +55,15 @@ const PreviewMetrics: React.FC<PreviewMetricsProps> = ({ instanceId }) => {
               >
                 {/* Header com ícone, nome e seguidores */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <div 
-                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ backgroundColor: config.brand.secondary }}
                     >
-                      <Icon className="w-5 h-5" style={{ color: config.brand.primary }} />
+                      <Icon className="w-4 h-4" style={{ color: config.brand.primary }} />
                     </div>
                     <h3 
-                      className="text-base font-bold"
+                      className="text-sm font-bold"
                       style={{ 
                         color: config.brand.secondary,
                         fontFamily: 'var(--brand-title-font)'
@@ -74,7 +74,7 @@ const PreviewMetrics: React.FC<PreviewMetricsProps> = ({ instanceId }) => {
                   </div>
                   
                   <div 
-                    className="text-3xl font-bold"
+                    className="text-2xl font-bold"
                     style={{ 
                       color: config.brand.accent,
                       fontFamily: 'var(--brand-title-font)'
