@@ -22,13 +22,13 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
         <div 
           className="rounded-2xl p-8"
           style={{ 
-            backgroundColor: config.brand.secondary,
+            backgroundColor: config.brand.primary,
           }}
         >
           <h2 
             className="text-base font-semibold mb-4"
             style={{ 
-              color: config.brand.text,
+              color: config.brand.secondary,
               fontFamily: 'var(--brand-title-font)'
             }}
           >
@@ -39,9 +39,9 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
             {siteConfig.tags.map((tag, index) => (
               <div
                 key={index}
-                className="px-4 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105 border"
+                className="px-4 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105 border-2"
                 style={{
-                  backgroundColor: config.brand.primary,
+                  backgroundColor: 'transparent',
                   color: config.brand.secondary,
                   borderColor: config.brand.secondary,
                   fontFamily: 'var(--brand-text-font)'
