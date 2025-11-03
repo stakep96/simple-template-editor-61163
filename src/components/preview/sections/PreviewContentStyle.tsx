@@ -60,13 +60,13 @@ const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId })
         <div 
           className="rounded-2xl p-8"
           style={{ 
-            backgroundColor: config.brand.secondary,
+            backgroundColor: config.brand.primary,
           }}
         >
           <h2 
             className="text-base font-semibold mb-4"
             style={{ 
-              color: config.brand.text,
+              color: config.brand.secondary,
               fontFamily: 'var(--brand-title-font)'
             }}
           >
@@ -82,13 +82,13 @@ const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId })
                   <IconComponent 
                     className="w-5 h-5 flex-shrink-0"
                     style={{ 
-                      color: config.brand.primary
+                      color: config.brand.accent
                     }}
                   />
                   <span 
                     className="text-sm"
                     style={{ 
-                      color: config.brand.text,
+                      color: config.brand.secondary,
                       fontFamily: 'var(--brand-text-font)'
                     }}
                   >
