@@ -18,7 +18,7 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
       className="py-12 px-4"
       style={{ backgroundColor: config.brand.background }}
     >
-      <div className="container max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <div 
           className="rounded-2xl p-8"
           style={{ 
