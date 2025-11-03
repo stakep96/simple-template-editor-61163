@@ -48,85 +48,85 @@ const PreviewMetrics: React.FC<PreviewMetricsProps> = ({ instanceId }) => {
             return (
               <div 
                 key={metric.id}
-                className="rounded-2xl p-6"
+                className="rounded-2xl p-5"
                 style={{ 
                   backgroundColor: config.brand.primary,
                 }}
               >
-                <div className="flex items-start gap-4">
-                  <div 
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: config.brand.secondary }}
-                  >
-                    <Icon className="w-6 h-6" style={{ color: config.brand.primary }} />
+                {/* Header com ícone, nome e seguidores */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div 
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: config.brand.secondary }}
+                    >
+                      <Icon className="w-5 h-5" style={{ color: config.brand.primary }} />
+                    </div>
+                    <h3 
+                      className="text-base font-bold"
+                      style={{ 
+                        color: config.brand.secondary,
+                        fontFamily: 'var(--brand-title-font)'
+                      }}
+                    >
+                      {metric.platform}
+                    </h3>
                   </div>
+                  
+                  <div 
+                    className="text-3xl font-bold"
+                    style={{ 
+                      color: config.brand.accent,
+                      fontFamily: 'var(--brand-title-font)'
+                    }}
+                  >
+                    {metric.followers}
+                  </div>
+                </div>
 
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between mb-4">
-                      <h3 
-                        className="text-lg font-bold"
-                        style={{ 
-                          color: config.brand.secondary,
-                          fontFamily: 'var(--brand-title-font)'
-                        }}
-                      >
-                        {metric.platform}
-                      </h3>
-                      <div 
-                        className="text-3xl font-bold"
-                        style={{ 
-                          color: config.brand.accent,
-                          fontFamily: 'var(--brand-title-font)'
-                        }}
-                      >
-                        {metric.followers}
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-6">
-                      <div>
-                        <p 
-                          className="text-xs mb-1"
-                          style={{ 
-                            color: config.brand.secondary,
-                            opacity: 0.7,
-                            fontFamily: 'var(--brand-text-font)'
-                          }}
-                        >
-                          Engajamento
-                        </p>
-                        <p 
-                          className="text-base font-semibold"
-                          style={{ 
-                            color: config.brand.accent,
-                            fontFamily: 'var(--brand-text-font)'
-                          }}
-                        >
-                          {metric.engagement}
-                        </p>
-                      </div>
-                      <div>
-                        <p 
-                          className="text-xs mb-1"
-                          style={{ 
-                            color: config.brand.secondary,
-                            opacity: 0.7,
-                            fontFamily: 'var(--brand-text-font)'
-                          }}
-                        >
-                          Views Mensais
-                        </p>
-                        <p 
-                          className="text-base font-semibold"
-                          style={{ 
-                            color: config.brand.secondary,
-                            fontFamily: 'var(--brand-text-font)'
-                          }}
-                        >
-                          {metric.monthlyViews}
-                        </p>
-                      </div>
-                    </div>
+                {/* Grid de métricas */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p 
+                      className="text-xs mb-0.5"
+                      style={{ 
+                        color: config.brand.secondary,
+                        opacity: 0.6,
+                        fontFamily: 'var(--brand-text-font)'
+                      }}
+                    >
+                      Engajamento
+                    </p>
+                    <p 
+                      className="text-sm font-semibold"
+                      style={{ 
+                        color: config.brand.accent,
+                        fontFamily: 'var(--brand-text-font)'
+                      }}
+                    >
+                      {metric.engagement}
+                    </p>
+                  </div>
+                  <div>
+                    <p 
+                      className="text-xs mb-0.5"
+                      style={{ 
+                        color: config.brand.secondary,
+                        opacity: 0.6,
+                        fontFamily: 'var(--brand-text-font)'
+                      }}
+                    >
+                      Views Mensais
+                    </p>
+                    <p 
+                      className="text-sm font-semibold"
+                      style={{ 
+                        color: config.brand.secondary,
+                        fontFamily: 'var(--brand-text-font)'
+                      }}
+                    >
+                      {metric.monthlyViews}
+                    </p>
                   </div>
                 </div>
               </div>
