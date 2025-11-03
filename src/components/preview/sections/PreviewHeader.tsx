@@ -22,7 +22,7 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
 
   return (
     <header 
-      className={`px-4 py-3 flex items-center ${alignmentClasses[headerConfig.alignment]}`}
+      className={`px-4 py-6 flex items-center ${alignmentClasses[headerConfig.alignment]}`}
       style={{ backgroundColor: config.brand.primary }}
     >
       {headerConfig.logo ? (
