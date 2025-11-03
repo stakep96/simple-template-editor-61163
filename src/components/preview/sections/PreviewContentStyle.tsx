@@ -78,9 +78,9 @@ const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId })
               const IconComponent = iconMap[item.icon as keyof typeof iconMap] || Circle;
               
               return (
-                <div key={item.id} className="flex items-center gap-2">
+                <div key={item.id} className="flex items-center gap-3">
                   <IconComponent 
-                    className="w-2.5 h-2.5 flex-shrink-0"
+                    className="w-5 h-5 flex-shrink-0"
                     style={{ 
                       color: config.brand.primary,
                       fill: config.brand.primary
