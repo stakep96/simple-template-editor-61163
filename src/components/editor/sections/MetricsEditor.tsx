@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { MetricsConfig, MetricItem } from '@/contexts/SiteEditorContext';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Plus, Trash2 } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import * as LucideIcons from 'lucide-react';
 
 interface MetricsEditorProps {
   instanceId: string;
 }
 
-const iconOptions = [
+const platformOptions = [
   { value: 'instagram', label: 'Instagram', Icon: LucideIcons.Instagram },
   { value: 'facebook', label: 'Facebook', Icon: LucideIcons.Facebook },
   { value: 'twitter', label: 'Twitter', Icon: LucideIcons.Twitter },
@@ -21,15 +20,13 @@ const iconOptions = [
   { value: 'youtube', label: 'YouTube', Icon: LucideIcons.Youtube },
   { value: 'tiktok', label: 'TikTok', Icon: LucideIcons.Music },
   { value: 'smartphone', label: 'Smartphone', Icon: LucideIcons.Smartphone },
-  { value: 'globe', label: 'Globe', Icon: LucideIcons.Globe },
-  { value: 'share2', label: 'Share', Icon: LucideIcons.Share2 },
+  { value: 'globe', label: 'Website', Icon: LucideIcons.Globe },
+  { value: 'share2', label: 'Outras Redes', Icon: LucideIcons.Share2 },
 ];
 
 const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
   const { config, updateModuleInstance } = useSiteEditor();
   const moduleConfig = config.moduleInstances[instanceId]?.config as MetricsConfig;
-  const [searchTerm, setSearchTerm] = useState('');
-  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
 
   if (!moduleConfig) return null;
 
@@ -42,6 +39,18 @@ const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
       metric.id === metricId ? { ...metric, [field]: value } : metric
     );
     updateModuleInstance(instanceId, { metrics: updatedMetrics });
+  };
+
+  const updatePlatform = (metricId: string, platformValue: string) => {
+    const selectedPlatform = platformOptions.find(p => p.value === platformValue);
+    if (selectedPlatform) {
+      const updatedMetrics = moduleConfig.metrics.map(metric =>
+        metric.id === metricId 
+          ? { ...metric, icon: selectedPlatform.value, platform: selectedPlatform.label } 
+          : metric
+      );
+      updateModuleInstance(instanceId, { metrics: updatedMetrics });
+    }
   };
 
   const removeMetric = (metricId: string) => {
@@ -61,9 +70,6 @@ const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
     updateModuleInstance(instanceId, { metrics: [...moduleConfig.metrics, newMetric] });
   };
 
-  const filteredIcons = iconOptions.filter(icon =>
-    icon.label.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div className="space-y-6">
@@ -86,8 +92,7 @@ const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
         </div>
 
         {moduleConfig.metrics.map((metric, index) => {
-          const selectedIcon = iconOptions.find(opt => opt.value === metric.icon);
-          const IconComponent = selectedIcon?.Icon || LucideIcons.BarChart;
+          const selectedPlatform = platformOptions.find(opt => opt.value === metric.icon);
 
           return (
             <div key={metric.id} className="p-4 border rounded-lg space-y-3">
@@ -104,59 +109,28 @@ const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
               </div>
 
               <div className="space-y-2">
-                <Label>Ícone</Label>
-                <Popover 
-                  open={openPopoverId === metric.id}
-                  onOpenChange={(open) => setOpenPopoverId(open ? metric.id : null)}
+                <Label>Rede Social / Plataforma</Label>
+                <Select 
+                  value={metric.icon} 
+                  onValueChange={(value) => updatePlatform(metric.id, value)}
                 >
-                  <PopoverTrigger asChild>
-                    <Button 
-                      variant="outline" 
-                      className="w-full justify-start"
-                    >
-                      <IconComponent className="w-4 h-4 mr-2" />
-                      {selectedIcon?.label || 'Selecionar ícone'}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="p-0 w-[200px]" align="start">
-                    <Command>
-                      <CommandInput 
-                        placeholder="Buscar ícone..." 
-                        value={searchTerm}
-                        onValueChange={setSearchTerm}
-                      />
-                      <CommandEmpty>Nenhum ícone encontrado.</CommandEmpty>
-                      <CommandGroup className="max-h-[200px] overflow-auto">
-                        {filteredIcons.map((icon) => {
-                          const Icon = icon.Icon;
-                          return (
-                            <CommandItem
-                              key={icon.value}
-                              value={icon.value}
-                              onSelect={() => {
-                                updateMetric(metric.id, 'icon', icon.value);
-                                setOpenPopoverId(null);
-                                setSearchTerm('');
-                              }}
-                            >
-                              <Icon className="w-4 h-4 mr-2" />
-                              {icon.label}
-                            </CommandItem>
-                          );
-                        })}
-                      </CommandGroup>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-              </div>
-
-              <div className="space-y-2">
-                <Label>Nome da Plataforma</Label>
-                <Input
-                  value={metric.platform}
-                  onChange={(e) => updateMetric(metric.id, 'platform', e.target.value)}
-                  placeholder="Ex: Instagram"
-                />
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione uma rede social" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {platformOptions.map((platform) => {
+                      const Icon = platform.Icon;
+                      return (
+                        <SelectItem key={platform.value} value={platform.value}>
+                          <div className="flex items-center gap-2">
+                            <Icon className="w-4 h-4" />
+                            <span>{platform.label}</span>
+                          </div>
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">
