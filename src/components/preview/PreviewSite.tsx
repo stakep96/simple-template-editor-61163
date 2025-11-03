@@ -17,6 +17,9 @@ import PreviewBeforeAfter from './sections/PreviewBeforeAfter';
 import PreviewBenefits from './sections/PreviewBenefits';
 import PreviewCredentials from './sections/PreviewCredentials';
 import PreviewServices from './sections/PreviewServices';
+import PreviewDemographics from './sections/PreviewDemographics';
+import PreviewInterests from './sections/PreviewInterests';
+import PreviewContentStyle from './sections/PreviewContentStyle';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
 
@@ -78,6 +81,12 @@ const PreviewSite = () => {
           return <PreviewServices key={key} config={instance.config as import('@/contexts/SiteEditorContext').ServicesConfig} />;
         }
         return null;
+      case 'demographics':
+        return <PreviewDemographics key={key} instanceId={instanceId} />;
+      case 'interests':
+        return <PreviewInterests key={key} instanceId={instanceId} />;
+      case 'content-style':
+        return <PreviewContentStyle key={key} instanceId={instanceId} />;
       case 'footer':
         return <PreviewFooter key={key} instanceId={instanceId} />;
       default:

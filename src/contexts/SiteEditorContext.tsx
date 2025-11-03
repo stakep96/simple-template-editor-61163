@@ -206,6 +206,36 @@ export interface ServicesConfig {
   cards: ServiceCard[];
 }
 
+export interface DemographicStat {
+  id: string;
+  value: string;
+  label: string;
+}
+
+export interface DemographicsConfig {
+  enabled: boolean;
+  title: string;
+  stats: DemographicStat[];
+}
+
+export interface InterestsConfig {
+  enabled: boolean;
+  title: string;
+  tags: string[];
+}
+
+export interface ContentStyleItem {
+  id: string;
+  text: string;
+  icon: string;
+}
+
+export interface ContentStyleConfig {
+  enabled: boolean;
+  title: string;
+  items: ContentStyleItem[];
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -216,13 +246,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'footer';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -375,6 +405,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     benefits: 0,
     credentials: 0,
     services: 0,
+    demographics: 0,
+    interests: 0,
+    'content-style': 0,
     footer: 0,
   });
 
@@ -624,6 +657,54 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'demographics':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Demografia',
+            stats: [
+              {
+                id: '1',
+                value: '18-35',
+                label: 'Idade média',
+              },
+              {
+                id: '2',
+                value: '78%',
+                label: 'Feminino',
+              },
+            ],
+          };
+          break;
+        case 'interests':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Interesses do Público',
+            tags: ['Moda', 'Lifestyle', 'Beleza', 'Viagens', 'Fitness'],
+          };
+          break;
+        case 'content-style':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Estilo de conteúdo',
+            items: [
+              {
+                id: '1',
+                text: 'IRL',
+                icon: 'circle',
+              },
+              {
+                id: '2',
+                text: 'Humor',
+                icon: 'circle',
+              },
+              {
+                id: '3',
+                text: 'Esportes',
+                icon: 'circle',
+              },
+            ],
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -706,6 +787,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         benefits: 0,
         credentials: 0,
         services: 0,
+        demographics: 0,
+        interests: 0,
+        'content-style': 0,
         footer: 0,
       };
 

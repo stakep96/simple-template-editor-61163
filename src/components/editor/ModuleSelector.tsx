@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap } from 'lucide-react';
+import { ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
@@ -69,6 +69,24 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           icon: Zap,
           title: 'Serviços',
           description: 'Cards de serviços',
+        },
+        {
+          id: 'demographics' as ModuleType,
+          icon: BarChart3,
+          title: 'Informação Dupla',
+          description: 'Estatísticas destacadas',
+        },
+        {
+          id: 'interests' as ModuleType,
+          icon: Tag,
+          title: 'Badges',
+          description: 'Tags de interesse',
+        },
+        {
+          id: 'content-style' as ModuleType,
+          icon: List,
+          title: 'Lista com Ícones',
+          description: 'Itens com bullets',
         },
       ],
     },
