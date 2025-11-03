@@ -55,7 +55,7 @@ const PreviewServices: React.FC<PreviewServicesProps> = ({ config }) => {
                   <h3 
                     className="text-base font-bold mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis"
                     style={{ 
-                      color: siteConfig.brand.titleColor,
+                      color: siteConfig.brand.secondary,
                       fontFamily: 'var(--brand-title-font)'
                     }}
                   >
