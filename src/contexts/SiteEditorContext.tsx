@@ -236,6 +236,21 @@ export interface ContentStyleConfig {
   items: ContentStyleItem[];
 }
 
+export interface MetricItem {
+  id: string;
+  icon: string;
+  platform: string;
+  followers: string;
+  engagement: string;
+  monthlyViews: string;
+}
+
+export interface MetricsConfig {
+  enabled: boolean;
+  title: string;
+  metrics: MetricItem[];
+}
+
 export interface MarketingConfig {
   whatsapp: {
     enabled: boolean;
@@ -246,13 +261,13 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'footer';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -408,6 +423,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     demographics: 0,
     interests: 0,
     'content-style': 0,
+    metrics: 0,
     footer: 0,
   });
 
@@ -705,6 +721,22 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'metrics':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Métricas & Resultados',
+            metrics: [
+              {
+                id: '1',
+                icon: 'instagram',
+                platform: 'Instagram',
+                followers: '120K',
+                engagement: '4.8%',
+                monthlyViews: '1.5M',
+              },
+            ],
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -790,6 +822,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         demographics: 0,
         interests: 0,
         'content-style': 0,
+        metrics: 0,
         footer: 0,
       };
 
