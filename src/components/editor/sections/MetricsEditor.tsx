@@ -83,13 +83,7 @@ const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
       </div>
 
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <Label>Métricas</Label>
-          <Button onClick={addMetric} size="sm" variant="outline">
-            <Plus className="w-4 h-4 mr-1" />
-            Adicionar
-          </Button>
-        </div>
+        <Label>Métricas</Label>
 
         {moduleConfig.metrics.map((metric, index) => {
           const selectedPlatform = platformOptions.find(opt => opt.value === metric.icon);
@@ -167,10 +161,14 @@ const MetricsEditor: React.FC<MetricsEditorProps> = ({ instanceId }) => {
 
         {moduleConfig.metrics.length === 0 && (
           <div className="text-center py-8 text-muted-foreground">
-            <p className="text-sm">Nenhuma métrica adicionada.</p>
-            <p className="text-xs mt-1">Clique em "Adicionar" para começar.</p>
+            Nenhuma métrica adicionada. Clique em "Adicionar Métrica" para começar.
           </div>
         )}
+
+        <Button onClick={addMetric} variant="outline" className="w-full border-dashed hover:border-solid">
+          <Plus className="w-4 h-4 mr-2" />
+          Adicionar Métrica
+        </Button>
       </div>
     </div>
   );
