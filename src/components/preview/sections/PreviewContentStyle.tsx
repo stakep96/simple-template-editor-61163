@@ -82,8 +82,7 @@ const PreviewContentStyle: React.FC<PreviewContentStyleProps> = ({ instanceId })
                   <IconComponent 
                     className="w-5 h-5 flex-shrink-0"
                     style={{ 
-                      color: config.brand.primary,
-                      fill: config.brand.primary
+                      color: config.brand.primary
                     }}
                   />
                   <span 
