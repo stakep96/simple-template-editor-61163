@@ -44,11 +44,11 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-12 items-center justify-items-center">
           {validLogos.map((logo) => (
             <div 
               key={logo.id} 
-              className="flex items-center justify-center w-full h-24 p-4"
+              className="flex items-center justify-center w-full h-32 p-6"
             >
               <img 
                 src={logo.url} 
