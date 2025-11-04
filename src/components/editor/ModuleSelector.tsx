@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List } from 'lucide-react';
+import { Activity, ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List, Building2 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
@@ -93,6 +93,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           icon: Activity,
           title: 'Métricas',
           description: 'Dados de redes sociais',
+        },
+        {
+          id: 'brands' as ModuleType,
+          icon: Building2,
+          title: 'Marcas Parceiras',
+          description: 'Logos de parceiros',
         },
       ],
     },

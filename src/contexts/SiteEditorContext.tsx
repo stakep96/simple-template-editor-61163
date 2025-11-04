@@ -261,13 +261,26 @@ export interface MarketingConfig {
   facebookPixel: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'footer';
+export interface BrandLogo {
+  id: string;
+  url: string;
+  alt: string;
+}
+
+export interface BrandsConfig {
+  enabled: boolean;
+  title: string;
+  description: string;
+  logos: BrandLogo[];
+}
+
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -424,6 +437,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     interests: 0,
     'content-style': 0,
     metrics: 0,
+    brands: 0,
     footer: 0,
   });
 
@@ -737,6 +751,14 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'brands':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Marcas Parceiras',
+            description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
+            logos: [],
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -823,6 +845,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         interests: 0,
         'content-style': 0,
         metrics: 0,
+        brands: 0,
         footer: 0,
       };
 
@@ -978,6 +1001,14 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                   description: 'Descrição detalhada do serviço oferecido.',
                 },
               ],
+            };
+            break;
+          case 'brands':
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Marcas Parceiras',
+              description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
+              logos: [],
             };
             break;
           case 'footer':

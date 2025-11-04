@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -27,6 +27,7 @@ import DemographicsEditor from './sections/DemographicsEditor';
 import InterestsEditor from './sections/InterestsEditor';
 import ContentStyleEditor from './sections/ContentStyleEditor';
 import MetricsEditor from './sections/MetricsEditor';
+import BrandsEditor from './sections/BrandsEditor';
 import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -57,6 +58,7 @@ const EditorPanel = () => {
     interests: { icon: Tag, title: 'Badges', description: 'Tags de interesse', component: InterestsEditor },
     'content-style': { icon: List, title: 'Lista com Ícones', description: 'Itens com bullets', component: ContentStyleEditor },
     metrics: { icon: Activity, title: 'Métricas', description: 'Dados de redes sociais', component: MetricsEditor },
+    brands: { icon: Building2, title: 'Marcas Parceiras', description: 'Logos de parceiros', component: BrandsEditor },
     footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   };
 
