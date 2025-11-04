@@ -756,7 +756,18 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             enabled: true,
             title: 'Marcas Parceiras',
             description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
-            logos: [],
+            logos: [
+              {
+                id: `logo-${Date.now()}-1`,
+                url: '',
+                alt: '',
+              },
+              {
+                id: `logo-${Date.now()}-2`,
+                url: '',
+                alt: '',
+              },
+            ],
           };
           break;
         case 'footer':
