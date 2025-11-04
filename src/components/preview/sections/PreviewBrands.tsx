@@ -11,24 +11,11 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
   const instance = config.moduleInstances[instanceId];
   const brandsConfig = instance?.config as BrandsConfig;
 
-  console.log('PreviewBrands - instanceId:', instanceId);
-  console.log('PreviewBrands - instance:', instance);
-  console.log('PreviewBrands - brandsConfig:', brandsConfig);
-  console.log('PreviewBrands - brandsConfig.enabled:', brandsConfig?.enabled);
-  console.log('PreviewBrands - brandsConfig.logos:', brandsConfig?.logos);
-
-  if (!brandsConfig || !brandsConfig.enabled) {
-    console.log('PreviewBrands - Retornando null: config não existe ou não está habilitado');
-    return null;
-  }
+  if (!brandsConfig || !brandsConfig.enabled) return null;
 
   const validLogos = brandsConfig.logos.filter(logo => logo.url);
-  console.log('PreviewBrands - validLogos:', validLogos);
 
-  if (validLogos.length === 0) {
-    console.log('PreviewBrands - Retornando null: nenhuma logo válida');
-    return null;
-  }
+  if (validLogos.length === 0) return null;
 
   return (
     <section 
@@ -61,12 +48,12 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
           {validLogos.map((logo) => (
             <div 
               key={logo.id} 
-              className="flex items-center justify-center w-full h-32 p-6"
+              className="flex items-center justify-center w-full h-32 p-6 bg-white/50 rounded-lg border border-gray-200/50 hover:border-gray-300 transition-all duration-300 hover:shadow-md"
             >
               <img 
                 src={logo.url} 
                 alt={logo.alt || 'Logo'} 
-                className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
           ))}
