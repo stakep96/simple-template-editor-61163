@@ -67,8 +67,7 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
             return (
               <div 
                 key={logo.id} 
-                className="flex items-center justify-center w-full aspect-[3/2] p-6 bg-white rounded-lg shadow-sm border border-gray-200"
-                style={{ minHeight: '150px' }}
+                className="flex items-center justify-center w-full aspect-square p-6 bg-white rounded-lg shadow-sm border border-gray-200"
               >
                 <img 
                   src={logo.url} 
