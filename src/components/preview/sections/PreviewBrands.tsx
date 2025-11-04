@@ -11,11 +11,24 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
   const instance = config.moduleInstances[instanceId];
   const brandsConfig = instance?.config as BrandsConfig;
 
-  if (!brandsConfig || !brandsConfig.enabled) return null;
+  console.log('PreviewBrands - instanceId:', instanceId);
+  console.log('PreviewBrands - instance:', instance);
+  console.log('PreviewBrands - brandsConfig:', brandsConfig);
+  console.log('PreviewBrands - brandsConfig.enabled:', brandsConfig?.enabled);
+  console.log('PreviewBrands - brandsConfig.logos:', brandsConfig?.logos);
+
+  if (!brandsConfig || !brandsConfig.enabled) {
+    console.log('PreviewBrands - Retornando null: config não existe ou não está habilitado');
+    return null;
+  }
 
   const validLogos = brandsConfig.logos.filter(logo => logo.url);
+  console.log('PreviewBrands - validLogos:', validLogos);
 
-  if (validLogos.length === 0) return null;
+  if (validLogos.length === 0) {
+    console.log('PreviewBrands - Retornando null: nenhuma logo válida');
+    return null;
+  }
 
   return (
     <section 
