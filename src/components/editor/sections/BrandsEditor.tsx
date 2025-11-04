@@ -68,50 +68,50 @@ const BrandsEditor: React.FC<BrandsEditorProps> = ({ instanceId }) => {
 
       <div className="space-y-4">
         <h4 className="text-sm font-semibold">Logos</h4>
-        {brandsConfig.logos.map((logo, index) => (
-          <div key={logo.id} className="p-4 border border-border rounded-lg space-y-3">
-            <div className="flex items-center justify-between">
-              <Label className="text-sm font-semibold">Logo {index + 1}</Label>
+        <div className="grid grid-cols-2 gap-4">
+          {brandsConfig.logos.map((logo, index) => (
+            <div key={logo.id} className="relative p-4 border border-border rounded-lg space-y-3">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => removeLogo(logo.id)}
-                className="h-8 w-8 p-0"
+                className="absolute top-2 right-2 h-6 w-6 p-0 z-10"
               >
-                <Trash2 className="w-4 h-4" />
+                <Trash2 className="w-3 h-3" />
               </Button>
-            </div>
 
-            <div className="space-y-2">
-              <Label htmlFor={`url-${logo.id}`} className="text-xs">
-                Logo
-              </Label>
-              <ImageUpload
-                value={logo.url}
-                onChange={(value) => updateLogo(logo.id, 'url', value)}
-              />
-            </div>
+              <div className="space-y-2">
+                <ImageUpload
+                  value={logo.url}
+                  onChange={(value) => updateLogo(logo.id, 'url', value)}
+                />
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor={`alt-${logo.id}`} className="text-xs">
-                Nome da Marca
-              </Label>
-              <Input
-                id={`alt-${logo.id}`}
-                type="text"
-                value={logo.alt || ''}
-                onChange={(e) => updateLogo(logo.id, 'alt', e.target.value)}
-                placeholder="Nome da marca"
-              />
+              <div className="space-y-1">
+                <Label htmlFor={`alt-${logo.id}`} className="text-xs">
+                  Nome da Marca
+                </Label>
+                <Input
+                  id={`alt-${logo.id}`}
+                  type="text"
+                  value={logo.alt || ''}
+                  onChange={(e) => updateLogo(logo.id, 'alt', e.target.value)}
+                  placeholder="Nome da marca"
+                  className="h-8 text-xs"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+          
+          <button
+            onClick={addLogo}
+            className="p-4 border-2 border-dashed border-border rounded-lg hover:border-primary hover:bg-accent/50 transition-colors flex flex-col items-center justify-center gap-2 min-h-[200px]"
+          >
+            <Plus className="w-8 h-8 text-muted-foreground" />
+            <span className="text-xs text-muted-foreground">Adicionar Logo</span>
+          </button>
+        </div>
       </div>
-
-      <Button onClick={addLogo} variant="outline" className="w-full border-dashed hover:border-solid">
-        <Plus className="w-4 h-4 mr-2" />
-        Adicionar Logo
-      </Button>
     </div>
   );
 };
