@@ -26,12 +26,6 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
   const validLogos = brandsConfig.logos.filter(logo => logo.url);
   console.log('✅ validLogos:', validLogos);
   console.log('validLogos.length:', validLogos.length);
-
-  if (validLogos.length === 0) {
-    console.log('❌ Retornando null: nenhuma logo válida');
-    return null;
-  }
-  
   console.log('✅ Renderizando seção com', validLogos.length, 'logos');
 
   return (
@@ -62,26 +56,38 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
         </div>
 
         <div className="grid grid-cols-2 gap-8 max-w-2xl mx-auto">
-          {validLogos.map((logo, index) => {
-            console.log(`Renderizando logo ${index}:`, logo);
-            return (
+          {validLogos.length === 0 ? (
+            // Placeholders quando não houver logos
+            Array.from({ length: 4 }).map((_, index) => (
               <div 
-                key={logo.id} 
-                className="flex items-center justify-center w-full aspect-square p-6 bg-white rounded-lg shadow-sm border border-gray-200"
+                key={`placeholder-${index}`}
+                className="flex items-center justify-center w-full aspect-square p-6 bg-white/50 rounded-lg shadow-sm border border-dashed border-gray-300"
               >
-                <img 
-                  src={logo.url} 
-                  alt={logo.alt || `Logo ${index + 1}`} 
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    console.error(`Erro ao carregar logo ${index}:`, logo.url);
-                    e.currentTarget.style.display = 'none';
-                  }}
-                  onLoad={() => console.log(`✅ Logo ${index} carregada com sucesso`)}
-                />
+                <span className="text-gray-400 text-sm">Logo {index + 1}</span>
               </div>
-            );
-          })}
+            ))
+          ) : (
+            validLogos.map((logo, index) => {
+              console.log(`Renderizando logo ${index}:`, logo);
+              return (
+                <div 
+                  key={logo.id} 
+                  className="flex items-center justify-center w-full aspect-square p-6 bg-white rounded-lg shadow-sm border border-gray-200"
+                >
+                  <img 
+                    src={logo.url} 
+                    alt={logo.alt || `Logo ${index + 1}`} 
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      console.error(`Erro ao carregar logo ${index}:`, logo.url);
+                      e.currentTarget.style.display = 'none';
+                    }}
+                    onLoad={() => console.log(`✅ Logo ${index} carregada com sucesso`)}
+                  />
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </section>
