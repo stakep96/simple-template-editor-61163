@@ -57,7 +57,7 @@ const HeroEditor: React.FC<HeroEditorProps> = ({ instanceId }) => {
             Fade sobre imagem
           </Label>
           <p className="text-xs text-muted-foreground">
-            Gradiente escuro sobre a imagem de fundo
+            Gradiente sobre a imagem de fundo
           </p>
         </div>
         <Switch
