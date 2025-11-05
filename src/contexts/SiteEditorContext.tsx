@@ -5,6 +5,9 @@ export interface SiteMetadata {
   domain: string;
   title: string;
   description: string;
+  customDomain: boolean;
+  customDomainName: string;
+  customDomainSaved: boolean;
 }
 
 export interface BrandColors {
@@ -324,6 +327,9 @@ const defaultConfig: SiteConfig = {
     domain: '',
     title: 'Seu nome ou nome da empresa',
     description: 'Fale um pouco sobre você ou sua empresa',
+    customDomain: false,
+    customDomainName: '',
+    customDomainSaved: false,
   },
   brand: {
     primary: '#8B1538',
