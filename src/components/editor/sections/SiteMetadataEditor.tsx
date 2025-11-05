@@ -83,7 +83,7 @@ const SiteMetadataEditor = () => {
           Escolha seu domínio 4bout.work
         </Label>
         <div className="flex items-center gap-2">
-          <div className="px-3 py-2 bg-muted rounded-md text-sm text-muted-foreground border border-input">
+          <div className="px-3 py-2 bg-primary rounded-md text-sm text-primary-foreground border border-input">
             4bout.work/
           </div>
           <Input
@@ -125,7 +125,7 @@ const SiteMetadataEditor = () => {
                 Nome do Domínio
               </Label>
               <div className="flex items-center gap-2">
-                <div className="px-3 py-2 bg-muted rounded-md text-sm text-muted-foreground border border-input">
+                <div className="px-3 py-2 bg-primary rounded-md text-sm text-primary-foreground border border-input">
                   www.
                 </div>
                 <Input
