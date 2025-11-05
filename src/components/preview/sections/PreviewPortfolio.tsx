@@ -43,35 +43,33 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
               className="border rounded-2xl overflow-hidden shadow-lg"
               style={{ backgroundColor: 'var(--brand-primary)' }}
             >
-              <AccordionTrigger className="hover:no-underline p-0">
-                <div className="w-full">
-                  {project.image && (
-                    <div className="w-full h-64 bg-muted flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
-                  {!project.image && (
-                    <div className="w-full h-64 bg-muted flex items-center justify-center">
-                      <p className="text-muted-foreground text-sm">Portfolio Image</p>
-                    </div>
-                  )}
-                  <div className="px-5 py-4 text-left">
-                    <h3 
-                      className="text-base font-bold"
-                      style={{ 
-                        fontFamily: 'var(--brand-title-font)', 
-                        color: 'var(--brand-secondary)' 
-                      }}
-                    >
-                      {project.title || 'Título do Projeto'}
-                    </h3>
+              <div className="w-full">
+                {project.image && (
+                  <div className="w-full h-64 bg-muted flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-64 object-cover"
+                    />
                   </div>
-                </div>
-              </AccordionTrigger>
+                )}
+                {!project.image && (
+                  <div className="w-full h-64 bg-muted flex items-center justify-center">
+                    <p className="text-muted-foreground text-sm">Portfolio Image</p>
+                  </div>
+                )}
+                <AccordionTrigger className="hover:no-underline px-5 py-4 w-full">
+                  <h3 
+                    className="text-base font-bold text-left flex-1"
+                    style={{ 
+                      fontFamily: 'var(--brand-title-font)', 
+                      color: 'var(--brand-secondary)' 
+                    }}
+                  >
+                    {project.title || 'Título do Projeto'}
+                  </h3>
+                </AccordionTrigger>
+              </div>
               
               <AccordionContent className="px-5 pb-5">
                 {project.tags && project.tags.length > 0 && (
