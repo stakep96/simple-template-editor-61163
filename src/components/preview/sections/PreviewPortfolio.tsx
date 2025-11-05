@@ -81,7 +81,7 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
                         className="text-xs"
                         style={{ 
                           backgroundColor: 'var(--brand-accent)',
-                          color: 'var(--brand-secondary)'
+                          color: 'var(--brand-primary)'
                         }}
                       >
                         {tag}
