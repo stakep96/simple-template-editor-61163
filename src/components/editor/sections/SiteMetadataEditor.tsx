@@ -53,6 +53,32 @@ const SiteMetadataEditor = () => {
       </div>
 
       <div className="space-y-2">
+        <Label htmlFor="title" className="text-sm font-medium">
+          Título/Nome
+        </Label>
+        <Input
+          id="title"
+          value={config.metadata.title}
+          onChange={(e) => updateMetadata({ title: e.target.value })}
+          placeholder="Seu nome ou nome da empresa"
+          className="w-full"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="description" className="text-sm font-medium">
+          Bio/Descrição
+        </Label>
+        <Textarea
+          id="description"
+          value={config.metadata.description}
+          onChange={(e) => updateMetadata({ description: e.target.value })}
+          placeholder="Fale um pouco sobre você ou sua empresa"
+          className="w-full min-h-[100px] resize-none"
+        />
+      </div>
+
+      <div className="space-y-2">
         <Label htmlFor="domain" className="text-sm font-medium">
           Escolha seu domínio 4bout.work
         </Label>
@@ -173,32 +199,6 @@ const SiteMetadataEditor = () => {
             )}
           </div>
         )}
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="title" className="text-sm font-medium">
-          Título/Nome
-        </Label>
-        <Input
-          id="title"
-          value={config.metadata.title}
-          onChange={(e) => updateMetadata({ title: e.target.value })}
-          placeholder="Seu nome ou nome da empresa"
-          className="w-full"
-        />
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="description" className="text-sm font-medium">
-          Bio/Descrição
-        </Label>
-        <Textarea
-          id="description"
-          value={config.metadata.description}
-          onChange={(e) => updateMetadata({ description: e.target.value })}
-          placeholder="Fale um pouco sobre você ou sua empresa"
-          className="w-full min-h-[100px] resize-none"
-        />
       </div>
 
     </div>
