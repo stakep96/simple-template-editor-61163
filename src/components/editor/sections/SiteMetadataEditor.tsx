@@ -54,7 +54,7 @@ const SiteMetadataEditor = () => {
 
       <div className="space-y-2">
         <Label htmlFor="domain" className="text-sm font-medium">
-          URL do seu site
+          Escolha seu domínio 4bout.work
         </Label>
         <div className="flex items-center gap-2">
           <div className="px-3 py-2 bg-muted rounded-md text-sm text-muted-foreground border border-input">
