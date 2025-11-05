@@ -36,17 +36,19 @@ export interface HeroConfig {
   imageFade: boolean;
 }
 
+export interface SocialLink {
+  id: string;
+  platform: 'instagram' | 'facebook' | 'linkedin' | 'twitter' | 'youtube' | 'tiktok' | 'whatsapp';
+  url: string;
+}
+
 export interface AboutConfig {
   enabled: boolean;
   photo: string;
   name: string;
   title: string;
   description: string;
-  socialLinks: {
-    instagram?: string;
-    facebook?: string;
-    linkedin?: string;
-  };
+  socialLinks: SocialLink[];
   education: string[];
 }
 
@@ -385,11 +387,7 @@ const defaultConfig: SiteConfig = {
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',
         description: 'Abordagem estratégica e personalizada para cada cliente',
-        socialLinks: {
-          instagram: '',
-          facebook: '',
-          linkedin: '',
-        },
+        socialLinks: [],
         education: [
           'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
           'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',

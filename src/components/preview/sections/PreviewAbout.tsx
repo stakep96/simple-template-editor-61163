@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { AboutConfig } from '@/contexts/SiteEditorContext';
-import { Instagram, Facebook, Linkedin, GraduationCap } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, GraduationCap, Twitter, Youtube, MessageCircle, Music } from 'lucide-react';
 
 interface PreviewAboutProps {
   instanceId: string;
@@ -49,34 +49,37 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
             </div>
           )}
 
-          <div className="flex gap-3 mb-3">
-            {aboutConfig.socialLinks?.instagram && (
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: config.brand.primary }}
-              >
-                <Instagram className="w-4 h-4" style={{ color: config.brand.accent }} />
-              </div>
-            )}
-            {aboutConfig.socialLinks?.facebook && (
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: config.brand.primary }}
-              >
-                <Facebook className="w-4 h-4" style={{ color: config.brand.accent }} />
-              </div>
-            )}
-            {aboutConfig.socialLinks?.linkedin && (
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: config.brand.primary }}
-              >
-                <Linkedin className="w-4 h-4" style={{ color: config.brand.accent }} />
-              </div>
-            )}
-          </div>
+          {aboutConfig.socialLinks && aboutConfig.socialLinks.length > 0 && (
+            <div className="flex gap-3 mb-3">
+              {aboutConfig.socialLinks.map((link) => {
+                const icons = {
+                  instagram: Instagram,
+                  facebook: Facebook,
+                  linkedin: Linkedin,
+                  twitter: Twitter,
+                  youtube: Youtube,
+                  tiktok: Music,
+                  whatsapp: MessageCircle,
+                };
+                const Icon = icons[link.platform];
+                
+                return link.url ? (
+                  <a 
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: config.brand.primary }}
+                  >
+                    <Icon className="w-4 h-4" style={{ color: config.brand.accent }} />
+                  </a>
+                ) : null;
+              })}
+            </div>
+          )}
 
-          <h3 
+          <h3
             className="text-lg font-bold mb-1"
             style={{ 
               color: config.brand.titleColor,

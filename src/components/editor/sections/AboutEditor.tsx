@@ -3,10 +3,11 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ImageUpload } from '@/components/ui/image-upload';
 import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
-import type { AboutConfig } from '@/contexts/SiteEditorContext';
+import type { AboutConfig, SocialLink } from '@/contexts/SiteEditorContext';
 
 interface AboutEditorProps {
   instanceId: string;
@@ -33,6 +34,26 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
   const removeEducation = (index: number) => {
     const newEducation = (aboutConfig.education || []).filter((_, i) => i !== index);
     updateModuleInstance(instanceId, { education: newEducation });
+  };
+
+  const addSocialLink = () => {
+    const newSocialLinks: SocialLink[] = [
+      ...(aboutConfig.socialLinks || []),
+      { id: Date.now().toString(), platform: 'instagram', url: '' }
+    ];
+    updateModuleInstance(instanceId, { socialLinks: newSocialLinks });
+  };
+
+  const updateSocialLink = (id: string, field: keyof SocialLink, value: string) => {
+    const newSocialLinks = (aboutConfig.socialLinks || []).map(link =>
+      link.id === id ? { ...link, [field]: value } : link
+    );
+    updateModuleInstance(instanceId, { socialLinks: newSocialLinks });
+  };
+
+  const removeSocialLink = (id: string) => {
+    const newSocialLinks = (aboutConfig.socialLinks || []).filter(link => link.id !== id);
+    updateModuleInstance(instanceId, { socialLinks: newSocialLinks });
   };
 
   return (
@@ -80,29 +101,53 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
       </div>
 
       <div>
-        <Label className="text-sm">Links Sociais</Label>
-        <div className="space-y-2 mt-1">
-          <Input
-            placeholder="Instagram"
-            value={aboutConfig.socialLinks?.instagram || ''}
-            onChange={(e) => updateModuleInstance(instanceId, { 
-              socialLinks: { ...aboutConfig.socialLinks, instagram: e.target.value }
-            })}
-          />
-          <Input
-            placeholder="Facebook"
-            value={aboutConfig.socialLinks?.facebook || ''}
-            onChange={(e) => updateModuleInstance(instanceId, { 
-              socialLinks: { ...aboutConfig.socialLinks, facebook: e.target.value }
-            })}
-          />
-          <Input
-            placeholder="LinkedIn"
-            value={aboutConfig.socialLinks?.linkedin || ''}
-            onChange={(e) => updateModuleInstance(instanceId, { 
-              socialLinks: { ...aboutConfig.socialLinks, linkedin: e.target.value }
-            })}
-          />
+        <Label className="text-sm mb-2 block">Links Sociais</Label>
+        <div className="space-y-2">
+          {(aboutConfig.socialLinks || []).map((link) => (
+            <div key={link.id} className="flex gap-2">
+              <Select
+                value={link.platform}
+                onValueChange={(value) => updateSocialLink(link.id, 'platform', value)}
+              >
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="Rede" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="instagram">Instagram</SelectItem>
+                  <SelectItem value="facebook">Facebook</SelectItem>
+                  <SelectItem value="linkedin">LinkedIn</SelectItem>
+                  <SelectItem value="twitter">Twitter</SelectItem>
+                  <SelectItem value="youtube">YouTube</SelectItem>
+                  <SelectItem value="tiktok">TikTok</SelectItem>
+                  <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                </SelectContent>
+              </Select>
+              <Input
+                value={link.url}
+                onChange={(e) => updateSocialLink(link.id, 'url', e.target.value)}
+                placeholder="URL do perfil"
+                className="flex-1"
+              />
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                onClick={() => removeSocialLink(link.id)}
+                className="h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10"
+              >
+                <Trash2 className="w-4 h-4" />
+              </Button>
+            </div>
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={addSocialLink}
+            className="w-full border-dashed hover:border-solid"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Adicionar Rede
+          </Button>
         </div>
       </div>
 

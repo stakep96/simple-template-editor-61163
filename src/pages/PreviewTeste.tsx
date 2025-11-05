@@ -85,11 +85,7 @@ const fullTestConfig: SiteConfig = {
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',
         description: 'Abordagem estratégica e personalizada para cada cliente',
-        socialLinks: {
-          instagram: 'https://instagram.com',
-          facebook: 'https://facebook.com',
-          linkedin: 'https://linkedin.com',
-        },
+        socialLinks: [],
         education: [
           'Mestre em Direito Tributário pela FGV-SP (2010)',
           'Especialista em Direito Empresarial pela USP (2015)',
