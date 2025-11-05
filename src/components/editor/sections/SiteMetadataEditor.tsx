@@ -125,6 +125,9 @@ const SiteMetadataEditor = () => {
                 Nome do Domínio
               </Label>
               <div className="flex items-center gap-2">
+                <div className="px-3 py-2 bg-muted rounded-md text-sm text-muted-foreground border border-input">
+                  www.
+                </div>
                 <Input
                   id="customDomainName"
                   value={config.metadata.customDomainName}
