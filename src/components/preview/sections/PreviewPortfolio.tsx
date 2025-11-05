@@ -92,12 +92,14 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
                 
                 {project.description && (
                   <p 
-                    className="text-sm leading-relaxed break-words"
+                    className="text-sm leading-relaxed break-words w-full"
                     style={{ 
                       fontFamily: 'var(--brand-text-font)', 
                       color: 'var(--brand-secondary)',
                       wordWrap: 'break-word',
-                      overflowWrap: 'break-word'
+                      overflowWrap: 'anywhere',
+                      wordBreak: 'break-word',
+                      maxWidth: '100%'
                     }}
                   >
                     {project.description}
