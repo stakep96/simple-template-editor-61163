@@ -3,6 +3,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { ImageUpload } from '@/components/ui/image-upload';
 import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { AboutConfig } from '@/contexts/SiteEditorContext';
@@ -37,13 +38,10 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
   return (
     <div className="space-y-3">
       <div>
-        <Label htmlFor={`aboutPhoto-${instanceId}`} className="text-sm">Foto (URL)</Label>
-        <Input
-          id={`aboutPhoto-${instanceId}`}
-          type="text"
+        <Label htmlFor={`aboutPhoto-${instanceId}`} className="text-sm">Foto</Label>
+        <ImageUpload
           value={aboutConfig.photo}
-          onChange={(e) => updateModuleInstance(instanceId, { photo: e.target.value })}
-          placeholder="URL da foto"
+          onChange={(value) => updateModuleInstance(instanceId, { photo: value })}
           className="mt-1"
         />
       </div>
