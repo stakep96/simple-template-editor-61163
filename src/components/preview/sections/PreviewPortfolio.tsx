@@ -21,11 +21,11 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
   }
 
   return (
-    <section className="py-16 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <section className="py-12 px-6">
+      <div className="max-w-2xl mx-auto">
         {portfolioConfig.title && (
           <h2 
-            className="text-3xl md:text-4xl font-bold text-center mb-12"
+            className="text-2xl font-bold text-center mb-8"
             style={{ 
               fontFamily: 'var(--brand-title-font)', 
               color: 'var(--brand-title-color)' 
@@ -35,17 +35,18 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
           </h2>
         )}
         
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-6">
           {portfolioConfig.projects.map((project) => (
             <AccordionItem 
               key={project.id} 
               value={project.id}
-              className="border rounded-lg overflow-hidden bg-card"
+              className="border rounded-2xl overflow-hidden shadow-lg"
+              style={{ backgroundColor: 'var(--brand-primary)' }}
             >
               <AccordionTrigger className="hover:no-underline p-0">
                 <div className="w-full">
                   {project.image && (
-                    <div className="w-full aspect-video bg-muted flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-64 bg-muted flex items-center justify-center overflow-hidden">
                       <img 
                         src={project.image} 
                         alt={project.title}
@@ -54,16 +55,16 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
                     </div>
                   )}
                   {!project.image && (
-                    <div className="w-full aspect-video bg-muted flex items-center justify-center">
+                    <div className="w-full h-64 bg-muted flex items-center justify-center">
                       <p className="text-muted-foreground text-sm">Portfolio Image</p>
                     </div>
                   )}
-                  <div className="px-6 py-4 text-left">
+                  <div className="px-5 py-4 text-left">
                     <h3 
-                      className="text-lg font-semibold"
+                      className="text-base font-bold"
                       style={{ 
                         fontFamily: 'var(--brand-title-font)', 
-                        color: 'var(--brand-title-color)' 
+                        color: 'var(--brand-secondary)' 
                       }}
                     >
                       {project.title || 'Título do Projeto'}
@@ -72,16 +73,17 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
                 </div>
               </AccordionTrigger>
               
-              <AccordionContent className="px-6 pb-6">
+              <AccordionContent className="px-5 pb-5">
                 {project.tags && project.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {project.tags.map((tag, index) => (
                       <Badge 
                         key={index} 
                         variant="secondary"
+                        className="text-xs"
                         style={{ 
-                          backgroundColor: 'var(--brand-primary)',
-                          color: 'white'
+                          backgroundColor: 'var(--brand-accent)',
+                          color: 'var(--brand-secondary)'
                         }}
                       >
                         {tag}
@@ -92,10 +94,12 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
                 
                 {project.description && (
                   <p 
-                    className="text-sm leading-relaxed whitespace-pre-wrap"
+                    className="text-sm leading-relaxed break-words"
                     style={{ 
                       fontFamily: 'var(--brand-text-font)', 
-                      color: 'var(--brand-text-color)' 
+                      color: 'var(--brand-secondary)',
+                      wordWrap: 'break-word',
+                      overflowWrap: 'break-word'
                     }}
                   >
                     {project.description}
