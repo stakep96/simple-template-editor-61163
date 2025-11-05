@@ -2,6 +2,7 @@ import React from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Switch } from '@/components/ui/switch';
 import { ImageUpload } from '@/components/ui/image-upload';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { HeroConfig } from '@/contexts/SiteEditorContext';
@@ -47,6 +48,22 @@ const HeroEditor: React.FC<HeroEditorProps> = ({ instanceId }) => {
           onChange={(e) => updateModuleInstance(instanceId, { description: e.target.value })}
           className="mt-1"
           rows={3}
+        />
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div className="space-y-0.5">
+          <Label htmlFor={`heroFade-${instanceId}`} className="text-sm">
+            Fade sobre imagem
+          </Label>
+          <p className="text-xs text-muted-foreground">
+            Gradiente escuro sobre a imagem de fundo
+          </p>
+        </div>
+        <Switch
+          id={`heroFade-${instanceId}`}
+          checked={heroConfig.imageFade}
+          onCheckedChange={(checked) => updateModuleInstance(instanceId, { imageFade: checked })}
         />
       </div>
     </div>

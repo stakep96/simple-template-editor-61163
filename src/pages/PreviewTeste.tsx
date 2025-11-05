@@ -72,6 +72,7 @@ const fullTestConfig: SiteConfig = {
         gradientOpacity: 0.7,
         title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
         description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
+        imageFade: true,
       },
     },
     'about-1': {
