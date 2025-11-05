@@ -62,12 +62,22 @@ const PortfolioEditor: React.FC<PortfolioEditorProps> = ({ instanceId }) => {
   };
 
   const handleTagsChange = (projectId: string, tagsString: string) => {
-    const tags = tagsString
-      .split(',')
-      .map((tag) => tag.trim())
-      .filter((tag) => tag.length > 0);
+    // Processar tags apenas quando há conteúdo real
+    const tags = tagsString.length > 0 
+      ? tagsString.split(',').map((tag) => tag.trim()).filter((tag) => tag.length > 0)
+      : [];
     
+    // Atualizar com o array de tags processado
     handleUpdateProject(projectId, 'tags', tags);
+    
+    // Manter o valor original no input através de um campo separado
+    const updatedProjects = portfolioConfig.projects.map((project) =>
+      project.id === projectId ? { ...project, tags, _tagsInput: tagsString } : project
+    );
+
+    updateModuleInstance(instanceId, {
+      projects: updatedProjects,
+    });
   };
 
   return (
@@ -120,7 +130,7 @@ const PortfolioEditor: React.FC<PortfolioEditorProps> = ({ instanceId }) => {
                     <Label>Tags (separadas por vírgula)</Label>
                     <Input
                       type="text"
-                      value={project.tags?.join(', ') || ''}
+                      value={(project as any)._tagsInput ?? project.tags?.join(', ') ?? ''}
                       onChange={(e) => handleTagsChange(project.id, e.target.value)}
                       placeholder="Design, UX, Mobile"
                       className="mt-2"
