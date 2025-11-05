@@ -22,6 +22,7 @@ import PreviewInterests from './sections/PreviewInterests';
 import PreviewContentStyle from './sections/PreviewContentStyle';
 import PreviewMetrics from './sections/PreviewMetrics';
 import PreviewBrands from './sections/PreviewBrands';
+import PreviewPortfolio from './sections/PreviewPortfolio';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
 
@@ -93,6 +94,8 @@ const PreviewSite = () => {
         return <PreviewMetrics key={key} instanceId={instanceId} />;
       case 'brands':
         return <PreviewBrands key={key} instanceId={instanceId} />;
+      case 'portfolio':
+        return <PreviewPortfolio key={key} instanceId={instanceId} />;
       case 'footer':
         return <PreviewFooter key={key} instanceId={instanceId} />;
       default:

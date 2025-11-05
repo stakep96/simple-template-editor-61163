@@ -274,13 +274,27 @@ export interface BrandsConfig {
   logos: BrandLogo[];
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'footer';
+export interface PortfolioProject {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+  tags: string[];
+}
+
+export interface PortfolioConfig {
+  enabled: boolean;
+  title: string;
+  projects: PortfolioProject[];
+}
+
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -438,6 +452,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     'content-style': 0,
     metrics: 0,
     brands: 0,
+    portfolio: 0,
     footer: 0,
   });
 
@@ -770,6 +785,28 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'portfolio':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Portfolio',
+            projects: [
+              {
+                id: `project-${Date.now()}-1`,
+                image: '',
+                title: '',
+                description: '',
+                tags: [],
+              },
+              {
+                id: `project-${Date.now()}-2`,
+                image: '',
+                title: '',
+                description: '',
+                tags: [],
+              },
+            ],
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -848,6 +885,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         faq: 0,
         pricing: 0,
         location: 0,
+        portfolio: 0,
         'before-after': 0,
         benefits: 0,
         credentials: 0,
