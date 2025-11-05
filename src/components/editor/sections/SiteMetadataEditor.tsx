@@ -124,24 +124,26 @@ const SiteMetadataEditor = () => {
               <Label htmlFor="customDomainName" className="text-sm font-medium">
                 Nome do Domínio
               </Label>
-              <Input
-                id="customDomainName"
-                value={config.metadata.customDomainName}
-                onChange={(e) => updateMetadata({ customDomainName: e.target.value })}
-                placeholder="meusite.com"
-                className="w-full"
-                disabled={config.metadata.customDomainSaved}
-              />
+              <div className="flex items-center gap-2">
+                <Input
+                  id="customDomainName"
+                  value={config.metadata.customDomainName}
+                  onChange={(e) => updateMetadata({ customDomainName: e.target.value })}
+                  placeholder="meusite.com"
+                  className="flex-1"
+                  disabled={config.metadata.customDomainSaved}
+                />
+                {!config.metadata.customDomainSaved && (
+                  <Button 
+                    onClick={handleSaveCustomDomain}
+                  >
+                    Salvar
+                  </Button>
+                )}
+              </div>
             </div>
 
-            {!config.metadata.customDomainSaved ? (
-              <Button 
-                onClick={handleSaveCustomDomain}
-                className="w-full"
-              >
-                Salvar Domínio
-              </Button>
-            ) : (
+            {config.metadata.customDomainSaved && (
               <div className="space-y-3 p-4 bg-muted/50 rounded-lg border border-border">
                 <div className="space-y-1">
                   <p className="text-sm font-medium">Configure estes nameservers:</p>
