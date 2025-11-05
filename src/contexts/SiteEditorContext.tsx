@@ -797,13 +797,6 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 description: '',
                 tags: [],
               },
-              {
-                id: `project-${Date.now()}-2`,
-                image: '',
-                title: '',
-                description: '',
-                tags: [],
-              },
             ],
           };
           break;

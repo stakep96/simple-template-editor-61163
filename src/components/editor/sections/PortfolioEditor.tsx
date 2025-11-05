@@ -4,6 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Trash2, Plus } from 'lucide-react';
 import { ImageUpload } from '@/components/ui/image-upload';
 import type { PortfolioConfig, PortfolioProject } from '@/contexts/SiteEditorContext';
@@ -144,13 +145,14 @@ const PortfolioEditor: React.FC<PortfolioEditorProps> = ({ instanceId }) => {
           </p>
         )}
 
-        <button
+        <Button
+          variant="outline"
           onClick={handleAddProject}
-          className="w-full py-8 border-2 border-dashed border-border rounded-lg hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 text-muted-foreground hover:text-primary"
+          className="w-full border-dashed hover:border-solid"
         >
-          <Plus className="w-5 h-5" />
-          <span>Adicionar Projeto</span>
-        </button>
+          <Plus className="w-4 h-4 mr-2" />
+          Adicionar Novo Projeto
+        </Button>
       </div>
     </div>
   );
