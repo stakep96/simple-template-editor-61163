@@ -119,6 +119,7 @@ const PortfolioEditor: React.FC<PortfolioEditorProps> = ({ instanceId }) => {
                   <div>
                     <Label>Tags (separadas por vírgula)</Label>
                     <Input
+                      type="text"
                       value={project.tags?.join(', ') || ''}
                       onChange={(e) => handleTagsChange(project.id, e.target.value)}
                       placeholder="Design, UX, Mobile"
