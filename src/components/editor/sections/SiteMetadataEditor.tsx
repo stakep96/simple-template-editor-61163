@@ -192,10 +192,14 @@ const SiteMetadataEditor = () => {
 
                 <Button 
                   variant="outline"
-                  onClick={() => updateMetadata({ customDomainSaved: false })}
+                  onClick={() => updateMetadata({ 
+                    customDomain: false, 
+                    customDomainSaved: false,
+                    customDomainName: ''
+                  })}
                   className="w-full"
                 >
-                  Editar Domínio
+                  Remover Domínio
                 </Button>
               </div>
             )}
