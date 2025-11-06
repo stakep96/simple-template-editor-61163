@@ -311,9 +311,7 @@ export interface MarqueeConfig {
   separator: string;
   backgroundColor: string;
   speed: number;
-  secondLayer?: {
-    enabled: boolean;
-    items: string;
+  secondLayer: {
     backgroundColor: string;
   };
 }

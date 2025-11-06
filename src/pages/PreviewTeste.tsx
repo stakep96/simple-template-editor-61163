@@ -355,8 +355,6 @@ const fullTestConfig: SiteConfig = {
         backgroundColor: '#F59E0B',
         speed: 30,
         secondLayer: {
-          enabled: true,
-          items: 'Branding, UX/UI, Prototyping, Creative Design',
           backgroundColor: '#1a5a3a',
         },
       },
