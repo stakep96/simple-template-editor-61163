@@ -22,7 +22,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
   const displayItems = [...items, ...items, ...items];
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: '100px' }}>
+    <div className="relative w-full overflow-hidden" style={{ height: '60px' }}>
       <style>
         {`
           @keyframes marquee {
@@ -39,11 +39,13 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         `}
       </style>
       
-      {/* Main marquee layer - full height */}
+      {/* Main marquee layer - positioned between stripes */}
       <div 
-        className="absolute inset-0 overflow-hidden flex items-center"
+        className="absolute left-0 right-0 overflow-hidden flex items-center"
         style={{ 
           backgroundColor: config.backgroundColor,
+          top: '8px',
+          bottom: '8px',
           zIndex: 5,
         }}
       >
@@ -68,7 +70,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
-          height: '15px',
+          height: '8px',
           top: '0',
           transform: 'rotate(-3deg)',
           transformOrigin: 'left top',
@@ -83,7 +85,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
-          height: '15px',
+          height: '8px',
           bottom: '0',
           transform: 'rotate(-3deg)',
           transformOrigin: 'left bottom',
