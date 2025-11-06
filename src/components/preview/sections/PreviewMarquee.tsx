@@ -39,27 +39,11 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         `}
       </style>
       
-      {/* Second layer top - static decorative stripe */}
+      {/* Main marquee layer - full height */}
       <div 
-        className="absolute left-0 right-0 overflow-hidden"
-        style={{ 
-          backgroundColor: config.secondLayer.backgroundColor,
-          height: '15px',
-          top: '0',
-          transform: 'rotate(-3deg)',
-          transformOrigin: 'left top',
-          width: '105%',
-          left: '-2.5%',
-          zIndex: 10,
-        }}
-      />
-      
-      {/* First layer (foreground) - animated */}
-      <div 
-        className="absolute left-0 right-0 py-4 overflow-hidden"
+        className="absolute inset-0 py-4 overflow-hidden"
         style={{ 
           backgroundColor: config.backgroundColor,
-          top: '8px',
           zIndex: 5,
         }}
       >
@@ -79,7 +63,22 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         </div>
       </div>
 
-      {/* Second layer bottom - static decorative stripe */}
+      {/* Decorative stripe top - overlays main layer */}
+      <div 
+        className="absolute left-0 right-0 overflow-hidden"
+        style={{ 
+          backgroundColor: config.secondLayer.backgroundColor,
+          height: '15px',
+          top: '0',
+          transform: 'rotate(-3deg)',
+          transformOrigin: 'left top',
+          width: '105%',
+          left: '-2.5%',
+          zIndex: 10,
+        }}
+      />
+
+      {/* Decorative stripe bottom - overlays main layer */}
       <div 
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
