@@ -64,9 +64,12 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
                     }}
                   >
-                    {/* Inner white container */}
+                    {/* Inner container with black background and fixed height */}
                     <div 
-                      className="relative bg-white rounded-2xl overflow-hidden"
+                      className="relative bg-black rounded-2xl overflow-hidden flex items-center justify-center"
+                      style={{
+                        minHeight: '600px',
+                      }}
                     >
                       {/* Image */}
                       <img
@@ -101,7 +104,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                         position: 'relative',
                         width: 0,
                         height: 0,
-                        borderBottom: '10px solid white',
+                        borderBottom: '10px solid black',
                         borderLeft: '10px solid transparent',
                         borderRight: '0px solid transparent',
                       }}
