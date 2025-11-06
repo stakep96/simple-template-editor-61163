@@ -58,10 +58,11 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                 <div className="relative w-full">
                   {/* Outer border container - gray border effect */}
                   <div 
-                    className="relative rounded-2xl p-[3px] overflow-hidden"
+                    className="relative rounded-2xl overflow-hidden"
                     style={{
                       background: 'linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%)',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
+                      padding: '3px',
                     }}
                   >
                     {/* Inner container with black background and fixed height */}
@@ -69,7 +70,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                       className="relative bg-black overflow-hidden flex items-center justify-center"
                       style={{
                         minHeight: '400px',
-                        borderRadius: '13px',
+                        borderRadius: '12px',
                       }}
                     >
                       {/* Image */}
