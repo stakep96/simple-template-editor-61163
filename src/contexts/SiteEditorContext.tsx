@@ -310,6 +310,7 @@ export interface MarqueeConfig {
   items: string;
   separator: string;
   backgroundColor: string;
+  textColor: string;
   speed: number;
   secondLayer: {
     backgroundColor: string;
@@ -848,6 +849,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             items: 'App Design, Website Design, Dashboard, Wireframe',
             separator: '✱',
             backgroundColor: prev.brand.primary,
+            textColor: prev.brand.text,
             speed: 15,
             secondLayer: {
               backgroundColor: prev.brand.secondary,
@@ -1115,6 +1117,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               items: 'App Design, Website Design, Dashboard, Wireframe',
               separator: '✱',
               backgroundColor: '#F59E0B',
+              textColor: '#FFFFFF',
               speed: 15,
               secondLayer: {
                 backgroundColor: '#1a5a3a',

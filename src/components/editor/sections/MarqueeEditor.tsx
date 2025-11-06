@@ -25,6 +25,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
       items: marqueeConfig.items,
       separator: marqueeConfig.separator,
       backgroundColor: marqueeConfig.backgroundColor,
+      textColor: marqueeConfig.textColor,
       speed: marqueeConfig.speed,
       secondLayer: marqueeConfig.secondLayer,
       [field]: value,
@@ -37,6 +38,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
       items: marqueeConfig.items,
       separator: marqueeConfig.separator,
       backgroundColor: marqueeConfig.backgroundColor,
+      textColor: marqueeConfig.textColor,
       speed: marqueeConfig.speed,
       secondLayer: {
         backgroundColor: value,
@@ -90,6 +92,15 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
             id="marquee-bg"
             value={marqueeConfig.backgroundColor}
             onChange={(value) => handleChange('backgroundColor', value)}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="marquee-text-color">Cor dos Textos e Ícones</Label>
+          <ColorPicker
+            id="marquee-text-color"
+            value={marqueeConfig.textColor}
+            onChange={(value) => handleChange('textColor', value)}
           />
         </div>
 
