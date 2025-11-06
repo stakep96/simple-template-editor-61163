@@ -29,7 +29,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
   const secondDisplayItems = [...secondLayerItems, ...secondLayerItems, ...secondLayerItems];
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden" style={{ height: '80px' }}>
       <style>
         {`
           @keyframes marquee {
@@ -40,22 +40,38 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
               transform: translateX(-33.333%);
             }
           }
+          @keyframes marqueeRotated {
+            0% {
+              transform: translateX(0%) rotate(-3deg);
+            }
+            100% {
+              transform: translateX(-33.333%) rotate(-3deg);
+            }
+          }
           .marquee-content {
             animation: marquee ${config.speed}s linear infinite;
           }
-          .marquee-content-reverse {
-            animation: marquee ${config.speed * 1.2}s linear infinite reverse;
+          .marquee-content-rotated {
+            animation: marqueeRotated ${config.speed * 1.2}s linear infinite reverse;
+            transform-origin: left center;
           }
         `}
       </style>
       
-      {/* Second layer (background) */}
+      {/* Second layer (background) - rotated */}
       {config.secondLayer?.enabled && secondLayerItems.length > 0 && (
         <div 
-          className="absolute inset-0 py-2 overflow-hidden"
-          style={{ backgroundColor: config.secondLayer.backgroundColor }}
+          className="absolute left-0 right-0 py-3 overflow-hidden"
+          style={{ 
+            backgroundColor: config.secondLayer.backgroundColor,
+            top: '45%',
+            transform: 'rotate(-3deg) translateY(-50%)',
+            transformOrigin: 'left center',
+            width: '105%',
+            left: '-2.5%',
+          }}
         >
-          <div className="marquee-content-reverse flex items-center whitespace-nowrap">
+          <div className="marquee-content-rotated flex items-center whitespace-nowrap">
             {secondDisplayItems.map((item, index) => (
               <React.Fragment key={index}>
                 <span className="text-sm md:text-base font-semibold px-3 md:px-4 opacity-90" style={{ color: 'var(--brand-text)' }}>
@@ -74,7 +90,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
       
       {/* First layer (foreground) */}
       <div 
-        className="relative py-2 overflow-hidden"
+        className="absolute top-0 left-0 right-0 py-3 overflow-hidden"
         style={{ backgroundColor: config.backgroundColor }}
       >
         <div className="marquee-content flex items-center whitespace-nowrap">
