@@ -45,7 +45,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
     updateModuleInstance(instanceId, updates);
   };
 
-  const emojiOptions = ['✱', '✦', '★', '●', '◆', '▪', '•', '◉', '◎', '○', '⬥', '⬪', '⭐', '🌟', '💫'];
+  const emojiOptions = ['✱', '✦', '★', '●', '◆', '▪', '•', '◉', '◎', '○', '⬥', '⬪', '⭐', '🌟', '💫', '❤', '♥'];
 
   return (
     <div className="space-y-6">
