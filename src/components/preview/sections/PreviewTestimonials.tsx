@@ -20,7 +20,7 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
   const [current, setCurrent] = useState(0);
 
   const plugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: false })
   );
 
   useEffect(() => {
