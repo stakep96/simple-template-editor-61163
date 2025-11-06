@@ -305,13 +305,21 @@ export interface PortfolioConfig {
   projects: PortfolioProject[];
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'footer';
+export interface MarqueeConfig {
+  enabled: boolean;
+  items: string;
+  separator: string;
+  backgroundColor: string;
+  speed: number;
+}
+
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'marquee' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | MarqueeConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -471,6 +479,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     metrics: 0,
     brands: 0,
     portfolio: 0,
+    marquee: 0,
     footer: 0,
   });
 
@@ -830,6 +839,15 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             ],
           };
           break;
+        case 'marquee':
+          defaultModuleConfig = {
+            enabled: true,
+            items: 'App Design, Website Design, Dashboard, Wireframe',
+            separator: '✱',
+            backgroundColor: '#F59E0B',
+            speed: 30,
+          };
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -919,6 +937,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         'content-style': 0,
         metrics: 0,
         brands: 0,
+        marquee: 0,
         footer: 0,
       };
 
@@ -1082,6 +1101,15 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               title: 'Marcas Parceiras',
               description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
               logos: [],
+            };
+            break;
+          case 'marquee':
+            defaultModuleConfig = {
+              enabled: true,
+              items: 'App Design, Website Design, Dashboard, Wireframe',
+              separator: '✱',
+              backgroundColor: '#F59E0B',
+              speed: 30,
             };
             break;
           case 'footer':

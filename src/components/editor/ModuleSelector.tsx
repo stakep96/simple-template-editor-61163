@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List, Building2, FolderOpen } from 'lucide-react';
+import { Activity, ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List, Building2, FolderOpen, MoveHorizontal } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
@@ -105,6 +105,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           icon: FolderOpen,
           title: 'Portfolio',
           description: 'Projetos em accordion',
+        },
+        {
+          id: 'marquee' as ModuleType,
+          icon: MoveHorizontal,
+          title: 'Faixa Infinita',
+          description: 'Texto em movimento',
         },
       ],
     },

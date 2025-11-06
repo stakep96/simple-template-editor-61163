@@ -24,6 +24,7 @@ import PreviewContentStyle from './sections/PreviewContentStyle';
 import PreviewMetrics from './sections/PreviewMetrics';
 import PreviewBrands from './sections/PreviewBrands';
 import PreviewPortfolio from './sections/PreviewPortfolio';
+import PreviewMarquee from './sections/PreviewMarquee';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
 
@@ -102,6 +103,11 @@ const PreviewSite = () => {
         return <PreviewBrands key={key} instanceId={instanceId} />;
       case 'portfolio':
         return <PreviewPortfolio key={key} instanceId={instanceId} />;
+      case 'marquee':
+        if (instance.type === 'marquee') {
+          return <PreviewMarquee key={key} config={instance.config as import('@/contexts/SiteEditorContext').MarqueeConfig} />;
+        }
+        return null;
       case 'footer':
         return <PreviewFooter key={key} instanceId={instanceId} />;
       default:
