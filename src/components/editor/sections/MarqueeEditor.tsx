@@ -94,6 +94,15 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
         </div>
 
         <div className="space-y-2">
+          <Label htmlFor="second-layer-bg">Cor das Faixas Decorativas</Label>
+          <ColorPicker
+            id="second-layer-bg"
+            value={marqueeConfig.secondLayer.backgroundColor}
+            onChange={(value) => handleSecondLayerChange(value)}
+          />
+        </div>
+
+        <div className="space-y-2">
           <Label htmlFor="marquee-speed">Velocidade ({marqueeConfig.speed}s)</Label>
           <Slider
             id="marquee-speed"
@@ -106,15 +115,6 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
           <p className="text-xs text-muted-foreground mt-1">
             Menor = mais rápido, Maior = mais lento
           </p>
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="second-layer-bg">Cor das Faixas Decorativas</Label>
-          <ColorPicker
-            id="second-layer-bg"
-            value={marqueeConfig.secondLayer.backgroundColor}
-            onChange={(value) => handleSecondLayerChange(value)}
-          />
         </div>
       </div>
     </div>
