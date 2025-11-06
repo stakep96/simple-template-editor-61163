@@ -311,6 +311,11 @@ export interface MarqueeConfig {
   separator: string;
   backgroundColor: string;
   speed: number;
+  secondLayer?: {
+    enabled: boolean;
+    items: string;
+    backgroundColor: string;
+  };
 }
 
 export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'marquee' | 'footer';
@@ -846,6 +851,11 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             separator: '✱',
             backgroundColor: '#F59E0B',
             speed: 30,
+            secondLayer: {
+              enabled: false,
+              items: '',
+              backgroundColor: '#1a5a3a',
+            },
           };
           break;
         case 'footer':
@@ -1110,6 +1120,11 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               separator: '✱',
               backgroundColor: '#F59E0B',
               speed: 30,
+              secondLayer: {
+                enabled: false,
+                items: '',
+                backgroundColor: '#1a5a3a',
+              },
             };
             break;
           case 'footer':
