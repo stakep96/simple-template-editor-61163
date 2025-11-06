@@ -42,7 +42,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
           </h2>
         )}
 
-        <div className="relative">
+        <div className="relative w-full">
           <Carousel
             setApi={setApi}
             className="w-full"
@@ -54,8 +54,8 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
           >
             <CarouselContent>
               {config.images.map((img) => (
-                <CarouselItem key={img.id} className="flex justify-center">
-                  <div className="relative w-full mx-auto">
+                <CarouselItem key={img.id}>
+                  <div className="relative w-full">
                     {/* Outer border container - gray border effect */}
                     <div 
                       className="relative rounded-2xl p-[3px]"
