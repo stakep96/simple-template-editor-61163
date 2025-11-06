@@ -56,36 +56,57 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
               {config.images.map((img) => (
                 <CarouselItem key={img.id} className="flex justify-center">
                   <div className="relative w-full max-w-sm mx-auto">
-                    {/* WhatsApp-style speech bubble container */}
+                    {/* Outer border container - gray border effect */}
                     <div 
-                      className="relative bg-white rounded-2xl shadow-lg overflow-hidden"
+                      className="relative rounded-2xl p-[3px]"
                       style={{
-                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                        background: 'linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%)',
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
                       }}
                     >
-                      {/* Image */}
-                      <img
-                        src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
-                        alt={`Depoimento ${img.id}`}
-                        className="w-full h-auto object-contain"
+                      {/* Inner white container */}
+                      <div 
+                        className="relative bg-white rounded-2xl overflow-hidden"
+                      >
+                        {/* Image */}
+                        <img
+                          src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
+                          alt={`Depoimento ${img.id}`}
+                          className="w-full h-auto object-contain"
+                          style={{
+                            maxHeight: '600px',
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Speech bubble tail/pointer - top left corner with border */}
+                    <div className="absolute -top-2 left-4">
+                      {/* Outer gray border for the tail */}
+                      <div 
                         style={{
-                          maxHeight: '600px',
+                          position: 'absolute',
+                          width: 0,
+                          height: 0,
+                          borderBottom: '11px solid #d0d0d0',
+                          borderLeft: '11px solid transparent',
+                          borderRight: '0px solid transparent',
+                          top: '-1px',
+                          left: '-1px',
+                        }}
+                      />
+                      {/* Inner white tail */}
+                      <div 
+                        style={{
+                          position: 'relative',
+                          width: 0,
+                          height: 0,
+                          borderBottom: '10px solid white',
+                          borderLeft: '10px solid transparent',
+                          borderRight: '0px solid transparent',
                         }}
                       />
                     </div>
-
-                    {/* Speech bubble tail/pointer - top left corner pointing outward */}
-                    <div 
-                      className="absolute -top-2 left-4"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderBottom: '10px solid white',
-                        borderLeft: '10px solid transparent',
-                        borderRight: '0px solid transparent',
-                        filter: 'drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.06))',
-                      }}
-                    />
                   </div>
                 </CarouselItem>
               ))}
