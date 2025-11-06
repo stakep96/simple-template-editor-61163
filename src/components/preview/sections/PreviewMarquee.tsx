@@ -41,7 +41,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
       
       {/* Main marquee layer - full height */}
       <div 
-        className="absolute inset-0 py-4 overflow-hidden"
+        className="absolute inset-0 overflow-hidden flex items-center"
         style={{ 
           backgroundColor: config.backgroundColor,
           zIndex: 5,
