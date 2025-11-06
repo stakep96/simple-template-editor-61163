@@ -28,14 +28,14 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
   if (!config.images.length) return null;
 
   return (
-    <section className="py-16 px-4" style={{ backgroundColor: 'hsl(var(--background))' }}>
+    <section className="py-16 px-4">
       <div className="container mx-auto max-w-6xl">
         {config.title && (
           <h2 
-            className="text-3xl md:text-4xl font-bold text-center mb-12"
+            className="text-3xl font-bold text-center mb-12"
             style={{ 
-              fontFamily: 'var(--font-title)',
-              color: 'hsl(var(--title-color))'
+              color: 'var(--brand-title-color)',
+              fontFamily: 'var(--brand-title-font)'
             }}
           >
             {config.title}
@@ -127,10 +127,14 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                 <button
                   key={index}
                   onClick={() => api?.scrollTo(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === current 
-                      ? 'w-8 bg-primary' 
-                      : 'w-2 bg-primary/30 hover:bg-primary/50'
+                  style={{
+                    backgroundColor: 'var(--brand-primary)',
+                    opacity: index === current ? 1 : 0.3,
+                  }}
+                  className={`rounded-full transition-all ${
+                    index === current
+                      ? 'w-8 h-2'
+                      : 'w-2 h-2'
                   }`}
                   aria-label={`Ir para depoimento ${index + 1}`}
                 />
