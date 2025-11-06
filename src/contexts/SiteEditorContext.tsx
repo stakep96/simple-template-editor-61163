@@ -848,11 +848,11 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             enabled: true,
             items: 'App Design, Website Design, Dashboard, Wireframe',
             separator: '✱',
-            backgroundColor: prev.brand.primary,
-            textColor: prev.brand.text,
+            backgroundColor: prev.brand.background,
+            textColor: prev.brand.primary,
             speed: 15,
             secondLayer: {
-              backgroundColor: prev.brand.secondary,
+              backgroundColor: prev.brand.primary,
             },
           };
           break;
@@ -1116,11 +1116,11 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               enabled: true,
               items: 'App Design, Website Design, Dashboard, Wireframe',
               separator: '✱',
-              backgroundColor: '#F59E0B',
-              textColor: '#FFFFFF',
+              backgroundColor: prev.brand.background,
+              textColor: prev.brand.primary,
               speed: 15,
               secondLayer: {
-                backgroundColor: '#1a5a3a',
+                backgroundColor: prev.brand.primary,
               },
             };
             break;
