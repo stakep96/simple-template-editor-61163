@@ -353,7 +353,7 @@ const fullTestConfig: SiteConfig = {
         items: 'App Design, Website Design, Dashboard, Wireframe',
         separator: '✱',
         backgroundColor: '#FFFFFF',
-        textColor: '#8B1538',
+        textColor: '#FFFFFF',
         speed: 30,
         secondLayer: {
           backgroundColor: '#8B1538',
