@@ -29,7 +29,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
 
   return (
     <section className="py-16 px-4">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-3xl">
         {config.title && (
           <h2 
             className="text-3xl font-bold text-center mb-12"
@@ -42,7 +42,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
           </h2>
         )}
 
-        <div className="relative max-w-2xl mx-auto">
+        <div className="relative">
           <Carousel
             setApi={setApi}
             className="w-full"
@@ -55,7 +55,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
             <CarouselContent>
               {config.images.map((img) => (
                 <CarouselItem key={img.id} className="flex justify-center">
-                  <div className="relative w-full max-w-md mx-auto">
+                  <div className="relative w-full mx-auto">
                     {/* Outer border container - gray border effect */}
                     <div 
                       className="relative rounded-2xl p-[3px]"
@@ -74,7 +74,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                           alt={`Depoimento ${img.id}`}
                           className="w-full h-auto object-contain"
                           style={{
-                            maxHeight: '600px',
+                            maxHeight: '700px',
                           }}
                         />
                       </div>
