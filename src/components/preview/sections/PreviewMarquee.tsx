@@ -44,12 +44,13 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
-          height: '12px',
+          height: '15px',
           top: '0',
           transform: 'rotate(-3deg)',
           transformOrigin: 'left top',
           width: '105%',
           left: '-2.5%',
+          zIndex: 10,
         }}
       />
       
@@ -58,7 +59,8 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute left-0 right-0 py-4 overflow-hidden"
         style={{ 
           backgroundColor: config.backgroundColor,
-          top: '10px',
+          top: '8px',
+          zIndex: 5,
         }}
       >
         <div className="marquee-content flex items-center whitespace-nowrap">
@@ -82,12 +84,13 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
-          height: '12px',
+          height: '15px',
           bottom: '0',
           transform: 'rotate(-3deg)',
           transformOrigin: 'left bottom',
           width: '105%',
           left: '-2.5%',
+          zIndex: 10,
         }}
       />
     </div>
