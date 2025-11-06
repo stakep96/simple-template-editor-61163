@@ -44,7 +44,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute overflow-hidden flex items-center"
         style={{ 
           backgroundColor: config.backgroundColor,
-          height: '80px',
+          height: '45px',
           top: '10%',
           left: '-10%',
           width: '120%',
@@ -74,7 +74,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute overflow-hidden flex items-center"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
-          height: '80px',
+          height: '45px',
           bottom: '10%',
           left: '-10%',
           width: '120%',
