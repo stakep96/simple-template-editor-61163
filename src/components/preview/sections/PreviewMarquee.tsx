@@ -63,33 +63,33 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         </div>
       </div>
 
-      {/* Decorative stripe top - overlays main layer */}
+      {/* Decorative stripe top - below main layer */}
       <div 
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
           height: '8px',
           top: '0',
-          transform: 'rotate(-3deg)',
+          transform: 'rotate(-6deg)',
           transformOrigin: 'left top',
           width: '105%',
           left: '-2.5%',
-          zIndex: 10,
+          zIndex: 3,
         }}
       />
 
-      {/* Decorative stripe bottom - overlays main layer */}
+      {/* Decorative stripe bottom - below main layer */}
       <div 
         className="absolute left-0 right-0 overflow-hidden"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
           height: '8px',
           bottom: '0',
-          transform: 'rotate(-3deg)',
+          transform: 'rotate(-6deg)',
           transformOrigin: 'left bottom',
           width: '105%',
           left: '-2.5%',
-          zIndex: 10,
+          zIndex: 3,
         }}
       />
     </div>
