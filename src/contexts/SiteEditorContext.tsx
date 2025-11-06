@@ -847,12 +847,10 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             enabled: true,
             items: 'App Design, Website Design, Dashboard, Wireframe',
             separator: '✱',
-            backgroundColor: '#F59E0B',
+            backgroundColor: prev.brand.primary,
             speed: 30,
             secondLayer: {
-              enabled: false,
-              items: '',
-              backgroundColor: '#1a5a3a',
+              backgroundColor: prev.brand.secondary,
             },
           };
           break;
