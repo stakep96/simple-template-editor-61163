@@ -68,7 +68,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                     <div 
                       className="relative bg-black rounded-2xl overflow-hidden flex items-center justify-center"
                       style={{
-                        minHeight: '600px',
+                        minHeight: '400px',
                       }}
                     >
                       {/* Image */}
@@ -77,7 +77,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                         alt={`Depoimento ${img.id}`}
                         className="w-full h-auto object-contain"
                         style={{
-                          maxHeight: '600px',
+                          maxHeight: '400px',
                         }}
                       />
                     </div>
