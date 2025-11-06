@@ -22,7 +22,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
   const displayItems = [...items, ...items, ...items];
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: '150px' }}>
+    <div className="relative w-full overflow-hidden" style={{ height: '120px' }}>
       <style>
         {`
           @keyframes marquee {
@@ -45,7 +45,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         style={{ 
           backgroundColor: config.backgroundColor,
           height: '45px',
-          top: '10%',
+          top: '25%',
           left: '-10%',
           width: '120%',
           transform: 'rotate(4deg)',
@@ -75,7 +75,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
           height: '45px',
-          bottom: '10%',
+          bottom: '25%',
           left: '-10%',
           width: '120%',
           transform: 'rotate(-4deg)',
