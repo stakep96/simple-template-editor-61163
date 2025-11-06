@@ -104,10 +104,7 @@ const PreviewSite = () => {
       case 'portfolio':
         return <PreviewPortfolio key={key} instanceId={instanceId} />;
       case 'marquee':
-        if (instance.type === 'marquee') {
-          return <PreviewMarquee key={key} config={instance.config as import('@/contexts/SiteEditorContext').MarqueeConfig} />;
-        }
-        return null;
+        return <PreviewMarquee key={key} instanceId={instanceId} />;
       case 'footer':
         return <PreviewFooter key={key} instanceId={instanceId} />;
       default:

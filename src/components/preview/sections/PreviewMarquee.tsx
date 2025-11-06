@@ -1,22 +1,17 @@
 import React from 'react';
-
-export interface MarqueeConfig {
-  enabled: boolean;
-  items: string;
-  separator: string;
-  backgroundColor: string;
-  speed: number;
-  secondLayer: {
-    backgroundColor: string;
-  };
-}
+import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { MarqueeConfig } from '@/contexts/SiteEditorContext';
 
 interface PreviewMarqueeProps {
-  config: MarqueeConfig;
+  instanceId: string;
 }
 
-const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
-  if (!config.enabled) return null;
+const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ instanceId }) => {
+  const { config: siteConfig } = useSiteEditor();
+  const instance = siteConfig.moduleInstances[instanceId];
+  const config = instance?.config as MarqueeConfig;
+
+  if (!config || !config.enabled) return null;
 
   const items = config.items.split(',').map(item => item.trim()).filter(Boolean);
   const displayItems = [...items, ...items, ...items];
