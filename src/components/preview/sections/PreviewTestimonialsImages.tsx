@@ -56,16 +56,13 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
               {config.images.map((img) => (
                 <CarouselItem key={img.id} className="flex justify-center">
                   <div className="relative w-full max-w-sm mx-auto">
-                    {/* Bubble speech effect container */}
+                    {/* WhatsApp-style speech bubble container */}
                     <div 
-                      className="relative bg-white rounded-3xl shadow-2xl overflow-hidden"
+                      className="relative bg-white rounded-2xl shadow-lg overflow-hidden"
                       style={{
-                        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
                       }}
                     >
-                      {/* Inner border effect */}
-                      <div className="absolute inset-0 rounded-3xl border-8 border-white/50 pointer-events-none z-10" />
-                      
                       {/* Image */}
                       <img
                         src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
@@ -75,16 +72,19 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                           maxHeight: '600px',
                         }}
                       />
-                      
-                      {/* Subtle gradient overlay for better contrast */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
                     </div>
 
-                    {/* Speech bubble pointer (optional decorative element) */}
+                    {/* Speech bubble tail/pointer - bottom left corner */}
                     <div 
-                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-white transform rotate-45 shadow-lg"
+                      className="absolute -bottom-2 left-4"
                       style={{
-                        clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
+                        width: 0,
+                        height: 0,
+                        borderLeft: '12px solid transparent',
+                        borderRight: '12px solid transparent',
+                        borderTop: '12px solid white',
+                        filter: 'drop-shadow(0 2px 2px rgba(0, 0, 0, 0.08))',
+                        transform: 'rotate(-45deg)',
                       }}
                     />
                   </div>
