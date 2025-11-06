@@ -4,14 +4,24 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Slider } from '@/components/ui/slider';
 import ColorPicker from '../ColorPicker';
-import type { MarqueeConfig } from '@/components/preview/sections/PreviewMarquee';
+import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import type { MarqueeConfig } from '@/contexts/SiteEditorContext';
 
 interface MarqueeEditorProps {
-  config: MarqueeConfig;
-  onChange: (config: MarqueeConfig) => void;
+  instanceId: string;
 }
 
-const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ config, onChange }) => {
+const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
+  const { config: siteConfig, updateModuleInstance } = useSiteEditor();
+  const instance = siteConfig.moduleInstances[instanceId];
+  
+  if (!instance || instance.type !== 'marquee') return null;
+  
+  const config = instance.config as MarqueeConfig;
+  
+  const handleChange = (newConfig: Partial<MarqueeConfig>) => {
+    updateModuleInstance(instanceId, newConfig);
+  };
   const emojiOptions = ['✱', '✦', '★', '●', '◆', '▪', '•', '◉', '◎', '○', '⬥', '⬪', '⭐', '🌟', '💫'];
 
   return (
@@ -21,7 +31,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ config, onChange }) => {
         <Textarea
           id="marquee-items"
           value={config.items}
-          onChange={(e) => onChange({ ...config, items: e.target.value })}
+          onChange={(e) => handleChange({ items: e.target.value })}
           placeholder="App Design, Website Design, Dashboard, Wireframe"
           rows={3}
           className="mt-2"
@@ -34,7 +44,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ config, onChange }) => {
           <Input
             id="marquee-separator"
             value={config.separator}
-            onChange={(e) => onChange({ ...config, separator: e.target.value })}
+            onChange={(e) => handleChange({ separator: e.target.value })}
             placeholder="✱"
             maxLength={5}
           />
@@ -42,7 +52,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ config, onChange }) => {
             {emojiOptions.map((emoji) => (
               <button
                 key={emoji}
-                onClick={() => onChange({ ...config, separator: emoji })}
+                onClick={() => handleChange({ separator: emoji })}
                 className="px-3 py-2 text-xl rounded-md border border-border hover:bg-accent transition-colors"
                 type="button"
               >
@@ -58,7 +68,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ config, onChange }) => {
         <ColorPicker
           id="marquee-bg"
           value={config.backgroundColor}
-          onChange={(color) => onChange({ ...config, backgroundColor: color })}
+          onChange={(color) => handleChange({ backgroundColor: color })}
         />
       </div>
 
@@ -70,7 +80,7 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ config, onChange }) => {
           max={60}
           step={5}
           value={[config.speed]}
-          onValueChange={(value) => onChange({ ...config, speed: value[0] })}
+          onValueChange={(value) => handleChange({ speed: value[0] })}
           className="mt-2"
         />
         <p className="text-xs text-muted-foreground mt-1">
