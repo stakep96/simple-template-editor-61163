@@ -104,6 +104,17 @@ export interface TestimonialsConfig {
   testimonials: Testimonial[];
 }
 
+export interface TestimonialImage {
+  id: string;
+  image: string;
+}
+
+export interface TestimonialsImagesConfig {
+  enabled: boolean;
+  title: string;
+  images: TestimonialImage[];
+}
+
 export interface GalleryImage {
   id: string;
   url: string;
@@ -294,13 +305,13 @@ export interface PortfolioConfig {
   projects: PortfolioProject[];
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'footer';
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -445,6 +456,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     contact: 0,
     button: 0,
     testimonials: 0,
+    'testimonials-images': 0,
     gallery: 0,
     faq: 0,
     pricing: 0,
@@ -587,6 +599,18 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 name: 'Cliente',
                 role: 'Cargo/Empresa',
                 testimonial: 'Depoimento do cliente...',
+              },
+            ],
+          };
+          break;
+        case 'testimonials-images':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Depoimentos',
+            images: [
+              {
+                id: '1',
+                image: '',
               },
             ],
           };
@@ -880,6 +904,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         contact: 0,
         button: 0,
         testimonials: 0,
+        'testimonials-images': 0,
         gallery: 0,
         faq: 0,
         pricing: 0,

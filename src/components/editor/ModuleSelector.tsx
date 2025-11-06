@@ -117,6 +117,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           title: 'Depoimentos',
           description: 'Avaliações',
         },
+        {
+          id: 'testimonials-images' as ModuleType,
+          icon: MessageSquare,
+          title: 'Depoimentos Imagens',
+          description: 'Screenshots',
+        },
       ],
     },
     {

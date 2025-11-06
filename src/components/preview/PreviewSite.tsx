@@ -9,6 +9,7 @@ import PreviewSuccessCases from './sections/PreviewSuccessCases';
 import PreviewContactForm from './sections/PreviewContactForm';
 import PreviewButton from './sections/PreviewButton';
 import PreviewTestimonials from './sections/PreviewTestimonials';
+import PreviewTestimonialsImages from './sections/PreviewTestimonialsImages';
 import PreviewGallery from './sections/PreviewGallery';
 import PreviewFAQ from './sections/PreviewFAQ';
 import PreviewPricingPlans from './sections/PreviewPricingPlans';
@@ -54,6 +55,11 @@ const PreviewSite = () => {
       case 'testimonials':
         if (instance.type === 'testimonials') {
           return <PreviewTestimonials key={key} config={instance.config as import('@/contexts/SiteEditorContext').TestimonialsConfig} />;
+        }
+        return null;
+      case 'testimonials-images':
+        if (instance.type === 'testimonials-images') {
+          return <PreviewTestimonialsImages key={key} config={instance.config as import('@/contexts/SiteEditorContext').TestimonialsImagesConfig} />;
         }
         return null;
       case 'gallery':

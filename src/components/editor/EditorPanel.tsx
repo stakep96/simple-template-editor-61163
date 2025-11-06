@@ -15,6 +15,7 @@ import SuccessCasesEditor from './sections/SuccessCasesEditor';
 import ContactFormEditor from './sections/ContactFormEditor';
 import ButtonEditor from './sections/ButtonEditor';
 import TestimonialsEditor from './sections/TestimonialsEditor';
+import TestimonialsImagesEditor from './sections/TestimonialsImagesEditor';
 import GalleryEditor from './sections/GalleryEditor';
 import FAQEditor from './sections/FAQEditor';
 import PricingPlansEditor from './sections/PricingPlansEditor';
@@ -47,6 +48,7 @@ const EditorPanel = () => {
     contact: { icon: Mail, title: 'Formulário de Contato', description: 'Fale conosco', component: ContactFormEditor },
     button: { icon: MousePointerClick, title: 'Botão', description: 'Call to Action', component: ButtonEditor },
     testimonials: { icon: MessageSquare, title: 'Depoimentos', description: 'Avaliações de clientes', component: TestimonialsEditor },
+    'testimonials-images': { icon: MessageSquare, title: 'Depoimentos Imagens', description: 'Screenshots de conversas', component: TestimonialsImagesEditor },
     gallery: { icon: Images, title: 'Galeria', description: 'Mosaico de fotos', component: GalleryEditor },
     faq: { icon: HelpCircle, title: 'FAQ', description: 'Perguntas frequentes', component: FAQEditor },
     pricing: { icon: DollarSign, title: 'Planos', description: 'Tabela de preços', component: PricingPlansEditor },
