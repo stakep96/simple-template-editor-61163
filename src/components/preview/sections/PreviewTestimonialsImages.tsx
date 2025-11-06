@@ -74,17 +74,16 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                       />
                     </div>
 
-                    {/* Speech bubble tail/pointer - bottom left corner */}
+                    {/* Speech bubble tail/pointer - top left corner pointing outward */}
                     <div 
-                      className="absolute -bottom-2 left-4"
+                      className="absolute -top-2 left-4"
                       style={{
                         width: 0,
                         height: 0,
-                        borderLeft: '12px solid transparent',
-                        borderRight: '12px solid transparent',
-                        borderTop: '12px solid white',
-                        filter: 'drop-shadow(0 2px 2px rgba(0, 0, 0, 0.08))',
-                        transform: 'rotate(-45deg)',
+                        borderBottom: '10px solid white',
+                        borderLeft: '10px solid transparent',
+                        borderRight: '0px solid transparent',
+                        filter: 'drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.06))',
                       }}
                     />
                   </div>
