@@ -39,6 +39,14 @@ export const fontCombinations = [
     titleFamily: 'Lora, serif',
     textFamily: 'Lato, sans-serif',
   },
+  {
+    id: 'poppins-lato',
+    name: 'Poppins + Lato',
+    titleFont: 'Poppins',
+    textFont: 'Lato',
+    titleFamily: 'Poppins, sans-serif',
+    textFamily: 'Lato, sans-serif',
+  },
 ];
 
 export const getFontCombination = (id: string) => {
