@@ -22,7 +22,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
   const displayItems = [...items, ...items, ...items];
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: '60px' }}>
+    <div className="relative w-full overflow-hidden" style={{ height: '150px' }}>
       <style>
         {`
           @keyframes marquee {
@@ -39,17 +39,23 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         `}
       </style>
       
-      {/* Main marquee layer - full height */}
+      {/* First diagonal stripe - descending \ */}
       <div 
-        className="absolute inset-0 overflow-hidden flex items-center"
+        className="absolute overflow-hidden flex items-center"
         style={{ 
           backgroundColor: config.backgroundColor,
+          height: '80px',
+          top: '10%',
+          left: '-10%',
+          width: '120%',
+          transform: 'rotate(4deg)',
+          transformOrigin: 'center',
           zIndex: 5,
         }}
       >
         <div className="marquee-content flex items-center whitespace-nowrap">
           {displayItems.map((item, index) => (
-            <React.Fragment key={index}>
+            <React.Fragment key={`stripe1-${index}`}>
               <span className="text-base md:text-lg font-bold px-3 md:px-5" style={{ color: 'var(--brand-text)' }}>
                 {item}
               </span>
@@ -63,35 +69,35 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         </div>
       </div>
 
-      {/* Decorative stripe top - diagonal overlay */}
+      {/* Second diagonal stripe - ascending / */}
       <div 
-        className="absolute left-0 right-0 overflow-hidden"
+        className="absolute overflow-hidden flex items-center"
         style={{ 
           backgroundColor: config.secondLayer.backgroundColor,
-          height: '8px',
-          top: '0',
-          transform: 'rotate(-8deg)',
-          transformOrigin: 'left top',
-          width: '110%',
-          left: '-5%',
-          zIndex: 10,
+          height: '80px',
+          bottom: '10%',
+          left: '-10%',
+          width: '120%',
+          transform: 'rotate(-4deg)',
+          transformOrigin: 'center',
+          zIndex: 6,
         }}
-      />
-
-      {/* Decorative stripe bottom - diagonal overlay */}
-      <div 
-        className="absolute left-0 right-0 overflow-hidden"
-        style={{ 
-          backgroundColor: config.secondLayer.backgroundColor,
-          height: '8px',
-          bottom: '0',
-          transform: 'rotate(-8deg)',
-          transformOrigin: 'left bottom',
-          width: '110%',
-          left: '-5%',
-          zIndex: 10,
-        }}
-      />
+      >
+        <div className="marquee-content flex items-center whitespace-nowrap">
+          {displayItems.map((item, index) => (
+            <React.Fragment key={`stripe2-${index}`}>
+              <span className="text-base md:text-lg font-bold px-3 md:px-5" style={{ color: 'var(--brand-text)' }}>
+                {item}
+              </span>
+              {index < displayItems.length - 1 && (
+                <span className="text-base md:text-lg px-2">
+                  {config.separator}
+                </span>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
