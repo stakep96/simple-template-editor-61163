@@ -58,7 +58,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
         className="absolute left-0 right-0 py-4 overflow-hidden"
         style={{ 
           backgroundColor: config.backgroundColor,
-          top: '20px',
+          top: '10px',
         }}
       >
         <div className="marquee-content flex items-center whitespace-nowrap">
