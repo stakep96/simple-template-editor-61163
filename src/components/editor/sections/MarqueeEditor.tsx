@@ -87,6 +87,15 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
         </div>
 
         <div className="space-y-2">
+          <Label htmlFor="second-layer-bg">Cor das Faixas Decorativas</Label>
+          <ColorPicker
+            id="second-layer-bg"
+            value={marqueeConfig.secondLayer.backgroundColor}
+            onChange={(value) => handleSecondLayerChange(value)}
+          />
+        </div>
+
+        <div className="space-y-2">
           <Label htmlFor="marquee-bg">Cor de Fundo Principal</Label>
           <ColorPicker
             id="marquee-bg"
@@ -101,15 +110,6 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
             id="marquee-text-color"
             value={marqueeConfig.textColor}
             onChange={(value) => handleChange('textColor', value)}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="second-layer-bg">Cor das Faixas Decorativas</Label>
-          <ColorPicker
-            id="second-layer-bg"
-            value={marqueeConfig.secondLayer.backgroundColor}
-            onChange={(value) => handleSecondLayerChange(value)}
           />
         </div>
 
