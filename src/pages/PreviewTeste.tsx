@@ -17,9 +17,10 @@ import PreviewBeforeAfter from '@/components/preview/sections/PreviewBeforeAfter
 import PreviewBenefits from '@/components/preview/sections/PreviewBenefits';
 import PreviewCredentials from '@/components/preview/sections/PreviewCredentials';
 import PreviewServices from '@/components/preview/sections/PreviewServices';
+import PreviewMarquee from '@/components/preview/sections/PreviewMarquee';
 import PreviewFooter from '@/components/preview/sections/PreviewFooter';
 import WhatsAppButton from '@/components/preview/WhatsAppButton';
-import type { SiteConfig } from '@/contexts/SiteEditorContext';
+import type { SiteConfig, MarqueeConfig } from '@/contexts/SiteEditorContext';
 
 // Configuração completa com todos os módulos ativos para teste
 const fullTestConfig: SiteConfig = {
@@ -343,6 +344,23 @@ const fullTestConfig: SiteConfig = {
         link: 'https://wa.me/5511999999999',
       },
     },
+    'marquee-1': {
+      id: 'marquee-1',
+      type: 'marquee',
+      enabled: true,
+      config: {
+        enabled: true,
+        items: 'App Design, Website Design, Dashboard, Wireframe',
+        separator: '✱',
+        backgroundColor: '#F59E0B',
+        speed: 30,
+        secondLayer: {
+          enabled: true,
+          items: 'Branding, UX/UI, Prototyping, Creative Design',
+          backgroundColor: '#1a5a3a',
+        },
+      },
+    },
     'footer-1': {
       id: 'footer-1',
       type: 'footer',
@@ -356,6 +374,7 @@ const fullTestConfig: SiteConfig = {
   moduleOrder: [
     'header-1',
     'hero-1',
+    'marquee-1',
     'about-1',
     'credentials-1',
     'services-1',
@@ -429,6 +448,11 @@ const PreviewTeste = () => {
       case 'services':
         if (instance.type === 'services') {
           return <PreviewServices key={key} config={instance.config as any} />;
+        }
+        return null;
+      case 'marquee':
+        if (instance.type === 'marquee') {
+          return <PreviewMarquee key={key} config={instance.config as MarqueeConfig} />;
         }
         return null;
       case 'footer':
