@@ -53,6 +53,15 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
     <div className="space-y-6">
       <div className="space-y-4">
         <div className="space-y-2">
+          <Label htmlFor="marquee-text-color">Cor Principal</Label>
+          <ColorPicker
+            id="marquee-text-color"
+            value={marqueeConfig.textColor}
+            onChange={(value) => handleChange('textColor', value)}
+          />
+        </div>
+
+        <div className="space-y-2">
           <Label htmlFor="marquee-items">Textos do Marquee (separados por vírgula)</Label>
           <Textarea
             id="marquee-items"
@@ -92,15 +101,6 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
             id="marquee-bg"
             value={marqueeConfig.backgroundColor}
             onChange={(value) => handleChange('backgroundColor', value)}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="marquee-text-color">Cor dos Textos e Ícones</Label>
-          <ColorPicker
-            id="marquee-text-color"
-            value={marqueeConfig.textColor}
-            onChange={(value) => handleChange('textColor', value)}
           />
         </div>
 
