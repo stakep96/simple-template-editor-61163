@@ -55,7 +55,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
             <CarouselContent>
               {config.images.map((img) => (
                 <CarouselItem key={img.id} className="flex justify-center">
-                  <div className="relative w-full max-w-sm mx-auto">
+                  <div className="relative w-full max-w-md mx-auto">
                     {/* Outer border container - gray border effect */}
                     <div 
                       className="relative rounded-2xl p-[3px]"
@@ -111,13 +111,6 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                 </CarouselItem>
               ))}
             </CarouselContent>
-
-            {config.images.length > 1 && (
-              <>
-                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
-                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
-              </>
-            )}
           </Carousel>
 
           {/* Dots indicator */}
