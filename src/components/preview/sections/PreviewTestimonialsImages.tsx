@@ -43,75 +43,75 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
         )}
 
         <div className="relative w-full">
-          <Carousel
-            setApi={setApi}
-            className="w-full"
-            plugins={[plugin.current]}
-            opts={{
-              align: 'center',
-              loop: true,
-            }}
-          >
-            <CarouselContent>
-              {config.images.map((img) => (
-                <CarouselItem key={img.id}>
-                  <div className="relative w-full">
-                    {/* Outer border container - gray border effect */}
+        <Carousel
+          setApi={setApi}
+          className="w-full"
+          plugins={[plugin.current]}
+          opts={{
+            align: 'start',
+            loop: true,
+          }}
+        >
+          <CarouselContent className="-ml-0">
+            {config.images.map((img) => (
+              <CarouselItem key={img.id} className="pl-0">
+                <div className="relative w-full">
+                  {/* Outer border container - gray border effect */}
+                  <div 
+                    className="relative rounded-2xl p-[3px]"
+                    style={{
+                      background: 'linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
+                    }}
+                  >
+                    {/* Inner white container */}
                     <div 
-                      className="relative rounded-2xl p-[3px]"
-                      style={{
-                        background: 'linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%)',
-                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
-                      }}
+                      className="relative bg-white rounded-2xl overflow-hidden"
                     >
-                      {/* Inner white container */}
-                      <div 
-                        className="relative bg-white rounded-2xl overflow-hidden"
-                      >
-                        {/* Image */}
-                        <img
-                          src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
-                          alt={`Depoimento ${img.id}`}
-                          className="w-full h-auto object-contain"
-                          style={{
-                            maxHeight: '600px',
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Speech bubble tail/pointer - top left corner with border */}
-                    <div className="absolute -top-2 left-4">
-                      {/* Outer gray border for the tail */}
-                      <div 
+                      {/* Image */}
+                      <img
+                        src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
+                        alt={`Depoimento ${img.id}`}
+                        className="w-full h-auto object-contain"
                         style={{
-                          position: 'absolute',
-                          width: 0,
-                          height: 0,
-                          borderBottom: '11px solid #d0d0d0',
-                          borderLeft: '11px solid transparent',
-                          borderRight: '0px solid transparent',
-                          top: '-1px',
-                          left: '-1px',
-                        }}
-                      />
-                      {/* Inner white tail */}
-                      <div 
-                        style={{
-                          position: 'relative',
-                          width: 0,
-                          height: 0,
-                          borderBottom: '10px solid white',
-                          borderLeft: '10px solid transparent',
-                          borderRight: '0px solid transparent',
+                          maxHeight: '600px',
                         }}
                       />
                     </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+
+                  {/* Speech bubble tail/pointer - top left corner with border */}
+                  <div className="absolute -top-2 left-4">
+                    {/* Outer gray border for the tail */}
+                    <div 
+                      style={{
+                        position: 'absolute',
+                        width: 0,
+                        height: 0,
+                        borderBottom: '11px solid #d0d0d0',
+                        borderLeft: '11px solid transparent',
+                        borderRight: '0px solid transparent',
+                        top: '-1px',
+                        left: '-1px',
+                      }}
+                    />
+                    {/* Inner white tail */}
+                    <div 
+                      style={{
+                        position: 'relative',
+                        width: 0,
+                        height: 0,
+                        borderBottom: '10px solid white',
+                        borderLeft: '10px solid transparent',
+                        borderRight: '0px solid transparent',
+                      }}
+                    />
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
 
           {/* Dots indicator */}
           {config.images.length > 1 && (
