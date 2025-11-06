@@ -55,7 +55,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
             <CarouselContent>
               {config.images.map((img) => (
                 <CarouselItem key={img.id}>
-                  <div className="relative w-full">
+                  <div className="relative w-full max-w-sm mx-auto">
                     {/* Outer border container - gray border effect */}
                     <div 
                       className="relative rounded-2xl p-[3px]"
@@ -74,7 +74,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                           alt={`Depoimento ${img.id}`}
                           className="w-full h-auto object-contain"
                           style={{
-                            maxHeight: '700px',
+                            maxHeight: '600px',
                           }}
                         />
                       </div>
