@@ -29,7 +29,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
 
   return (
     <section className="py-16 px-4">
-      <div className="container mx-auto max-w-3xl">
+      <div className="max-w-3xl mx-auto">
         {config.title && (
           <h2 
             className="text-3xl font-bold text-center mb-12"
