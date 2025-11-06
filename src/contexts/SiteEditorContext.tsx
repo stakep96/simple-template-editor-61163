@@ -848,7 +848,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             items: 'App Design, Website Design, Dashboard, Wireframe',
             separator: '✱',
             backgroundColor: prev.brand.primary,
-            speed: 30,
+            speed: 15,
             secondLayer: {
               backgroundColor: prev.brand.secondary,
             },
@@ -1115,10 +1115,8 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               items: 'App Design, Website Design, Dashboard, Wireframe',
               separator: '✱',
               backgroundColor: '#F59E0B',
-              speed: 30,
+              speed: 15,
               secondLayer: {
-                enabled: false,
-                items: '',
                 backgroundColor: '#1a5a3a',
               },
             };
