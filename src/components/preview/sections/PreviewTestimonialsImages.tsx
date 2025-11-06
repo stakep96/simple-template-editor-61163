@@ -56,58 +56,28 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
             {config.images.map((img) => (
               <CarouselItem key={img.id} className="pl-0">
                 <div className="relative w-full">
-                  {/* Outer border container - gray border effect */}
                   <div 
-                    className="relative rounded-2xl overflow-hidden"
-                    style={{
-                      background: 'linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%)',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
-                      padding: '3px',
+                    className="w-full h-80 rounded-3xl overflow-hidden border-4"
+                    style={{ 
+                      borderColor: 'var(--brand-primary)',
+                      backgroundColor: 'var(--brand-primary)'
                     }}
                   >
-                    {/* Inner container with black background and fixed height */}
-                    <div 
-                      className="relative bg-black overflow-hidden flex items-center justify-center"
-                      style={{
-                        minHeight: '400px',
-                        borderRadius: '12px',
-                      }}
-                    >
-                      {/* Image */}
-                      <img
-                        src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
-                        alt={`Depoimento ${img.id}`}
-                        className="w-full h-auto object-contain"
-                        style={{
-                          maxHeight: '400px',
-                        }}
-                      />
-                    </div>
+                    <img
+                      src={img.image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=700&fit=crop'}
+                      alt={`Depoimento ${img.id}`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
-                  {/* Speech bubble tail/pointer - top left corner with border */}
-                  <div className="absolute -top-2 left-4">
-                    {/* Outer gray border for the tail */}
+                  {/* Speech bubble tail/pointer - top left corner */}
+                  <div className="absolute -top-2 left-6">
                     <div 
                       style={{
-                        position: 'absolute',
                         width: 0,
                         height: 0,
-                        borderBottom: '11px solid #d0d0d0',
-                        borderLeft: '11px solid transparent',
-                        borderRight: '0px solid transparent',
-                        top: '-1px',
-                        left: '-1px',
-                      }}
-                    />
-                    {/* Inner white tail */}
-                    <div 
-                      style={{
-                        position: 'relative',
-                        width: 0,
-                        height: 0,
-                        borderBottom: '10px solid black',
-                        borderLeft: '10px solid transparent',
+                        borderBottom: '12px solid var(--brand-primary)',
+                        borderLeft: '12px solid transparent',
                         borderRight: '0px solid transparent',
                       }}
                     />
