@@ -66,9 +66,10 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
                   >
                     {/* Inner container with black background and fixed height */}
                     <div 
-                      className="relative bg-black rounded-[14px] overflow-hidden flex items-center justify-center"
+                      className="relative bg-black overflow-hidden flex items-center justify-center"
                       style={{
                         minHeight: '400px',
+                        borderRadius: '13px',
                       }}
                     >
                       {/* Image */}
