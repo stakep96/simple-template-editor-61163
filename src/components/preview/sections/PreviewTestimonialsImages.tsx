@@ -57,7 +57,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
               <CarouselItem key={img.id} className="pl-0">
                 <div className="relative w-full">
                   <div 
-                    className="w-full h-80 rounded-3xl overflow-hidden border-4"
+                    className="w-full h-[500px] rounded-3xl overflow-hidden border-4"
                     style={{ 
                       borderColor: 'var(--brand-primary)',
                       backgroundColor: 'var(--brand-primary)'
