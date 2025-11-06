@@ -20,19 +20,22 @@ const MarqueeEditor: React.FC<MarqueeEditorProps> = ({ instanceId }) => {
   const marqueeConfig = instance.config as MarqueeConfig;
 
   const handleChange = (field: keyof MarqueeConfig, value: any) => {
-    updateModuleInstance(instanceId, {
+    const newConfig = {
       ...marqueeConfig,
       [field]: value,
-    });
+    };
+    updateModuleInstance(instanceId, newConfig);
   };
 
   const handleSecondLayerChange = (value: string) => {
-    updateModuleInstance(instanceId, {
+    const newConfig = {
       ...marqueeConfig,
       secondLayer: {
+        ...marqueeConfig.secondLayer,
         backgroundColor: value,
       },
-    });
+    };
+    updateModuleInstance(instanceId, newConfig);
   };
 
   const emojiOptions = ['✱', '✦', '★', '●', '◆', '▪', '•', '◉', '◎', '○', '⬥', '⬪', '⭐', '🌟', '💫'];
