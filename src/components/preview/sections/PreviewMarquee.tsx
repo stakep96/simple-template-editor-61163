@@ -22,7 +22,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
 
   return (
     <div 
-      className="relative overflow-hidden py-6"
+      className="relative overflow-hidden py-3"
       style={{ backgroundColor: config.backgroundColor }}
     >
       <style>
@@ -44,11 +44,11 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ config }) => {
       <div className="marquee-content flex items-center whitespace-nowrap">
         {displayItems.map((item, index) => (
           <React.Fragment key={index}>
-            <span className="text-2xl md:text-3xl font-bold px-8" style={{ color: 'var(--brand-text)' }}>
+            <span className="text-lg md:text-xl font-bold px-4 md:px-6" style={{ color: 'var(--brand-text)' }}>
               {item}
             </span>
             {index < displayItems.length - 1 && (
-              <span className="text-2xl md:text-3xl px-4">
+              <span className="text-lg md:text-xl px-2 md:px-3">
                 {config.separator}
               </span>
             )}
