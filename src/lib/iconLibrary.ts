@@ -93,6 +93,11 @@ export const iconLibrary: IconOption[] = [
   { value: 'law', label: 'Lei', type: 'custom', path: '/icons/juridico/law.svg', tags: ['juridico'] },
   { value: 'lawyer', label: 'Advogado', type: 'custom', path: '/icons/juridico/lawyer.svg', tags: ['juridico'] },
   { value: 'parchment', label: 'Pergaminho', type: 'custom', path: '/icons/juridico/parchment.svg', tags: ['juridico'] },
+  { value: 'research', label: 'Pesquisa', type: 'custom', path: '/icons/juridico/research.svg', tags: ['juridico'] },
+  { value: 'stamp', label: 'Carimbo', type: 'custom', path: '/icons/juridico/stamp.svg', tags: ['juridico'] },
+  { value: 'typewriter', label: 'Máquina de Escrever', type: 'custom', path: '/icons/juridico/typewriter.svg', tags: ['juridico'] },
+  { value: 'witness', label: 'Testemunha', type: 'custom', path: '/icons/juridico/witness.svg', tags: ['juridico'] },
+  { value: 'pillars', label: 'Pilares/Colunas', type: 'custom', path: '/icons/juridico/pillars.svg', tags: ['juridico'] },
 ];
 
 // Funções helper
