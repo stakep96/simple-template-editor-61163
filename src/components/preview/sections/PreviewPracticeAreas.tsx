@@ -1,16 +1,7 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
+import { PreviewIcon } from '@/components/preview/PreviewIcon';
 import type { PracticeAreasConfig } from '@/contexts/SiteEditorContext';
-import { Home, Smartphone, Lightbulb, Users, Shield, Car } from 'lucide-react';
-
-const iconMap: Record<string, any> = {
-  home: Home,
-  smartphone: Smartphone,
-  lightbulb: Lightbulb,
-  users: Users,
-  shield: Shield,
-  car: Car,
-};
 
 interface PreviewPracticeAreasProps {
   instanceId: string;
@@ -39,35 +30,33 @@ const PreviewPracticeAreas: React.FC<PreviewPracticeAreasProps> = ({ instanceId 
       </h2>
 
       <div className="grid grid-cols-2 gap-3">
-        {practiceConfig.areas.map((area) => {
-          const Icon = iconMap[area.icon] || Shield;
-          return (
-            <div
-              key={area.id}
-              className="p-4 rounded-2xl flex flex-col items-center justify-center text-center min-h-[100px]"
-              style={{ backgroundColor: config.brand.primary }}
+        {practiceConfig.areas.map((area) => (
+          <div
+            key={area.id}
+            className="p-4 rounded-2xl flex flex-col items-center justify-center text-center min-h-[100px]"
+            style={{ backgroundColor: config.brand.primary }}
+          >
+            <div 
+              className="p-2 rounded-lg mb-2"
+              style={{ backgroundColor: `${config.brand.accent}26` }}
             >
-              <div 
-                className="p-2 rounded-lg mb-2"
-                style={{ backgroundColor: `${config.brand.accent}26` }}
-              >
-                <Icon 
-                  className="w-6 h-6" 
-                  style={{ color: config.brand.accent }} 
-                />
-              </div>
-              <span 
-                className="text-xs font-semibold"
-                style={{ 
-                  color: config.brand.secondary,
-                  fontFamily: 'var(--brand-text-font)'
-                }}
-              >
-                {area.title}
-              </span>
+              <PreviewIcon 
+                iconValue={area.icon}
+                className="w-6 h-6" 
+                style={{ color: config.brand.accent }} 
+              />
             </div>
-          );
-        })}
+            <span 
+              className="text-xs font-semibold"
+              style={{ 
+                color: config.brand.secondary,
+                fontFamily: 'var(--brand-text-font)'
+              }}
+            >
+              {area.title}
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );
