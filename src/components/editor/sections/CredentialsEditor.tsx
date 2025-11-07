@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Plus, Trash2, GripVertical, Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal } from 'lucide-react';
+import { Plus, Trash2, GripVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { IconSelector } from '@/components/editor/IconSelector';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { CredentialsConfig, CredentialCard } from '@/contexts/SiteEditorContext';
 
@@ -11,25 +11,9 @@ interface CredentialsEditorProps {
   instanceId: string;
 }
 
-const iconOptions = [
-  { value: 'award', label: 'Certificado', Icon: Award },
-  { value: 'users', label: 'Pessoas', Icon: Users },
-  { value: 'trophy', label: 'Troféu', Icon: Trophy },
-  { value: 'star', label: 'Estrela', Icon: Star },
-  { value: 'check-circle', label: 'Check', Icon: CheckCircle },
-  { value: 'shield', label: 'Escudo', Icon: Shield },
-  { value: 'target', label: 'Alvo', Icon: Target },
-  { value: 'briefcase', label: 'Maleta', Icon: Briefcase },
-  { value: 'zap', label: 'Raio', Icon: Zap },
-  { value: 'heart', label: 'Coração', Icon: Heart },
-  { value: 'trending-up', label: 'Crescimento', Icon: TrendingUp },
-  { value: 'medal', label: 'Medalha', Icon: Medal },
-];
-
 const CredentialsEditor: React.FC<CredentialsEditorProps> = ({ instanceId }) => {
   const { config, updateModuleInstance } = useSiteEditor();
   const moduleConfig = config.moduleInstances[instanceId]?.config as CredentialsConfig;
-  const [searchTerm, setSearchTerm] = useState('');
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
 
   const handleAddCard = () => {
@@ -57,14 +41,9 @@ const CredentialsEditor: React.FC<CredentialsEditorProps> = ({ instanceId }) => 
     });
   };
 
-  const filteredIcons = iconOptions.filter((option) =>
-    option.label.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div className="space-y-4">
       {moduleConfig.cards.map((card, index) => {
-        const selectedIcon = iconOptions.find((opt) => opt.value === card.icon);
         const isOpen = openPopoverId === card.id;
 
         return (
@@ -92,48 +71,12 @@ const CredentialsEditor: React.FC<CredentialsEditorProps> = ({ instanceId }) => 
             <div className="grid grid-cols-[auto_1fr] gap-3">
               <div className="flex flex-col gap-2">
                 <Label className="text-sm">Ícone</Label>
-                <Popover open={isOpen} onOpenChange={(open) => {
-                  setOpenPopoverId(open ? card.id : null);
-                  if (!open) setSearchTerm('');
-                }}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="h-10 w-10 p-0"
-                    >
-                      {selectedIcon && <selectedIcon.Icon className="w-5 h-5" />}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-80 p-4" align="start">
-                    <div className="space-y-3">
-                      <Input
-                        placeholder="Buscar ícones..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="h-10"
-                      />
-                      <div className="grid grid-cols-6 gap-2 max-h-[240px] overflow-y-auto">
-                        {filteredIcons.map((option) => (
-                          <Button
-                            key={option.value}
-                            variant="outline"
-                            className="h-12 w-12 p-0 hover:bg-accent"
-                            onClick={() => {
-                              handleUpdateCard(card.id, { icon: option.value });
-                              setOpenPopoverId(null);
-                              setSearchTerm('');
-                            }}
-                          >
-                            <option.Icon className="w-5 h-5" />
-                          </Button>
-                        ))}
-                      </div>
-                      <p className="text-xs text-muted-foreground text-center">
-                        Clique em um ícone para selecioná-lo
-                      </p>
-                    </div>
-                  </PopoverContent>
-                </Popover>
+                <IconSelector
+                  value={card.icon}
+                  onChange={(value) => handleUpdateCard(card.id, { icon: value })}
+                  open={isOpen}
+                  onOpenChange={(open) => setOpenPopoverId(open ? card.id : null)}
+                />
               </div>
 
               <div className="flex flex-col gap-2">

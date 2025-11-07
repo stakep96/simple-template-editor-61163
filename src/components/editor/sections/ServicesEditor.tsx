@@ -3,9 +3,8 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import { Award, Users, Trophy, Star, CheckCircle, Shield, Target, Briefcase, Zap, Heart, TrendingUp, Medal, Plus, Trash2, Circle, Check, CheckSquare, Dot, Lightbulb, Flame, Sparkles, Crown, Diamond, Gift, Home, Building, MapPin, Phone, Mail, User, Calendar, Clock, AlertCircle, Info, HelpCircle, BarChart, PieChart, Activity, FileText, Gavel, Scale, Car, Smartphone } from 'lucide-react';
+import { IconSelector } from '@/components/editor/IconSelector';
+import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ServicesConfig, ServiceCard } from '@/contexts/SiteEditorContext';
 
@@ -13,55 +12,10 @@ interface ServicesEditorProps {
   instanceId: string;
 }
 
-const iconOptions = [
-  { value: 'award', label: 'Troféu/Prêmio', Icon: Award },
-  { value: 'trophy', label: 'Taça', Icon: Trophy },
-  { value: 'medal', label: 'Medalha', Icon: Medal },
-  { value: 'star', label: 'Estrela', Icon: Star },
-  { value: 'check-circle', label: 'Check Circle', Icon: CheckCircle },
-  { value: 'check', label: 'Check', Icon: Check },
-  { value: 'check-square', label: 'Check Quadrado', Icon: CheckSquare },
-  { value: 'shield', label: 'Escudo', Icon: Shield },
-  { value: 'target', label: 'Alvo', Icon: Target },
-  { value: 'briefcase', label: 'Maleta', Icon: Briefcase },
-  { value: 'zap', label: 'Raio', Icon: Zap },
-  { value: 'heart', label: 'Coração', Icon: Heart },
-  { value: 'trending-up', label: 'Crescimento', Icon: TrendingUp },
-  { value: 'users', label: 'Pessoas', Icon: Users },
-  { value: 'user', label: 'Usuário', Icon: User },
-  { value: 'circle', label: 'Círculo', Icon: Circle },
-  { value: 'dot', label: 'Ponto', Icon: Dot },
-  { value: 'lightbulb', label: 'Lâmpada', Icon: Lightbulb },
-  { value: 'flame', label: 'Chama', Icon: Flame },
-  { value: 'sparkles', label: 'Brilhos', Icon: Sparkles },
-  { value: 'crown', label: 'Coroa', Icon: Crown },
-  { value: 'diamond', label: 'Diamante', Icon: Diamond },
-  { value: 'gift', label: 'Presente', Icon: Gift },
-  { value: 'home', label: 'Casa', Icon: Home },
-  { value: 'building', label: 'Edifício', Icon: Building },
-  { value: 'map-pin', label: 'Localização', Icon: MapPin },
-  { value: 'phone', label: 'Telefone', Icon: Phone },
-  { value: 'mail', label: 'Email', Icon: Mail },
-  { value: 'calendar', label: 'Calendário', Icon: Calendar },
-  { value: 'clock', label: 'Relógio', Icon: Clock },
-  { value: 'alert-circle', label: 'Alerta', Icon: AlertCircle },
-  { value: 'info', label: 'Info', Icon: Info },
-  { value: 'help-circle', label: 'Ajuda', Icon: HelpCircle },
-  { value: 'bar-chart', label: 'Gráfico Barras', Icon: BarChart },
-  { value: 'pie-chart', label: 'Gráfico Pizza', Icon: PieChart },
-  { value: 'activity', label: 'Atividade', Icon: Activity },
-  { value: 'file-text', label: 'Documento', Icon: FileText },
-  { value: 'gavel', label: 'Martelo', Icon: Gavel },
-  { value: 'scale', label: 'Balança', Icon: Scale },
-  { value: 'car', label: 'Carro', Icon: Car },
-  { value: 'smartphone', label: 'Smartphone', Icon: Smartphone },
-];
-
 const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
   const { config, updateModuleInstance } = useSiteEditor();
   const instance = config.moduleInstances[instanceId];
   const servicesConfig = instance?.config as ServicesConfig;
-  const [searchTerm, setSearchTerm] = useState('');
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
 
   if (!servicesConfig) return null;
@@ -92,10 +46,6 @@ const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
     updateModuleInstance(instanceId, { cards: [...cards, newCard] });
   };
 
-  const filteredIcons = iconOptions.filter((icon) =>
-    icon.label.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div className="space-y-4">
       {cards.map((card, index) => (
@@ -114,60 +64,12 @@ const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
 
           <div>
             <Label htmlFor={`card-icon-${card.id}`} className="text-sm">Ícone</Label>
-            <Popover 
-              open={openPopoverId === card.id} 
+            <IconSelector
+              value={card.icon}
+              onChange={(value) => updateCard(card.id, 'icon', value)}
+              open={openPopoverId === card.id}
               onOpenChange={(open) => setOpenPopoverId(open ? card.id : null)}
-            >
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  className="w-full justify-start mt-1"
-                >
-                  {(() => {
-                    const selectedIcon = iconOptions.find((icon) => icon.value === card.icon);
-                    const IconComponent = selectedIcon?.Icon || Award;
-                    return (
-                      <div className="flex items-center gap-2">
-                        <IconComponent className="h-4 w-4" />
-                        <span>{selectedIcon?.label || 'Selecione um ícone'}</span>
-                      </div>
-                    );
-                  })()}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-[280px] p-0" align="start">
-                <Command>
-                  <CommandInput 
-                    placeholder="Buscar ícone..." 
-                    value={searchTerm}
-                    onValueChange={setSearchTerm}
-                  />
-                  <CommandList>
-                    <CommandEmpty>Nenhum ícone encontrado.</CommandEmpty>
-                    <CommandGroup>
-                      {filteredIcons.map((icon) => {
-                        const IconComponent = icon.Icon;
-                        return (
-                          <CommandItem
-                            key={icon.value}
-                            value={icon.value}
-                            onSelect={() => {
-                              updateCard(card.id, 'icon', icon.value);
-                              setOpenPopoverId(null);
-                              setSearchTerm('');
-                            }}
-                          >
-                            <IconComponent className="mr-2 h-4 w-4" />
-                            <span>{icon.label}</span>
-                          </CommandItem>
-                        );
-                      })}
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </PopoverContent>
-            </Popover>
+            />
           </div>
 
           <div>

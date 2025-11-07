@@ -4,46 +4,17 @@ import type { PracticeAreasConfig, PracticeArea } from '@/contexts/SiteEditorCon
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Trash2, Plus, GripVertical, Home, Smartphone, Lightbulb, Users, Shield, Car, Instagram, Facebook, Linkedin, Youtube, Github, Music, MessageCircle, Twitch, Twitter, Mail, Phone, MapPin, Clock, Briefcase, Scale, Building, FileText, Gavel, Target } from 'lucide-react';
+import { IconSelector } from '@/components/editor/IconSelector';
+import { Trash2, Plus, GripVertical } from 'lucide-react';
 
 interface PracticeAreasEditorProps {
   instanceId: string;
 }
 
-const iconOptions = [
-  { value: 'shield', label: 'Escudo', Icon: Shield },
-  { value: 'scale', label: 'Balança', Icon: Scale },
-  { value: 'gavel', label: 'Martelo', Icon: Gavel },
-  { value: 'briefcase', label: 'Maleta', Icon: Briefcase },
-  { value: 'building', label: 'Edifício', Icon: Building },
-  { value: 'users', label: 'Pessoas', Icon: Users },
-  { value: 'home', label: 'Casa', Icon: Home },
-  { value: 'car', label: 'Carro', Icon: Car },
-  { value: 'file-text', label: 'Documento', Icon: FileText },
-  { value: 'target', label: 'Alvo', Icon: Target },
-  { value: 'smartphone', label: 'Smartphone', Icon: Smartphone },
-  { value: 'lightbulb', label: 'Lâmpada', Icon: Lightbulb },
-  { value: 'mail', label: 'Email', Icon: Mail },
-  { value: 'phone', label: 'Telefone', Icon: Phone },
-  { value: 'map-pin', label: 'Localização', Icon: MapPin },
-  { value: 'clock', label: 'Relógio', Icon: Clock },
-  { value: 'instagram', label: 'Instagram', Icon: Instagram },
-  { value: 'facebook', label: 'Facebook', Icon: Facebook },
-  { value: 'linkedin', label: 'LinkedIn', Icon: Linkedin },
-  { value: 'youtube', label: 'YouTube', Icon: Youtube },
-  { value: 'github', label: 'GitHub', Icon: Github },
-  { value: 'twitter', label: 'Twitter', Icon: Twitter },
-  { value: 'music', label: 'Música', Icon: Music },
-  { value: 'message-circle', label: 'Mensagem', Icon: MessageCircle },
-  { value: 'twitch', label: 'Twitch', Icon: Twitch },
-];
-
 const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId }) => {
   const { config, updateModuleInstance } = useSiteEditor();
   const instance = config.moduleInstances[instanceId];
   const practiceConfig = instance?.config as PracticeAreasConfig;
-  const [searchTerm, setSearchTerm] = useState('');
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
 
   if (!practiceConfig) return null;
@@ -69,14 +40,9 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
     updateModuleInstance(instanceId, { areas: [...practiceConfig.areas, newArea] });
   };
 
-  const filteredIcons = iconOptions.filter((option) =>
-    option.label.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div className="space-y-4">
       {practiceConfig.areas.map((area, index) => {
-        const selectedIcon = iconOptions.find((opt) => opt.value === area.icon);
         const isOpen = openPopoverId === area.id;
         
         return (
@@ -104,48 +70,12 @@ const PracticeAreasEditor: React.FC<PracticeAreasEditorProps> = ({ instanceId })
             <div className="grid grid-cols-[auto_1fr] gap-3">
               <div className="flex flex-col gap-2">
                 <Label className="text-sm">Ícone</Label>
-                <Popover open={isOpen} onOpenChange={(open) => {
-                  setOpenPopoverId(open ? area.id : null);
-                  if (!open) setSearchTerm('');
-                }}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="h-10 w-10 p-0"
-                    >
-                      {selectedIcon && <selectedIcon.Icon className="w-5 h-5" />}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-80 p-4" align="start">
-                    <div className="space-y-3">
-                      <Input
-                        placeholder="Buscar ícones..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="h-10"
-                      />
-                      <div className="grid grid-cols-6 gap-2 max-h-[240px] overflow-y-auto">
-                        {filteredIcons.map((option) => (
-                          <Button
-                            key={option.value}
-                            variant="outline"
-                            className="h-12 w-12 p-0 hover:bg-accent"
-                            onClick={() => {
-                              updateArea(area.id, 'icon', option.value);
-                              setOpenPopoverId(null);
-                              setSearchTerm('');
-                            }}
-                          >
-                            <option.Icon className="w-5 h-5" />
-                          </Button>
-                        ))}
-                      </div>
-                      <p className="text-xs text-muted-foreground text-center">
-                        Clique em um ícone para selecioná-lo
-                      </p>
-                    </div>
-                  </PopoverContent>
-                </Popover>
+                <IconSelector
+                  value={area.icon}
+                  onChange={(value) => updateArea(area.id, 'icon', value)}
+                  open={isOpen}
+                  onOpenChange={(open) => setOpenPopoverId(open ? area.id : null)}
+                />
               </div>
 
               <div className="flex flex-col gap-2">
