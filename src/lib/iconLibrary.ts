@@ -83,6 +83,16 @@ export const iconLibrary: IconOption[] = [
   { value: 'courthouse', label: 'Tribunal', type: 'custom', path: '/icons/juridico/courthouse.svg', tags: ['juridico'] },
   { value: 'evidence', label: 'Evidência', type: 'custom', path: '/icons/juridico/evidence.svg', tags: ['juridico'] },
   { value: 'feather_pen', label: 'Pena de Escrever', type: 'custom', path: '/icons/juridico/feather_pen.svg', tags: ['juridico'] },
+  { value: 'pen', label: 'Caneta', type: 'custom', path: '/icons/juridico/pen.svg', tags: ['juridico'] },
+  { value: 'folder', label: 'Pasta/Arquivo', type: 'custom', path: '/icons/juridico/folder.svg', tags: ['juridico'] },
+  { value: 'gavel', label: 'Martelo do Juiz', type: 'custom', path: '/icons/juridico/gavel.svg', tags: ['juridico'] },
+  { value: 'handcuffs', label: 'Algemas', type: 'custom', path: '/icons/juridico/handcuffs.svg', tags: ['juridico'] },
+  { value: 'handshake', label: 'Aperto de Mão', type: 'custom', path: '/icons/juridico/handshake.svg', tags: ['juridico', 'business'] },
+  { value: 'judge', label: 'Juiz', type: 'custom', path: '/icons/juridico/judge.svg', tags: ['juridico'] },
+  { value: 'jury', label: 'Júri', type: 'custom', path: '/icons/juridico/jury.svg', tags: ['juridico'] },
+  { value: 'law', label: 'Lei', type: 'custom', path: '/icons/juridico/law.svg', tags: ['juridico'] },
+  { value: 'lawyer', label: 'Advogado', type: 'custom', path: '/icons/juridico/lawyer.svg', tags: ['juridico'] },
+  { value: 'parchment', label: 'Pergaminho', type: 'custom', path: '/icons/juridico/parchment.svg', tags: ['juridico'] },
 ];
 
 // Funções helper
