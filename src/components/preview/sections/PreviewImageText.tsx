@@ -20,11 +20,11 @@ const PreviewImageText: React.FC<PreviewImageTextProps> = ({ instanceId }) => {
     >
       <div className="mx-auto max-w-md">
         {imageTextConfig.image && (
-          <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden mb-6">
+          <div className="w-full rounded-3xl overflow-hidden mb-6">
             <img 
               src={imageTextConfig.image} 
               alt={imageTextConfig.title}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-cover"
             />
           </div>
         )}
