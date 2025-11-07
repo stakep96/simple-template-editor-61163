@@ -51,7 +51,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ instanceId }) => {
         <div className="marquee-content flex items-center whitespace-nowrap">
           {displayItems.map((item, index) => (
             <React.Fragment key={`stripe1-${index}`}>
-              <span className="text-base md:text-lg font-bold px-3 md:px-5" style={{ color: config.textColor }}>
+              <span className="text-base md:text-lg font-bold px-3 md:px-5" style={{ color: config.textColor, fontFamily: 'var(--brand-title-font)' }}>
                 {item}
               </span>
               {index < displayItems.length - 1 && (
@@ -81,7 +81,7 @@ const PreviewMarquee: React.FC<PreviewMarqueeProps> = ({ instanceId }) => {
         <div className="marquee-content flex items-center whitespace-nowrap">
           {displayItems.map((item, index) => (
             <React.Fragment key={`stripe2-${index}`}>
-              <span className="text-base md:text-lg font-bold px-3 md:px-5" style={{ color: config.textColor }}>
+              <span className="text-base md:text-lg font-bold px-3 md:px-5" style={{ color: config.textColor, fontFamily: 'var(--brand-title-font)' }}>
                 {item}
               </span>
               {index < displayItems.length - 1 && (
