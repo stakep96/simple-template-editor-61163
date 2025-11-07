@@ -31,6 +31,7 @@ import MetricsEditor from './sections/MetricsEditor';
 import BrandsEditor from './sections/BrandsEditor';
 import PortfolioEditor from './sections/PortfolioEditor';
 import MarqueeEditor from './sections/MarqueeEditor';
+import ImageTextEditor from './sections/ImageTextEditor';
 import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -65,6 +66,7 @@ const EditorPanel = () => {
     brands: { icon: Building2, title: 'Marcas Parceiras', description: 'Logos de parceiros', component: BrandsEditor },
     portfolio: { icon: FolderOpen, title: 'Portfolio', description: 'Projetos em accordion', component: PortfolioEditor },
     marquee: { icon: MoveHorizontal, title: 'Faixa Infinita', description: 'Texto em movimento', component: MarqueeEditor },
+    'image-text': { icon: ImageIcon, title: 'Imagem + Texto', description: 'Conteúdo visual', component: ImageTextEditor },
     footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   } as const;
 

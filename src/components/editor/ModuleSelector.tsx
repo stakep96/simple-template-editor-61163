@@ -112,6 +112,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           title: 'Faixa Infinita',
           description: 'Texto em movimento',
         },
+        {
+          id: 'image-text' as ModuleType,
+          icon: ImageIcon,
+          title: 'Imagem + Texto',
+          description: 'Conteúdo visual',
+        },
       ],
     },
     {

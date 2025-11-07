@@ -317,13 +317,20 @@ export interface MarqueeConfig {
   };
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'marquee' | 'footer';
+export interface ImageTextConfig {
+  enabled: boolean;
+  image: string;
+  title: string;
+  description: string;
+}
+
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'marquee' | 'image-text' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | MarqueeConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | MarqueeConfig | ImageTextConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -484,6 +491,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     brands: 0,
     portfolio: 0,
     marquee: 0,
+    'image-text': 0,
     footer: 0,
   });
 
@@ -856,6 +864,14 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             },
           };
           break;
+        case 'image-text':
+          defaultModuleConfig = {
+            enabled: true,
+            image: '',
+            title: 'Trusted Eye Care with Compassion & Precision',
+            description: 'We are dedicated to providing world-class eye care to patients of all ages. Our mission is to enhance and protect your vision through advanced treatments, compassionate service, and a commitment to excellence in eye health.',
+          } as ImageTextConfig;
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -946,6 +962,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         metrics: 0,
         brands: 0,
         marquee: 0,
+        'image-text': 0,
         footer: 0,
       };
 
