@@ -64,10 +64,12 @@ const MarketingEditor = () => {
         <AccordionItem value="gtm" className="border rounded-lg bg-background">
           <AccordionTrigger className="px-4 hover:no-underline">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#FF6C37]/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#FF6C37">
-                  <path d="M9.93 12.645l-1.364 1.364-2.523-2.523L3.52 14.01l2.523 2.523-1.364 1.364-3.9-3.9 3.9-3.9 1.364 1.364-2.523 2.523 2.523 2.523 1.364-1.364 3.887 3.887-1.364 1.364zM24 5.634l-3.9 3.9-1.364-1.364 2.523-2.523-2.523-2.523L20.1 1.76l3.9 3.9-.1-.026zM12 2l7.286 10L12 22 4.714 12 12 2z"/>
-                </svg>
+              <div className="w-10 h-10 rounded-lg bg-[#4fc3f7]/10 flex items-center justify-center flex-shrink-0">
+                <img 
+                  src="/icons/google-tag-manager.svg" 
+                  alt="Google Tag Manager" 
+                  className="w-6 h-6"
+                />
               </div>
               <div className="text-left">
                 <h4 className="font-semibold text-foreground">Google Tag Manager</h4>
@@ -94,10 +96,12 @@ const MarketingEditor = () => {
         <AccordionItem value="ga" className="border rounded-lg bg-background">
           <AccordionTrigger className="px-4 hover:no-underline">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#E37400]/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#E37400">
-                  <path d="M22.84 2.998v17.999a3.002 3.002 0 01-3.002 3.002h-15A3.002 3.002 0 011.836 21V3a3.002 3.002 0 013.002-3.002h15a3.002 3.002 0 013.002 3zm-8.977 13.683l2.475-8.717c.247-.87.022-1.488-.574-1.488h-3.463c-.594 0-1.283.618-1.528 1.488l-2.475 8.717a1.214 1.214 0 00.08.88c.174.283.47.44.81.44h4.785c.34 0 .636-.157.81-.44a1.214 1.214 0 00.08-.88z"/>
-                </svg>
+              <div className="w-10 h-10 rounded-lg bg-[#FFC107]/10 flex items-center justify-center flex-shrink-0">
+                <img 
+                  src="/icons/google-analytics.svg" 
+                  alt="Google Analytics" 
+                  className="w-6 h-6"
+                />
               </div>
               <div className="text-left">
                 <h4 className="font-semibold text-foreground">Google Analytics</h4>
@@ -124,13 +128,15 @@ const MarketingEditor = () => {
         <AccordionItem value="fb" className="border rounded-lg bg-background">
           <AccordionTrigger className="px-4 hover:no-underline">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#1877F2]/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#1877F2">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
+              <div className="w-10 h-10 rounded-lg bg-[#0081FA]/10 flex items-center justify-center flex-shrink-0">
+                <img 
+                  src="/icons/meta-pixel.svg" 
+                  alt="Meta Pixel" 
+                  className="w-6 h-6"
+                />
               </div>
               <div className="text-left">
-                <h4 className="font-semibold text-foreground">Facebook Pixel</h4>
+                <h4 className="font-semibold text-foreground">Meta Pixel (Facebook)</h4>
                 <p className="text-xs text-muted-foreground">Rastreamento de conversões</p>
               </div>
             </div>
