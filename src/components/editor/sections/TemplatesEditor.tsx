@@ -73,13 +73,14 @@ const TemplatesEditor = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const filteredTemplates = selectedCategory === 'Todos' ? templates : templates.filter(t => t.category === selectedCategory);
 
-  const handleApplyTemplate = () => {
-    if (!selectedTemplate) {
+  const handleApplyTemplate = (templateId?: string) => {
+    const idToApply = templateId || selectedTemplate;
+    if (!idToApply) {
       toast.error('Selecione um template primeiro');
       return;
     }
     
-    applyTemplate(selectedTemplate);
+    applyTemplate(idToApply);
     setIsDialogOpen(false);
     toast.success('Template aplicado com sucesso!');
   };
@@ -127,7 +128,7 @@ const TemplatesEditor = () => {
                     <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
                       Cancelar
                     </Button>
-                    <Button onClick={handleApplyTemplate} disabled={!selectedTemplate}>
+                    <Button onClick={() => handleApplyTemplate()} disabled={!selectedTemplate}>
                       Aplicar Template
                     </Button>
                   </div>
@@ -173,11 +174,10 @@ const TemplatesEditor = () => {
                       </div>
                       <p className="text-xs text-muted-foreground line-clamp-2 text-left">{template.description}</p>
                     </div>
-                    <Button
+                    <Button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        setSelectedTemplate(template.id);
-                        handleApplyTemplate();
+                        handleApplyTemplate(template.id);
                       }} 
                       size="sm" 
                       className="w-full h-8 text-xs"
