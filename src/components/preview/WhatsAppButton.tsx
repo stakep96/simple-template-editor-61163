@@ -25,6 +25,7 @@ const WhatsAppButton = () => {
         src="/icons/whatsapp-logo.svg" 
         alt="WhatsApp" 
         className="w-full h-full"
+        style={{ filter: 'brightness(0) saturate(100%) invert(1)' }}
       />
     </button>
   );
