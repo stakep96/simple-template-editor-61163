@@ -4,7 +4,6 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { MessageCircle } from 'lucide-react';
 
 const MarketingEditor = () => {
   const { config, updateMarketing } = useSiteEditor();
@@ -16,7 +15,12 @@ const MarketingEditor = () => {
           <AccordionTrigger className="px-4 hover:no-underline">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-[#25D366]/10 flex items-center justify-center flex-shrink-0">
-                <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                <img 
+                  src="/icons/whatsapp-logo.svg" 
+                  alt="WhatsApp" 
+                  className="w-5 h-5"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(47%) sepia(97%) saturate(488%) hue-rotate(92deg) brightness(94%) contrast(89%)' }}
+                />
               </div>
               <div className="text-left flex-1">
                 <h4 className="font-semibold text-foreground">WhatsApp</h4>
