@@ -584,7 +584,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             name: 'Nome',
             title: 'Título',
             description: 'Descrição',
-            socialLinks: {},
+            socialLinks: [],
             education: [],
           };
           break;
@@ -995,7 +995,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               name: 'Seu Nome',
               title: 'Seu Título Profissional',
               description: 'Abordagem estratégica e personalizada para cada cliente',
-              socialLinks: {},
+              socialLinks: [],
               education: [
                 'Sua formação e especializações',
               ],
