@@ -166,14 +166,14 @@ const TemplatesEditor = () => {
                   
                   {/* Informações que aparecem no hover - sobrepostas à imagem */}
                   <div className="absolute bottom-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border p-3 space-y-2 h-[120px] flex flex-col justify-between z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div>
+                    <div className="text-left">
                       <div className="flex items-center gap-2 mb-2">
-                        <h4 className="font-semibold text-sm text-foreground">{template.name}</h4>
+                        <h4 className="font-semibold text-sm text-foreground text-left">{template.name}</h4>
                         <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary whitespace-nowrap">{template.category}</span>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2">{template.description}</p>
+                      <p className="text-xs text-muted-foreground line-clamp-2 text-left">{template.description}</p>
                     </div>
-                    <Button 
+                    <Button
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedTemplate(template.id);
