@@ -1,5 +1,4 @@
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
 const WhatsAppButton = () => {
@@ -19,10 +18,14 @@ const WhatsAppButton = () => {
   return (
     <button
       onClick={handleClick}
-      className="sticky bottom-4 left-full -ml-16 w-12 h-12 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-50"
+      className="sticky bottom-4 left-full -ml-16 w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-50 p-3"
       aria-label="Abrir WhatsApp"
     >
-      <MessageCircle className="w-6 h-6" />
+      <img 
+        src="/icons/whatsapp-logo.svg" 
+        alt="WhatsApp" 
+        className="w-full h-full"
+      />
     </button>
   );
 };
