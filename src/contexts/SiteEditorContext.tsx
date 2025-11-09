@@ -1488,7 +1488,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               defaultModuleConfig = {
                 enabled: true,
                 items: 'Design UI/UX, Desenvolvimento Web, Apps Mobile, E-commerce, Branding, Marketing Digital, SEO, Consultoria Tech',
-                separator: '*',
+                separator: '✱',
                 backgroundColor: '#9333EA',
                 textColor: '#FFFFFF',
                 speed: 15,
