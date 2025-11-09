@@ -356,10 +356,10 @@ interface SiteEditorContextType {
 
 const defaultConfig: SiteConfig = {
   metadata: {
-    siteName: 'Novo Site',
+    siteName: 'Escritório Jurídico',
     domain: '',
-    title: 'Seu nome ou nome da empresa',
-    description: 'Fale um pouco sobre você ou sua empresa',
+    title: 'Advocacia Especializada em Direito Criminal e Empresarial',
+    description: 'Mais de 15 anos de experiência defendendo seus direitos com excelência e dedicação',
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,
@@ -416,11 +416,29 @@ const defaultConfig: SiteConfig = {
         photo: '',
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',
-        description: 'Abordagem estratégica e personalizada para cada cliente',
-        socialLinks: [],
+        description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
+        socialLinks: [
+          {
+            id: 'social-1',
+            platform: 'instagram',
+            url: '',
+          },
+          {
+            id: 'social-2',
+            platform: 'linkedin',
+            url: '',
+          },
+          {
+            id: 'social-3',
+            platform: 'facebook',
+            url: '',
+          },
+        ],
         education: [
-          'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
-          'Mestre em Direito Tributário pela FGV-SP (2010) e especialista para pessoas físicas e jurídicas pela mesma instituição (2015)',
+          'Graduado em Direito pela USP (2005)',
+          'Mestre em Direito Penal pela PUC-SP (2010)',
+          'Especialização em Direito Empresarial pela FGV (2012)',
+          'Membro da OAB-SP desde 2006',
         ],
       } as AboutConfig,
     },
@@ -431,12 +449,12 @@ const defaultConfig: SiteConfig = {
       config: {
         enabled: true,
         areas: [
-          { id: '1', title: 'Direito Imobiliário', icon: 'home' },
-          { id: '2', title: 'Crimes Digitais', icon: 'smartphone' },
-          { id: '3', title: 'Propriedade Intelectual', icon: 'lightbulb' },
-          { id: '4', title: 'Direito da Família', icon: 'users' },
-          { id: '5', title: 'Defesa Criminal', icon: 'shield' },
-          { id: '6', title: 'Crimes de Trânsito', icon: 'car' },
+          { id: '1', title: 'Direito Criminal', icon: 'juridico-gavel' },
+          { id: '2', title: 'Direito Empresarial', icon: 'juridico-briefcase' },
+          { id: '3', title: 'Direito Imobiliário', icon: 'juridico-contract' },
+          { id: '4', title: 'Direito da Família', icon: 'juridico-handshake' },
+          { id: '5', title: 'Defesa do Consumidor', icon: 'juridico-balance' },
+          { id: '6', title: 'Direito Trabalhista', icon: 'juridico-law' },
         ],
       } as PracticeAreasConfig,
     },
@@ -450,16 +468,145 @@ const defaultConfig: SiteConfig = {
         cases: [
           {
             id: '1',
-            title: 'Defesa Criminal - 2025',
-            description: 'Cliente acusado injustamente',
-            result: 'Absolvição por falta de provas',
-            icon: 'shield',
+            title: 'Absolvição em Processo Criminal',
+            description: 'Cliente acusado injustamente de crime contra o patrimônio',
+            result: 'Absolvição por insuficiência de provas após 2 anos de atuação estratégica',
+            icon: 'juridico-gavel',
+          },
+          {
+            id: '2',
+            title: 'Recuperação de Empresa',
+            description: 'Empresa em situação crítica de endividamento',
+            result: 'Reestruturação completa e retomada das operações em 18 meses',
+            icon: 'juridico-briefcase',
+          },
+          {
+            id: '3',
+            title: 'Divórcio Consensual',
+            description: 'Processo de divórcio com partilha de bens complexa',
+            result: 'Acordo amigável alcançado em 6 meses com satisfação de ambas as partes',
+            icon: 'juridico-handshake',
           },
         ],
       } as SuccessCasesConfig,
     },
+    'testimonials-1': {
+      id: 'testimonials-1',
+      type: 'testimonials',
+      enabled: true,
+      config: {
+        enabled: true,
+        title: 'O que dizem meus clientes',
+        testimonials: [
+          {
+            id: '1',
+            image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+            name: 'Maria Silva',
+            role: 'Empresária',
+            testimonial: 'Profissional excepcional! Me ajudou em um momento muito difícil e conseguiu reverter uma situação que parecia impossível. Recomendo de olhos fechados.',
+          },
+          {
+            id: '2',
+            image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
+            name: 'Carlos Oliveira',
+            role: 'Empresário',
+            testimonial: 'Excelente advogado! Muito atencioso, competente e sempre disponível para tirar dúvidas. Minha empresa foi salva graças ao trabalho dele.',
+          },
+          {
+            id: '3',
+            image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+            name: 'Ana Paula Costa',
+            role: 'Professora',
+            testimonial: 'Profissionalismo e empatia definem o trabalho do Dr. João. Me senti acolhida desde o primeiro atendimento e o resultado foi além das minhas expectativas.',
+          },
+        ],
+      } as TestimonialsConfig,
+    },
+    'gallery-1': {
+      id: 'gallery-1',
+      type: 'gallery',
+      enabled: true,
+      config: {
+        enabled: true,
+        images: [
+          { id: '1', url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop', alt: 'Escritório - Sala de reuniões' },
+          { id: '2', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop', alt: 'Escritório - Recepção' },
+          { id: '3', url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop', alt: 'Escritório - Biblioteca jurídica' },
+          { id: '4', url: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=600&fit=crop', alt: 'Equipe de trabalho' },
+        ],
+      } as GalleryConfig,
+    },
+    'faq-1': {
+      id: 'faq-1',
+      type: 'faq',
+      enabled: true,
+      config: {
+        enabled: true,
+        title: 'Perguntas Frequentes',
+        items: [
+          {
+            id: '1',
+            question: 'Quanto tempo dura um processo judicial?',
+            answer: 'O tempo de duração varia de acordo com a complexidade do caso e a instância judicial. Processos mais simples podem levar de 6 meses a 2 anos, enquanto casos mais complexos podem durar mais tempo.',
+          },
+          {
+            id: '2',
+            question: 'Como funciona o pagamento dos honorários?',
+            answer: 'Os honorários são estabelecidos de acordo com a complexidade do caso. Oferecemos diferentes modalidades de pagamento: valor fixo, percentual sobre o resultado ou combinação de ambos.',
+          },
+          {
+            id: '3',
+            question: 'Posso acompanhar meu processo online?',
+            answer: 'Sim! Você terá acesso a todas as movimentações processuais através de contato direto comigo e também poderá acompanhar pelos sistemas dos tribunais com as orientações que fornecerei.',
+          },
+          {
+            id: '4',
+            question: 'Qual a diferença entre advogado e defensor público?',
+            answer: 'O advogado é contratado particularmente pelo cliente, enquanto o defensor público atende gratuitamente pessoas que não podem pagar. Um advogado particular pode oferecer atendimento mais personalizado e dedicado.',
+          },
+        ],
+      } as FAQConfig,
+    },
+    'location-1': {
+      id: 'location-1',
+      type: 'location',
+      enabled: true,
+      config: {
+        enabled: true,
+        title: 'Onde nos encontrar',
+        address: 'Av. Paulista, 1000 - Conjunto 1501\nBela Vista - São Paulo/SP\nCEP: 01310-100',
+        businessHours: [
+          {
+            id: '1',
+            day: 'Segunda a Quinta',
+            hours: '9h às 18h',
+          },
+          {
+            id: '2',
+            day: 'Sexta-feira',
+            hours: '9h às 17h',
+          },
+          {
+            id: '3',
+            day: 'Sábado',
+            hours: 'Sob agendamento',
+          },
+        ],
+        mapEmbedUrl: '',
+      } as LocationConfig,
+    },
+    'footer-1': {
+      id: 'footer-1',
+      type: 'footer',
+      enabled: true,
+      config: {
+        enabled: true,
+        copyrightText: '© Dr. João Silva - OAB/SP 123.456\nTodos os direitos reservados - 2025',
+      } as FooterConfig,
+    },
   },
-  moduleOrder: ['header-1', 'hero-1', 'about-1', 'practice-1', 'cases-1'],
+  moduleOrder: ['header-1', 'hero-1', 'about-1', 'practice-1', 'cases-1', 'testimonials-1', 'gallery-1', 'faq-1', 'location-1', 'footer-1'],
+  currentTemplateId: '1',
 };
 
 const SiteEditorContext = createContext<SiteEditorContextType | undefined>(undefined);
@@ -474,12 +621,12 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     cases: 1,
     contact: 0,
     button: 0,
-    testimonials: 0,
+    testimonials: 1,
     'testimonials-images': 0,
-    gallery: 0,
-    faq: 0,
+    gallery: 1,
+    faq: 1,
     pricing: 0,
-    location: 0,
+    location: 1,
     'before-after': 0,
     benefits: 0,
     credentials: 0,
@@ -492,7 +639,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     portfolio: 0,
     marquee: 0,
     'image-text': 0,
-    footer: 0,
+    footer: 1,
   });
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
@@ -985,19 +1132,39 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               backgroundImage: '',
               gradientOpacity: 0.7,
               title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
-              description: 'Especialista com anos de experiência',
+              description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
+              imageFade: true,
             };
             break;
           case 'about':
             defaultModuleConfig = {
               enabled: true,
               photo: '',
-              name: 'Seu Nome',
-              title: 'Seu Título Profissional',
-              description: 'Abordagem estratégica e personalizada para cada cliente',
-              socialLinks: [],
+              name: 'Dr. João Silva',
+              title: 'Advogado Criminalista e Empresarial',
+              description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
+              socialLinks: [
+                {
+                  id: 'social-1',
+                  platform: 'instagram',
+                  url: '',
+                },
+                {
+                  id: 'social-2',
+                  platform: 'linkedin',
+                  url: '',
+                },
+                {
+                  id: 'social-3',
+                  platform: 'facebook',
+                  url: '',
+                },
+              ],
               education: [
-                'Sua formação e especializações',
+                'Graduado em Direito pela USP (2005)',
+                'Mestre em Direito Penal pela PUC-SP (2010)',
+                'Especialização em Direito Empresarial pela FGV (2012)',
+                'Membro da OAB-SP desde 2006',
               ],
             };
             break;
@@ -1005,9 +1172,12 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             defaultModuleConfig = {
               enabled: true,
               areas: [
-                { id: '1', title: 'Área de Atuação 1', icon: 'briefcase' },
-                { id: '2', title: 'Área de Atuação 2', icon: 'scale' },
-                { id: '3', title: 'Área de Atuação 3', icon: 'gavel' },
+                { id: '1', title: 'Direito Criminal', icon: 'juridico-gavel' },
+                { id: '2', title: 'Direito Empresarial', icon: 'juridico-briefcase' },
+                { id: '3', title: 'Direito Imobiliário', icon: 'juridico-contract' },
+                { id: '4', title: 'Direito da Família', icon: 'juridico-handshake' },
+                { id: '5', title: 'Defesa do Consumidor', icon: 'juridico-balance' },
+                { id: '6', title: 'Direito Trabalhista', icon: 'juridico-law' },
               ],
             };
             break;
@@ -1018,10 +1188,24 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               cases: [
                 {
                   id: '1',
-                  title: 'Caso de Sucesso 1',
-                  description: 'Descrição do caso',
-                  result: 'Resultado obtido',
-                  icon: 'trophy',
+                  title: 'Absolvição em Processo Criminal',
+                  description: 'Cliente acusado injustamente de crime contra o patrimônio',
+                  result: 'Absolvição por insuficiência de provas após 2 anos de atuação estratégica',
+                  icon: 'juridico-gavel',
+                },
+                {
+                  id: '2',
+                  title: 'Recuperação de Empresa',
+                  description: 'Empresa em situação crítica de endividamento',
+                  result: 'Reestruturação completa e retomada das operações em 18 meses',
+                  icon: 'juridico-briefcase',
+                },
+                {
+                  id: '3',
+                  title: 'Divórcio Consensual',
+                  description: 'Processo de divórcio com partilha de bens complexa',
+                  result: 'Acordo amigável alcançado em 6 meses com satisfação de ambas as partes',
+                  icon: 'juridico-handshake',
                 },
               ],
             };
@@ -1044,14 +1228,28 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'testimonials':
             defaultModuleConfig = {
               enabled: true,
-              title: 'Depoimentos',
+              title: 'O que dizem meus clientes',
               testimonials: [
                 {
                   id: '1',
                   image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
-                  name: 'Nome do Cliente',
-                  role: 'Cargo/Empresa',
-                  testimonial: 'Depoimento do cliente sobre o serviço prestado...',
+                  name: 'Maria Silva',
+                  role: 'Empresária',
+                  testimonial: 'Profissional excepcional! Me ajudou em um momento muito difícil e conseguiu reverter uma situação que parecia impossível. Recomendo de olhos fechados.',
+                },
+                {
+                  id: '2',
+                  image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
+                  name: 'Carlos Oliveira',
+                  role: 'Empresário',
+                  testimonial: 'Excelente advogado! Muito atencioso, competente e sempre disponível para tirar dúvidas. Minha empresa foi salva graças ao trabalho dele.',
+                },
+                {
+                  id: '3',
+                  image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+                  name: 'Ana Paula Costa',
+                  role: 'Professora',
+                  testimonial: 'Profissionalismo e empatia definem o trabalho do Dr. João. Me senti acolhida desde o primeiro atendimento e o resultado foi além das minhas expectativas.',
                 },
               ],
             };
@@ -1060,7 +1258,10 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             defaultModuleConfig = {
               enabled: true,
               images: [
-                { id: '1', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop', alt: 'Imagem 1' },
+                { id: '1', url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop', alt: 'Escritório - Sala de reuniões' },
+                { id: '2', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop', alt: 'Escritório - Recepção' },
+                { id: '3', url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop', alt: 'Escritório - Biblioteca jurídica' },
+                { id: '4', url: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=600&fit=crop', alt: 'Equipe de trabalho' },
               ],
             };
             break;
@@ -1071,8 +1272,23 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               items: [
                 {
                   id: '1',
-                  question: 'Quanto tempo vai durar meu processo?',
-                  answer: 'O tempo varia de acordo com a complexidade do caso e a instância judicial.',
+                  question: 'Quanto tempo dura um processo judicial?',
+                  answer: 'O tempo de duração varia de acordo com a complexidade do caso e a instância judicial. Processos mais simples podem levar de 6 meses a 2 anos, enquanto casos mais complexos podem durar mais tempo.',
+                },
+                {
+                  id: '2',
+                  question: 'Como funciona o pagamento dos honorários?',
+                  answer: 'Os honorários são estabelecidos de acordo com a complexidade do caso. Oferecemos diferentes modalidades de pagamento: valor fixo, percentual sobre o resultado ou combinação de ambos.',
+                },
+                {
+                  id: '3',
+                  question: 'Posso acompanhar meu processo online?',
+                  answer: 'Sim! Você terá acesso a todas as movimentações processuais através de contato direto comigo e também poderá acompanhar pelos sistemas dos tribunais com as orientações que fornecerei.',
+                },
+                {
+                  id: '4',
+                  question: 'Qual a diferença entre advogado e defensor público?',
+                  answer: 'O advogado é contratado particularmente pelo cliente, enquanto o defensor público atende gratuitamente pessoas que não podem pagar. Um advogado particular pode oferecer atendimento mais personalizado e dedicado.',
                 },
               ],
             };
@@ -1080,13 +1296,23 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'location':
             defaultModuleConfig = {
               enabled: true,
-              title: 'Localização',
-              address: 'Seu endereço completo\nCidade - Estado, CEP',
+              title: 'Onde nos encontrar',
+              address: 'Av. Paulista, 1000 - Conjunto 1501\nBela Vista - São Paulo/SP\nCEP: 01310-100',
               businessHours: [
                 {
                   id: '1',
-                  day: 'Segunda a Sexta',
-                  hours: '8h às 18h',
+                  day: 'Segunda a Quinta',
+                  hours: '9h às 18h',
+                },
+                {
+                  id: '2',
+                  day: 'Sexta-feira',
+                  hours: '9h às 17h',
+                },
+                {
+                  id: '3',
+                  day: 'Sábado',
+                  hours: 'Sob agendamento',
                 },
               ],
               mapEmbedUrl: '',
@@ -1144,7 +1370,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'footer':
             defaultModuleConfig = {
               enabled: true,
-              copyrightText: '© SEU NOME - 000000 - OAB/XX\nTodos os direitos reservados - 2025',
+              copyrightText: '© Dr. João Silva - OAB/SP 123.456\nTodos os direitos reservados - 2025',
             };
             break;
         }
