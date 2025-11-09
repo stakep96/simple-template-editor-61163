@@ -41,7 +41,7 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
         >
           <form className="space-y-6">
             <div>
-              <Label htmlFor="name" className="text-sm font-medium">Nome Completo</Label>
+              <Label htmlFor="name" className="text-sm font-medium" style={{ color: config.brand.secondary }}>Nome Completo</Label>
               <Input
                 id="name"
                 type="text"
@@ -51,7 +51,7 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
             </div>
 
             <div>
-              <Label htmlFor="email" className="text-sm font-medium">E-mail</Label>
+              <Label htmlFor="email" className="text-sm font-medium" style={{ color: config.brand.secondary }}>E-mail</Label>
               <Input
                 id="email"
                 type="email"
@@ -61,7 +61,7 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
             </div>
 
             <div>
-              <Label htmlFor="phone" className="text-sm font-medium">Telefone</Label>
+              <Label htmlFor="phone" className="text-sm font-medium" style={{ color: config.brand.secondary }}>Telefone</Label>
               <Input
                 id="phone"
                 type="tel"
@@ -71,7 +71,7 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
             </div>
 
             <div>
-              <Label htmlFor="message" className="text-sm font-medium">Mensagem</Label>
+              <Label htmlFor="message" className="text-sm font-medium" style={{ color: config.brand.secondary }}>Mensagem</Label>
               <Textarea
                 id="message"
                 placeholder="Como podemos ajudar?"
@@ -84,7 +84,7 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
               className="w-full"
               style={{ 
                 backgroundColor: config.brand.accent,
-                color: config.brand.primary,
+                color: config.brand.secondary,
                 fontFamily: 'var(--brand-text-font)'
               }}
             >
