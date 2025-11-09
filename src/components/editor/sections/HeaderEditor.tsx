@@ -16,10 +16,18 @@ const HeaderEditor: React.FC<HeaderEditorProps> = ({ instanceId }) => {
   const instance = config.moduleInstances[instanceId];
   const headerConfig = instance?.config as HeaderConfig;
   const [logoType, setLogoType] = useState<'text' | 'image'>(
-    headerConfig?.logo?.startsWith('http') || headerConfig?.logo?.startsWith('data:') ? 'image' : 'text'
+    headerConfig?.logo?.startsWith('http') || 
+    headerConfig?.logo?.startsWith('data:') || 
+    headerConfig?.logo?.startsWith('/') ? 'image' : 'text'
   );
 
   if (!headerConfig) return null;
+
+  const handleLogoTypeChange = (type: 'text' | 'image') => {
+    setLogoType(type);
+    // Limpar o campo logo ao trocar de tipo
+    updateModuleInstance(instanceId, { logo: '' });
+  };
 
   const alignmentOptions = [
     { value: 'left', label: 'Esquerda', icon: AlignLeft },
@@ -34,7 +42,7 @@ const HeaderEditor: React.FC<HeaderEditorProps> = ({ instanceId }) => {
         <div className="grid grid-cols-2 gap-2 mb-3">
           <button
             type="button"
-            onClick={() => setLogoType('text')}
+            onClick={() => handleLogoTypeChange('text')}
             className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
               logoType === 'text'
                 ? 'border-primary bg-primary/5 text-primary'
@@ -45,7 +53,7 @@ const HeaderEditor: React.FC<HeaderEditorProps> = ({ instanceId }) => {
           </button>
           <button
             type="button"
-            onClick={() => setLogoType('image')}
+            onClick={() => handleLogoTypeChange('image')}
             className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
               logoType === 'image'
                 ? 'border-primary bg-primary/5 text-primary'
