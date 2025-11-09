@@ -83,8 +83,8 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
               type="submit" 
               className="w-full"
               style={{ 
-                backgroundColor: config.brand.accent,
-                color: config.brand.secondary,
+                backgroundColor: config.brand.secondary,
+                color: config.brand.primary,
                 fontFamily: 'var(--brand-text-font)'
               }}
             >
