@@ -71,19 +71,22 @@ const SiteMetadataEditor = () => {
         <Label htmlFor="domain" className="text-sm font-medium">
           Escolha seu domínio 4bout.work
         </Label>
-        <div className="flex items-center border border-input rounded-md overflow-hidden bg-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
-          <Input 
-            id="domain" 
-            value={config.metadata.domain} 
-            onChange={e => updateMetadata({
-              domain: e.target.value
-            })} 
-            placeholder="meusite" 
-            className="flex-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0 min-w-0" 
-          />
-          <span className="px-3 text-primary font-bold whitespace-nowrap select-none">
-            .4bout.work
-          </span>
+        <div className="relative border border-input rounded-md bg-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
+          <div className="flex items-center px-3 py-2">
+            <Input 
+              id="domain" 
+              value={config.metadata.domain} 
+              onChange={e => updateMetadata({
+                domain: e.target.value
+              })} 
+              placeholder="meusite" 
+              className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-auto bg-transparent w-auto min-w-[100px]" 
+              style={{ width: `${Math.max(100, (config.metadata.domain.length || 7) * 8.5)}px` }}
+            />
+            <span className="text-primary font-bold whitespace-nowrap select-none ml-0">
+              .4bout.work
+            </span>
+          </div>
         </div>
       </div>
 
