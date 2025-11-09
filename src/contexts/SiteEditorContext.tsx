@@ -400,7 +400,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        backgroundImage: '/src/assets/hero-juridico-default.jpg',
+        backgroundImage: '/images/hero-juridico-default.jpg',
         gradientOpacity: 0.7,
         title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
         description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
@@ -413,7 +413,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        photo: '/src/assets/profile-juridico-default.jpg',
+        photo: '/images/profile-juridico-default.jpg',
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',
         description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
@@ -464,7 +464,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        backgroundImage: '/src/assets/cases-juridico-default.jpg',
+        backgroundImage: '/images/cases-juridico-default.jpg',
         cases: [
           {
             id: '1',
@@ -1129,7 +1129,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'hero':
             defaultModuleConfig = {
               enabled: true,
-              backgroundImage: '/src/assets/hero-juridico-default.jpg',
+              backgroundImage: '/images/hero-juridico-default.jpg',
               gradientOpacity: 0.7,
               title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
               description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
@@ -1139,7 +1139,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'about':
             defaultModuleConfig = {
               enabled: true,
-              photo: '/src/assets/profile-juridico-default.jpg',
+              photo: '/images/profile-juridico-default.jpg',
               name: 'Dr. João Silva',
               title: 'Advogado Criminalista e Empresarial',
               description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
@@ -1184,7 +1184,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'cases':
             defaultModuleConfig = {
               enabled: true,
-              backgroundImage: '/src/assets/cases-juridico-default.jpg',
+              backgroundImage: '/images/cases-juridico-default.jpg',
               cases: [
                 {
                   id: '1',
