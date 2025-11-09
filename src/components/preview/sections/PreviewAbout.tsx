@@ -32,7 +32,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
             fontFamily: 'var(--brand-title-font)'
           }}
         >
-          Sobre mim
+          {aboutConfig.sectionTitle}
         </h2>
 
         <div className="flex flex-col items-center">

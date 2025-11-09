@@ -82,6 +82,7 @@ const fullTestConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
+        sectionTitle: 'Sobre mim',
         photo: '',
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',

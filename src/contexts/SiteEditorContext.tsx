@@ -45,6 +45,7 @@ export interface SocialLink {
 
 export interface AboutConfig {
   enabled: boolean;
+  sectionTitle: string;
   photo: string;
   name: string;
   title: string;
@@ -414,6 +415,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
+        sectionTitle: 'Sobre mim',
         photo: '/images/profile-juridico-default.jpg',
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',
@@ -728,6 +730,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         case 'about':
           defaultModuleConfig = {
             enabled: true,
+            sectionTitle: 'Sobre mim',
             photo: '',
             name: 'Nome',
             title: 'Título',
@@ -1161,6 +1164,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
+                sectionTitle: 'Sobre nós',
                 photo: '/images/profile-agency-default.jpg',
                 name: 'Agência Criativa Digital',
                 title: 'Especialistas em Soluções Digitais',
@@ -1192,6 +1196,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             } else {
               defaultModuleConfig = {
                 enabled: true,
+                sectionTitle: 'Sobre mim',
                 photo: '/images/profile-juridico-default.jpg',
                 name: 'Dr. João Silva',
                 title: 'Advogado Criminalista e Empresarial',

@@ -59,6 +59,17 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
   return (
     <div className="space-y-3">
       <div>
+        <Label htmlFor={`sectionTitle-${instanceId}`} className="text-sm">Título da Seção</Label>
+        <Input
+          id={`sectionTitle-${instanceId}`}
+          type="text"
+          value={aboutConfig.sectionTitle}
+          onChange={(e) => updateModuleInstance(instanceId, { sectionTitle: e.target.value })}
+          className="mt-1"
+        />
+      </div>
+
+      <div>
         <Label htmlFor={`aboutPhoto-${instanceId}`} className="text-sm">Foto</Label>
         <ImageUpload
           value={aboutConfig.photo}
