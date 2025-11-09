@@ -1124,7 +1124,16 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         
         switch (moduleType) {
           case 'header':
-            defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                logoType: 'text',
+                companyName: 'Agência Gama',
+                alignment: 'center',
+              };
+            } else {
+              defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
+            }
             break;
           case 'hero':
             if (templateId === '6') {
@@ -1477,8 +1486,8 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
-                items: 'Design UI/UX • Desenvolvimento Web • Apps Mobile • E-commerce • Branding • Marketing Digital • SEO • Consultoria Tech',
-                separator: '✱',
+                items: 'Design UI/UX, Desenvolvimento Web, Apps Mobile, E-commerce, Branding, Marketing Digital, SEO, Consultoria Tech',
+                separator: '*',
                 backgroundColor: '#9333EA',
                 textColor: '#FFFFFF',
                 speed: 15,
