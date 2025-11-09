@@ -133,8 +133,8 @@ const PreviewSite = () => {
     >
       <div className="relative min-h-full">
         {config.moduleOrder.map(renderModule)}
-        <WhatsAppButton />
       </div>
+      <WhatsAppButton />
     </div>
   );
 };
