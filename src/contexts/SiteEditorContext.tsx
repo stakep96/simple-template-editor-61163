@@ -357,10 +357,10 @@ interface SiteEditorContextType {
 
 const defaultConfig: SiteConfig = {
   metadata: {
-    siteName: 'Agência Gama',
-    domain: 'meusite',
-    title: 'Agência Gama',
-    description: 'Mais de 15 anos de experiência no mercado digital Brasileiro!',
+    siteName: 'Escritório Jurídico',
+    domain: '',
+    title: 'Advocacia Especializada em Direito Criminal e Empresarial',
+    description: 'Mais de 15 anos de experiência defendendo seus direitos com excelência e dedicação',
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,
@@ -391,9 +391,8 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        logo: 'Agência Gama',
+        logo: '',
         alignment: 'center',
-        transparentBackground: false,
       } as HeaderConfig,
     },
     'hero-1': {
@@ -1129,9 +1128,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
-                logoType: 'text',
-                companyName: 'Agência Gama',
+                logo: 'Agência Gama',
                 alignment: 'center',
+                transparentBackground: false,
               };
             } else {
               defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
@@ -1575,6 +1574,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
 
       setInstanceCounter(newCounter);
 
+      // Configurações de metadata específicas por template
+      let metadataConfig = prev.metadata;
+      if (templateId === '6') {
+        // Agência Digital
+        metadataConfig = {
+          siteName: 'Agência Gama',
+          domain: 'meusite',
+          title: 'Agência Gama',
+          description: 'Mais de 15 anos de experiência no mercado digital Brasileiro!',
+          customDomain: prev.metadata.customDomain,
+          customDomainName: prev.metadata.customDomainName,
+          customDomainSaved: prev.metadata.customDomainSaved,
+        };
+      }
+
       // Configurações de brand específicas por template
       let brandConfig = prev.brand;
       if (templateId === '1') {
@@ -1605,6 +1619,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
 
       return {
         ...prev,
+        metadata: metadataConfig,
         brand: brandConfig,
         moduleInstances: newInstances,
         moduleOrder: newOrder,
