@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { IconSelector } from '@/components/editor/IconSelector';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, GripVertical } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ServicesConfig, ServiceCard } from '@/contexts/SiteEditorContext';
 
@@ -49,39 +49,40 @@ const ServicesEditor: React.FC<ServicesEditorProps> = ({ instanceId }) => {
   return (
     <div className="space-y-4">
       {cards.map((card, index) => (
-        <div key={card.id} className="p-4 border rounded-lg space-y-3 bg-muted/30">
-          <div className="flex items-center justify-between">
+        <div key={card.id} className="border rounded-lg p-4 space-y-3 bg-background">
+          <div className="flex items-center justify-between mb-2">
             <Label className="text-sm font-semibold">Serviço {index + 1}</Label>
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => removeCard(card.id)}
-              className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+              className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
             >
               <Trash2 className="h-4 w-4" />
             </Button>
           </div>
 
-          <div>
-            <Label htmlFor={`card-icon-${card.id}`} className="text-sm">Ícone</Label>
-            <IconSelector
-              value={card.icon}
-              onChange={(value) => updateCard(card.id, 'icon', value)}
-              open={openPopoverId === card.id}
-              onOpenChange={(open) => setOpenPopoverId(open ? card.id : null)}
-            />
-          </div>
+          <div className="grid grid-cols-[auto_1fr] gap-3">
+            <div className="flex flex-col gap-2">
+              <Label className="text-sm">Ícone</Label>
+              <IconSelector
+                value={card.icon}
+                onChange={(value) => updateCard(card.id, 'icon', value)}
+                open={openPopoverId === card.id}
+                onOpenChange={(open) => setOpenPopoverId(open ? card.id : null)}
+              />
+            </div>
 
-          <div>
-            <Label htmlFor={`card-title-${card.id}`} className="text-sm">Título</Label>
-            <Input
-              id={`card-title-${card.id}`}
-              type="text"
-              value={card.title}
-              onChange={(e) => updateCard(card.id, 'title', e.target.value)}
-              placeholder="Ex: Nutrição Clínica"
-              className="mt-1"
-            />
+            <div className="flex flex-col gap-2">
+              <Label htmlFor={`card-title-${card.id}`} className="text-sm">Título</Label>
+              <Input
+                id={`card-title-${card.id}`}
+                type="text"
+                value={card.title}
+                onChange={(e) => updateCard(card.id, 'title', e.target.value)}
+                placeholder="Ex: Nutrição Clínica"
+              />
+            </div>
           </div>
 
           <div>
