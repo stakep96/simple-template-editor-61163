@@ -357,10 +357,10 @@ interface SiteEditorContextType {
 
 const defaultConfig: SiteConfig = {
   metadata: {
-    siteName: 'Escritório Jurídico',
-    domain: '',
-    title: 'Advocacia Especializada em Direito Criminal e Empresarial',
-    description: 'Mais de 15 anos de experiência defendendo seus direitos com excelência e dedicação',
+    siteName: 'Agência Gama',
+    domain: 'meusite',
+    title: 'Agência Gama',
+    description: 'Mais de 15 anos de experiência no mercado digital Brasileiro!',
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,
@@ -391,8 +391,9 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        logo: '',
+        logo: 'Agência Gama',
         alignment: 'center',
+        transparentBackground: false,
       } as HeaderConfig,
     },
     'hero-1': {
