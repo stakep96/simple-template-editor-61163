@@ -1,7 +1,11 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 
-const WhatsAppButton = () => {
+interface WhatsAppButtonProps {
+  useSticky?: boolean;
+}
+
+const WhatsAppButton = ({ useSticky = false }: WhatsAppButtonProps) => {
   const { config } = useSiteEditor();
 
   if (!config.marketing.whatsapp.enabled) {
@@ -15,10 +19,14 @@ const WhatsAppButton = () => {
     }
   };
 
+  const positionClass = useSticky 
+    ? "sticky bottom-5 left-[calc(100%-5rem)]" 
+    : "fixed bottom-5 right-5";
+
   return (
     <button
       onClick={handleClick}
-      className="fixed bottom-5 right-5 w-16 h-16 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-50 p-3"
+      className={`${positionClass} w-16 h-16 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-50 p-3`}
       aria-label="Abrir WhatsApp"
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 360 362" className="w-full h-full">
