@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { ImageUpload } from '@/components/ui/image-upload';
+import { Switch } from '@/components/ui/switch';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react';
 import type { HeaderConfig } from '@/contexts/SiteEditorContext';
@@ -103,6 +104,17 @@ const HeaderEditor: React.FC<HeaderEditorProps> = ({ instanceId }) => {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <Label htmlFor={`transparent-${instanceId}`} className="text-sm">
+          Background Transparente
+        </Label>
+        <Switch
+          id={`transparent-${instanceId}`}
+          checked={headerConfig.transparentBackground || false}
+          onCheckedChange={(checked) => updateModuleInstance(instanceId, { transparentBackground: checked })}
+        />
       </div>
     </div>
   );

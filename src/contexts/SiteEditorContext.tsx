@@ -25,6 +25,7 @@ export interface HeaderConfig {
   enabled: boolean;
   logo: string;
   alignment: 'left' | 'center' | 'right';
+  transparentBackground?: boolean;
 }
 
 export interface HeroConfig {
