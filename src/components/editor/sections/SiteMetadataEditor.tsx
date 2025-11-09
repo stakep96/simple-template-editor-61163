@@ -72,7 +72,7 @@ const SiteMetadataEditor = () => {
           Escolha seu domínio 4bout.work
         </Label>
         <div className="relative border border-input rounded-md bg-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
-          <div className="flex items-center px-3 py-2">
+          <div className="flex items-center px-3 py-2.5">
             <Input 
               id="domain" 
               value={config.metadata.domain} 
@@ -80,7 +80,7 @@ const SiteMetadataEditor = () => {
                 domain: e.target.value
               })} 
               placeholder="meusite" 
-              className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-auto bg-transparent w-auto min-w-[100px]" 
+              className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-0 bg-transparent w-auto min-w-[100px]" 
               style={{ width: `${Math.max(100, (config.metadata.domain.length || 7) * 8.5)}px` }}
             />
             <span className="text-primary font-bold whitespace-nowrap select-none ml-0">
