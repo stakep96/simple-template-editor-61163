@@ -1566,7 +1566,19 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
 
       // Configurações de brand específicas por template
       let brandConfig = prev.brand;
-      if (templateId === '6') {
+      if (templateId === '1') {
+        // Jurídico - cores elegantes e profissionais
+        brandConfig = {
+          primary: '#8B1538', // Vinho elegante
+          secondary: '#F5E6D3', // Bege claro
+          accent: '#D4AF37', // Dourado
+          text: '#2D2D2D', // Cinza escuro
+          background: '#FFFFFF', // Branco
+          titleColor: '#2D2D2D', // Cinza escuro
+          textColor: '#4A4A4A', // Cinza médio
+          fontCombination: 'inter', // Fonte profissional
+        };
+      } else if (templateId === '6') {
         // Agência Digital - cores vibrantes e modernas
         brandConfig = {
           primary: '#9333EA', // Roxo vibrante
