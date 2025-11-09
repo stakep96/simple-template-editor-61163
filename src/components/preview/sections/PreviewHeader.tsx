@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
-import { Scale } from 'lucide-react';
+import { Circle } from 'lucide-react';
 import type { HeaderConfig } from '@/contexts/SiteEditorContext';
 
 interface PreviewHeaderProps {
@@ -34,7 +34,7 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
           <img src={headerConfig.logo} alt="Logo" className="h-8" />
         ) : (
           <div className="flex items-center gap-2">
-            <Scale className="w-6 h-6" style={{ color: config.brand.secondary }} />
+            <Circle className="w-6 h-6" style={{ color: config.brand.secondary }} />
             <span className="font-bold text-lg" style={{ 
               color: config.brand.secondary,
               fontFamily: 'var(--brand-title-font)'
@@ -45,7 +45,7 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
         )
       ) : (
         <div className="flex items-center gap-2">
-          <Scale className="w-6 h-6" style={{ color: config.brand.secondary }} />
+          <Circle className="w-6 h-6" style={{ color: config.brand.secondary }} />
           <span className="font-bold text-lg" style={{ 
             color: config.brand.secondary,
             fontFamily: 'var(--brand-title-font)'
