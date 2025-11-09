@@ -1073,7 +1073,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       '3': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Consultório Médico
       '4': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Clínica Dentária
       '5': ['header', 'hero', 'about', 'gallery', 'testimonials', 'contact', 'footer'], // E-commerce
-      '6': ['header', 'hero', 'about', 'services', 'portfolio', 'marquee', 'testimonials', 'contact', 'footer'], // Agência Digital
+      '6': ['header', 'hero', 'marquee', 'about', 'services', 'portfolio', 'testimonials', 'contact', 'footer'], // Agência Digital
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
     };
