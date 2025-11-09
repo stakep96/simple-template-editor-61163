@@ -71,7 +71,7 @@ const SiteMetadataEditor = () => {
         <Label htmlFor="domain" className="text-sm font-medium">
           Escolha seu domínio 4bout.work
         </Label>
-        <div className="flex items-center gap-0 border border-input rounded-md overflow-hidden bg-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
+        <div className="relative flex items-center border border-input rounded-md overflow-hidden bg-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
           <Input 
             id="domain" 
             value={config.metadata.domain} 
@@ -79,9 +79,9 @@ const SiteMetadataEditor = () => {
               domain: e.target.value
             })} 
             placeholder="meusite" 
-            className="flex-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0" 
+            className="flex-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0 pr-32" 
           />
-          <span className="px-3 py-2 text-primary font-bold whitespace-nowrap">
+          <span className="absolute right-3 text-primary font-bold whitespace-nowrap pointer-events-none">
             .4bout.work
           </span>
         </div>
