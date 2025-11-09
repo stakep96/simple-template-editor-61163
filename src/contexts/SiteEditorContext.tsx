@@ -400,7 +400,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        backgroundImage: '',
+        backgroundImage: '/src/assets/hero-juridico-default.jpg',
         gradientOpacity: 0.7,
         title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
         description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
@@ -413,7 +413,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        photo: '',
+        photo: '/src/assets/profile-juridico-default.jpg',
         name: 'Dr. João Silva',
         title: 'Advogado Criminalista e Empresarial',
         description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
@@ -421,17 +421,17 @@ const defaultConfig: SiteConfig = {
           {
             id: 'social-1',
             platform: 'instagram',
-            url: '',
+            url: 'https://instagram.com',
           },
           {
             id: 'social-2',
             platform: 'linkedin',
-            url: '',
+            url: 'https://linkedin.com',
           },
           {
             id: 'social-3',
             platform: 'facebook',
-            url: '',
+            url: 'https://facebook.com',
           },
         ],
         education: [
@@ -464,7 +464,7 @@ const defaultConfig: SiteConfig = {
       enabled: true,
       config: {
         enabled: true,
-        backgroundImage: '',
+        backgroundImage: '/src/assets/cases-juridico-default.jpg',
         cases: [
           {
             id: '1',
@@ -592,7 +592,7 @@ const defaultConfig: SiteConfig = {
             hours: 'Sob agendamento',
           },
         ],
-        mapEmbedUrl: '',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467688.89495119266!2d-46.5952992!3d-23.6824124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1762662159750!5m2!1spt-BR!2sbr',
       } as LocationConfig,
     },
     'footer-1': {
@@ -1129,7 +1129,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'hero':
             defaultModuleConfig = {
               enabled: true,
-              backgroundImage: '',
+              backgroundImage: '/src/assets/hero-juridico-default.jpg',
               gradientOpacity: 0.7,
               title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
               description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
@@ -1139,7 +1139,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'about':
             defaultModuleConfig = {
               enabled: true,
-              photo: '',
+              photo: '/src/assets/profile-juridico-default.jpg',
               name: 'Dr. João Silva',
               title: 'Advogado Criminalista e Empresarial',
               description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
@@ -1147,17 +1147,17 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 {
                   id: 'social-1',
                   platform: 'instagram',
-                  url: '',
+                  url: 'https://instagram.com',
                 },
                 {
                   id: 'social-2',
                   platform: 'linkedin',
-                  url: '',
+                  url: 'https://linkedin.com',
                 },
                 {
                   id: 'social-3',
                   platform: 'facebook',
-                  url: '',
+                  url: 'https://facebook.com',
                 },
               ],
               education: [
@@ -1184,7 +1184,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           case 'cases':
             defaultModuleConfig = {
               enabled: true,
-              backgroundImage: '',
+              backgroundImage: '/src/assets/cases-juridico-default.jpg',
               cases: [
                 {
                   id: '1',
@@ -1315,7 +1315,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                   hours: 'Sob agendamento',
                 },
               ],
-              mapEmbedUrl: '',
+              mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467688.89495119266!2d-46.5952992!3d-23.6824124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1762662159750!5m2!1spt-BR!2sbr',
             };
             break;
           case 'before-after':
