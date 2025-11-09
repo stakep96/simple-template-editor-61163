@@ -133,7 +133,11 @@ const PreviewSite = () => {
     >
       <div className="relative min-h-full">
         {config.moduleOrder.map(renderModule)}
-        <WhatsAppButton />
+      </div>
+      <div className="sticky bottom-0 left-0 w-full h-0 pointer-events-none">
+        <div className="absolute bottom-5 right-5 pointer-events-auto">
+          <WhatsAppButton />
+        </div>
       </div>
     </div>
   );
