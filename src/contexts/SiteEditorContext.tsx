@@ -1564,8 +1564,25 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
 
       setInstanceCounter(newCounter);
 
+      // Configurações de brand específicas por template
+      let brandConfig = prev.brand;
+      if (templateId === '6') {
+        // Agência Digital - cores vibrantes e modernas
+        brandConfig = {
+          primary: '#9333EA', // Roxo vibrante
+          secondary: '#EC4899', // Rosa pink
+          accent: '#8B5CF6', // Roxo médio
+          text: '#1F2937', // Cinza escuro
+          background: '#FFFFFF', // Branco
+          titleColor: '#111827', // Preto suave
+          textColor: '#6B7280', // Cinza médio
+          fontCombination: 'inter', // Fonte moderna
+        };
+      }
+
       return {
         ...prev,
+        brand: brandConfig,
         moduleInstances: newInstances,
         moduleOrder: newOrder,
         currentTemplateId: templateId,
