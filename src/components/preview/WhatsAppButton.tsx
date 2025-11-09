@@ -20,8 +20,8 @@ const WhatsAppButton = ({ useSticky = false }: WhatsAppButtonProps) => {
   };
 
   const positionClass = useSticky 
-    ? "sticky bottom-[5px] right-[5px]" 
-    : "fixed bottom-[5px] right-[5px]";
+    ? "sticky bottom-5 left-[calc(100%-5rem)]" 
+    : "fixed bottom-5 right-5";
 
   return (
     <button
