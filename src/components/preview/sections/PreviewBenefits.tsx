@@ -55,7 +55,8 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
             className="block w-full py-3 rounded-lg text-center font-semibold transition-all hover:scale-105"
             style={{ 
               backgroundColor: siteConfig.brand.primary,
-              color: '#FFFFFF'
+              color: siteConfig.brand.secondary,
+              fontFamily: 'var(--brand-text-font)'
             }}
           >
           {config.ctaText}

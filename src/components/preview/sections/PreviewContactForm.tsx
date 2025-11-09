@@ -35,7 +35,10 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
+        <div 
+          className="rounded-xl shadow-lg p-8 max-w-2xl mx-auto"
+          style={{ backgroundColor: config.brand.primary }}
+        >
           <form className="space-y-6">
             <div>
               <Label htmlFor="name" className="text-sm font-medium">Nome Completo</Label>
@@ -80,8 +83,9 @@ const PreviewContactForm: React.FC<PreviewContactFormProps> = ({ instanceId }) =
               type="submit" 
               className="w-full"
               style={{ 
-                backgroundColor: 'var(--brand-primary)',
-                color: 'white'
+                backgroundColor: config.brand.accent,
+                color: config.brand.primary,
+                fontFamily: 'var(--brand-text-font)'
               }}
             >
               Enviar Mensagem

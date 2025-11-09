@@ -96,8 +96,8 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
                               key={i}
                               className="w-4 h-4"
                               style={{ 
-                                fill: '#FBBF24',
-                                color: '#FBBF24'
+                                fill: 'var(--brand-accent)',
+                                color: 'var(--brand-accent)'
                               }}
                             />
                           ))}

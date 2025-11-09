@@ -53,8 +53,19 @@ const PreviewGallery: React.FC<PreviewGalleryProps> = ({ instanceId }) => {
               }}
             />
             {index === 2 && remainingCount > 0 && (
-              <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                <span className="text-white text-4xl font-bold">
+              <div 
+                className="absolute inset-0 flex items-center justify-center"
+                style={{ 
+                  backgroundColor: `${config.brand.primary}CC`
+                }}
+              >
+                <span 
+                  className="text-4xl font-bold"
+                  style={{ 
+                    color: config.brand.secondary,
+                    fontFamily: 'var(--brand-title-font)'
+                  }}
+                >
                   +{remainingCount}
                 </span>
               </div>

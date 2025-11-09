@@ -61,9 +61,13 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
             Array.from({ length: 4 }).map((_, index) => (
               <div 
                 key={`placeholder-${index}`}
-                className="flex items-center justify-center w-full aspect-square p-6 bg-white/50 rounded-lg shadow-sm border border-dashed border-gray-300"
+                className="flex items-center justify-center w-full aspect-square p-6 rounded-lg shadow-sm border border-dashed"
+                style={{
+                  backgroundColor: `${config.brand.primary}26`,
+                  borderColor: config.brand.primary
+                }}
               >
-                <span className="text-gray-400 text-sm">Logo {index + 1}</span>
+                <span className="text-sm" style={{ color: config.brand.textColor }}>Logo {index + 1}</span>
               </div>
             ))
           ) : (
@@ -72,7 +76,11 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
               return (
                 <div 
                   key={logo.id} 
-                  className="flex items-center justify-center w-full aspect-square p-6 bg-white rounded-lg shadow-sm border border-gray-200"
+                  className="flex items-center justify-center w-full aspect-square p-6 rounded-lg shadow-sm border"
+                  style={{
+                    backgroundColor: config.brand.primary,
+                    borderColor: `${config.brand.accent}26`
+                  }}
                 >
                   <img 
                     src={logo.url} 

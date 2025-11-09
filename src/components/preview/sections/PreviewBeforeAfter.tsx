@@ -43,7 +43,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                       className="w-full h-full"
                       style={{ 
                         aspectRatio: '1/2',
-                        backgroundColor: '#94a3b8'
+                        backgroundColor: siteConfig.brand.primary
                       }}
                     />
                   )}

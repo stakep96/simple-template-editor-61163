@@ -23,7 +23,8 @@ const PreviewButton: React.FC<PreviewButtonProps> = ({ instanceId }) => {
           className="inline-block w-full max-w-md px-8 py-3 rounded-lg font-semibold text-center transition-all hover:scale-105"
           style={{
             backgroundColor: config.brand.primary,
-            color: '#FFFFFF',
+            color: config.brand.secondary,
+            fontFamily: 'var(--brand-text-font)'
           }}
         >
           {buttonConfig.ctaText}

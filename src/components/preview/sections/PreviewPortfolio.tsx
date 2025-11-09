@@ -45,7 +45,7 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
             >
               <div className="w-full">
                 {project.image && (
-                  <div className="w-full h-64 bg-muted flex items-center justify-center overflow-hidden">
+                  <div className="w-full h-64 flex items-center justify-center overflow-hidden" style={{ backgroundColor: `${config.brand.accent}26` }}>
                     <img 
                       src={project.image} 
                       alt={project.title}
@@ -54,8 +54,8 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
                   </div>
                 )}
                 {!project.image && (
-                  <div className="w-full h-64 bg-muted flex items-center justify-center">
-                    <p className="text-muted-foreground text-sm">Portfolio Image</p>
+                  <div className="w-full h-64 flex items-center justify-center" style={{ backgroundColor: `${config.brand.accent}26` }}>
+                    <p className="text-sm" style={{ color: config.brand.textColor }}>Portfolio Image</p>
                   </div>
                 )}
                 <AccordionTrigger className="hover:no-underline px-5 py-4 w-full">

@@ -26,7 +26,7 @@ const PreviewPricingPlans: React.FC<PreviewPricingPlansProps> = ({ instanceId })
               className="border-2 rounded-2xl p-6 flex flex-col"
               style={{
                 borderColor: config.brand.primary,
-                backgroundColor: '#FFFFFF',
+                backgroundColor: config.brand.background,
               }}
             >
               <div className="text-center mb-6">
@@ -73,7 +73,8 @@ const PreviewPricingPlans: React.FC<PreviewPricingPlansProps> = ({ instanceId })
                 className="w-full py-3 rounded-lg font-semibold text-center transition-all hover:scale-105"
                 style={{
                   backgroundColor: config.brand.primary,
-                  color: '#FFFFFF',
+                  color: config.brand.secondary,
+                  fontFamily: 'var(--brand-text-font)'
                 }}
               >
                 {plan.ctaText}
