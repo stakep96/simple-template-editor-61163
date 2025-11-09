@@ -30,7 +30,7 @@ const PreviewHeader: React.FC<PreviewHeaderProps> = ({ instanceId }) => {
       }}
     >
       {headerConfig.logo ? (
-        headerConfig.logo.startsWith('http') ? (
+        (headerConfig.logo.startsWith('http') || headerConfig.logo.startsWith('data:') || headerConfig.logo.startsWith('/')) ? (
           <img src={headerConfig.logo} alt="Logo" className="h-8" />
         ) : (
           <div className="flex items-center gap-2">
