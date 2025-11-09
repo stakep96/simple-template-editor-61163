@@ -1073,7 +1073,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       '3': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Consultório Médico
       '4': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Clínica Dentária
       '5': ['header', 'hero', 'about', 'gallery', 'testimonials', 'contact', 'footer'], // E-commerce
-      '6': ['header', 'hero', 'about', 'cases', 'testimonials', 'contact', 'footer'], // Agência Digital
+      '6': ['header', 'hero', 'about', 'services', 'portfolio', 'marquee', 'testimonials', 'contact', 'footer'], // Agência Digital
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
     };
@@ -1127,46 +1127,90 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
             break;
           case 'hero':
-            defaultModuleConfig = {
-              enabled: true,
-              backgroundImage: '/images/hero-juridico-default.jpg',
-              gradientOpacity: 0.7,
-              title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
-              description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
-              imageFade: true,
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                backgroundImage: '/images/hero-agency-default.jpg',
+                gradientOpacity: 0.6,
+                title: 'Transformamos ideias em experiências digitais incríveis',
+                description: 'Sua parceira estratégica em design, desenvolvimento e marketing digital',
+                imageFade: true,
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                backgroundImage: '/images/hero-juridico-default.jpg',
+                gradientOpacity: 0.7,
+                title: 'Mais que um advogado, um parceiro para sua segurança jurídica',
+                description: 'Especialista em Direito Criminal e Empresarial com 15 anos de experiência',
+                imageFade: true,
+              };
+            }
             break;
           case 'about':
-            defaultModuleConfig = {
-              enabled: true,
-              photo: '/images/profile-juridico-default.jpg',
-              name: 'Dr. João Silva',
-              title: 'Advogado Criminalista e Empresarial',
-              description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
-              socialLinks: [
-                {
-                  id: 'social-1',
-                  platform: 'instagram',
-                  url: 'https://instagram.com',
-                },
-                {
-                  id: 'social-2',
-                  platform: 'linkedin',
-                  url: 'https://linkedin.com',
-                },
-                {
-                  id: 'social-3',
-                  platform: 'facebook',
-                  url: 'https://facebook.com',
-                },
-              ],
-              education: [
-                'Graduado em Direito pela USP (2005)',
-                'Mestre em Direito Penal pela PUC-SP (2010)',
-                'Especialização em Direito Empresarial pela FGV (2012)',
-                'Membro da OAB-SP desde 2006',
-              ],
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                photo: '/images/profile-agency-default.jpg',
+                name: 'Agência Criativa Digital',
+                title: 'Especialistas em Soluções Digitais',
+                description: 'Somos uma equipe apaixonada por criar experiências digitais que transformam negócios. Com mais de 8 anos no mercado, já entregamos mais de 200 projetos para clientes de diversos segmentos, sempre focando em design impactante, tecnologia de ponta e resultados mensuráveis.',
+                socialLinks: [
+                  {
+                    id: 'social-1',
+                    platform: 'instagram',
+                    url: 'https://instagram.com',
+                  },
+                  {
+                    id: 'social-2',
+                    platform: 'linkedin',
+                    url: 'https://linkedin.com',
+                  },
+                  {
+                    id: 'social-3',
+                    platform: 'facebook',
+                    url: 'https://facebook.com',
+                  },
+                ],
+                education: [
+                  '200+ projetos entregues com sucesso',
+                  'Equipe multidisciplinar de 15 especialistas',
+                  'Clientes em 5 países diferentes',
+                  'Prêmios de excelência em design digital',
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                photo: '/images/profile-juridico-default.jpg',
+                name: 'Dr. João Silva',
+                title: 'Advogado Criminalista e Empresarial',
+                description: 'Com mais de 15 anos de experiência, ofereço uma abordagem estratégica e personalizada para cada cliente. Minha missão é garantir seus direitos com ética, dedicação e resultados comprovados.',
+                socialLinks: [
+                  {
+                    id: 'social-1',
+                    platform: 'instagram',
+                    url: 'https://instagram.com',
+                  },
+                  {
+                    id: 'social-2',
+                    platform: 'linkedin',
+                    url: 'https://linkedin.com',
+                  },
+                  {
+                    id: 'social-3',
+                    platform: 'facebook',
+                    url: 'https://facebook.com',
+                  },
+                ],
+                education: [
+                  'Graduado em Direito pela USP (2005)',
+                  'Mestre em Direito Penal pela PUC-SP (2010)',
+                  'Especialização em Direito Empresarial pela FGV (2012)',
+                  'Membro da OAB-SP desde 2006',
+                ],
+              };
+            }
             break;
           case 'practice':
             defaultModuleConfig = {
@@ -1211,12 +1255,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             };
             break;
           case 'contact':
-            defaultModuleConfig = {
-              enabled: true,
-              title: 'Entre em Contato',
-              subtitle: 'Preencha o formulário',
-              fields: ['name', 'email', 'phone', 'message'],
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Vamos conversar sobre seu projeto?',
+                subtitle: 'Preencha o formulário e entraremos em contato em até 24h',
+                fields: ['name', 'email', 'phone', 'message'],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Entre em Contato',
+                subtitle: 'Preencha o formulário',
+                fields: ['name', 'email', 'phone', 'message'],
+              };
+            }
             break;
           case 'button':
             defaultModuleConfig = {
@@ -1226,33 +1279,63 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             };
             break;
           case 'testimonials':
-            defaultModuleConfig = {
-              enabled: true,
-              title: 'O que dizem meus clientes',
-              testimonials: [
-                {
-                  id: '1',
-                  image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
-                  name: 'Maria Silva',
-                  role: 'Empresária',
-                  testimonial: 'Profissional excepcional! Me ajudou em um momento muito difícil e conseguiu reverter uma situação que parecia impossível. Recomendo de olhos fechados.',
-                },
-                {
-                  id: '2',
-                  image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
-                  name: 'Carlos Oliveira',
-                  role: 'Empresário',
-                  testimonial: 'Excelente advogado! Muito atencioso, competente e sempre disponível para tirar dúvidas. Minha empresa foi salva graças ao trabalho dele.',
-                },
-                {
-                  id: '3',
-                  image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
-                  name: 'Ana Paula Costa',
-                  role: 'Professora',
-                  testimonial: 'Profissionalismo e empatia definem o trabalho do Dr. João. Me senti acolhida desde o primeiro atendimento e o resultado foi além das minhas expectativas.',
-                },
-              ],
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'O que nossos clientes dizem',
+                testimonials: [
+                  {
+                    id: '1',
+                    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+                    name: 'Juliana Ferreira',
+                    role: 'CEO - TechStart',
+                    testimonial: 'A agência transformou completamente nossa presença digital. O novo site aumentou nossas conversões em 150% nos primeiros 3 meses. Equipe extremamente profissional e criativa!',
+                  },
+                  {
+                    id: '2',
+                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
+                    name: 'Roberto Santos',
+                    role: 'Diretor de Marketing - InnovaCorp',
+                    testimonial: 'Parceria excepcional! Entregaram muito mais do que esperávamos. O app que desenvolveram é lindo, funcional e nossos usuários adoraram. Recomendo fortemente!',
+                  },
+                  {
+                    id: '3',
+                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+                    name: 'Camila Rodrigues',
+                    role: 'Fundadora - EcoShop',
+                    testimonial: 'Desde o briefing até a entrega final, tudo foi impecável. O e-commerce ficou lindo e nossas vendas online triplicaram. Melhor investimento que fizemos!',
+                  },
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'O que dizem meus clientes',
+                testimonials: [
+                  {
+                    id: '1',
+                    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+                    name: 'Maria Silva',
+                    role: 'Empresária',
+                    testimonial: 'Profissional excepcional! Me ajudou em um momento muito difícil e conseguiu reverter uma situação que parecia impossível. Recomendo de olhos fechados.',
+                  },
+                  {
+                    id: '2',
+                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
+                    name: 'Carlos Oliveira',
+                    role: 'Empresário',
+                    testimonial: 'Excelente advogado! Muito atencioso, competente e sempre disponível para tirar dúvidas. Minha empresa foi salva graças ao trabalho dele.',
+                  },
+                  {
+                    id: '3',
+                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+                    name: 'Ana Paula Costa',
+                    role: 'Professora',
+                    testimonial: 'Profissionalismo e empatia definem o trabalho do Dr. João. Me senti acolhida desde o primeiro atendimento e o resultado foi além das minhas expectativas.',
+                  },
+                ],
+              };
+            }
             break;
           case 'gallery':
             defaultModuleConfig = {
@@ -1333,18 +1416,54 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             };
             break;
           case 'services':
-            defaultModuleConfig = {
-              enabled: true,
-              cards: [
-                {
-                  id: 'service-1',
-                  icon: 'award',
-                  title: 'Novo Serviço',
-                  subtitle: 'Subtítulo do serviço',
-                  description: 'Descrição detalhada do serviço oferecido.',
-                },
-              ],
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                cards: [
+                  {
+                    id: 'service-1',
+                    icon: 'code',
+                    title: 'Desenvolvimento Web',
+                    subtitle: 'Sites e aplicações modernas',
+                    description: 'Criamos sites responsivos, aplicações web e e-commerce utilizando as tecnologias mais modernas do mercado.',
+                  },
+                  {
+                    id: 'service-2',
+                    icon: 'palette',
+                    title: 'Design UI/UX',
+                    subtitle: 'Experiências que encantam',
+                    description: 'Design centrado no usuário, interfaces intuitivas e identidades visuais que destacam sua marca.',
+                  },
+                  {
+                    id: 'service-3',
+                    icon: 'megaphone',
+                    title: 'Marketing Digital',
+                    subtitle: 'Estratégias que convertem',
+                    description: 'SEO, gestão de redes sociais, campanhas de mídia paga e estratégias de conteúdo para crescimento real.',
+                  },
+                  {
+                    id: 'service-4',
+                    icon: 'smartphone',
+                    title: 'Apps Mobile',
+                    subtitle: 'Aplicativos nativos e híbridos',
+                    description: 'Desenvolvimento de aplicativos iOS e Android com performance excepcional e UX impecável.',
+                  },
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                cards: [
+                  {
+                    id: 'service-1',
+                    icon: 'award',
+                    title: 'Novo Serviço',
+                    subtitle: 'Subtítulo do serviço',
+                    description: 'Descrição detalhada do serviço oferecido.',
+                  },
+                ],
+              };
+            }
             break;
           case 'brands':
             defaultModuleConfig = {
@@ -1355,23 +1474,81 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             };
             break;
           case 'marquee':
-            defaultModuleConfig = {
-              enabled: true,
-              items: 'App Design, Website Design, Dashboard, Wireframe',
-              separator: '✱',
-              backgroundColor: prev.brand.accent,
-              textColor: '#FFFFFF',
-              speed: 15,
-              secondLayer: {
-                backgroundColor: prev.brand.primary,
-              },
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                items: 'Design UI/UX • Desenvolvimento Web • Apps Mobile • E-commerce • Branding • Marketing Digital • SEO • Consultoria Tech',
+                separator: '✱',
+                backgroundColor: '#9333EA',
+                textColor: '#FFFFFF',
+                speed: 15,
+                secondLayer: {
+                  backgroundColor: '#EC4899',
+                },
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                items: 'App Design, Website Design, Dashboard, Wireframe',
+                separator: '✱',
+                backgroundColor: prev.brand.accent,
+                textColor: '#FFFFFF',
+                speed: 15,
+                secondLayer: {
+                  backgroundColor: prev.brand.primary,
+                },
+              };
+            }
             break;
           case 'footer':
-            defaultModuleConfig = {
-              enabled: true,
-              copyrightText: '© Dr. João Silva - OAB/SP 123.456\nTodos os direitos reservados - 2025',
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                copyrightText: '© Agência Criativa Digital 2025\nTodos os direitos reservados',
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                copyrightText: '© Dr. João Silva - OAB/SP 123.456\nTodos os direitos reservados - 2025',
+              };
+            }
+            break;
+          case 'portfolio':
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Nossos Projetos',
+                projects: [
+                  {
+                    id: `project-1`,
+                    image: '/images/portfolio-agency-default.jpg',
+                    title: 'E-commerce Moda Sustentável',
+                    description: 'Plataforma completa de e-commerce com design moderno e sistema de gestão integrado',
+                    tags: ['E-commerce', 'UI/UX', 'React'],
+                  },
+                  {
+                    id: `project-2`,
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+                    title: 'App Delivery Food',
+                    description: 'Aplicativo mobile de delivery com integração de pagamentos e rastreamento em tempo real',
+                    tags: ['Mobile', 'React Native', 'Firebase'],
+                  },
+                  {
+                    id: `project-3`,
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+                    title: 'Dashboard Analytics',
+                    description: 'Sistema de análise de dados com visualizações interativas e relatórios customizados',
+                    tags: ['Dashboard', 'Data Viz', 'TypeScript'],
+                  },
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Portfolio',
+                projects: [],
+              };
+            }
             break;
         }
 

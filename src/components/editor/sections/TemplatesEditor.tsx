@@ -7,6 +7,7 @@ import { Layout, Check } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { toast } from 'sonner';
 import templateJuridico from '@/assets/template-juridico.png';
+import templateAgency from '@/assets/template-agency.png';
 interface Template {
   id: string;
   name: string;
@@ -47,7 +48,7 @@ const templates: Template[] = [{
   id: '6',
   name: 'Agência Digital',
   category: 'Mercado Digital',
-  thumbnail: '',
+  thumbnail: templateAgency,
   color: 'from-pink-500 to-pink-700',
   description: 'Layout criativo para agências e startups'
 }, {
