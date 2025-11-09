@@ -376,7 +376,7 @@ const defaultConfig: SiteConfig = {
   },
   marketing: {
     whatsapp: {
-      enabled: false,
+      enabled: true,
       number: '',
     },
     googleTagManager: '',
