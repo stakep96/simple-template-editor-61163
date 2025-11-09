@@ -1581,14 +1581,14 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       } else if (templateId === '6') {
         // Agência Digital - cores vibrantes e modernas
         brandConfig = {
-          primary: '#9333EA', // Roxo vibrante
-          secondary: '#EC4899', // Rosa pink
-          accent: '#8B5CF6', // Roxo médio
-          text: '#1F2937', // Cinza escuro
-          background: '#FFFFFF', // Branco
-          titleColor: '#111827', // Preto suave
-          textColor: '#6B7280', // Cinza médio
-          fontCombination: 'inter', // Fonte moderna
+          primary: '#EC4899', // Rosa vibrante
+          secondary: '#FFFFFF', // Branco
+          accent: '#FFFFFF', // Branco (ícones)
+          text: '#FFFFFF', // Branco
+          background: '#141414', // Preto/escuro
+          titleColor: '#FFFFFF', // Branco
+          textColor: '#FFFFFF', // Branco
+          fontCombination: 'poppins-lato', // Poppins + Lato
         };
       }
 
