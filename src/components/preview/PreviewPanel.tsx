@@ -13,7 +13,7 @@ const PreviewPanel = () => {
       </div>
       
       <div className="flex-1 p-8 flex items-center justify-center overflow-auto">
-        <div className="w-[375px] h-[667px] bg-preview-frame rounded-[2.5rem] p-3 shadow-2xl">
+        <div className="w-[320px] h-[568px] bg-preview-frame rounded-[2.5rem] p-3 shadow-2xl">
           <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden">
             <PreviewSite />
           </div>
