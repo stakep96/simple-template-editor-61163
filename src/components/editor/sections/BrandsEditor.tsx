@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { ImageUpload } from '@/components/ui/image-upload';
 import { Plus, Trash2 } from 'lucide-react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 interface BrandsEditorProps {
   instanceId: string;
@@ -63,6 +64,27 @@ const BrandsEditor: React.FC<BrandsEditorProps> = ({ instanceId }) => {
             placeholder="Já colaborei com marcas renomadas..."
             rows={3}
           />
+        </div>
+
+        <div className="space-y-2">
+          <Label>Estilo da Caixa</Label>
+          <RadioGroup
+            value={brandsConfig.boxStyle || 'filled'}
+            onValueChange={(value: 'filled' | 'outlined') => updateModuleInstance(instanceId, { boxStyle: value })}
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="filled" id="filled" />
+              <Label htmlFor="filled" className="font-normal cursor-pointer">
+                Fundo branco (preenchido)
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="outlined" id="outlined" />
+              <Label htmlFor="outlined" className="font-normal cursor-pointer">
+                Apenas borda branca
+              </Label>
+            </div>
+          </RadioGroup>
         </div>
       </div>
 

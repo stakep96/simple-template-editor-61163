@@ -297,6 +297,7 @@ export interface BrandsConfig {
   title: string;
   description: string;
   logos: BrandLogo[];
+  boxStyle: 'filled' | 'outlined';
 }
 
 export interface PortfolioProject {
@@ -986,6 +987,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             enabled: true,
             title: 'Marcas Parceiras',
             description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
+            boxStyle: 'filled',
             logos: [
               {
                 id: `logo-${Date.now()}-1`,
@@ -1506,6 +1508,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               enabled: true,
               title: 'Marcas Parceiras',
               description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
+              boxStyle: 'filled',
               logos: [],
             };
             break;

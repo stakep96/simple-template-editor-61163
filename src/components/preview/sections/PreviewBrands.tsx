@@ -73,13 +73,16 @@ const PreviewBrands: React.FC<PreviewBrandsProps> = ({ instanceId }) => {
           ) : (
             validLogos.map((logo, index) => {
               console.log(`Renderizando logo ${index}:`, logo);
+              const boxStyle = brandsConfig.boxStyle || 'filled';
+              const isOutlined = boxStyle === 'outlined';
+              
               return (
                 <div 
                   key={logo.id} 
-                  className="flex items-center justify-center w-full aspect-square p-6 rounded-lg shadow-sm border"
+                  className="flex items-center justify-center w-full aspect-square p-6 rounded-lg shadow-sm"
                   style={{
-                    backgroundColor: config.brand.primary,
-                    borderColor: `${config.brand.accent}26`
+                    backgroundColor: isOutlined ? 'transparent' : '#ffffff',
+                    border: isOutlined ? '2px solid #ffffff' : '1px solid rgba(255, 255, 255, 0.2)'
                   }}
                 >
                   <img 
