@@ -1099,7 +1099,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       '3': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Consultório Médico
       '4': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Clínica Dentária
       '5': ['header', 'hero', 'about', 'gallery', 'testimonials', 'contact', 'footer'], // E-commerce
-      '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'testimonials', 'contact', 'footer'], // Agência Digital
+      '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'brands', 'testimonials', 'contact', 'footer'], // Agência Digital
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
     };
@@ -1504,13 +1504,54 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             }
             break;
           case 'brands':
-            defaultModuleConfig = {
-              enabled: true,
-              title: 'Marcas Parceiras',
-              description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
-              boxStyle: 'filled',
-              logos: [],
-            };
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Marcas atendidas',
+                description: 'Colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais por meio de nossas ações de marketing!',
+                boxStyle: 'outlined',
+                logos: [
+                  {
+                    id: `logo-${Date.now()}-1`,
+                    url: '/images/logo-university.png',
+                    alt: 'University',
+                  },
+                  {
+                    id: `logo-${Date.now()}-2`,
+                    url: '/images/logo-378.png',
+                    alt: 'Logo 378',
+                  },
+                  {
+                    id: `logo-${Date.now()}-3`,
+                    url: '/images/logo-404.png',
+                    alt: 'Logo 404',
+                  },
+                  {
+                    id: `logo-${Date.now()}-4`,
+                    url: '/images/logo-410.png',
+                    alt: 'Logo 410',
+                  },
+                  {
+                    id: `logo-${Date.now()}-5`,
+                    url: '/images/logo-408.png',
+                    alt: 'Logo 408',
+                  },
+                  {
+                    id: `logo-${Date.now()}-6`,
+                    url: '/images/logo-409.png',
+                    alt: 'Logo 409',
+                  },
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Marcas Parceiras',
+                description: 'Já colaborei com marcas renomadas, gerando milhões de impressões e resultados excepcionais',
+                boxStyle: 'filled',
+                logos: [],
+              };
+            }
             break;
           case 'marquee':
             if (templateId === '6') {
