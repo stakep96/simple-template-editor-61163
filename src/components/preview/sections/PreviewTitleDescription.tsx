@@ -13,10 +13,10 @@ const PreviewTitleDescription: React.FC<PreviewTitleDescriptionProps> = ({ insta
   if (!config) return null;
 
   return (
-    <section className="py-16 px-4">
-      <div className="container mx-auto max-w-4xl text-center">
+    <section className="py-6 px-4">
+      <div className="max-w-3xl mx-auto text-center">
         <h2 
-          className="text-2xl font-bold mb-4" 
+          className="text-2xl font-bold mb-3" 
           style={{ 
             fontFamily: 'var(--brand-title-font)',
             color: 'var(--brand-title-color)',

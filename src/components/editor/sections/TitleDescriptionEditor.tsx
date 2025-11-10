@@ -27,18 +27,21 @@ const TitleDescriptionEditor: React.FC<TitleDescriptionEditorProps> = ({ instanc
   return (
     <div className="space-y-4">
       <div>
-        <Label>Título</Label>
+        <Label htmlFor={`title-${instanceId}`}>Título</Label>
         <Input
-          value={titleDescriptionConfig?.title || ''}
+          id={`title-${instanceId}`}
+          type="text"
+          value={titleDescriptionConfig.title}
           onChange={(e) => handleChange('title', e.target.value)}
           placeholder="Digite o título"
         />
       </div>
 
       <div>
-        <Label>Descrição (opcional)</Label>
+        <Label htmlFor={`description-${instanceId}`}>Descrição (opcional)</Label>
         <Textarea
-          value={titleDescriptionConfig?.description || ''}
+          id={`description-${instanceId}`}
+          value={titleDescriptionConfig.description}
           onChange={(e) => handleChange('description', e.target.value)}
           placeholder="Digite a descrição (deixe em branco para mostrar apenas o título)"
           rows={4}
