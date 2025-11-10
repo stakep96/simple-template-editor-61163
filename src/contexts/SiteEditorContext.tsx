@@ -379,9 +379,9 @@ const defaultConfig: SiteConfig = {
     customDomainSaved: false,
   },
   brand: {
-    primary: '#A7023B',
-    secondary: '#FBD298',
-    accent: '#FBD298',
+    primary: '#A1083D',
+    secondary: '#FFE1B8',
+    accent: '#FFE1B8',
     text: '#262626',
     background: '#FFFFFF',
     titleColor: '#262626',
@@ -1635,9 +1635,9 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       if (templateId === '1') {
         // Jurídico - cores elegantes e profissionais
         brandConfig = {
-          primary: '#A7023B', // Vinho/Burgundy
-          secondary: '#FBD298', // Laranja claro/Peach
-          accent: '#FBD298', // Laranja claro/Peach (ícones)
+          primary: '#A1083D', // Vinho/Burgundy
+          secondary: '#FFE1B8', // Pêssego claro
+          accent: '#FFE1B8', // Pêssego claro (ícones)
           text: '#262626', // Cinza escuro
           background: '#FFFFFF', // Branco
           titleColor: '#262626', // Cinza escuro
