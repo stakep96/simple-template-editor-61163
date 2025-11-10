@@ -22,7 +22,7 @@ const PreviewFooter: React.FC<PreviewFooterProps> = ({ instanceId }) => {
         style={{ backgroundColor: 'var(--brand-primary)' }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white text-sm font-medium whitespace-pre-line" style={{ fontFamily: 'var(--brand-text-font)' }}>
+          <p className="text-sm font-medium whitespace-pre-line" style={{ fontFamily: 'var(--brand-text-font)', color: 'var(--brand-secondary)' }}>
             {footerConfig.copyrightText}
           </p>
         </div>
