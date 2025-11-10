@@ -1102,6 +1102,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'brands', 'testimonials', 'contact', 'footer'], // Agência Digital
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
+      '9': ['header', 'hero', 'about', 'services', 'before-after', 'testimonials', 'location', 'contact', 'footer'], // Clínica Dentária Nova
     };
 
     const modules = templateModules[templateId];
@@ -1151,7 +1152,23 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         
         switch (moduleType) {
           case 'header':
-            if (templateId === '6') {
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                logo: '',
+                menuItems: [
+                  { id: `menu-${Date.now()}-1`, label: 'Início', link: '#hero' },
+                  { id: `menu-${Date.now()}-2`, label: 'Sobre', link: '#about' },
+                  { id: `menu-${Date.now()}-3`, label: 'Serviços', link: '#services' },
+                  { id: `menu-${Date.now()}-4`, label: 'Localização', link: '#location' },
+                  { id: `menu-${Date.now()}-5`, label: 'Contato', link: '#contact' },
+                ],
+                ctaButton: {
+                  text: 'Book Appointment',
+                  link: 'https://wa.me/',
+                },
+              };
+            } else if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
                 logo: 'Agência Gama',
@@ -1163,7 +1180,15 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             }
             break;
           case 'hero':
-            if (templateId === '6') {
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                backgroundImage: '/images/dr-rachel.jpg',
+                title: 'Excellence in Dental Care, Every Day',
+                description: 'We believe a beautiful smile can change your life. Our expert team is dedicated to providing top-quality dental care to help you achieve the smile you\'ve always dreamed of.',
+                imageFade: true,
+              };
+            } else if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
                 backgroundImage: '/images/hero-agency-default.jpg',
@@ -1184,7 +1209,15 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             }
             break;
           case 'about':
-            if (templateId === '6') {
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Advanced Diagnostic Technology',
+                description: 'Nossa clínica utiliza tecnologia de ponta para diagnósticos precisos e tratamentos eficazes. Contamos com equipamentos modernos e uma equipe altamente qualificada para cuidar do seu sorriso.',
+                imagePosition: 'right',
+                image: '',
+              };
+            } else if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
                 sectionTitle: 'Sobre nós',
@@ -1293,7 +1326,15 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             };
             break;
           case 'contact':
-            if (templateId === '6') {
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Agende sua Consulta',
+                description: 'Entre em contato conosco e transforme seu sorriso',
+                buttonText: 'Agendar Consulta',
+                buttonLink: 'https://wa.me/',
+              };
+            } else if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
                 title: 'Vamos conversar sobre seu projeto?',
@@ -1342,6 +1383,27 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                     name: 'Camila Rodrigues',
                     role: 'Fundadora - EcoShop',
                     testimonial: 'Desde o briefing até a entrega final, tudo foi impecável. O e-commerce ficou lindo e nossas vendas online triplicaram. Melhor investimento que fizemos!',
+                  },
+                ],
+              };
+            } else if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'O que nossos pacientes dizem',
+                testimonials: [
+                  {
+                    id: '1',
+                    image: '',
+                    name: 'Ana Silva',
+                    role: 'Paciente',
+                    testimonial: 'Sempre tive medo de dentista, mas a equipe me fez sentir completamente à vontade. O resultado superou minhas expectativas!',
+                  },
+                  {
+                    id: '2',
+                    image: '',
+                    name: 'João Santos',
+                    role: 'Paciente',
+                    testimonial: 'Excelente atendimento e profissionais muito competentes. Meu sorriso mudou completamente após o tratamento.',
                   },
                 ],
               };
@@ -1415,46 +1477,107 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             };
             break;
           case 'location':
-            defaultModuleConfig = {
-              enabled: true,
-              title: 'Onde nos encontrar',
-              address: 'Av. Paulista, 1000 - Conjunto 1501\nBela Vista - São Paulo/SP\nCEP: 01310-100',
-              businessHours: [
-                {
-                  id: '1',
-                  day: 'Segunda a Quinta',
-                  hours: '9h às 18h',
-                },
-                {
-                  id: '2',
-                  day: 'Sexta-feira',
-                  hours: '9h às 17h',
-                },
-                {
-                  id: '3',
-                  day: 'Sábado',
-                  hours: 'Sob agendamento',
-                },
-              ],
-              mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467688.89495119266!2d-46.5952992!3d-23.6824124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1762662159750!5m2!1spt-BR!2sbr',
-            };
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Onde nos encontrar',
+                address: 'Rua Exemplo, 123 - Sala 456\nCentro - São Paulo/SP\nCEP: 01000-000',
+                businessHours: [
+                  {
+                    id: '1',
+                    day: 'Segunda a Sexta',
+                    hours: '9h às 18h',
+                  },
+                  {
+                    id: '2',
+                    day: 'Sábado',
+                    hours: '9h às 13h',
+                  },
+                ],
+                mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467688.89495119266!2d-46.5952992!3d-23.6824124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1762662159750!5m2!1spt-BR!2sbr',
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Onde nos encontrar',
+                address: 'Av. Paulista, 1000 - Conjunto 1501\nBela Vista - São Paulo/SP\nCEP: 01310-100',
+                businessHours: [
+                  {
+                    id: '1',
+                    day: 'Segunda a Quinta',
+                    hours: '9h às 18h',
+                  },
+                  {
+                    id: '2',
+                    day: 'Sexta-feira',
+                    hours: '9h às 17h',
+                  },
+                  {
+                    id: '3',
+                    day: 'Sábado',
+                    hours: 'Sob agendamento',
+                  },
+                ],
+                mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d467688.89495119266!2d-46.5952992!3d-23.6824124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce448183a461d1%3A0x9ba94b08ff335bae!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1762662159750!5m2!1spt-BR!2sbr',
+              };
+            }
             break;
           case 'before-after':
-            defaultModuleConfig = {
-              enabled: true,
-              title: 'Resultados',
-              items: [
-                {
-                  id: '1',
-                  beforeImage: '',
-                  afterImage: '',
-                  description: 'Nova transformação',
-                },
-              ],
-            };
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Transformações',
+                items: [
+                  {
+                    id: `beforeafter-${Date.now()}-1`,
+                    beforeImage: '/images/teeth-before-after.jpg',
+                    afterImage: '/images/teeth-before-after.jpg',
+                    description: 'Clareamento dental profissional - Resultados visíveis em poucas sessões',
+                  },
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Transformações',
+                items: [],
+              };
+            }
             break;
           case 'services':
-            if (templateId === '6') {
+            if (templateId === '9') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Nossos Serviços',
+                description: 'Oferecemos uma ampla gama de serviços odontológicos',
+                services: [
+                  {
+                    id: `service-${Date.now()}-1`,
+                    icon: 'Sparkles',
+                    title: 'Clareamento Dental',
+                    description: 'Clareamento profissional para um sorriso mais branco e brilhante',
+                  },
+                  {
+                    id: `service-${Date.now()}-2`,
+                    icon: 'Shield',
+                    title: 'Implantes Dentários',
+                    description: 'Reposição permanente de dentes perdidos com implantes de qualidade',
+                  },
+                  {
+                    id: `service-${Date.now()}-3`,
+                    icon: 'Heart',
+                    title: 'Ortodontia',
+                    description: 'Aparelhos ortodônticos para alinhamento perfeito dos dentes',
+                  },
+                  {
+                    id: `service-${Date.now()}-4`,
+                    icon: 'Smile',
+                    title: 'Limpeza e Prevenção',
+                    description: 'Consultas regulares para manter sua saúde bucal em dia',
+                  },
+                ],
+              };
+            } else if (templateId === '6') {
               defaultModuleConfig = {
                 enabled: true,
                 cards: [
@@ -1672,6 +1795,17 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
         };
+      } else if (templateId === '9') {
+        // Clínica Dentária
+        metadataConfig = {
+          siteName: 'Clínica Odontológica',
+          domain: 'meusite',
+          title: 'Clínica Odontológica - Excellence in Dental Care',
+          description: 'Transforme seu sorriso com nossa equipe de especialistas. Tecnologia de ponta e atendimento personalizado para cuidar da sua saúde bucal.',
+          customDomain: prev.metadata.customDomain,
+          customDomainName: prev.metadata.customDomainName,
+          customDomainSaved: prev.metadata.customDomainSaved,
+        };
       }
 
       // Configurações de brand específicas por template
@@ -1699,6 +1833,18 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           titleColor: '#FFFFFF', // Branco
           textColor: '#FFFFFF', // Branco
           fontCombination: 'poppins-lato', // Poppins + Lato
+        };
+      } else if (templateId === '9') {
+        // Clínica Dentária - cores baseadas na referência
+        brandConfig = {
+          primary: '#5B4FF5', // Roxo/Azul principal
+          secondary: '#3B82F6', // Azul secundário
+          accent: '#5B4FF5', // Roxo/Azul (ícones)
+          text: '#4A5568', // Cinza médio
+          background: '#FFFFFF', // Branco
+          titleColor: '#1A1A2E', // Preto/Azul escuro
+          textColor: '#4A5568', // Cinza médio
+          fontCombination: 'poppins-inter', // Poppins + Inter
         };
       }
 

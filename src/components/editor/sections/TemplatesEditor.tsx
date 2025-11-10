@@ -31,12 +31,12 @@ const templates: Template[] = [{
   color: 'from-green-500 to-green-700',
   description: 'Layout clean para consultórios e clínicas médicas'
 }, {
-  id: '4',
+  id: '9',
   name: 'Clínica Dentária',
   category: 'Saúde',
   thumbnail: '',
-  color: 'from-teal-500 to-teal-700',
-  description: 'Design moderno para clínicas odontológicas'
+  color: 'from-blue-500 to-purple-700',
+  description: 'Excellence in Dental Care - Design moderno para clínicas odontológicas'
 }, {
   id: '5',
   name: 'E-commerce',
