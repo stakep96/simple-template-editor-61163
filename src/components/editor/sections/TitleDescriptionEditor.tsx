@@ -11,17 +11,18 @@ interface TitleDescriptionEditorProps {
 
 const TitleDescriptionEditor: React.FC<TitleDescriptionEditorProps> = ({ instanceId }) => {
   const { config, updateModuleInstance } = useSiteEditor();
-  const titleDescriptionConfig = config.moduleInstances[instanceId]?.config as TitleDescriptionConfig;
-
-  if (!titleDescriptionConfig) return null;
+  const moduleInstance = config.moduleInstances[instanceId];
+  
+  if (!moduleInstance?.config) return null;
+  
+  const titleDescriptionConfig = moduleInstance.config as TitleDescriptionConfig;
 
   const handleChange = (field: keyof TitleDescriptionConfig, value: string) => {
-    updateModuleInstance(instanceId, {
-      enabled: titleDescriptionConfig.enabled,
-      title: titleDescriptionConfig.title,
-      description: titleDescriptionConfig.description,
+    const updatedConfig: TitleDescriptionConfig = {
+      ...titleDescriptionConfig,
       [field]: value,
-    });
+    };
+    updateModuleInstance(instanceId, updatedConfig);
   };
 
   return (
@@ -31,7 +32,7 @@ const TitleDescriptionEditor: React.FC<TitleDescriptionEditorProps> = ({ instanc
         <Input
           id={`title-${instanceId}`}
           type="text"
-          value={titleDescriptionConfig.title}
+          value={titleDescriptionConfig.title || ''}
           onChange={(e) => handleChange('title', e.target.value)}
           placeholder="Digite o título"
         />
@@ -41,7 +42,7 @@ const TitleDescriptionEditor: React.FC<TitleDescriptionEditorProps> = ({ instanc
         <Label htmlFor={`description-${instanceId}`}>Descrição (opcional)</Label>
         <Textarea
           id={`description-${instanceId}`}
-          value={titleDescriptionConfig.description}
+          value={titleDescriptionConfig.description || ''}
           onChange={(e) => handleChange('description', e.target.value)}
           placeholder="Digite a descrição (deixe em branco para mostrar apenas o título)"
           rows={4}
