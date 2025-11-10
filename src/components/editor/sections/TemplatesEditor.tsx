@@ -7,7 +7,7 @@ import { Layout, Check } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { toast } from 'sonner';
 import templateJuridico from '@/assets/template-juridico.png';
-import templateAgency from '@/assets/template-agency.png';
+import templateAgency from '@/assets/template-agency-new.png';
 interface Template {
   id: string;
   name: string;
