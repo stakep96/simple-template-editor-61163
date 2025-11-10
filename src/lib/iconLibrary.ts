@@ -2,7 +2,8 @@ import {
   Circle, Check, CheckCircle, CheckSquare, Dot, Star, Heart, Award, Trophy, Shield, 
   Target, Zap, Lightbulb, Flame, Sparkles, Crown, Diamond, Gift, Home, Building, 
   MapPin, Phone, Mail, User, Users, Briefcase, Calendar, Clock, AlertCircle, Info, 
-  HelpCircle, TrendingUp, BarChart, PieChart, Activity, type LucideIcon 
+  HelpCircle, TrendingUp, BarChart, PieChart, Activity, Code, Palette, Megaphone, 
+  Smartphone, type LucideIcon 
 } from 'lucide-react';
 
 export type IconType = 'lucide' | 'custom';
@@ -71,6 +72,10 @@ export const iconLibrary: IconOption[] = [
   { value: 'bar-chart', label: 'Gráfico Barras', type: 'lucide', Icon: BarChart, tags: ['general', 'business', 'marketing'] },
   { value: 'pie-chart', label: 'Gráfico Pizza', type: 'lucide', Icon: PieChart, tags: ['general', 'business', 'marketing'] },
   { value: 'activity', label: 'Atividade', type: 'lucide', Icon: Activity, tags: ['general'] },
+  { value: 'code', label: 'Código', type: 'lucide', Icon: Code, tags: ['general', 'business'] },
+  { value: 'palette', label: 'Paleta', type: 'lucide', Icon: Palette, tags: ['general', 'business'] },
+  { value: 'megaphone', label: 'Megafone', type: 'lucide', Icon: Megaphone, tags: ['general', 'business', 'marketing'] },
+  { value: 'smartphone', label: 'Smartphone', type: 'lucide', Icon: Smartphone, tags: ['general', 'business'] },
   
   // Ícones Jurídicos Customizados
   { value: 'balance', label: 'Balança', type: 'custom', path: '/icons/juridico/balance.svg', tags: ['juridico'] },
