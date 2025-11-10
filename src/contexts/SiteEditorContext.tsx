@@ -1097,7 +1097,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       '3': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Consultório Médico
       '4': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Clínica Dentária
       '5': ['header', 'hero', 'about', 'gallery', 'testimonials', 'contact', 'footer'], // E-commerce
-      '6': ['header', 'hero', 'marquee', 'about', 'services', 'portfolio', 'testimonials', 'contact', 'footer'], // Agência Digital
+      '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'testimonials', 'contact', 'footer'], // Agência Digital
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
     };
@@ -1533,6 +1533,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                 secondLayer: {
                   backgroundColor: prev.brand.primary,
                 },
+              };
+            }
+            break;
+          case 'title-description':
+            if (templateId === '6') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Nossos serviços',
+                description: '',
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Título da Seção',
+                description: 'Descrição opcional da seção que aparecerá abaixo do título.',
               };
             }
             break;
