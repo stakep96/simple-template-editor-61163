@@ -374,7 +374,7 @@ const defaultConfig: SiteConfig = {
     background: '#FFFFFF',
     titleColor: '#262626',
     textColor: '#525252',
-    fontCombination: 'playfair-open',
+    fontCombination: 'playfair-opensans',
   },
   marketing: {
     whatsapp: {
@@ -452,10 +452,10 @@ const defaultConfig: SiteConfig = {
       config: {
         enabled: true,
         areas: [
-          { id: '1', title: 'Direito Criminal', icon: 'juridico-gavel' },
+          { id: '1', title: 'Direito Criminal', icon: 'juridico-baton' },
           { id: '2', title: 'Direito Empresarial', icon: 'juridico-briefcase' },
           { id: '3', title: 'Direito Imobiliário', icon: 'juridico-contract' },
-          { id: '4', title: 'Direito da Família', icon: 'juridico-handshake' },
+          { id: '4', title: 'Direito da Família', icon: 'juridico-lawyer' },
           { id: '5', title: 'Defesa do Consumidor', icon: 'juridico-balance' },
           { id: '6', title: 'Direito Trabalhista', icon: 'juridico-law' },
         ],
@@ -1231,10 +1231,10 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             defaultModuleConfig = {
               enabled: true,
               areas: [
-                { id: '1', title: 'Direito Criminal', icon: 'juridico-gavel' },
+                { id: '1', title: 'Direito Criminal', icon: 'juridico-baton' },
                 { id: '2', title: 'Direito Empresarial', icon: 'juridico-briefcase' },
                 { id: '3', title: 'Direito Imobiliário', icon: 'juridico-contract' },
-                { id: '4', title: 'Direito da Família', icon: 'juridico-handshake' },
+                { id: '4', title: 'Direito da Família', icon: 'juridico-lawyer' },
                 { id: '5', title: 'Defesa do Consumidor', icon: 'juridico-balance' },
                 { id: '6', title: 'Direito Trabalhista', icon: 'juridico-law' },
               ],
@@ -1606,7 +1606,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
           background: '#FFFFFF', // Branco
           titleColor: '#262626', // Cinza escuro
           textColor: '#525252', // Cinza médio
-          fontCombination: 'playfair-open', // Playfair Display + Open Sans
+          fontCombination: 'playfair-opensans', // Playfair Display + Open Sans
         };
       } else if (templateId === '6') {
         // Agência Digital - cores vibrantes e modernas
