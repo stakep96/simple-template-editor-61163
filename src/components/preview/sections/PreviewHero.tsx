@@ -34,7 +34,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
           }}
         />
       )}
-      <div className="relative z-10 space-y-3 mb-8">
+      <div className="relative z-10 space-y-3 mb-2">
         <h1 
           className="text-2xl font-bold leading-tight"
           style={{ 
