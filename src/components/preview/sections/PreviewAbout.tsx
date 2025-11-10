@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { AboutConfig } from '@/contexts/SiteEditorContext';
-import { Instagram, Facebook, Linkedin, GraduationCap, Twitter, Youtube, MessageCircle, Music } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, Twitter, Youtube, MessageCircle, Music } from 'lucide-react';
+import { PreviewIcon } from '@/components/preview/PreviewIcon';
 
 interface PreviewAboutProps {
   instanceId: string;
@@ -109,9 +110,9 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
 
           {aboutConfig.education && aboutConfig.education.length > 0 && (
             <div className="w-full space-y-3">
-              {aboutConfig.education.map((edu, index) => (
+              {aboutConfig.education.map((item) => (
                 <div 
-                  key={index}
+                  key={item.id}
                   className="p-4 rounded-2xl flex gap-3"
                   style={{ backgroundColor: config.brand.primary }}
                 >
@@ -119,7 +120,8 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                     className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
                     style={{ backgroundColor: `${config.brand.accent}26` }}
                   >
-                    <GraduationCap 
+                    <PreviewIcon 
+                      iconValue={item.icon}
                       className="w-5 h-5" 
                       style={{ color: config.brand.accent }} 
                     />
@@ -131,7 +133,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
                       fontFamily: 'var(--brand-text-font)'
                     }}
                   >
-                    {edu}
+                    {item.text}
                   </p>
                 </div>
               ))}

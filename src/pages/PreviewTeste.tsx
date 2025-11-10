@@ -89,8 +89,8 @@ const fullTestConfig: SiteConfig = {
         description: 'Abordagem estratégica e personalizada para cada cliente',
         socialLinks: [],
         education: [
-          'Mestre em Direito Tributário pela FGV-SP (2010)',
-          'Especialista em Direito Empresarial pela USP (2015)',
+          { id: '1', icon: 'award', text: 'Mestre em Direito Tributário pela FGV-SP (2010)' },
+          { id: '2', icon: 'briefcase', text: 'Especialista em Direito Empresarial pela USP (2015)' },
         ],
       },
     },

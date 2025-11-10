@@ -43,6 +43,12 @@ export interface SocialLink {
   url: string;
 }
 
+export interface EducationItem {
+  id: string;
+  icon: string;
+  text: string;
+}
+
 export interface AboutConfig {
   enabled: boolean;
   sectionTitle: string;
@@ -51,7 +57,7 @@ export interface AboutConfig {
   title: string;
   description: string;
   socialLinks: SocialLink[];
-  education: string[];
+  education: EducationItem[];
 }
 
 export interface PracticeArea {
@@ -438,10 +444,10 @@ const defaultConfig: SiteConfig = {
           },
         ],
         education: [
-          'Graduado em Direito pela USP (2005)',
-          'Mestre em Direito Penal pela PUC-SP (2010)',
-          'Especialização em Direito Empresarial pela FGV (2012)',
-          'Membro da OAB-SP desde 2006',
+          { id: '1', icon: 'book', text: 'Graduado em Direito pela USP (2005)' },
+          { id: '2', icon: 'award', text: 'Mestre em Direito Penal pela PUC-SP (2010)' },
+          { id: '3', icon: 'briefcase', text: 'Especialização em Direito Empresarial pela FGV (2012)' },
+          { id: '4', icon: 'shield', text: 'Membro da OAB-SP desde 2006' },
         ],
       } as AboutConfig,
     },
@@ -1187,10 +1193,10 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                   },
                 ],
                 education: [
-                  '200+ projetos entregues com sucesso',
-                  'Equipe multidisciplinar de 15 especialistas',
-                  'Clientes em 5 países diferentes',
-                  'Prêmios de excelência em design digital',
+                  { id: '1', icon: 'trophy', text: '200+ projetos entregues com sucesso' },
+                  { id: '2', icon: 'users', text: 'Equipe multidisciplinar de 15 especialistas' },
+                  { id: '3', icon: 'target', text: 'Clientes em 5 países diferentes' },
+                  { id: '4', icon: 'award', text: 'Prêmios de excelência em design digital' },
                 ],
               };
             } else {
@@ -1219,10 +1225,10 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                   },
                 ],
                 education: [
-                  'Graduado em Direito pela USP (2005)',
-                  'Mestre em Direito Penal pela PUC-SP (2010)',
-                  'Especialização em Direito Empresarial pela FGV (2012)',
-                  'Membro da OAB-SP desde 2006',
+                  { id: '1', icon: 'book', text: 'Graduado em Direito pela USP (2005)' },
+                  { id: '2', icon: 'award', text: 'Mestre em Direito Penal pela PUC-SP (2010)' },
+                  { id: '3', icon: 'briefcase', text: 'Especialização em Direito Empresarial pela FGV (2012)' },
+                  { id: '4', icon: 'shield', text: 'Membro da OAB-SP desde 2006' },
                 ],
               };
             }

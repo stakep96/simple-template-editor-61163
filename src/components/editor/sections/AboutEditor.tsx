@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -7,7 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ImageUpload } from '@/components/ui/image-upload';
 import { Plus, Trash2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
-import type { AboutConfig, SocialLink } from '@/contexts/SiteEditorContext';
+import { IconSelector } from '@/components/editor/IconSelector';
+import type { AboutConfig, SocialLink, EducationItem } from '@/contexts/SiteEditorContext';
 
 interface AboutEditorProps {
   instanceId: string;
@@ -20,19 +21,25 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
 
   if (!aboutConfig) return null;
 
+  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
+
   const addEducation = () => {
-    const newEducation = [...(aboutConfig.education || []), ''];
+    const newEducation: EducationItem[] = [
+      ...(aboutConfig.education || []), 
+      { id: Date.now().toString(), icon: 'award', text: '' }
+    ];
     updateModuleInstance(instanceId, { education: newEducation });
   };
 
-  const updateEducation = (index: number, value: string) => {
-    const newEducation = [...(aboutConfig.education || [])];
-    newEducation[index] = value;
+  const updateEducation = (id: string, field: keyof EducationItem, value: string) => {
+    const newEducation = (aboutConfig.education || []).map(item =>
+      item.id === id ? { ...item, [field]: value } : item
+    );
     updateModuleInstance(instanceId, { education: newEducation });
   };
 
-  const removeEducation = (index: number) => {
-    const newEducation = (aboutConfig.education || []).filter((_, i) => i !== index);
+  const removeEducation = (id: string) => {
+    const newEducation = (aboutConfig.education || []).filter(item => item.id !== id);
     updateModuleInstance(instanceId, { education: newEducation });
   };
 
@@ -163,13 +170,19 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
       </div>
 
       <div>
-        <Label className="text-sm mb-2 block">Formação</Label>
+        <Label className="text-sm mb-2 block">Informações</Label>
         <div className="space-y-2">
-          {(aboutConfig.education || []).map((edu, index) => (
-            <div key={index} className="flex gap-2">
+          {(aboutConfig.education || []).map((item) => (
+            <div key={item.id} className="flex gap-2 items-start">
+              <IconSelector
+                value={item.icon}
+                onChange={(icon) => updateEducation(item.id, 'icon', icon)}
+                open={openPopoverId === item.id}
+                onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}
+              />
               <Textarea
-                value={edu}
-                onChange={(e) => updateEducation(index, e.target.value)}
+                value={item.text}
+                onChange={(e) => updateEducation(item.id, 'text', e.target.value)}
                 rows={2}
                 className="flex-1"
               />
@@ -177,7 +190,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
                 type="button"
                 variant="ghost"
                 size="icon"
-                onClick={() => removeEducation(index)}
+                onClick={() => removeEducation(item.id)}
                 className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
               >
                 <Trash2 className="w-4 h-4" />
@@ -191,7 +204,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ instanceId }) => {
             className="w-full border-dashed hover:border-solid"
           >
             <Plus className="w-4 h-4 mr-2" />
-            Adicionar Formação
+            Adicionar Informação
           </Button>
         </div>
       </div>
