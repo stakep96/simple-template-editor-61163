@@ -367,14 +367,14 @@ const defaultConfig: SiteConfig = {
     customDomainSaved: false,
   },
   brand: {
-    primary: '#8B1538',
+    primary: '#002E2B',
     secondary: '#F5E6D3',
-    accent: '#D4AF37',
-    text: '#2D2D2D',
+    accent: '#F5E6D3',
+    text: '#262626',
     background: '#FFFFFF',
-    titleColor: '#2D2D2D',
-    textColor: '#4A4A4A',
-    fontCombination: 'inter',
+    titleColor: '#262626',
+    textColor: '#525252',
+    fontCombination: 'playfair-open',
   },
   marketing: {
     whatsapp: {
@@ -469,27 +469,27 @@ const defaultConfig: SiteConfig = {
         enabled: true,
         backgroundImage: '/images/cases-juridico-default.jpg',
         cases: [
-          {
-            id: '1',
-            title: 'Absolvição em Processo Criminal',
-            description: 'Cliente acusado injustamente de crime contra o patrimônio',
-            result: 'Absolvição por insuficiência de provas após 2 anos de atuação estratégica',
-            icon: 'juridico-gavel',
-          },
-          {
-            id: '2',
-            title: 'Recuperação de Empresa',
-            description: 'Empresa em situação crítica de endividamento',
-            result: 'Reestruturação completa e retomada das operações em 18 meses',
-            icon: 'juridico-briefcase',
-          },
-          {
-            id: '3',
-            title: 'Divórcio Consensual',
-            description: 'Processo de divórcio com partilha de bens complexa',
-            result: 'Acordo amigável alcançado em 6 meses com satisfação de ambas as partes',
-            icon: 'juridico-handshake',
-          },
+                {
+                  id: '1',
+                  title: 'Absolvição em Processo Criminal',
+                  description: 'Cliente acusado injustamente de crime contra o patrimônio',
+                  result: 'Absolvição por insuficiência de provas após 2 anos de atuação estratégica',
+                  icon: 'juridico-judge',
+                },
+                {
+                  id: '2',
+                  title: 'Recuperação de Empresa',
+                  description: 'Empresa em situação crítica de endividamento',
+                  result: 'Reestruturação completa e retomada das operações em 18 meses',
+                  icon: 'juridico-case',
+                },
+                {
+                  id: '3',
+                  title: 'Divórcio Consensual',
+                  description: 'Processo de divórcio com partilha de bens complexa',
+                  result: 'Acordo amigável alcançado em 6 meses com satisfação de ambas as partes',
+                  icon: 'juridico-pen',
+                },
         ],
       } as SuccessCasesConfig,
     },
@@ -1250,21 +1250,21 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
                   title: 'Absolvição em Processo Criminal',
                   description: 'Cliente acusado injustamente de crime contra o patrimônio',
                   result: 'Absolvição por insuficiência de provas após 2 anos de atuação estratégica',
-                  icon: 'juridico-gavel',
+                  icon: 'juridico-judge',
                 },
                 {
                   id: '2',
                   title: 'Recuperação de Empresa',
                   description: 'Empresa em situação crítica de endividamento',
                   result: 'Reestruturação completa e retomada das operações em 18 meses',
-                  icon: 'juridico-briefcase',
+                  icon: 'juridico-case',
                 },
                 {
                   id: '3',
                   title: 'Divórcio Consensual',
                   description: 'Processo de divórcio com partilha de bens complexa',
                   result: 'Acordo amigável alcançado em 6 meses com satisfação de ambas as partes',
-                  icon: 'juridico-handshake',
+                  icon: 'juridico-pen',
                 },
               ],
             };
@@ -1599,14 +1599,14 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
       if (templateId === '1') {
         // Jurídico - cores elegantes e profissionais
         brandConfig = {
-          primary: '#8B1538', // Vinho elegante
+          primary: '#002E2B', // Verde escuro sofisticado
           secondary: '#F5E6D3', // Bege claro
-          accent: '#D4AF37', // Dourado
-          text: '#2D2D2D', // Cinza escuro
+          accent: '#F5E6D3', // Bege claro (ícones)
+          text: '#262626', // Cinza escuro
           background: '#FFFFFF', // Branco
-          titleColor: '#2D2D2D', // Cinza escuro
-          textColor: '#4A4A4A', // Cinza médio
-          fontCombination: 'inter', // Fonte profissional
+          titleColor: '#262626', // Cinza escuro
+          textColor: '#525252', // Cinza médio
+          fontCombination: 'playfair-open', // Playfair Display + Open Sans
         };
       } else if (templateId === '6') {
         // Agência Digital - cores vibrantes e modernas
