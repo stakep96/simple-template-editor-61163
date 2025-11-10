@@ -18,7 +18,7 @@ const PreviewFooter: React.FC<PreviewFooterProps> = ({ instanceId }) => {
     <footer className="w-full">
       {/* Copyright Section - Editable */}
       <div 
-        className="w-full py-6 px-4"
+        className="w-full pb-6 px-4"
         style={{ backgroundColor: 'var(--brand-primary)' }}
       >
         <div className="max-w-4xl mx-auto text-center">
