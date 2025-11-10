@@ -13,9 +13,13 @@ const TitleDescriptionEditor: React.FC<TitleDescriptionEditorProps> = ({ instanc
   const { config, updateModuleInstance } = useSiteEditor();
   const titleDescriptionConfig = config.moduleInstances[instanceId]?.config as TitleDescriptionConfig;
 
-  const handleChange = (field: string, value: string) => {
+  if (!titleDescriptionConfig) return null;
+
+  const handleChange = (field: keyof TitleDescriptionConfig, value: string) => {
     updateModuleInstance(instanceId, {
-      ...titleDescriptionConfig,
+      enabled: titleDescriptionConfig.enabled,
+      title: titleDescriptionConfig.title,
+      description: titleDescriptionConfig.description,
       [field]: value,
     });
   };
