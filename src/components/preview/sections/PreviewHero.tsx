@@ -30,7 +30,7 @@ const PreviewHero: React.FC<PreviewHeroProps> = ({ instanceId }) => {
         <div 
           className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none"
           style={{
-            background: `linear-gradient(to bottom, transparent 0%, ${config.brand.background}40 40%, ${config.brand.background}95 80%, ${config.brand.background} 100%)`
+            background: `linear-gradient(to bottom, transparent 0%, ${config.brand.background}60 30%, ${config.brand.background}98 70%, ${config.brand.background} 100%)`
           }}
         />
       )}
