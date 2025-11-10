@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List, Building2, FolderOpen, MoveHorizontal } from 'lucide-react';
+import { Activity, ImageIcon, Mountain, User, Briefcase, Trophy, Mail, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, DollarSign, ArrowLeftRight, Gift, Award, Zap, BarChart3, Tag, List, Building2, FolderOpen, MoveHorizontal, Type } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
@@ -117,6 +117,12 @@ const ModuleSelector: React.FC<ModuleSelectorProps> = ({ onSelect }) => {
           icon: ImageIcon,
           title: 'Imagem + Texto',
           description: 'Conteúdo visual',
+        },
+        {
+          id: 'title-description' as ModuleType,
+          icon: Type,
+          title: 'Título e Descrição',
+          description: 'Seção simples de texto',
         },
       ],
     },

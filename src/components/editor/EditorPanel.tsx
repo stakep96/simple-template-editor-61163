@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2, FolderOpen, MoveHorizontal } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2, FolderOpen, MoveHorizontal, Type } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
@@ -32,6 +32,7 @@ import BrandsEditor from './sections/BrandsEditor';
 import PortfolioEditor from './sections/PortfolioEditor';
 import MarqueeEditor from './sections/MarqueeEditor';
 import ImageTextEditor from './sections/ImageTextEditor';
+import TitleDescriptionEditor from './sections/TitleDescriptionEditor';
 import FooterEditor from './sections/FooterEditor';
 import AddModuleButton from './AddModuleButton';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
@@ -67,6 +68,7 @@ const EditorPanel = () => {
     portfolio: { icon: FolderOpen, title: 'Portfolio', description: 'Projetos em accordion', component: PortfolioEditor },
     marquee: { icon: MoveHorizontal, title: 'Faixa Infinita', description: 'Texto em movimento', component: MarqueeEditor },
     'image-text': { icon: ImageIcon, title: 'Imagem + Texto', description: 'Conteúdo visual', component: ImageTextEditor },
+    'title-description': { icon: Type, title: 'Título e Descrição', description: 'Seção de texto', component: TitleDescriptionEditor },
     footer: { icon: Copyright, title: 'Copyright', description: 'Rodapé do site', component: FooterEditor },
   } as const;
 

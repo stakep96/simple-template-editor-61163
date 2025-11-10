@@ -26,6 +26,7 @@ import PreviewBrands from './sections/PreviewBrands';
 import PreviewPortfolio from './sections/PreviewPortfolio';
 import PreviewMarquee from './sections/PreviewMarquee';
 import PreviewImageText from './sections/PreviewImageText';
+import PreviewTitleDescription from './sections/PreviewTitleDescription';
 import PreviewFooter from './sections/PreviewFooter';
 import WhatsAppButton from './WhatsAppButton';
 
@@ -108,6 +109,8 @@ const PreviewSite = () => {
         return <PreviewMarquee key={key} instanceId={instanceId} />;
       case 'image-text':
         return <PreviewImageText key={key} instanceId={instanceId} />;
+      case 'title-description':
+        return <PreviewTitleDescription key={key} instanceId={instanceId} />;
       case 'footer':
         return <PreviewFooter key={key} instanceId={instanceId} />;
       default:

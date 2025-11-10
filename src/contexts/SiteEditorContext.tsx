@@ -332,13 +332,19 @@ export interface ImageTextConfig {
   description: string;
 }
 
-export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'marquee' | 'image-text' | 'footer';
+export interface TitleDescriptionConfig {
+  enabled: boolean;
+  title: string;
+  description: string;
+}
+
+export type ModuleType = 'header' | 'hero' | 'about' | 'practice' | 'cases' | 'contact' | 'button' | 'testimonials' | 'testimonials-images' | 'gallery' | 'faq' | 'pricing' | 'location' | 'before-after' | 'benefits' | 'credentials' | 'services' | 'demographics' | 'interests' | 'content-style' | 'metrics' | 'brands' | 'portfolio' | 'marquee' | 'image-text' | 'title-description' | 'footer';
 
 export interface ModuleInstance {
   id: string; // unique instance id like 'hero-1', 'hero-2'
   type: ModuleType;
   enabled: boolean;
-  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | MarqueeConfig | ImageTextConfig | FooterConfig;
+  config: HeaderConfig | HeroConfig | AboutConfig | PracticeAreasConfig | SuccessCasesConfig | ContactFormConfig | ButtonConfig | TestimonialsConfig | TestimonialsImagesConfig | GalleryConfig | FAQConfig | PricingPlansConfig | LocationConfig | BeforeAfterConfig | BenefitsConfig | CredentialsConfig | ServicesConfig | DemographicsConfig | InterestsConfig | ContentStyleConfig | MetricsConfig | BrandsConfig | PortfolioConfig | MarqueeConfig | ImageTextConfig | TitleDescriptionConfig | FooterConfig;
 }
 
 export interface SiteConfig {
@@ -648,6 +654,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     portfolio: 0,
     marquee: 0,
     'image-text': 0,
+    'title-description': 0,
     footer: 1,
   });
 
@@ -1029,6 +1036,13 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             description: 'We are dedicated to providing world-class eye care to patients of all ages. Our mission is to enhance and protect your vision through advanced treatments, compassionate service, and a commitment to excellence in eye health.',
           } as ImageTextConfig;
           break;
+        case 'title-description':
+          defaultModuleConfig = {
+            enabled: true,
+            title: 'Título da Seção',
+            description: 'Descrição opcional da seção que aparecerá abaixo do título.',
+          } as TitleDescriptionConfig;
+          break;
         case 'footer':
           defaultModuleConfig = {
             enabled: true,
@@ -1120,6 +1134,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         brands: 0,
         marquee: 0,
         'image-text': 0,
+        'title-description': 0,
         footer: 0,
       };
 
