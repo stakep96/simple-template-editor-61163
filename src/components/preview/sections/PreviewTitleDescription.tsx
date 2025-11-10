@@ -16,7 +16,7 @@ const PreviewTitleDescription: React.FC<PreviewTitleDescriptionProps> = ({ insta
     <section className="py-16 px-4">
       <div className="container mx-auto max-w-4xl text-center">
         <h2 
-          className="text-4xl font-bold mb-4" 
+          className="text-2xl font-bold mb-4" 
           style={{ 
             fontFamily: 'var(--brand-title-font)',
             color: 'var(--brand-title-color)',
@@ -26,7 +26,7 @@ const PreviewTitleDescription: React.FC<PreviewTitleDescriptionProps> = ({ insta
         </h2>
         {config.description && (
           <p 
-            className="text-lg" 
+            className="text-base" 
             style={{ 
               fontFamily: 'var(--brand-text-font)',
               color: 'var(--brand-text-color)',
