@@ -39,7 +39,7 @@ const templates: Template[] = [{
   description: 'Excellence in Dental Care - Design moderno para clínicas odontológicas'
 }, {
   id: '5',
-  name: 'E-commerce',
+  name: 'Produtor Digital',
   category: 'Mercado Digital',
   thumbnail: '',
   color: 'from-purple-500 to-purple-700',
