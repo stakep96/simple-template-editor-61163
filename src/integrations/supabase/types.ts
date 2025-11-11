@@ -14,7 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      site_templates: {
+        Row: {
+          config: Json
+          id: string
+          template_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          config: Json
+          id?: string
+          template_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          config?: Json
+          id?: string
+          template_id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
