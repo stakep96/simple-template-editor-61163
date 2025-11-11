@@ -367,6 +367,7 @@ interface SiteEditorContextType {
   addModuleAt: (moduleType: ModuleType, position: number) => void;
   removeModuleInstance: (instanceId: string) => void;
   applyTemplate: (templateId: string) => void;
+  saveCurrentAsTemplate: () => boolean;
 }
 
 const defaultConfig: SiteConfig = {
@@ -628,6 +629,7 @@ const defaultConfig: SiteConfig = {
 const SiteEditorContext = createContext<SiteEditorContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'lovable-site-editor-config';
+const CUSTOM_TEMPLATES_KEY = 'lovable-custom-templates';
 
 export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Load config from localStorage on mount
@@ -1114,7 +1116,39 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     });
   };
 
+  const saveCurrentAsTemplate = (): boolean => {
+    try {
+      const savedTemplates = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
+      const customTemplates = savedTemplates ? JSON.parse(savedTemplates) : {};
+      
+      // Save current config as custom template
+      customTemplates[config.currentTemplateId || '1'] = config;
+      
+      localStorage.setItem(CUSTOM_TEMPLATES_KEY, JSON.stringify(customTemplates));
+      return true;
+    } catch (error) {
+      console.error('Error saving custom template:', error);
+      return false;
+    }
+  };
+
   const applyTemplate = (templateId: string) => {
+    // Check if there's a saved custom template
+    try {
+      const savedTemplates = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
+      if (savedTemplates) {
+        const customTemplates = JSON.parse(savedTemplates);
+        if (customTemplates[templateId]) {
+          // Load the custom template
+          setConfig(customTemplates[templateId]);
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('Error loading custom template:', error);
+    }
+
+    // If no custom template, load default
     // Define módulos para cada template
     const templateModules: Record<string, ModuleType[]> = {
       '1': ['header', 'hero', 'about', 'practice', 'cases', 'testimonials', 'gallery', 'faq', 'location', 'footer'], // Jurídico
@@ -1893,6 +1927,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
         addModuleAt,
         removeModuleInstance,
         applyTemplate,
+        saveCurrentAsTemplate,
       }}
     >
       {children}

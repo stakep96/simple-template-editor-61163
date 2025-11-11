@@ -44,12 +44,23 @@ const EditorPanel = () => {
   const { config, updateModuleInstance, reorderModules, removeModuleInstance } = useSiteEditor();
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
   const { toast } = useToast();
+  const { saveCurrentAsTemplate } = useSiteEditor();
 
   const handleSave = () => {
-    toast({
-      title: "✓ Site salvo",
-      description: "Todas as suas alterações estão salvas automaticamente.",
-    });
+    const success = saveCurrentAsTemplate();
+    
+    if (success) {
+      toast({
+        title: "✓ Modelo salvo",
+        description: "Suas alterações foram salvas como padrão deste modelo.",
+      });
+    } else {
+      toast({
+        title: "Erro ao salvar",
+        description: "Não foi possível salvar o modelo.",
+        variant: "destructive",
+      });
+    }
   };
 
   const moduleMetadata = {
