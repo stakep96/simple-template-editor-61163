@@ -25,7 +25,7 @@ const templates: Template[] = [{
   description: 'Design profissional para escritórios de advocacia'
 }, {
   id: '3',
-  name: 'Consultório Médico',
+  name: 'Médico',
   category: 'Saúde',
   thumbnail: '',
   color: 'from-green-500 to-green-700',
