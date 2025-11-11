@@ -1607,31 +1607,33 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
             if (templateId === '9') {
               defaultModuleConfig = {
                 enabled: true,
-                title: 'Nossos Serviços',
-                description: 'Oferecemos uma ampla gama de serviços odontológicos',
-                services: [
+                cards: [
                   {
                     id: `service-${Date.now()}-1`,
-                    icon: 'Sparkles',
+                    icon: 'sparkles',
                     title: 'Clareamento Dental',
+                    subtitle: 'Sorriso mais branco',
                     description: 'Clareamento profissional para um sorriso mais branco e brilhante',
                   },
                   {
                     id: `service-${Date.now()}-2`,
-                    icon: 'Shield',
+                    icon: 'shield',
                     title: 'Implantes Dentários',
+                    subtitle: 'Reposição permanente',
                     description: 'Reposição permanente de dentes perdidos com implantes de qualidade',
                   },
                   {
                     id: `service-${Date.now()}-3`,
-                    icon: 'Heart',
+                    icon: 'heart',
                     title: 'Ortodontia',
+                    subtitle: 'Alinhamento perfeito',
                     description: 'Aparelhos ortodônticos para alinhamento perfeito dos dentes',
                   },
                   {
                     id: `service-${Date.now()}-4`,
-                    icon: 'Smile',
+                    icon: 'smile',
                     title: 'Limpeza e Prevenção',
+                    subtitle: 'Saúde bucal em dia',
                     description: 'Consultas regulares para manter sua saúde bucal em dia',
                   },
                 ],
