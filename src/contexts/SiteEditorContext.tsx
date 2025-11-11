@@ -634,12 +634,14 @@ const CUSTOM_TEMPLATES_KEY = 'lovable-custom-templates';
 
 interface SiteEditorProviderProps {
   children: ReactNode;
-  defaultTemplate?: string; // Template ID para carregar por padrão
+  defaultTemplate?: string; // Template ID para carregar por padrão (modo preview)
+  templateId?: string; // Template ID para editar (modo editor)
 }
 
 export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({ 
   children, 
-  defaultTemplate 
+  defaultTemplate,
+  templateId 
 }) => {
   const [config, setConfig] = useState<SiteConfig>(defaultConfig);
   const [isLoading, setIsLoading] = useState(true);
@@ -677,11 +679,12 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
   // Load config on mount (from backend or localStorage)
   useEffect(() => {
     const loadConfig = async () => {
-      if (defaultTemplate) {
-        // Preview mode: load from backend first, then localStorage, then default
+      if (defaultTemplate || templateId) {
+        // Preview/Editor with specific template: load from backend first, then localStorage, then default
+        const loadId = defaultTemplate || templateId;
         try {
           const { loadTemplateFromBackend } = await import('@/lib/supabase');
-          const backendConfig = await loadTemplateFromBackend(defaultTemplate);
+          const backendConfig = await loadTemplateFromBackend(loadId);
           
           if (backendConfig) {
             setConfig(backendConfig);
@@ -698,8 +701,8 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           const savedTemplates = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
           if (savedTemplates) {
             const customTemplates = JSON.parse(savedTemplates);
-            if (customTemplates[defaultTemplate]) {
-              setConfig(customTemplates[defaultTemplate]);
+            if (customTemplates[loadId]) {
+              setConfig(customTemplates[loadId]);
               setIsLoading(false);
               setIsInitialized(true);
               return;
@@ -728,9 +731,9 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
         
         // Try to load from backend if localStorage is empty
         try {
-          const templateId = defaultConfig.currentTemplateId || '1';
+          const templateIdToLoad = defaultConfig.currentTemplateId || '1';
           const { loadTemplateFromBackend } = await import('@/lib/supabase');
-          const backendConfig = await loadTemplateFromBackend(templateId);
+          const backendConfig = await loadTemplateFromBackend(templateIdToLoad);
           if (backendConfig) {
             setConfig(backendConfig);
           }
@@ -762,9 +765,9 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
         localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
         
         // Also save to backend automatically for public visibility
-        const templateId = config.currentTemplateId || '1';
+        const saveTemplateId = templateId || config.currentTemplateId || '1';
         import('@/lib/supabase').then(({ saveTemplateToBackend }) => {
-          saveTemplateToBackend(templateId, config).catch((error) => {
+          saveTemplateToBackend(saveTemplateId, config).catch((error) => {
             console.error('Error auto-saving to backend:', error);
           });
         });
@@ -772,7 +775,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
         console.error('Error saving config:', error);
       }
     }
-  }, [config, defaultTemplate, isLoading]);
+  }, [config, defaultTemplate, templateId, isLoading]);
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
     setConfig((prev) => ({

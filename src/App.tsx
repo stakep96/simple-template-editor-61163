@@ -8,6 +8,8 @@ import Preview from "./pages/Preview";
 import PreviewTeste from "./pages/PreviewTeste";
 import PreviewAgencia from "./pages/PreviewAgencia";
 import PreviewDentista from "./pages/PreviewDentista";
+import EditorDentista from "./pages/EditorDentista";
+import EditorAgencia from "./pages/EditorAgencia";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +26,8 @@ const App = () => (
           <Route path="/preview-teste" element={<PreviewTeste />} />
           <Route path="/preview-agencia" element={<PreviewAgencia />} />
           <Route path="/preview-dentista" element={<PreviewDentista />} />
+          <Route path="/editor-dentista" element={<EditorDentista />} />
+          <Route path="/editor-agencia" element={<EditorAgencia />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
