@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export interface SiteMetadata {
   siteName: string;
@@ -627,8 +627,21 @@ const defaultConfig: SiteConfig = {
 
 const SiteEditorContext = createContext<SiteEditorContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'lovable-site-editor-config';
+
 export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [config, setConfig] = useState<SiteConfig>(defaultConfig);
+  // Load config from localStorage on mount
+  const [config, setConfig] = useState<SiteConfig>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (error) {
+      console.error('Error loading saved config:', error);
+    }
+    return defaultConfig;
+  });
   const [instanceCounter, setInstanceCounter] = useState<Record<ModuleType, number>>({
     header: 1,
     hero: 1,
@@ -658,6 +671,15 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     'title-description': 0,
     footer: 1,
   });
+
+  // Save config to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+    } catch (error) {
+      console.error('Error saving config:', error);
+    }
+  }, [config]);
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
     setConfig((prev) => ({

@@ -46,10 +46,9 @@ const EditorPanel = () => {
   const { toast } = useToast();
 
   const handleSave = () => {
-    // Save logic - already saved in context, just show confirmation
     toast({
-      title: "Alterações salvas",
-      description: "Suas configurações foram salvas com sucesso.",
+      title: "✓ Site salvo",
+      description: "Todas as suas alterações estão salvas automaticamente.",
     });
   };
 
