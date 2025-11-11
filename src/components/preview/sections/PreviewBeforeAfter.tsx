@@ -29,20 +29,20 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
             style={{ backgroundColor: `${siteConfig.brand.primary}26` }}
           >
             <div className="relative w-full rounded-2xl overflow-hidden mb-5">
-              <div className="flex">
-                <div className="relative w-1/2">
+              <div className={config.orientation === 'horizontal' ? 'flex flex-col' : 'flex'}>
+                <div className={config.orientation === 'horizontal' ? 'relative w-full' : 'relative w-1/2'}>
                   {item.beforeImage ? (
                     <img
                       src={item.beforeImage}
                       alt="Antes"
                       className="w-full h-full object-cover"
-                      style={{ aspectRatio: '1/2' }}
+                      style={{ aspectRatio: config.orientation === 'horizontal' ? '2/1' : '1/2' }}
                     />
                   ) : (
                     <div 
                       className="w-full h-full"
                       style={{ 
-                        aspectRatio: '1/2',
+                        aspectRatio: config.orientation === 'horizontal' ? '2/1' : '1/2',
                         backgroundColor: siteConfig.brand.primary
                       }}
                     />
@@ -54,19 +54,19 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                   </div>
                 </div>
                 
-                <div className="relative w-1/2">
+                <div className={config.orientation === 'horizontal' ? 'relative w-full' : 'relative w-1/2'}>
                   {item.afterImage ? (
                     <img
                       src={item.afterImage}
                       alt="Depois"
                       className="w-full h-full object-cover"
-                      style={{ aspectRatio: '1/2' }}
+                      style={{ aspectRatio: config.orientation === 'horizontal' ? '2/1' : '1/2' }}
                     />
                   ) : (
                     <div 
                       className="w-full h-full"
                       style={{ 
-                        aspectRatio: '1/2',
+                        aspectRatio: config.orientation === 'horizontal' ? '2/1' : '1/2',
                         backgroundColor: siteConfig.brand.primary
                       }}
                     />

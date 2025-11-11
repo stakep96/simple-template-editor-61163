@@ -186,6 +186,7 @@ export interface BeforeAfterItem {
 export interface BeforeAfterConfig {
   enabled: boolean;
   title: string;
+  orientation: 'horizontal' | 'vertical';
   items: BeforeAfterItem[];
 }
 
@@ -1583,6 +1584,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               defaultModuleConfig = {
                 enabled: true,
                 title: 'Transformações',
+                orientation: 'vertical',
                 items: [
                   {
                     id: `beforeafter-${Date.now()}-1`,
@@ -1596,6 +1598,7 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
               defaultModuleConfig = {
                 enabled: true,
                 title: 'Transformações',
+                orientation: 'vertical',
                 items: [],
               };
             }

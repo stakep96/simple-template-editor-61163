@@ -235,6 +235,7 @@ const fullTestConfig: SiteConfig = {
       config: {
         enabled: true,
         title: 'Transformações Jurídicas',
+        orientation: 'vertical',
         items: [
           {
             id: '1',
