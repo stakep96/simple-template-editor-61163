@@ -4,7 +4,7 @@ import { SiteEditorProvider } from '@/contexts/SiteEditorContext';
 
 const Preview = () => {
   return (
-    <SiteEditorProvider>
+    <SiteEditorProvider defaultTemplate="1">
       <div className="w-full min-h-screen">
         <PreviewSite />
       </div>

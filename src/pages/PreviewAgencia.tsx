@@ -12,7 +12,7 @@ const PreviewAgenciaContent = () => {
 
 const PreviewAgencia = () => {
   return (
-    <SiteEditorProvider>
+    <SiteEditorProvider defaultTemplate="6">
       <PreviewAgenciaContent />
     </SiteEditorProvider>
   );

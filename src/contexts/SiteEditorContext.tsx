@@ -368,7 +368,7 @@ interface SiteEditorContextType {
   addModuleAt: (moduleType: ModuleType, position: number) => void;
   removeModuleInstance: (instanceId: string) => void;
   applyTemplate: (templateId: string) => void;
-  saveCurrentAsTemplate: () => boolean;
+  saveCurrentAsTemplate: () => Promise<boolean>;
 }
 
 const defaultConfig: SiteConfig = {
@@ -632,19 +632,17 @@ const SiteEditorContext = createContext<SiteEditorContextType | undefined>(undef
 const STORAGE_KEY = 'lovable-site-editor-config';
 const CUSTOM_TEMPLATES_KEY = 'lovable-custom-templates';
 
-export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Load config from localStorage on mount
-  const [config, setConfig] = useState<SiteConfig>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        return JSON.parse(saved);
-      }
-    } catch (error) {
-      console.error('Error loading saved config:', error);
-    }
-    return defaultConfig;
-  });
+interface SiteEditorProviderProps {
+  children: ReactNode;
+  defaultTemplate?: string; // Template ID para carregar por padrão
+}
+
+export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({ 
+  children, 
+  defaultTemplate 
+}) => {
+  const [config, setConfig] = useState<SiteConfig>(defaultConfig);
+  const [isLoading, setIsLoading] = useState(true);
   const [instanceCounter, setInstanceCounter] = useState<Record<ModuleType, number>>({
     header: 1,
     hero: 1,
@@ -675,14 +673,65 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     footer: 1,
   });
 
-  // Save config to localStorage whenever it changes
+  // Load config on mount (from backend or localStorage)
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
-    } catch (error) {
-      console.error('Error saving config:', error);
+    const loadConfig = async () => {
+      if (defaultTemplate) {
+        // Preview mode: load from backend or default template
+        try {
+          const { loadTemplateFromBackend } = await import('@/lib/supabase');
+          const backendConfig = await loadTemplateFromBackend(defaultTemplate);
+          
+          if (backendConfig) {
+            setConfig(backendConfig);
+          } else {
+            // No backend config, apply default template
+            applyTemplateSync(defaultTemplate);
+          }
+        } catch (error) {
+          console.error('Error loading from backend:', error);
+          // Fallback to default template
+          applyTemplateSync(defaultTemplate);
+        }
+      } else {
+        // Editor mode: load from localStorage or backend
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            setConfig(JSON.parse(saved));
+          } else {
+            // Try to load from backend if available
+            const templateId = defaultConfig.currentTemplateId || '1';
+            try {
+              const { loadTemplateFromBackend } = await import('@/lib/supabase');
+              const backendConfig = await loadTemplateFromBackend(templateId);
+              if (backendConfig) {
+                setConfig(backendConfig);
+              }
+            } catch (error) {
+              // Backend not available, use default
+            }
+          }
+        } catch (error) {
+          console.error('Error loading saved config:', error);
+        }
+      }
+      setIsLoading(false);
+    };
+
+    loadConfig();
+  }, [defaultTemplate]);
+
+  // Save config to localStorage whenever it changes (only in editor mode)
+  useEffect(() => {
+    if (!defaultTemplate && !isLoading) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+      } catch (error) {
+        console.error('Error saving config:', error);
+      }
     }
-  }, [config]);
+  }, [config, defaultTemplate, isLoading]);
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
     setConfig((prev) => ({
@@ -1117,19 +1166,45 @@ export const SiteEditorProvider: React.FC<{ children: ReactNode }> = ({ children
     });
   };
 
-  const saveCurrentAsTemplate = (): boolean => {
+  const saveCurrentAsTemplate = async (): Promise<boolean> => {
     try {
+      const templateId = config.currentTemplateId || '1';
+      
+      // Save to backend (primary storage)
+      try {
+        const { saveTemplateToBackend } = await import('@/lib/supabase');
+        const success = await saveTemplateToBackend(templateId, config);
+        if (!success) {
+          console.warn('Failed to save to backend, using localStorage only');
+        }
+      } catch (error) {
+        console.error('Error saving to backend:', error);
+      }
+      
+      // Also save to localStorage as backup
       const savedTemplates = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
       const customTemplates = savedTemplates ? JSON.parse(savedTemplates) : {};
-      
-      // Save current config as custom template
-      customTemplates[config.currentTemplateId || '1'] = config;
-      
+      customTemplates[templateId] = config;
       localStorage.setItem(CUSTOM_TEMPLATES_KEY, JSON.stringify(customTemplates));
+      
       return true;
     } catch (error) {
       console.error('Error saving custom template:', error);
       return false;
+    }
+  };
+
+  // Helper function for synchronous template application (used in useEffect)
+  const applyTemplateSync = (templateId: string) => {
+    const templateModules: Record<string, ModuleType[]> = {
+      '1': ['header', 'hero', 'about', 'practice', 'cases', 'testimonials', 'gallery', 'faq', 'location', 'footer'],
+      '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'brands', 'testimonials', 'contact', 'footer'],
+      '9': ['header', 'hero', 'about', 'services', 'before-after', 'testimonials', 'location', 'contact', 'footer'],
+    };
+    
+    const modules = templateModules[templateId];
+    if (modules) {
+      applyTemplate(templateId);
     }
   };
 
