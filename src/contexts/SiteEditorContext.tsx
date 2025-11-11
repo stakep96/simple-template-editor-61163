@@ -643,6 +643,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
 }) => {
   const [config, setConfig] = useState<SiteConfig>(defaultConfig);
   const [isLoading, setIsLoading] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [instanceCounter, setInstanceCounter] = useState<Record<ModuleType, number>>({
     header: 1,
     hero: 1,
@@ -677,50 +678,81 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
   useEffect(() => {
     const loadConfig = async () => {
       if (defaultTemplate) {
-        // Preview mode: load from backend or default template
+        // Preview mode: load from backend first, then localStorage, then default
         try {
           const { loadTemplateFromBackend } = await import('@/lib/supabase');
           const backendConfig = await loadTemplateFromBackend(defaultTemplate);
           
           if (backendConfig) {
             setConfig(backendConfig);
-          } else {
-            // No backend config, apply default template
-            applyTemplateSync(defaultTemplate);
+            setIsLoading(false);
+            setIsInitialized(true);
+            return;
           }
         } catch (error) {
           console.error('Error loading from backend:', error);
-          // Fallback to default template
-          applyTemplateSync(defaultTemplate);
         }
+        
+        // Try localStorage as fallback
+        try {
+          const savedTemplates = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
+          if (savedTemplates) {
+            const customTemplates = JSON.parse(savedTemplates);
+            if (customTemplates[defaultTemplate]) {
+              setConfig(customTemplates[defaultTemplate]);
+              setIsLoading(false);
+              setIsInitialized(true);
+              return;
+            }
+          }
+        } catch (error) {
+          console.error('Error loading from localStorage:', error);
+        }
+        
+        // No saved data found, mark as not initialized so applyTemplate runs
+        setIsLoading(false);
+        setIsInitialized(false);
       } else {
-        // Editor mode: load from localStorage or backend
+        // Editor mode: load from localStorage first
         try {
           const saved = localStorage.getItem(STORAGE_KEY);
           if (saved) {
             setConfig(JSON.parse(saved));
-          } else {
-            // Try to load from backend if available
-            const templateId = defaultConfig.currentTemplateId || '1';
-            try {
-              const { loadTemplateFromBackend } = await import('@/lib/supabase');
-              const backendConfig = await loadTemplateFromBackend(templateId);
-              if (backendConfig) {
-                setConfig(backendConfig);
-              }
-            } catch (error) {
-              // Backend not available, use default
-            }
+            setIsLoading(false);
+            setIsInitialized(true);
+            return;
           }
         } catch (error) {
           console.error('Error loading saved config:', error);
         }
+        
+        // Try to load from backend if localStorage is empty
+        try {
+          const templateId = defaultConfig.currentTemplateId || '1';
+          const { loadTemplateFromBackend } = await import('@/lib/supabase');
+          const backendConfig = await loadTemplateFromBackend(templateId);
+          if (backendConfig) {
+            setConfig(backendConfig);
+          }
+        } catch (error) {
+          console.error('Backend not available, using default config');
+        }
+        
+        setIsLoading(false);
+        setIsInitialized(true);
       }
-      setIsLoading(false);
     };
 
     loadConfig();
-  }, [defaultTemplate]);
+  }, []);
+
+  // Apply template when needed (for preview pages without saved data)
+  useEffect(() => {
+    if (!isLoading && !isInitialized && defaultTemplate) {
+      applyTemplate(defaultTemplate);
+      setIsInitialized(true);
+    }
+  }, [isLoading, isInitialized, defaultTemplate]);
 
   // Save config to localStorage whenever it changes (only in editor mode)
   useEffect(() => {
@@ -1191,20 +1223,6 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
     } catch (error) {
       console.error('Error saving custom template:', error);
       return false;
-    }
-  };
-
-  // Helper function for synchronous template application (used in useEffect)
-  const applyTemplateSync = (templateId: string) => {
-    const templateModules: Record<string, ModuleType[]> = {
-      '1': ['header', 'hero', 'about', 'practice', 'cases', 'testimonials', 'gallery', 'faq', 'location', 'footer'],
-      '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'brands', 'testimonials', 'contact', 'footer'],
-      '9': ['header', 'hero', 'about', 'services', 'before-after', 'testimonials', 'location', 'contact', 'footer'],
-    };
-    
-    const modules = templateModules[templateId];
-    if (modules) {
-      applyTemplate(templateId);
     }
   };
 
