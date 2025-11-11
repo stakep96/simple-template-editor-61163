@@ -754,11 +754,20 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
     }
   }, [isLoading, isInitialized, defaultTemplate]);
 
-  // Save config to localStorage whenever it changes (only in editor mode)
+  // Save config to localStorage and backend whenever it changes (only in editor mode)
   useEffect(() => {
     if (!defaultTemplate && !isLoading) {
       try {
+        // Save to localStorage
         localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+        
+        // Also save to backend automatically for public visibility
+        const templateId = config.currentTemplateId || '1';
+        import('@/lib/supabase').then(({ saveTemplateToBackend }) => {
+          saveTemplateToBackend(templateId, config).catch((error) => {
+            console.error('Error auto-saving to backend:', error);
+          });
+        });
       } catch (error) {
         console.error('Error saving config:', error);
       }
