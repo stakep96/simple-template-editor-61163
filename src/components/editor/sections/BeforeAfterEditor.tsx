@@ -4,7 +4,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ImageUpload } from '@/components/ui/image-upload';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Plus, Trash2, Rows2, Columns2 } from 'lucide-react';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { BeforeAfterConfig, BeforeAfterItem } from '@/contexts/SiteEditorContext';
@@ -57,40 +56,33 @@ const BeforeAfterEditor: React.FC<BeforeAfterEditorProps> = ({ instanceId }) => 
 
       <div>
         <Label className="text-sm mb-3 block">Layout das Imagens</Label>
-        <RadioGroup
-          value={beforeAfterConfig.orientation || 'vertical'}
-          onValueChange={(value) => updateModuleInstance(instanceId, { orientation: value as 'horizontal' | 'vertical' })}
-          className="grid grid-cols-2 gap-4"
-        >
-          <div>
-            <RadioGroupItem
-              value="vertical"
-              id={`vertical-${instanceId}`}
-              className="peer sr-only"
-            />
-            <Label
-              htmlFor={`vertical-${instanceId}`}
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
-            >
-              <Columns2 className="mb-3 h-6 w-6" />
-              <span className="text-xs font-medium">Lado a Lado</span>
-            </Label>
-          </div>
-          <div>
-            <RadioGroupItem
-              value="horizontal"
-              id={`horizontal-${instanceId}`}
-              className="peer sr-only"
-            />
-            <Label
-              htmlFor={`horizontal-${instanceId}`}
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
-            >
-              <Rows2 className="mb-3 h-6 w-6" />
-              <span className="text-xs font-medium">Uma em Cima</span>
-            </Label>
-          </div>
-        </RadioGroup>
+        <div className="flex gap-4">
+          <button
+            type="button"
+            onClick={() => updateModuleInstance(instanceId, { orientation: 'vertical' })}
+            className={`flex-1 flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors ${
+              (beforeAfterConfig.orientation || 'vertical') === 'vertical' 
+                ? 'border-primary bg-primary/5' 
+                : 'border-muted bg-popover'
+            }`}
+          >
+            <Columns2 className="mb-3 h-6 w-6" />
+            <span className="text-xs font-medium">Lado a Lado</span>
+          </button>
+          
+          <button
+            type="button"
+            onClick={() => updateModuleInstance(instanceId, { orientation: 'horizontal' })}
+            className={`flex-1 flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors ${
+              beforeAfterConfig.orientation === 'horizontal' 
+                ? 'border-primary bg-primary/5' 
+                : 'border-muted bg-popover'
+            }`}
+          >
+            <Rows2 className="mb-3 h-6 w-6" />
+            <span className="text-xs font-medium">Uma em Cima</span>
+          </button>
+        </div>
       </div>
 
       <div className="space-y-3">
