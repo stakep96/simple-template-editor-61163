@@ -80,7 +80,7 @@ const BeforeAfterEditor: React.FC<BeforeAfterEditorProps> = ({ instanceId }) => 
             }`}
           >
             <Rows2 className="mb-3 h-6 w-6" />
-            <span className="text-xs font-medium">Uma em Cima</span>
+            <span className="text-xs font-medium">Cima e Baixo</span>
           </button>
         </div>
       </div>
