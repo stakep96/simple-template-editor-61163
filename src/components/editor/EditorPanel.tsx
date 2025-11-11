@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2, FolderOpen, MoveHorizontal, Type } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2, FolderOpen, MoveHorizontal, Type, Save } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import TemplatesEditor from './sections/TemplatesEditor';
 import SiteMetadataEditor from './sections/SiteMetadataEditor';
 import BrandEditor from './sections/BrandEditor';
@@ -41,6 +43,15 @@ import type { ModuleType } from '@/contexts/SiteEditorContext';
 const EditorPanel = () => {
   const { config, updateModuleInstance, reorderModules, removeModuleInstance } = useSiteEditor();
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
+  const { toast } = useToast();
+
+  const handleSave = () => {
+    // Save logic - already saved in context, just show confirmation
+    toast({
+      title: "Alterações salvas",
+      description: "Suas configurações foram salvas com sucesso.",
+    });
+  };
 
   const moduleMetadata = {
     header: { icon: ImageIcon, title: 'Header', description: 'Logo e navegação', component: HeaderEditor },
@@ -111,7 +122,7 @@ const EditorPanel = () => {
   };
 
   return (
-    <div className="h-full bg-editor-bg">
+    <div className="h-full bg-editor-bg relative">
       <div className="p-6 border-b border-border bg-background">
         <h1 className="text-2xl font-bold text-foreground">Criar Novo Site</h1>
         <p className="text-sm text-muted-foreground mt-1">
@@ -272,6 +283,18 @@ const EditorPanel = () => {
           </Accordion>
         </div>
       </ScrollArea>
+
+      {/* Floating Save Button */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 opacity-30 hover:opacity-100 transition-opacity duration-300">
+        <Button
+          onClick={handleSave}
+          size="lg"
+          className="shadow-lg gap-2"
+        >
+          <Save className="w-5 h-5" />
+          Salvar Site
+        </Button>
+      </div>
     </div>
   );
 };
