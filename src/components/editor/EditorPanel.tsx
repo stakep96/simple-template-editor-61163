@@ -295,7 +295,7 @@ const EditorPanel = () => {
       </ScrollArea>
 
       {/* Floating Save Button */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 opacity-30 hover:opacity-100 transition-opacity duration-300">
+      <div className="fixed bottom-8 left-[30%] -translate-x-1/2 z-50 opacity-30 hover:opacity-100 transition-opacity duration-300">
         <Button
           onClick={handleSave}
           size="lg"
