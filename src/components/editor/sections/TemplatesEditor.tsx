@@ -40,14 +40,14 @@ const templates: Template[] = [{
 }, {
   id: '5',
   name: 'Produtor Digital',
-  category: 'Mercado Digital',
+  category: 'Digital',
   thumbnail: '',
   color: 'from-purple-500 to-purple-700',
   description: 'Template otimizado para lojas virtuais'
 }, {
   id: '6',
   name: 'Agência Digital',
-  category: 'Mercado Digital',
+  category: 'Digital',
   thumbnail: templateAgency,
   color: 'from-pink-500 to-pink-700',
   description: 'Layout criativo para agências e startups'
@@ -66,7 +66,7 @@ const templates: Template[] = [{
   color: 'from-amber-500 to-amber-700',
   description: 'Template atrativo para restaurantes e delivery'
 }];
-const categories = ['Todos', 'Jurídico', 'Saúde', 'Mercado Digital', 'Produtos'];
+const categories = ['Todos', 'Jurídico', 'Saúde', 'Digital', 'Produtos'];
 const TemplatesEditor = () => {
   const { applyTemplate, config } = useSiteEditor();
   const [selectedCategory, setSelectedCategory] = useState('Todos');
