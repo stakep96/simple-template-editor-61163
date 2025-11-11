@@ -48,7 +48,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                     />
                   )}
                   <div 
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 text-xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                    className="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   >
                     Antes
                   </div>
@@ -72,7 +72,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
                     />
                   )}
                   <div 
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 text-xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                    className="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
                   >
                     Depois
                   </div>
