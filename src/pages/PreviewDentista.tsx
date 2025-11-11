@@ -12,7 +12,7 @@ const PreviewDentistaContent = () => {
 
 const PreviewDentista = () => {
   return (
-    <SiteEditorProvider defaultTemplate="1">
+    <SiteEditorProvider defaultTemplate="9">
       <PreviewDentistaContent />
     </SiteEditorProvider>
   );
