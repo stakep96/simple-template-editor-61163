@@ -32,7 +32,7 @@ const templates: Template[] = [{
   description: 'Layout clean para consultórios e clínicas médicas'
 }, {
   id: '9',
-  name: 'Clínica Dentária',
+  name: 'Odontologia',
   category: 'Saúde',
   thumbnail: '',
   color: 'from-blue-500 to-purple-700',
