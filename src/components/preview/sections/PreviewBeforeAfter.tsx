@@ -82,7 +82,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
             
             <div className="text-center">
               <p 
-                className="text-base font-bold"
+                className="text-base"
                 style={{ 
                   color: siteConfig.brand.textColor,
                   fontFamily: 'var(--brand-text-font)'
