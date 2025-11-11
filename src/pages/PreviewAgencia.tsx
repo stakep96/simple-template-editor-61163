@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PreviewSite from '@/components/preview/PreviewSite';
-import { SiteEditorProvider, useSiteEditor } from '@/contexts/SiteEditorContext';
+import { SiteEditorProvider } from '@/contexts/SiteEditorContext';
 
 const PreviewAgenciaContent = () => {
-  const { applyTemplate } = useSiteEditor();
-  
-  useEffect(() => {
-    applyTemplate('1');
-  }, [applyTemplate]);
-  
   return (
     <div className="w-full min-h-screen">
       <PreviewSite />
