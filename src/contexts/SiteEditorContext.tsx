@@ -360,6 +360,7 @@ export interface SiteConfig {
 
 interface SiteEditorContextType {
   config: SiteConfig;
+  isLoading: boolean;
   updateMetadata: (metadata: Partial<SiteMetadata>) => void;
   updateBrand: (brand: Partial<BrandColors>) => void;
   updateMarketing: (marketing: Partial<MarketingConfig>) => void;
@@ -2029,6 +2030,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
     <SiteEditorContext.Provider
       value={{
         config,
+        isLoading,
         updateMetadata,
         updateBrand,
         updateMarketing,
