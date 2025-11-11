@@ -46,7 +46,7 @@ const templates: Template[] = [{
   description: 'Template otimizado para lojas virtuais'
 }, {
   id: '6',
-  name: 'Agência Digital',
+  name: 'Agência de Marketing',
   category: 'Digital',
   thumbnail: templateAgency,
   color: 'from-pink-500 to-pink-700',
