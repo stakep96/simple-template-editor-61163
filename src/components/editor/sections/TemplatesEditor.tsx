@@ -102,44 +102,65 @@ const TemplatesEditor = () => {
             <DialogTrigger asChild>
               <Button variant="outline" size="sm">Ver tudo</Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle>Todos os Modelos</DialogTitle>
-              </DialogHeader>
-              
-              <div className="space-y-6">
+            <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0">
+              <div className="sticky top-0 z-10 bg-background border-b px-6 pt-6 pb-4">
+                <DialogHeader className="mb-4">
+                  <DialogTitle>Todos os Modelos</DialogTitle>
+                </DialogHeader>
+                
                 <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
                   <TabsList className="grid w-full grid-cols-5">
                     {categories.map(cat => <TabsTrigger key={cat} value={cat}>{cat}</TabsTrigger>)}
                   </TabsList>
                 </Tabs>
-                
+              </div>
+              
+              <div className="flex-1 overflow-y-auto px-6 py-4">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {filteredTemplates.map(template => <button key={template.id} onClick={() => setSelectedTemplate(template.id)} className={`group relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${config.currentTemplateId === template.id ? 'border-blue-500 ring-2 ring-blue-500' : 'border-border hover:border-primary'}`}>
-                      <div className="w-full h-full relative">
+                  {filteredTemplates.map(template => (
+                    <div key={template.id} className="relative group">
+                      {/* Borda de seleção quando aplicado */}
+                      {config.currentTemplateId === template.id && (
+                        <div className="absolute -inset-1 border-[3px] border-primary rounded-xl z-20 pointer-events-none" />
+                      )}
+                      
+                      <div className="relative aspect-[3/4] rounded-lg overflow-hidden">
+                        {/* Imagem/Gradient do template */}
                         {template.thumbnail ? (
                           <img src={template.thumbnail} alt={template.name} className="w-full h-full object-cover object-top" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${template.color}`} />
                         )}
-                        <div className="absolute bottom-4 left-4 right-4 bg-background/90 backdrop-blur-sm rounded px-3 py-1">
-                          <p className="font-bold text-sm text-foreground">{template.name}</p>
+                        
+                        {/* Check mark quando aplicado */}
+                        {config.currentTemplateId === template.id && (
+                          <div className="absolute top-2 right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg z-30">
+                            <Check className="w-5 h-5 text-primary-foreground" />
+                          </div>
+                        )}
+                        
+                        {/* Overlay com informações no hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10">
+                          <div className="space-y-3">
+                            <div>
+                              <h3 className="font-bold text-lg text-foreground">{template.name}</h3>
+                              <span className="inline-block px-2 py-0.5 bg-primary/20 text-primary text-xs rounded mt-1">
+                                {template.category}
+                              </span>
+                            </div>
+                            <p className="text-sm text-muted-foreground line-clamp-2">{template.description}</p>
+                            <Button 
+                              onClick={() => handleApplyTemplate(template.id)} 
+                              className="w-full"
+                              size="sm"
+                            >
+                              Aplicar Tema
+                            </Button>
+                          </div>
                         </div>
                       </div>
-                      {config.currentTemplateId === template.id && <div className="absolute top-2 right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                          <Check className="w-5 h-5 text-white" />
-                        </div>}
-                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all" />
-                    </button>)}
-                </div>
-                
-                <div className="flex justify-end gap-2">
-                  <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
-                    Cancelar
-                  </Button>
-                  <Button onClick={() => handleApplyTemplate()} disabled={!selectedTemplate}>
-                    Aplicar Template
-                  </Button>
+                    </div>
+                  ))}
                 </div>
               </div>
             </DialogContent>
