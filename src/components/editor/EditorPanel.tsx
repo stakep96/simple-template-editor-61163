@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2, FolderOpen, MoveHorizontal, Type, Save } from 'lucide-react';
+import { Palette, ImageIcon, Mountain, User, Briefcase, Trophy, GripVertical, Layout, Mail, Globe, TrendingUp, MousePointerClick, MessageSquare, Images, HelpCircle, MapPin, Copyright, Trash2, DollarSign, Sparkles, Gift, Award, Layers, BarChart3, Tag, List, Activity, Building2, FolderOpen, MoveHorizontal, Type, Save, Cloud, CloudOff, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -41,10 +41,9 @@ import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import type { ModuleType } from '@/contexts/SiteEditorContext';
 
 const EditorPanel = () => {
-  const { config, updateModuleInstance, reorderModules, removeModuleInstance } = useSiteEditor();
+  const { config, updateModuleInstance, reorderModules, removeModuleInstance, isSyncing, lastSyncTime, syncError, saveCurrentAsTemplate, forceReloadFromBackend } = useSiteEditor();
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
   const { toast } = useToast();
-  const { saveCurrentAsTemplate } = useSiteEditor();
 
   const handleSave = () => {
     const success = saveCurrentAsTemplate();
@@ -131,13 +130,49 @@ const EditorPanel = () => {
     setDraggedItem(null);
   };
 
+  const formatSyncTime = (date: Date | null) => {
+    if (!date) return '';
+    return date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  };
+
   return (
     <div className="h-full bg-editor-bg relative">
       <div className="p-6 border-b border-border bg-background">
-        <h1 className="text-2xl font-bold text-foreground">Criar Novo Site</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Configure seu mini site em poucos cliques
-        </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">Criar Novo Site</h1>
+            <p className="text-sm text-muted-foreground mt-1">
+              Configure seu mini site em poucos cliques
+            </p>
+          </div>
+          
+          {/* Sync Status Indicator */}
+          <div className="flex flex-col items-end gap-1">
+            {isSyncing && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Sincronizando...</span>
+              </div>
+            )}
+            
+            {!isSyncing && lastSyncTime && !syncError && (
+              <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-500">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Salvo às {formatSyncTime(lastSyncTime)}</span>
+              </div>
+            )}
+            
+            {!isSyncing && syncError && (
+              <button
+                onClick={() => forceReloadFromBackend()}
+                className="flex items-center gap-2 text-sm text-destructive hover:underline"
+              >
+                <AlertCircle className="w-4 h-4" />
+                <span>Erro ao sincronizar - Clique para tentar novamente</span>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
       
       <ScrollArea className="h-[calc(100vh-88px)]">

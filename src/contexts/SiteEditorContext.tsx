@@ -361,6 +361,9 @@ export interface SiteConfig {
 interface SiteEditorContextType {
   config: SiteConfig;
   isLoading: boolean;
+  isSyncing: boolean;
+  lastSyncTime: Date | null;
+  syncError: string | null;
   updateMetadata: (metadata: Partial<SiteMetadata>) => void;
   updateBrand: (brand: Partial<BrandColors>) => void;
   updateMarketing: (marketing: Partial<MarketingConfig>) => void;
@@ -370,6 +373,7 @@ interface SiteEditorContextType {
   removeModuleInstance: (instanceId: string) => void;
   applyTemplate: (templateId: string) => void;
   saveCurrentAsTemplate: () => Promise<boolean>;
+  forceReloadFromBackend: () => Promise<void>;
 }
 
 const defaultConfig: SiteConfig = {
@@ -647,6 +651,9 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
   const [config, setConfig] = useState<SiteConfig>(defaultConfig);
   const [isLoading, setIsLoading] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [lastSyncTime, setLastSyncTime] = useState<Date | null>(null);
+  const [syncError, setSyncError] = useState<string | null>(null);
   const [instanceCounter, setInstanceCounter] = useState<Record<ModuleType, number>>({
     header: 1,
     hero: 1,
@@ -677,74 +684,63 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
     footer: 1,
   });
 
-  // Load config on mount (from backend or localStorage)
+  // Load config on mount (ALWAYS prioritize backend over localStorage)
   useEffect(() => {
     const loadConfig = async () => {
-      if (defaultTemplate || templateId) {
-        // Preview/Editor with specific template: load from backend first, then localStorage, then default
-        const loadId = defaultTemplate || templateId;
-        try {
-          const { loadTemplateFromBackend } = await import('@/lib/supabase');
-          const backendConfig = await loadTemplateFromBackend(loadId);
-          
-          if (backendConfig) {
-            setConfig(backendConfig);
-            setIsLoading(false);
-            setIsInitialized(true);
-            return;
-          }
-        } catch (error) {
-          console.error('Error loading from backend:', error);
-        }
+      const loadId = defaultTemplate || templateId || config.currentTemplateId || '1';
+      
+      console.log(`🔄 Loading template ${loadId} from backend...`);
+      
+      // ALWAYS try backend first
+      try {
+        const { loadTemplateFromBackend } = await import('@/lib/supabase');
+        const backendConfig = await loadTemplateFromBackend(loadId);
         
-        // Try localStorage as fallback
-        try {
+        if (backendConfig) {
+          console.log(`✅ Loaded template ${loadId} from backend`);
+          setConfig(backendConfig);
+          setLastSyncTime(new Date());
+          setIsLoading(false);
+          setIsInitialized(true);
+          return;
+        }
+      } catch (error) {
+        console.error('❌ Error loading from backend:', error);
+      }
+      
+      // Only use localStorage as emergency fallback if backend completely fails
+      console.log('⚠️ Backend failed, trying localStorage as fallback...');
+      try {
+        if (defaultTemplate || templateId) {
           const savedTemplates = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
           if (savedTemplates) {
             const customTemplates = JSON.parse(savedTemplates);
             if (customTemplates[loadId]) {
+              console.log(`📦 Loaded template ${loadId} from localStorage (fallback)`);
               setConfig(customTemplates[loadId]);
               setIsLoading(false);
               setIsInitialized(true);
               return;
             }
           }
-        } catch (error) {
-          console.error('Error loading from localStorage:', error);
-        }
-        
-        // No saved data found, mark as not initialized so applyTemplate runs
-        setIsLoading(false);
-        setIsInitialized(false);
-      } else {
-        // Editor mode: load from localStorage first
-        try {
+        } else {
           const saved = localStorage.getItem(STORAGE_KEY);
           if (saved) {
+            console.log('📦 Loaded config from localStorage (fallback)');
             setConfig(JSON.parse(saved));
             setIsLoading(false);
             setIsInitialized(true);
             return;
           }
-        } catch (error) {
-          console.error('Error loading saved config:', error);
         }
-        
-        // Try to load from backend if localStorage is empty
-        try {
-          const templateIdToLoad = defaultConfig.currentTemplateId || '1';
-          const { loadTemplateFromBackend } = await import('@/lib/supabase');
-          const backendConfig = await loadTemplateFromBackend(templateIdToLoad);
-          if (backendConfig) {
-            setConfig(backendConfig);
-          }
-        } catch (error) {
-          console.error('Backend not available, using default config');
-        }
-        
-        setIsLoading(false);
-        setIsInitialized(true);
+      } catch (error) {
+        console.error('Error loading from localStorage:', error);
       }
+      
+      // No saved data found anywhere
+      console.log('⚠️ No saved data found, will use default template');
+      setIsLoading(false);
+      setIsInitialized(false);
     };
 
     loadConfig();
@@ -758,25 +754,75 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
     }
   }, [isLoading, isInitialized, defaultTemplate]);
 
-  // Save config to localStorage and backend whenever it changes (only in editor mode)
+  // Save config to backend AND localStorage whenever it changes (with retry and feedback)
   useEffect(() => {
-    if (!defaultTemplate && !isLoading) {
-      try {
-        // Save to localStorage
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+    if (!defaultTemplate && !isLoading && isInitialized) {
+      const saveWithRetry = async (retries = 3) => {
+        setIsSyncing(true);
+        setSyncError(null);
         
-        // Also save to backend automatically for public visibility
-        const saveTemplateId = templateId || config.currentTemplateId || '1';
-        import('@/lib/supabase').then(({ saveTemplateToBackend }) => {
-          saveTemplateToBackend(saveTemplateId, config).catch((error) => {
-            console.error('Error auto-saving to backend:', error);
-          });
-        });
-      } catch (error) {
-        console.error('Error saving config:', error);
-      }
+        try {
+          // Save to localStorage as backup
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+          
+          // Save to backend (PRIORITY)
+          const saveTemplateId = templateId || config.currentTemplateId || '1';
+          const { saveTemplateToBackend } = await import('@/lib/supabase');
+          const { toast } = await import('@/hooks/use-toast');
+          
+          const success = await saveTemplateToBackend(saveTemplateId, config);
+          
+          if (success) {
+            console.log(`✅ Saved template ${saveTemplateId} to backend`);
+            setLastSyncTime(new Date());
+            setIsSyncing(false);
+            setSyncError(null);
+            
+            // Show success toast only once every 30 seconds to avoid spam
+            const lastToastKey = 'last-save-toast';
+            const lastToast = sessionStorage.getItem(lastToastKey);
+            const now = Date.now();
+            if (!lastToast || now - parseInt(lastToast) > 30000) {
+              toast({
+                title: "✓ Alterações salvas",
+                description: "Suas mudanças estão visíveis para todos",
+                duration: 2000,
+              });
+              sessionStorage.setItem(lastToastKey, now.toString());
+            }
+          } else {
+            throw new Error('Save returned false');
+          }
+        } catch (error) {
+          console.error(`❌ Error saving to backend (${retries} retries left):`, error);
+          
+          if (retries > 0) {
+            // Retry after delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            return saveWithRetry(retries - 1);
+          } else {
+            // All retries failed
+            const { toast } = await import('@/hooks/use-toast');
+            setSyncError('Erro ao sincronizar com o banco de dados');
+            setIsSyncing(false);
+            toast({
+              title: "⚠️ Erro ao salvar",
+              description: "Suas alterações estão salvas localmente, mas não foram sincronizadas",
+              variant: "destructive",
+              duration: 5000,
+            });
+          }
+        }
+      };
+      
+      // Debounce saves by 500ms to avoid too many backend calls
+      const timeoutId = setTimeout(() => {
+        saveWithRetry();
+      }, 500);
+      
+      return () => clearTimeout(timeoutId);
     }
-  }, [config, defaultTemplate, templateId, isLoading]);
+  }, [config, defaultTemplate, templateId, isLoading, isInitialized]);
 
   const updateMetadata = (metadata: Partial<SiteMetadata>) => {
     setConfig((prev) => ({
@@ -1209,6 +1255,43 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
         moduleOrder: prev.moduleOrder.filter((id) => id !== instanceId),
       };
     });
+  };
+
+  const forceReloadFromBackend = async () => {
+    console.log('🔄 Force reloading from backend...');
+    setIsLoading(true);
+    setSyncError(null);
+    
+    try {
+      const loadId = defaultTemplate || templateId || config.currentTemplateId || '1';
+      const { loadTemplateFromBackend } = await import('@/lib/supabase');
+      const backendConfig = await loadTemplateFromBackend(loadId);
+      
+      if (backendConfig) {
+        console.log(`✅ Force reloaded template ${loadId} from backend`);
+        setConfig(backendConfig);
+        setLastSyncTime(new Date());
+        
+        const { toast } = await import('@/hooks/use-toast');
+        toast({
+          title: "✓ Atualizado",
+          description: "Carregado do banco de dados",
+          duration: 2000,
+        });
+      } else {
+        throw new Error('No data returned from backend');
+      }
+    } catch (error) {
+      console.error('Error force reloading:', error);
+      const { toast } = await import('@/hooks/use-toast');
+      toast({
+        title: "Erro ao carregar",
+        description: "Não foi possível carregar do banco de dados",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const saveCurrentAsTemplate = async (): Promise<boolean> => {
@@ -2031,6 +2114,9 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
       value={{
         config,
         isLoading,
+        isSyncing,
+        lastSyncTime,
+        syncError,
         updateMetadata,
         updateBrand,
         updateMarketing,
@@ -2040,6 +2126,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
         removeModuleInstance,
         applyTemplate,
         saveCurrentAsTemplate,
+        forceReloadFromBackend,
       }}
     >
       {children}
