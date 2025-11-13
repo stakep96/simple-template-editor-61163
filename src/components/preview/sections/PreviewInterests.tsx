@@ -15,7 +15,7 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="py-12 px-4"
+      className="py-8 px-4"
       style={{ backgroundColor: config.brand.background }}
     >
       <div className="max-w-3xl mx-auto">

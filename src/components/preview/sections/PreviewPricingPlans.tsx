@@ -17,7 +17,7 @@ const PreviewPricingPlans: React.FC<PreviewPricingPlansProps> = ({ instanceId })
   if (!plans.length) return null;
 
   return (
-    <section className="px-6 py-12">
+    <section className="px-6 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="grid gap-6" style={{
           gridTemplateColumns: `repeat(${Math.min(plans.length, 3)}, 1fr)`

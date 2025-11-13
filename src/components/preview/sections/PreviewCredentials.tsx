@@ -14,7 +14,7 @@ const PreviewCredentials: React.FC<PreviewCredentialsProps> = ({ config }) => {
 
   return (
     <section 
-      className="py-6 px-4"
+      className="py-8 px-4"
       style={{ backgroundColor: siteConfig.brand.background }}
     >
       <div className="max-w-3xl mx-auto">

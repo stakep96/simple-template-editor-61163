@@ -28,7 +28,7 @@ const PreviewTestimonialsImages: React.FC<PreviewTestimonialsImagesProps> = ({ c
   if (!config.images.length) return null;
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {config.title && (
           <h2 

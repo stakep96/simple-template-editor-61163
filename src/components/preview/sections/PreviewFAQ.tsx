@@ -21,7 +21,7 @@ const PreviewFAQ: React.FC<PreviewFAQProps> = ({ instanceId }) => {
 
   return (
     <section
-      className="w-full py-16 px-4"
+      className="w-full py-8 px-4"
       style={{
         backgroundColor: `var(--brand-background)`,
       }}

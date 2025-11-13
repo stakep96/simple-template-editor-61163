@@ -21,7 +21,7 @@ const PreviewPortfolio: React.FC<PreviewPortfolioProps> = ({ instanceId }) => {
   }
 
   return (
-    <section className="py-12 px-6">
+    <section className="py-8 px-6">
       <div className="max-w-2xl mx-auto">
         {portfolioConfig.title && (
           <h2 

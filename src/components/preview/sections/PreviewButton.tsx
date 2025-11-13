@@ -14,7 +14,7 @@ const PreviewButton: React.FC<PreviewButtonProps> = ({ instanceId }) => {
   if (!buttonConfig) return null;
 
   return (
-    <section className="px-6 py-8">
+    <section className="px-6 py-6">
       <div className="max-w-2xl mx-auto flex justify-center">
         <a
           href={buttonConfig.link || '#'}
