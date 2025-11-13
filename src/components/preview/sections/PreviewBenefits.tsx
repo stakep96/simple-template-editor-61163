@@ -31,7 +31,7 @@ const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
           </h2>
           
           <div className="space-y-3 mb-6">
-            {config.benefits.map((benefit) => (
+            {(config.benefits || []).map((benefit) => (
               <div key={benefit.id} className="flex items-start gap-2">
                 <BadgeCheck 
                   className="w-5 h-5 flex-shrink-0 mt-0.5"
