@@ -16,7 +16,7 @@ const BenefitsEditor: React.FC<BenefitsEditorProps> = ({ instanceId }) => {
   const instance = config.moduleInstances[instanceId];
   const benefitsConfig = instance?.config as BenefitsConfig;
 
-  if (!benefitsConfig || !benefitsConfig.benefits) return null;
+  if (!benefitsConfig) return null;
 
   const updateBenefit = (id: string, text: string) => {
     const updatedBenefits = benefitsConfig.benefits.map(benefit =>
@@ -35,8 +35,7 @@ const BenefitsEditor: React.FC<BenefitsEditorProps> = ({ instanceId }) => {
       id: Date.now().toString(),
       text: 'Novo benefício',
     };
-    const currentBenefits = benefitsConfig.benefits || [];
-    updateModuleInstance(instanceId, { benefits: [...currentBenefits, newBenefit] });
+    updateModuleInstance(instanceId, { benefits: [...benefitsConfig.benefits, newBenefit] });
   };
 
   return (

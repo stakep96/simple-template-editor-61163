@@ -10,10 +10,6 @@ interface PreviewBenefitsProps {
 const PreviewBenefits: React.FC<PreviewBenefitsProps> = ({ config }) => {
   const { config: siteConfig } = useSiteEditor();
   
-  if (!config.benefits || config.benefits.length === 0) {
-    return null;
-  }
-  
   return (
     <section className="px-6 py-12" style={{ backgroundColor: siteConfig.brand.background }}>
       <div className="max-w-2xl mx-auto">
