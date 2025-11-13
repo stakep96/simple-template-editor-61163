@@ -2109,26 +2109,26 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
     });
   };
 
+  const contextValue = {
+    config,
+    isLoading,
+    isSyncing,
+    lastSyncTime,
+    syncError,
+    updateMetadata,
+    updateBrand,
+    updateMarketing,
+    updateModuleInstance,
+    reorderModules,
+    addModuleAt,
+    removeModuleInstance,
+    applyTemplate,
+    saveCurrentAsTemplate,
+    forceReloadFromBackend,
+  };
+
   return (
-    <SiteEditorContext.Provider
-      value={{
-        config,
-        isLoading,
-        isSyncing,
-        lastSyncTime,
-        syncError,
-        updateMetadata,
-        updateBrand,
-        updateMarketing,
-        updateModuleInstance,
-        reorderModules,
-        addModuleAt,
-        removeModuleInstance,
-        applyTemplate,
-        saveCurrentAsTemplate,
-        forceReloadFromBackend,
-      }}
-    >
+    <SiteEditorContext.Provider value={contextValue}>
       {children}
     </SiteEditorContext.Provider>
   );
