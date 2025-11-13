@@ -18,7 +18,7 @@ const PreviewSuccessCases: React.FC<PreviewSuccessCasesProps> = ({ instanceId })
 
   return (
     <section 
-      className="py-12 relative"
+      className="py-8 relative"
       style={{ backgroundColor: config.brand.background }}
     >
       <h2 

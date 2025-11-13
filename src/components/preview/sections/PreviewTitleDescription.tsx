@@ -13,7 +13,7 @@ const PreviewTitleDescription: React.FC<PreviewTitleDescriptionProps> = ({ insta
   if (!config) return null;
 
   return (
-    <section className="py-2 px-4">
+    <section className="py-6 px-4">
       <div className="max-w-3xl mx-auto text-center">
         <h2 
           className="text-2xl font-bold mb-1"

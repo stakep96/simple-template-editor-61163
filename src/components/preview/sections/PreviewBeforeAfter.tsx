@@ -10,7 +10,7 @@ const PreviewBeforeAfter: React.FC<PreviewBeforeAfterProps> = ({ config }) => {
   const { config: siteConfig } = useSiteEditor();
   
   return (
-    <section className="py-12" style={{ backgroundColor: siteConfig.brand.background }}>
+    <section className="py-8" style={{ backgroundColor: siteConfig.brand.background }}>
       <h2 
         className="text-2xl font-bold text-center mb-8 px-6"
         style={{ 

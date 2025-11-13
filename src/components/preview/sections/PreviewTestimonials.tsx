@@ -34,7 +34,7 @@ const PreviewTestimonials: React.FC<PreviewTestimonialsProps> = ({ config }) => 
   }, [api]);
 
   return (
-    <section className="py-16 px-4 overflow-hidden">
+    <section className="py-8 px-4 overflow-hidden">
       <div className="max-w-2xl mx-auto">
         <h2 
           className="text-3xl font-bold text-center mb-12" 

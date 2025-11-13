@@ -15,7 +15,7 @@ const PreviewImageText: React.FC<PreviewImageTextProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="px-2.5 py-12"
+      className="px-2.5 py-8"
       style={{ backgroundColor: config.brand.background }}
     >
       <div className="mx-auto max-w-md">

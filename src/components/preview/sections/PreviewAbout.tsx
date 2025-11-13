@@ -17,7 +17,7 @@ const PreviewAbout: React.FC<PreviewAboutProps> = ({ instanceId }) => {
 
   return (
     <section 
-      className="px-2.5 py-12"
+      className="px-2.5 py-8"
       style={{ backgroundColor: config.brand.background }}
     >
       <div 
