@@ -80,6 +80,18 @@ const TemplatesEditor = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const filteredTemplates = selectedCategory === 'Todos' ? templates : templates.filter(t => t.category === selectedCategory);
+  
+  // Reordenar templates para mostrar o selecionado primeiro
+  const reorderedTemplates = React.useMemo(() => {
+    const currentId = config.currentTemplateId;
+    if (!currentId) return templates;
+    
+    const currentTemplate = templates.find(t => t.id === currentId);
+    if (!currentTemplate) return templates;
+    
+    const otherTemplates = templates.filter(t => t.id !== currentId);
+    return [currentTemplate, ...otherTemplates];
+  }, [config.currentTemplateId]);
 
   const handleApplyTemplate = (templateId?: string) => {
     const idToApply = templateId || selectedTemplate;
@@ -167,7 +179,7 @@ const TemplatesEditor = () => {
           </Dialog>
         </div>
         <CarouselContent className="-ml-2">
-          {templates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-3">
+          {reorderedTemplates.slice(0, 6).map(template => <CarouselItem key={template.id} className="pl-2 basis-1/5 p-3">
               <div className="relative">
                 {/* Borda de seleção - fica por cima de tudo - apenas se for o template aplicado */}
                 {config.currentTemplateId === template.id && (
