@@ -1349,6 +1349,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
       '9': ['header', 'hero', 'about', 'services', 'before-after', 'testimonials', 'location', 'contact', 'footer'], // Clínica Dentária Nova
+      '10': ['header', 'hero', 'about', 'footer'], // Influencer (Kit Midia)
     };
 
     const modules = templateModules[templateId];
@@ -1421,6 +1422,13 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 alignment: 'center',
                 transparentBackground: false,
               };
+            } else if (templateId === '10') {
+              defaultModuleConfig = {
+                enabled: true,
+                logo: '@seuinfluencer',
+                alignment: 'center',
+                transparentBackground: true,
+              };
             } else {
               defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
             }
@@ -1441,6 +1449,15 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 gradientOpacity: 0.6,
                 title: 'Transformamos ideias em experiências digitais incríveis',
                 description: 'Sua parceira estratégica em design, desenvolvimento e marketing digital',
+                imageFade: true,
+              };
+            } else if (templateId === '10') {
+              defaultModuleConfig = {
+                enabled: true,
+                backgroundImage: '',
+                gradientOpacity: 0.5,
+                title: 'Criando conteúdo autêntico que inspira',
+                description: 'Transformo marcas em histórias que conectam com milhões de pessoas',
                 imageFade: true,
               };
             } else {
@@ -1493,6 +1510,38 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                   { id: '2', icon: 'users', text: 'Equipe multidisciplinar de 15 especialistas' },
                   { id: '3', icon: 'target', text: 'Clientes em 5 países diferentes' },
                   { id: '4', icon: 'award', text: 'Prêmios de excelência em design digital' },
+                ],
+              };
+            } else if (templateId === '10') {
+              defaultModuleConfig = {
+                enabled: true,
+                sectionTitle: 'Sobre mim',
+                photo: '',
+                name: 'Seu Nome',
+                title: 'Criador de Conteúdo Digital',
+                description: 'Compartilho minha paixão por [nicho] com uma comunidade engajada de milhares de seguidores. Meu objetivo é inspirar e conectar pessoas através de conteúdo autêntico e relevante.',
+                socialLinks: [
+                  {
+                    id: 'social-1',
+                    platform: 'instagram',
+                    url: 'https://instagram.com',
+                  },
+                  {
+                    id: 'social-2',
+                    platform: 'youtube',
+                    url: 'https://youtube.com',
+                  },
+                  {
+                    id: 'social-3',
+                    platform: 'tiktok',
+                    url: 'https://tiktok.com',
+                  },
+                ],
+                education: [
+                  { id: '1', icon: 'users', text: '500K+ seguidores nas redes sociais' },
+                  { id: '2', icon: 'heart', text: '10M+ de engajamento mensal' },
+                  { id: '3', icon: 'video', text: 'Parcerias com marcas globais' },
+                  { id: '4', icon: 'award', text: 'Criador verificado em todas as plataformas' },
                 ],
               };
             } else {
@@ -1974,6 +2023,11 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 enabled: true,
                 copyrightText: '© Agência Criativa Digital 2025\nTodos os direitos reservados',
               };
+            } else if (templateId === '10') {
+              defaultModuleConfig = {
+                enabled: true,
+                copyrightText: '© @seuinfluencer 2025\nTodos os direitos reservados',
+              };
             } else {
               defaultModuleConfig = {
                 enabled: true,
@@ -2056,6 +2110,17 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
         };
+      } else if (templateId === '10') {
+        // Influencer Kit Midia
+        metadataConfig = {
+          siteName: 'Seu Influencer',
+          domain: 'meusite',
+          title: '@seuinfluencer - Criador de Conteúdo Digital',
+          description: 'Conteúdo autêntico que inspira. Compartilhando momentos, histórias e parcerias com marcas que fazem a diferença.',
+          customDomain: prev.metadata.customDomain,
+          customDomainName: prev.metadata.customDomainName,
+          customDomainSaved: prev.metadata.customDomainSaved,
+        };
       }
 
       // Configurações de brand específicas por template
@@ -2095,6 +2160,18 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           titleColor: '#1A1A2E', // Preto/Azul escuro
           textColor: '#4A5568', // Cinza médio
           fontCombination: 'poppins-inter', // Poppins + Inter
+        };
+      } else if (templateId === '10') {
+        // Influencer Kit Midia - cores vibrantes e modernas
+        brandConfig = {
+          primary: '#FF6B9D', // Rosa coral vibrante
+          secondary: '#C084FC', // Roxo suave
+          accent: '#FFD93D', // Amarelo dourado
+          text: '#1F2937', // Cinza escuro
+          background: '#FFFFFF', // Branco
+          titleColor: '#1F2937', // Cinza escuro
+          textColor: '#6B7280', // Cinza médio
+          fontCombination: 'montserrat-roboto', // Montserrat + Roboto
         };
       }
 

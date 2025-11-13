@@ -31,12 +31,19 @@ const templates: Template[] = [{
   color: 'from-green-500 to-green-700',
   description: 'Layout clean para consultórios e clínicas médicas'
 }, {
-  id: '9',
-  name: 'Odontologia',
-  category: 'Saúde',
+  id: '10',
+  name: 'Influencer (Kit Midia)',
+  category: 'Digital',
   thumbnail: '',
-  color: 'from-blue-500 to-purple-700',
-  description: 'Excellence in Dental Care - Design moderno para clínicas odontológicas'
+  color: 'from-purple-500 to-pink-500',
+  description: 'Template minimalista para influenciadores digitais e criadores de conteúdo'
+}, {
+  id: '6',
+  name: 'Agência de Marketing',
+  category: 'Digital',
+  thumbnail: templateAgency,
+  color: 'from-pink-500 to-pink-700',
+  description: 'Layout criativo para agências e startups'
 }, {
   id: '5',
   name: 'Produtor Digital',
@@ -45,12 +52,12 @@ const templates: Template[] = [{
   color: 'from-purple-500 to-purple-700',
   description: 'Template otimizado para lojas virtuais'
 }, {
-  id: '6',
-  name: 'Agência de Marketing',
-  category: 'Digital',
-  thumbnail: templateAgency,
-  color: 'from-pink-500 to-pink-700',
-  description: 'Layout criativo para agências e startups'
+  id: '9',
+  name: 'Odontologia',
+  category: 'Saúde',
+  thumbnail: '',
+  color: 'from-blue-500 to-purple-700',
+  description: 'Excellence in Dental Care - Design moderno para clínicas odontológicas'
 }, {
   id: '7',
   name: 'Loja de Roupas',
