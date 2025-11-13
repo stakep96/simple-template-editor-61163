@@ -41,7 +41,7 @@ const PreviewInterests: React.FC<PreviewInterestsProps> = ({ instanceId }) => {
                 key={index}
                 className="px-4 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105"
                 style={{
-                  backgroundColor: config.brand.secondary,
+                  backgroundColor: config.brand.accent,
                   color: config.brand.primary,
                   fontFamily: 'var(--brand-text-font)'
                 }}
