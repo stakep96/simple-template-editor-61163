@@ -17,7 +17,7 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
   const instance = config.moduleInstances[instanceId];
   const plansConfig = instance?.config as PricingPlansConfig;
 
-  if (!plansConfig) return null;
+  if (!plansConfig || !plansConfig.plans) return null;
 
   const updatePlan = (planId: string, field: keyof PricingPlan, value: any) => {
     const updatedPlans = plansConfig.plans.map((plan) =>
@@ -71,7 +71,8 @@ const PricingPlansEditor: React.FC<PricingPlansEditorProps> = ({ instanceId }) =
       ctaText: 'Escolher Plano',
       ctaLink: '',
     };
-    updateModuleInstance(instanceId, { plans: [...plansConfig.plans, newPlan] });
+    const currentPlans = plansConfig.plans || [];
+    updateModuleInstance(instanceId, { plans: [...currentPlans, newPlan] });
   };
 
   return (
