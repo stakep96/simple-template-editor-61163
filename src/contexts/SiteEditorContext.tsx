@@ -940,20 +940,47 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           };
           break;
         case 'pricing':
-          defaultModuleConfig = {
-            enabled: true,
-            plans: [
-              {
-                id: '1',
-                name: 'Plano Básico',
-                price: '450',
-                period: 'mensal',
-                benefits: ['Consultas mensais', 'Suporte por WhatsApp', 'Ajustes no plano'],
-                ctaText: 'Escolher Plano',
-                ctaLink: '',
-              },
-            ],
-          };
+          if (templateId === '5') {
+            defaultModuleConfig = {
+              enabled: true,
+              plans: [
+                {
+                  id: '1',
+                  name: 'Plano Anual',
+                  originalPrice: '2.388',
+                  price: '997',
+                  period: 'anual',
+                  benefits: [
+                    'Acesso vitalício à plataforma',
+                    '+ de 200 aulas gravadas',
+                    'Aulas ao vivo 2x por semana',
+                    'Certificado internacional',
+                    'Grupo de prática exclusivo',
+                    'Material didático completo',
+                    'Suporte direto com a professora',
+                    'Garantia de 30 dias',
+                  ],
+                  ctaText: 'Garantir minha vaga',
+                  ctaLink: 'https://wa.me/',
+                },
+              ],
+            };
+          } else {
+            defaultModuleConfig = {
+              enabled: true,
+              plans: [
+                {
+                  id: '1',
+                  name: 'Plano Básico',
+                  price: '450',
+                  period: 'mensal',
+                  benefits: ['Consultas mensais', 'Suporte por WhatsApp', 'Ajustes no plano'],
+                  ctaText: 'Escolher Plano',
+                  ctaLink: '',
+                },
+              ],
+            };
+          }
           break;
         case 'location':
           defaultModuleConfig = {
@@ -985,26 +1012,36 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           };
           break;
         case 'benefits':
-          defaultModuleConfig = {
-            enabled: true,
-            title: 'Acompanhamento Mensal',
-            benefits: [
-              {
-                id: '1',
-                text: '4 consultas mensais',
-              },
-              {
-                id: '2',
-                text: 'Suporte por WhatsApp',
-              },
-              {
-                id: '3',
-                text: 'Plano alimentar personalizado',
-              },
-            ],
-            ctaText: 'Agendar reunião',
-            ctaLink: '',
-          };
+          if (templateId === '5') {
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Por Que Escolher o Fluência Total?',
+              benefits: [
+                { id: '1', text: 'Metodologia comprovada por mais de 5.000 alunos' },
+                { id: '2', text: 'Aulas ao vivo com professora nativa 2x por semana' },
+                { id: '3', text: 'Acesso vitalício à plataforma com + de 200 aulas gravadas' },
+                { id: '4', text: 'Certificado internacional reconhecido' },
+                { id: '5', text: 'Grupo exclusivo de prática com outros alunos' },
+                { id: '6', text: 'Material didático completo em PDF' },
+                { id: '7', text: 'Suporte direto com a professora via WhatsApp' },
+                { id: '8', text: 'Garantia de 30 dias ou seu dinheiro de volta' },
+              ],
+              ctaText: 'Quero me inscrever agora',
+              ctaLink: '#contact',
+            };
+          } else {
+            defaultModuleConfig = {
+              enabled: true,
+              title: 'Acompanhamento Mensal',
+              benefits: [
+                { id: '1', text: '4 consultas mensais' },
+                { id: '2', text: 'Suporte por WhatsApp' },
+                { id: '3', text: 'Plano alimentar personalizado' },
+              ],
+              ctaText: 'Agendar reunião',
+              ctaLink: '',
+            };
+          }
           break;
         case 'credentials':
           defaultModuleConfig = {
@@ -1261,7 +1298,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
       '1': ['header', 'hero', 'about', 'practice', 'cases', 'testimonials', 'gallery', 'faq', 'location', 'footer'], // Jurídico
       '3': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Consultório Médico
       '4': ['header', 'hero', 'about', 'testimonials', 'gallery', 'location', 'footer'], // Clínica Dentária
-      '5': ['header', 'hero', 'about', 'gallery', 'testimonials', 'contact', 'footer'], // E-commerce
+      '5': ['header', 'hero', 'title-description', 'benefits', 'title-description', 'services', 'pricing', 'testimonials', 'faq', 'contact', 'footer'], // Produtor Digital
       '6': ['header', 'hero', 'marquee', 'about', 'title-description', 'services', 'portfolio', 'brands', 'testimonials', 'contact', 'footer'], // Agência Digital
       '7': ['header', 'hero', 'about', 'gallery', 'testimonials', 'location', 'footer'], // Loja de Roupas
       '8': ['header', 'hero', 'about', 'gallery', 'location', 'footer'], // Restaurante
@@ -1338,6 +1375,13 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 alignment: 'center',
                 transparentBackground: false,
               };
+            } else if (templateId === '5') {
+              defaultModuleConfig = {
+                enabled: true,
+                logo: 'Fluência Total',
+                alignment: 'center',
+                transparentBackground: false,
+              };
             } else {
               defaultModuleConfig = { enabled: true, logo: '', alignment: 'center' };
             }
@@ -1358,6 +1402,15 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 gradientOpacity: 0.6,
                 title: 'Transformamos ideias em experiências digitais incríveis',
                 description: 'Sua parceira estratégica em design, desenvolvimento e marketing digital',
+                imageFade: true,
+              };
+            } else if (templateId === '5') {
+              defaultModuleConfig = {
+                enabled: true,
+                backgroundImage: '/images/hero-english-teacher.jpg',
+                gradientOpacity: 0.5,
+                title: 'Domine o Inglês e Abra Portas para o Mundo',
+                description: 'Método exclusivo que já transformou a vida de mais de 5.000 alunos. Aprenda inglês de verdade, com fluência e confiança!',
                 imageFade: true,
               };
             } else {
@@ -1504,6 +1557,13 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 subtitle: 'Preencha o formulário e entraremos em contato em até 24h',
                 fields: ['name', 'email', 'phone', 'message'],
               };
+            } else if (templateId === '5') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Garanta Sua Vaga Agora!',
+                subtitle: 'Preencha o formulário e receba todas as informações para começar sua jornada rumo à fluência',
+                fields: ['name', 'email', 'phone', 'message'],
+              };
             } else {
               defaultModuleConfig = {
                 enabled: true,
@@ -1612,32 +1672,66 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
             };
             break;
           case 'faq':
-            defaultModuleConfig = {
-              enabled: true,
-              title: 'Perguntas Frequentes',
-              items: [
-                {
-                  id: '1',
-                  question: 'Quanto tempo dura um processo judicial?',
-                  answer: 'O tempo de duração varia de acordo com a complexidade do caso e a instância judicial. Processos mais simples podem levar de 6 meses a 2 anos, enquanto casos mais complexos podem durar mais tempo.',
-                },
-                {
-                  id: '2',
-                  question: 'Como funciona o pagamento dos honorários?',
-                  answer: 'Os honorários são estabelecidos de acordo com a complexidade do caso. Oferecemos diferentes modalidades de pagamento: valor fixo, percentual sobre o resultado ou combinação de ambos.',
-                },
-                {
-                  id: '3',
-                  question: 'Posso acompanhar meu processo online?',
-                  answer: 'Sim! Você terá acesso a todas as movimentações processuais através de contato direto comigo e também poderá acompanhar pelos sistemas dos tribunais com as orientações que fornecerei.',
-                },
-                {
-                  id: '4',
-                  question: 'Qual a diferença entre advogado e defensor público?',
-                  answer: 'O advogado é contratado particularmente pelo cliente, enquanto o defensor público atende gratuitamente pessoas que não podem pagar. Um advogado particular pode oferecer atendimento mais personalizado e dedicado.',
-                },
-              ],
-            };
+            if (templateId === '5') {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Perguntas Frequentes',
+                items: [
+                  {
+                    id: '1',
+                    question: 'Quanto tempo leva para alcançar a fluência?',
+                    answer: 'O tempo varia de acordo com sua dedicação, mas a maioria dos alunos que seguem o método e praticam regularmente alcançam conversação fluente em 6 a 12 meses. O importante é a consistência!',
+                  },
+                  {
+                    id: '2',
+                    question: 'Preciso ter conhecimento prévio de inglês?',
+                    answer: 'Não! O curso é estruturado para todos os níveis, do iniciante ao avançado. Temos módulos específicos para cada etapa do aprendizado.',
+                  },
+                  {
+                    id: '3',
+                    question: 'As aulas ao vivo são obrigatórias?',
+                    answer: 'Não são obrigatórias, mas são altamente recomendadas! É onde você pratica com a professora e outros alunos. Todas as aulas ficam gravadas caso não possa participar ao vivo.',
+                  },
+                  {
+                    id: '4',
+                    question: 'Como funciona a garantia de 30 dias?',
+                    answer: 'Simples! Se em 30 dias você achar que o curso não é para você, devolvemos 100% do seu investimento, sem burocracia e sem perguntas.',
+                  },
+                  {
+                    id: '5',
+                    question: 'O certificado é reconhecido internacionalmente?',
+                    answer: 'Sim! Nosso certificado é reconhecido e pode ser utilizado para comprovar seu nível de inglês em processos seletivos, universidades e empresas.',
+                  },
+                ],
+              };
+            } else {
+              defaultModuleConfig = {
+                enabled: true,
+                title: 'Perguntas Frequentes',
+                items: [
+                  {
+                    id: '1',
+                    question: 'Quanto tempo dura um processo judicial?',
+                    answer: 'O tempo de duração varia de acordo com a complexidade do caso e a instância judicial. Processos mais simples podem levar de 6 meses a 2 anos, enquanto casos mais complexos podem durar mais tempo.',
+                  },
+                  {
+                    id: '2',
+                    question: 'Como funciona o pagamento dos honorários?',
+                    answer: 'Os honorários são estabelecidos de acordo com a complexidade do caso. Oferecemos diferentes modalidades de pagamento: valor fixo, percentual sobre o resultado ou combinação de ambos.',
+                  },
+                  {
+                    id: '3',
+                    question: 'Posso acompanhar meu processo online?',
+                    answer: 'Sim! Você terá acesso a todas as movimentações processuais através de contato direto comigo e também poderá acompanhar pelos sistemas dos tribunais com as orientações que fornecerei.',
+                  },
+                  {
+                    id: '4',
+                    question: 'Qual a diferença entre advogado e defensor público?',
+                    answer: 'O advogado é contratado particularmente pelo cliente, enquanto o defensor público atende gratuitamente pessoas que não podem pagar. Um advogado particular pode oferecer atendimento mais personalizado e dedicado.',
+                  },
+                ],
+              };
+            }
             break;
           case 'location':
             if (templateId === '9') {
@@ -1778,6 +1872,40 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                   },
                 ],
               };
+            } else if (templateId === '5') {
+              defaultModuleConfig = {
+                enabled: true,
+                cards: [
+                  {
+                    id: 'service-1',
+                    icon: 'headphones',
+                    title: 'Listening Avançado',
+                    subtitle: 'Compreensão total em inglês',
+                    description: 'Treine sua audição com métodos comprovados e aprenda a entender qualquer sotaque de inglês.',
+                  },
+                  {
+                    id: 'service-2',
+                    icon: 'message-circle',
+                    title: 'Speaking Fluente',
+                    subtitle: 'Fale com confiança',
+                    description: 'Desenvolva sua fala através de técnicas práticas que vão te fazer falar inglês naturalmente.',
+                  },
+                  {
+                    id: 'service-3',
+                    icon: 'book-open',
+                    title: 'Reading & Writing',
+                    subtitle: 'Escreva e leia perfeitamente',
+                    description: 'Domine a escrita e leitura em inglês para trabalhos, estudos ou viagens internacionais.',
+                  },
+                  {
+                    id: 'service-4',
+                    icon: 'briefcase',
+                    title: 'Business English',
+                    subtitle: 'Inglês para negócios',
+                    description: 'Vocabulário profissional, apresentações, negociações e networking em inglês empresarial.',
+                  },
+                ],
+              };
             } else {
               defaultModuleConfig = {
                 enabled: true,
@@ -1877,6 +2005,22 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
                 title: 'Nossos serviços',
                 description: '',
               };
+            } else if (templateId === '5') {
+              // Cria configurações diferentes para cada instância
+              const instanceCounter = newCounter['title-description'];
+              if (instanceCounter === 1) {
+                defaultModuleConfig = {
+                  enabled: true,
+                  title: 'O Que Você Vai Aprender',
+                  description: 'Nosso método exclusivo cobre todas as habilidades essenciais para você dominar o inglês',
+                };
+              } else {
+                defaultModuleConfig = {
+                  enabled: true,
+                  title: 'Módulos do Curso',
+                  description: 'Conteúdo completo e estruturado para levar você do básico à fluência',
+                };
+              }
             } else {
               defaultModuleConfig = {
                 enabled: true,
@@ -1890,6 +2034,11 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
               defaultModuleConfig = {
                 enabled: true,
                 copyrightText: '© Agência Criativa Digital 2025\nTodos os direitos reservados',
+              };
+            } else if (templateId === '5') {
+              defaultModuleConfig = {
+                enabled: true,
+                copyrightText: '© Fluência Total 2025 - Todos os direitos reservados\nCurso de Inglês Online',
               };
             } else {
               defaultModuleConfig = {
@@ -1973,6 +2122,17 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
         };
+      } else if (templateId === '5') {
+        // Produtor Digital - Curso de Inglês
+        metadataConfig = {
+          siteName: 'Fluência Total',
+          domain: 'meusite',
+          title: 'Fluência Total - Curso de Inglês Online',
+          description: 'Aprenda inglês de verdade com método exclusivo. Mais de 5.000 alunos transformados. Aulas ao vivo, certificado internacional e garantia de 30 dias.',
+          customDomain: prev.metadata.customDomain,
+          customDomainName: prev.metadata.customDomainName,
+          customDomainSaved: prev.metadata.customDomainSaved,
+        };
       }
 
       // Configurações de brand específicas por template
@@ -2011,6 +2171,18 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           background: '#FFFFFF', // Branco
           titleColor: '#1A1A2E', // Preto/Azul escuro
           textColor: '#4A5568', // Cinza médio
+          fontCombination: 'poppins-inter', // Poppins + Inter
+        };
+      } else if (templateId === '5') {
+        // Produtor Digital - cores energéticas e modernas
+        brandConfig = {
+          primary: '#7C3AED', // Roxo vibrante (aprendizado/crescimento)
+          secondary: '#F59E0B', // Laranja/Amarelo (energia/sucesso)
+          accent: '#10B981', // Verde (progresso/resultado)
+          text: '#1F2937', // Cinza escuro
+          background: '#FFFFFF', // Branco
+          titleColor: '#1F2937', // Cinza escuro
+          textColor: '#4B5563', // Cinza médio
           fontCombination: 'poppins-inter', // Poppins + Inter
         };
       }
