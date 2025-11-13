@@ -12,7 +12,7 @@ const PreviewPricingPlans: React.FC<PreviewPricingPlansProps> = ({ instanceId })
   const instance = config.moduleInstances[instanceId];
   const plansConfig = instance?.config as PricingPlansConfig;
 
-  if (!plansConfig || !plansConfig.plans.length) return null;
+  if (!plansConfig || !plansConfig.plans || !plansConfig.plans.length) return null;
 
   return (
     <section className="px-6 py-12">
