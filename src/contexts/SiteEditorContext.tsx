@@ -5,6 +5,7 @@ export interface SiteMetadata {
   domain: string;
   title: string;
   description: string;
+  favicon: string;
   customDomain: boolean;
   customDomainName: string;
   customDomainSaved: boolean;
@@ -382,6 +383,7 @@ const defaultConfig: SiteConfig = {
     domain: '',
     title: 'Advocacia Especializada em Direito Criminal e Empresarial',
     description: 'Mais de 15 anos de experiência defendendo seus direitos com excelência e dedicação',
+    favicon: '',
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,
@@ -2095,6 +2097,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           domain: 'meusite',
           title: 'Agência Gama',
           description: 'Mais de 15 anos de experiência no mercado digital Brasileiro!',
+          favicon: prev.metadata.favicon,
           customDomain: prev.metadata.customDomain,
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
@@ -2106,6 +2109,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           domain: 'meusite',
           title: 'Clínica Odontológica - Excellence in Dental Care',
           description: 'Transforme seu sorriso com nossa equipe de especialistas. Tecnologia de ponta e atendimento personalizado para cuidar da sua saúde bucal.',
+          favicon: prev.metadata.favicon,
           customDomain: prev.metadata.customDomain,
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
@@ -2117,6 +2121,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           domain: 'meusite',
           title: '@seuinfluencer - Criador de Conteúdo Digital',
           description: 'Conteúdo autêntico que inspira. Compartilhando momentos, histórias e parcerias com marcas que fazem a diferença.',
+          favicon: prev.metadata.favicon,
           customDomain: prev.metadata.customDomain,
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,

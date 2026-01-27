@@ -29,6 +29,7 @@ const fullTestConfig: SiteConfig = {
     domain: 'teste.com',
     title: 'Teste - Todos os Módulos',
     description: 'Preview de teste com todos os componentes ativos',
+    favicon: '',
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,

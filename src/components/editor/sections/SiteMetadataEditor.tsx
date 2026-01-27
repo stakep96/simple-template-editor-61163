@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
+import { ImageUploadSquare } from '@/components/ui/image-upload-square';
 import { useSiteEditor } from '@/contexts/SiteEditorContext';
 import { Copy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -65,6 +66,20 @@ const SiteMetadataEditor = () => {
         <Textarea id="description" value={config.metadata.description} onChange={e => updateMetadata({
         description: e.target.value
       })} placeholder="Fale um pouco sobre você ou sua empresa" className="w-full min-h-[100px] resize-none" />
+      </div>
+
+      <div className="space-y-2">
+        <Label className="text-sm font-medium">
+          Favicon
+        </Label>
+        <p className="text-xs text-muted-foreground">
+          Imagem quadrada até 420x420px (PNG ou JPEG)
+        </p>
+        <ImageUploadSquare
+          value={config.metadata.favicon}
+          onChange={(value) => updateMetadata({ favicon: value })}
+          hint="PNG ou JPEG"
+        />
       </div>
 
       <div className="space-y-2">
