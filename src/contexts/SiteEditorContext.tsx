@@ -9,6 +9,7 @@ export interface SiteMetadata {
   customDomain: boolean;
   customDomainName: string;
   customDomainSaved: boolean;
+  customDomainStatus: 'idle' | 'waiting' | 'connected' | 'error';
 }
 
 export interface BrandColors {
@@ -387,6 +388,7 @@ const defaultConfig: SiteConfig = {
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,
+    customDomainStatus: 'idle' as const,
   },
   brand: {
     primary: '#A1083D',
@@ -2101,6 +2103,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           customDomain: prev.metadata.customDomain,
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
+          customDomainStatus: prev.metadata.customDomainStatus || 'idle',
         };
       } else if (templateId === '9') {
         // Clínica Dentária
@@ -2113,6 +2116,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           customDomain: prev.metadata.customDomain,
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
+          customDomainStatus: prev.metadata.customDomainStatus || 'idle',
         };
       } else if (templateId === '10') {
         // Influencer Kit Midia
@@ -2125,6 +2129,7 @@ export const SiteEditorProvider: React.FC<SiteEditorProviderProps> = ({
           customDomain: prev.metadata.customDomain,
           customDomainName: prev.metadata.customDomainName,
           customDomainSaved: prev.metadata.customDomainSaved,
+          customDomainStatus: prev.metadata.customDomainStatus || 'idle',
         };
       }
 
