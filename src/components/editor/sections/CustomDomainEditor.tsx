@@ -10,7 +10,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 
 const DNS_RECORDS = [
   { type: 'A', name: '@', value: '185.158.133.1' },
-  { type: 'A', name: 'www', value: '185.158.133.1' },
+  { type: 'CNAME', name: 'www', value: '185.158.133.1' },
 ];
 
 const CustomDomainEditor = () => {
@@ -302,23 +302,47 @@ const CustomDomainEditor = () => {
                 </ol>
               </div>
 
-              {/* DNS Records table (image 6 style) */}
-              <div className="space-y-3">
+              {/* Tutorial link - moved above DNS records */}
+              <a
+                href="https://docs.lovable.dev/features/custom-domain"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+              >
+                📖 Tutorial: Como configurar registros DNS no seu provedor
+                <ExternalLink className="h-3 w-3" />
+              </a>
+
+              {/* DNS Records table (flat table style) */}
+              <div className="space-y-2">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                   Registros DNS necessários
                 </p>
-                
-                {DNS_RECORDS.map((record, index) => (
-                  <div key={index} className="rounded-lg border border-border bg-background overflow-hidden">
-                    <div className="grid grid-cols-[auto_1fr_auto] items-center gap-0">
-                      {/* Type */}
-                      <div className="px-3 py-2.5 border-r border-border bg-muted/50">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Tipo</p>
+
+                <div className="rounded-lg border border-border bg-background overflow-hidden">
+                  {/* Table header */}
+                  <div className="grid grid-cols-[72px_1fr_1fr] border-b border-border">
+                    <div className="px-3 py-2">
+                      <p className="text-xs font-medium text-muted-foreground">Type</p>
+                    </div>
+                    <div className="px-3 py-2 border-l border-border">
+                      <p className="text-xs font-medium text-muted-foreground">Name</p>
+                    </div>
+                    <div className="px-3 py-2 border-l border-border">
+                      <p className="text-xs font-medium text-muted-foreground">Value</p>
+                    </div>
+                  </div>
+
+                  {/* Table rows */}
+                  {DNS_RECORDS.map((record, index) => (
+                    <div
+                      key={index}
+                      className={`grid grid-cols-[72px_1fr_1fr] ${index < DNS_RECORDS.length - 1 ? 'border-b border-border' : ''}`}
+                    >
+                      <div className="px-3 py-3">
                         <p className="text-sm font-mono font-semibold">{record.type}</p>
                       </div>
-                      {/* Name */}
-                      <div className="px-3 py-2.5 border-r border-border">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Nome</p>
+                      <div className="px-3 py-3 border-l border-border">
                         <div className="flex items-center gap-1.5">
                           <p className="text-sm font-mono">{record.name}</p>
                           <button
@@ -329,9 +353,7 @@ const CustomDomainEditor = () => {
                           </button>
                         </div>
                       </div>
-                      {/* Value */}
-                      <div className="px-3 py-2.5">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Valor</p>
+                      <div className="px-3 py-3 border-l border-border">
                         <div className="flex items-center gap-1.5">
                           <p className="text-sm font-mono">{record.value}</p>
                           <button
@@ -343,13 +365,13 @@ const CustomDomainEditor = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
-              {/* Info alert */}
-              <div className="flex items-start gap-2 p-3 bg-accent/50 border border-accent rounded-lg">
-                <Clock className="h-4 w-4 text-foreground mt-0.5 shrink-0" />
+              {/* Info alert - offwhite tone */}
+              <div className="flex items-start gap-2 p-3 bg-muted/40 border border-border rounded-lg">
+                <Clock className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                 <div className="text-xs text-foreground space-y-1">
                   <p>
                     O processo de conexão do domínio pode levar <strong>até 24 horas</strong>.
@@ -360,42 +382,23 @@ const CustomDomainEditor = () => {
                 </div>
               </div>
 
-              {/* Tutorial link */}
-              <a
-                href="https://docs.lovable.dev/features/custom-domain"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-              >
-                📖 Tutorial: Como configurar registros DNS no seu provedor
-                <ExternalLink className="h-3 w-3" />
-              </a>
-
-              {/* Confirmation */}
-              <div className="flex items-start gap-2 pt-2">
-                <Checkbox
-                  id="dnsConfirmed"
-                  checked={dnsConfirmed}
-                  onCheckedChange={(checked) => setDnsConfirmed(checked === true)}
-                />
-                <Label htmlFor="dnsConfirmed" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                  Eu alterei os registros DNS conforme as instruções acima
-                </Label>
-              </div>
-
-              <div className="flex justify-end gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleRemoveDomain}
-                  className="text-destructive hover:text-destructive"
-                >
-                  Remover
-                </Button>
+              {/* Bottom row: checkbox + finalizar */}
+              <div className="flex items-center justify-between gap-3 pt-2">
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="dnsConfirmed"
+                    checked={dnsConfirmed}
+                    onCheckedChange={(checked) => setDnsConfirmed(checked === true)}
+                  />
+                  <Label htmlFor="dnsConfirmed" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                    Eu alterei os registros DNS conforme as instruções acima
+                  </Label>
+                </div>
                 <Button
                   size="sm"
                   onClick={handleConfirmDns}
                   disabled={!dnsConfirmed}
+                  className="shrink-0"
                 >
                   Finalizar
                 </Button>
