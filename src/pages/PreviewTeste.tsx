@@ -33,6 +33,7 @@ const fullTestConfig: SiteConfig = {
     customDomain: false,
     customDomainName: '',
     customDomainSaved: false,
+    customDomainStatus: 'idle' as const,
   },
   brand: {
     primary: '#8B1538',
